@@ -39,7 +39,7 @@ export default function Home() {
               <a className="button button-secondary" href="#contact">Get in touch</a>
             </div>
           </div>
-          <div className="hero-side" aria-label="Portfolio focus">
+          <div className="hero-side">
             <div className="signal-top"><span>FOCUS / 2026</span><span>01—04</span></div>
             <div className="signal-lines" aria-hidden="true"><i /><i /><i /><i /><i /></div>
             <p>From raw signals<br />to useful decisions.</p>
@@ -85,6 +85,7 @@ export default function Home() {
         <section className="contact section-pad" id="contact" aria-labelledby="contact-title"><div className="section-shell contact-inner"><div><p className="eyebrow">Contact</p><h2 id="contact-title">Let&apos;s make the next decision clearer.</h2><p>For AI, data, and commerce engineering conversations, email me or explore the work above.</p></div><div className="contact-actions"><a className="button button-light" href={`mailto:${identity.email}`}>Email Ali <span aria-hidden="true">↗</span></a><a href={identity.github}>GitHub <span aria-hidden="true">↗</span></a><a href={identity.service}>DUYTRUYENTHONG <span aria-hidden="true">↗</span></a></div></div></section>
       </main>
       <footer className="site-footer"><span>© {new Date().getFullYear()} Ali Nguyen</span><span>DUYTRUYENTHONG · AI & Data for E-commerce</span><a href="#top">Back to top ↑</a></footer>
+      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: fixed local JSON-LD content is serialized and angle brackets are escaped */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
     </>
   );
