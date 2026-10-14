@@ -61,6 +61,6 @@ export function VisitorStats({ role }: { role: string }) {
     <div className="visitor-stat"><strong>#{stats.ordinal.toLocaleString()}</strong><span>YOUR VISITOR NUMBER</span></div>
     <div className="visitor-stat"><strong>{stats.roleCount.toLocaleString()}</strong><span>{role.toUpperCase()} VISITORS</span></div>
     <div className="visitor-countries"><span>VISITORS FROM {stats.countries.length} {stats.countries.length === 1 ? "COUNTRY" : "COUNTRIES"}</span><div>{shownCountries.map(({ code, count }) => <abbr key={code} title={`${code}: ${count} ${count === 1 ? "visitor" : "visitors"}`}>{code}</abbr>)}</div></div>
-    <p>Counts are per browser. The portfolio counter stores a random browser ID, chosen role, and country code; it does not write IP addresses to its database.</p>
+    <p>Counts are per browser. The portfolio counter stores a salted browser ID hash, chosen role, and country code; it does not write IP addresses to its database.</p>
   </div>;
 }
