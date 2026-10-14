@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { identity } from "@/data/portfolio";
+import { PortfolioExperienceProvider } from "./experience";
 import "@fontsource-variable/archivo";
 import "@fontsource-variable/inter";
 import "./styles.css";
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body><PortfolioExperienceProvider>{children}</PortfolioExperienceProvider></body>
     </html>
   );
 }

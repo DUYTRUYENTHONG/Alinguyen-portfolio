@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import type { ReactNode } from "react";
 import type { Project } from "@/data/portfolio";
 import { customers } from "@/data/portfolio";
@@ -11,7 +12,15 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const RoleContext = createContext<{ selected: string; setSelected: (role: string) => void } | null>(null);
 
 export function PortfolioExperienceProvider({ children }: { children: ReactNode }) {
-  const [selected, setSelected] = useState("Recruiter");
+  const [selected, setSelectedState] = useState("Recruiter");
+  useEffect(() => {
+    const saved = window.sessionStorage.getItem("portfolio-visitor-role");
+    if (saved && roles.some((role) => role.label === saved)) setSelectedState(saved);
+  }, []);
+  const setSelected = (role: string) => {
+    setSelectedState(role);
+    window.sessionStorage.setItem("portfolio-visitor-role", role);
+  };
   return <RoleContext.Provider value={{ selected, setSelected }}>{children}</RoleContext.Provider>;
 }
 
@@ -137,11 +146,21 @@ export function VisitorPicker({ projects }: { projects: Project[] }) {
   const orderedRoles = [role, ...roles.filter((item) => item.label !== selected)];
   const recommended = projects.find((project) => project.id === role?.project);
 
+  const selectRole = (next: string) => {
+    if (next === selected) return;
+    const update = () => flushSync(() => setSelected(next));
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !document.startViewTransition) {
+      update();
+      return;
+    }
+    document.startViewTransition(update);
+  };
+
   return (
     <section className="visitor section-shell" id="visitor" aria-labelledby="visitor-title">
       <div className="visitor-heading"><h2 id="visitor-title">Hello stranger,<span className="visitor-heading-tail"> who are you?</span></h2></div>
       <fieldset className="role-grid"><legend className="sr-only">Choose your perspective</legend>
-        {orderedRoles.map((item) => <label key={item.label} className={`role-card role-${item.tone} ${selected === item.label ? "is-selected" : ""}`}><input type="radio" name="visitor-role" value={item.label} checked={selected === item.label} onChange={() => setSelected(item.label)} /><span className="role-icon" aria-hidden="true"><img src={`${basePath}/role-art/${item.icon}.webp`} alt="" width="362" height="362" loading="lazy" /></span><span className="role-card-copy">{selected === item.label && <small>THAT&apos;S YOU</small>}<strong>{item.label}</strong>{selected === item.label && <em>{item.description}</em>}</span></label>)}
+        {orderedRoles.map((item) => <label key={item.label} className={`role-card role-${item.tone} ${selected === item.label ? "is-selected" : ""}`} style={{ viewTransitionName: `role-${item.icon}` }}><input type="radio" name="visitor-role" value={item.label} checked={selected === item.label} onChange={() => selectRole(item.label)} /><span className="role-icon" aria-hidden="true"><img src={`${basePath}/role-art/${item.icon}.webp`} alt="" width="362" height="362" loading="lazy" /></span><span className="role-card-copy">{selected === item.label && <small>THAT&apos;S YOU</small>}<strong>{item.label}</strong>{selected === item.label && <em>{item.description}</em>}</span></label>)}
       </fieldset>
       <div className="visitor-result" aria-live="polite">
         {recommended && <><span>RECOMMENDED FOR {selected.toUpperCase()}</span><a href={`#project-${recommended.id}`}>{recommended.name} <span aria-hidden="true">↗</span></a></>}
