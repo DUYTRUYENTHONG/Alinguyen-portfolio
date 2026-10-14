@@ -5,7 +5,8 @@ import "./styles.css";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(new URL(siteUrl).origin),
+  alternates: { canonical: siteUrl },
   title: `${identity.name} | ${identity.title}`,
   description: identity.proposition,
   applicationName: `${identity.name} Portfolio`,

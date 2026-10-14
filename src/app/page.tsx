@@ -17,33 +17,31 @@ export default function Home() {
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Ali Nguyen, back to top">
-          <span className="brand-mark" aria-hidden="true">AN</span>
           <span><strong>Ali Nguyen</strong><small>DUYTRUYENTHONG</small></span>
         </a>
         <nav aria-label="Main navigation">
-          <a href="#expertise">Expertise</a>
+          <a href="#top">Home</a>
           <a href="#work">Work</a>
           <a href="#approach">Approach</a>
-          <a className="nav-contact" href="#contact">Contact <span aria-hidden="true">↗</span></a>
+          <a href="#expertise">Expertise</a>
+          <a className="nav-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
         </nav>
       </header>
 
       <main id="main">
         <section className="hero section-shell" id="top" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="eyebrow"><span className="status-dot" /> AI, data & commerce</p>
-            <h1 id="hero-title">AI & Data Engineer<br /><em>for <span className="no-break">E-commerce.</span></em></h1>
+            <p className="eyebrow"><span className="status-dot" /> ALI NGUYEN / DUYTRUYENTHONG</p>
+            <h1 id="hero-title">Ali Nguyen builds<br /><em>AI & data systems</em><br />for commerce.</h1>
+            <p className="hero-role">AI & Data Engineer for E-commerce</p>
             <p className="hero-value">{identity.proposition}</p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#work">View projects <span aria-hidden="true">↗</span></a>
+              <a className="button button-primary" href="#work">Explore selected work <span aria-hidden="true">↗</span></a>
               <a className="button button-secondary" href="#contact">Get in touch</a>
             </div>
           </div>
-          <div className="hero-side">
-            <div className="signal-top"><span>FOCUS / 2026</span><span>01—04</span></div>
-            <div className="signal-lines" aria-hidden="true"><i /><i /><i /><i /><i /></div>
-            <p>From raw signals<br />to useful decisions.</p>
-            <div className="signal-bottom"><span>Data → Models → Action</span><span>ALi / DTT</span></div>
+          <div className="hero-signature">
+            <span>COMMERCE SIGNALS</span><span className="signature-line" aria-hidden="true" /><strong>Data <b>→</b> Models <b>→</b> Action</strong><span>01 / 03</span>
           </div>
         </section>
 
@@ -58,11 +56,11 @@ export default function Home() {
 
         <section className="work section-pad" id="work" aria-labelledby="work-title">
           <div className="section-shell">
-            <div className="section-heading"><p className="eyebrow">Selected work</p><h2 id="work-title">Projects with clear status and evidence.</h2><p className="section-intro">A live service website, a published developer tool, and a new local churn baseline. Each entry separates what exists from what remains to be measured.</p></div>
+            <div className="section-heading"><p className="eyebrow">Selected work / 01—03</p><h2 id="work-title">Systems, tools, and experiments.</h2><p className="section-intro">A live service website, a published developer tool, and a local churn baseline. Project status and evidence are shown with each story.</p></div>
             <div className="project-list">
               {projects.map((project, index) => <article className="project" key={project.id}>
-                <div className="project-index">{String(index + 1).padStart(2, "0")}</div>
-                <div className="project-main"><p className="project-status">{project.status}</p><h3>{project.name}</h3><p className="project-problem">{project.problem}</p>
+                <div className={`project-art project-art-${index + 1}`} aria-hidden="true"><span>DUYTRUYENTHONG / {String(index + 1).padStart(2, "0")}</span><strong>{index === 0 ? "GROWTH / COMMERCE" : index === 1 ? "BUILD / VERIFY" : "SIGNALS / CHURN"}</strong><i /><small>{project.status}</small></div>
+                <div className="project-main"><p className="project-status">{String(index + 1).padStart(2, "0")} / {project.status}</p><h3>{project.name}</h3><p className="project-problem">{project.problem}</p>
                   <dl className="project-details"><div><dt>For</dt><dd>{project.users}</dd></div><div><dt>My role</dt><dd>{project.role}</dd></div><div><dt>Approach</dt><dd>{project.approach}</dd></div><div><dt>Evidence</dt><dd>{project.outcome}</dd></div></dl>
                   <div className="project-footer"><ul className="tag-list" aria-label={`${project.name} technologies`}>{project.technologies.map((tech) => <li key={tech}>{tech}</li>)}</ul>{project.link && <a className="text-link" href={project.link.href}>{project.link.label} <span aria-hidden="true">↗</span></a>}</div>
                 </div>
