@@ -8,6 +8,7 @@ import type { ReactNode } from "react";
 import type { Project } from "@/data/portfolio";
 import { customers } from "@/data/portfolio";
 import { GuideCharacter } from "./guide-character";
+import { VisitorStats } from "./visitor-stats";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const RoleContext = createContext<{ selected: string; setSelected: (role: string) => void } | null>(null);
@@ -152,6 +153,7 @@ export function VisitorPicker({ projects }: { projects: Project[] }) {
       <LayoutGroup id="visitor-strip"><fieldset className="role-grid"><legend className="sr-only">Choose your perspective</legend>
         {roles.map((item) => <RoleTile key={item.label} item={item} selected={selected} onSelect={setSelected} />)}
       </fieldset></LayoutGroup>
+      <VisitorStats role={selected} />
       <div className="visitor-result" aria-live="polite">
         {recommended && <><span>RECOMMENDED FOR {selected.toUpperCase()}</span><a href={`#project-${recommended.id}`}>{recommended.name} <span aria-hidden="true">↗</span></a></>}
       </div>
@@ -278,6 +280,11 @@ export function ProjectVisual({ id }: { id: string }) {
   return <div className="mock-browser mock-churn" role="img" aria-label="Illustrative churn feature timeline, not a performance chart"><div className="mock-toolbar"><i /><i /><i /><span>kkbox / local prototype</span></div><div className="mock-churn-body"><span>SNAPSHOT DATE</span><div className="mock-timeline"><i /><i /><i /><i /><i /></div><strong>Past events only</strong><p>Feature construction → holdout evaluation</p><small>Illustration · no measured model score</small></div></div>;
 }
 
+const projectEmojiCodes: Record<string, string> = { "growth-commerce-os": "1f4c8", stos: "1f3af", "cho-kenh": "1f6d2", "vibecode-kit": "1f6e0", "kkbox-baseline": "1f4ca" };
+function ProjectEmoji({ id }: { id: string }) {
+  return <img className="project-emoji" src={`${basePath}/emoji/${projectEmojiCodes[id]}.svg`} alt="" width="24" height="24" loading="lazy" />;
+}
+
 export function WorkSection({ projects }: { projects: Project[] }) {
   const { selected } = usePortfolioRole();
   const rolePriorities: Record<string, string[]> = {
@@ -295,7 +302,6 @@ export function WorkSection({ projects }: { projects: Project[] }) {
   };
   const priority = rolePriorities[selected] ?? rolePriorities.Recruiter;
   const orderedProjects = [...projects].sort((a, b) => priority.indexOf(a.id) - priority.indexOf(b.id));
-  const projectIcons: Record<string, string> = { "growth-commerce-os": "◈", stos: "✦", "cho-kenh": "◇", "vibecode-kit": "▣", "kkbox-baseline": "◉" };
   const [active, setActive] = useState(orderedProjects[0]?.id);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -309,7 +315,7 @@ export function WorkSection({ projects }: { projects: Project[] }) {
     return () => observer.disconnect();
   }, [projects, selected]);
 
-  return <section className="work-section" id="work" aria-labelledby="work-title"><div className="section-shell"><div className="work-heading"><h2 id="work-title">Selected work</h2><div><a className="work-role-chip" href="#visitor">You: {selected} · <span>change</span></a><p>{selected} view: projects most relevant to your interests first.</p></div></div><nav className="work-mobile-index" aria-label="Jump to project">{orderedProjects.map((project) => <a key={project.id} className={active === project.id ? "is-active" : ""} href={`#project-${project.id}`} aria-current={active === project.id ? "location" : undefined}><span aria-hidden="true">{projectIcons[project.id]}</span>{project.name.replace("DUYTRUYENTHONG ", "").replace("Codex ", "")}</a>)}</nav><div className="work-layout"><nav className="work-index" aria-label="Jump to project"><p>IN YOUR ORDER</p>{orderedProjects.map((project) => <a key={project.id} className={active === project.id ? "is-active" : ""} href={`#project-${project.id}`} aria-current={active === project.id ? "location" : undefined}><span aria-hidden="true">{projectIcons[project.id]}</span>{project.name.replace("DUYTRUYENTHONG ", "").replace("Codex ", "")}</a>)}</nav><div className="work-cards"><GuideCharacter activeProjectId={active} />{orderedProjects.map((project, index) => <article className={`work-card work-card-${index + 1}`} id={`project-${project.id}`} key={project.id}><div className="work-stamp"><strong>{project.status.includes("Live") ? "LIVE" : project.status.includes("Public") ? "PUBLIC" : "PROTOTYPE"}</strong><small>{project.status}</small></div><p className="project-kicker">{projectIcons[project.id]} &nbsp; {project.name}</p><h3>{project.headline}</h3><p className="project-summary">{project.problem}</p><ProjectVisual id={project.id} /><div className="project-proof"><div><strong>{String(index + 1).padStart(2, "0")}</strong><span>{project.proof}</span></div><Link href={`/work/${project.id}`}>Case study <span aria-hidden="true">↗</span></Link></div></article>)}</div></div></div></section>;
+  return <section className="work-section" id="work" aria-labelledby="work-title"><div className="section-shell"><div className="work-heading"><h2 id="work-title">Selected work</h2><div><a className="work-role-chip" href="#visitor">You: {selected} · <span>change</span></a><p>{selected} view: projects most relevant to your interests first.</p></div></div><nav className="work-mobile-index" aria-label="Jump to project">{orderedProjects.map((project) => <a key={project.id} className={active === project.id ? "is-active" : ""} href={`#project-${project.id}`} aria-current={active === project.id ? "location" : undefined}><span aria-hidden="true"><ProjectEmoji id={project.id} /></span>{project.name.replace("DUYTRUYENTHONG ", "").replace("Codex ", "")}</a>)}</nav><div className="work-layout"><nav className="work-index" aria-label="Jump to project"><p>IN YOUR ORDER</p>{orderedProjects.map((project) => <a key={project.id} className={active === project.id ? "is-active" : ""} href={`#project-${project.id}`} aria-current={active === project.id ? "location" : undefined}><span aria-hidden="true"><ProjectEmoji id={project.id} /></span>{project.name.replace("DUYTRUYENTHONG ", "").replace("Codex ", "")}</a>)}</nav><div className="work-cards"><GuideCharacter activeProjectId={active} />{orderedProjects.map((project, index) => <article className={`work-card work-card-${index + 1}`} id={`project-${project.id}`} key={project.id}><div className="work-stamp"><strong>{project.status.includes("Live") ? "LIVE" : project.status.includes("Public") ? "PUBLIC" : "PROTOTYPE"}</strong><small>{project.status}</small></div><p className="project-kicker"><ProjectEmoji id={project.id} /> &nbsp; {project.name}</p><h3>{project.headline}</h3><p className="project-summary">{project.problem}</p><ProjectVisual id={project.id} /><div className="project-proof"><div><strong>{String(index + 1).padStart(2, "0")}</strong><span>{project.proof}</span></div><Link href={`/work/${project.id}`}>Case study <span aria-hidden="true">↗</span></Link></div></article>)}</div></div></div></section>;
 }
 
 export function CopyEmail({ email }: { email: string }) {
