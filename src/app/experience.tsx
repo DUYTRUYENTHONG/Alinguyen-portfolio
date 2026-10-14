@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Project } from "@/data/portfolio";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -11,11 +11,36 @@ const navItems = [
   { label: "Highlights", href: "#highlights" },
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
+  { label: "CVs", href: "#cvs" },
   { label: "Get in touch", href: "#contact" },
 ];
 
 export function SiteHeader({ inner = false }: { inner?: boolean }) {
   const [open, setOpen] = useState(false);
+  const [compact, setCompact] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScroll = useRef(0);
+
+  useEffect(() => {
+    lastScroll.current = window.scrollY;
+    const onScroll = () => {
+      const current = window.scrollY;
+      setCompact(current > 80);
+      if (current <= 80 || open) {
+        setHidden(false);
+        lastScroll.current = current;
+      } else if (current > lastScroll.current + 8) {
+        if (current > 120) setHidden(true);
+        lastScroll.current = current;
+      } else if (current < lastScroll.current - 8) {
+        setHidden(false);
+        lastScroll.current = current;
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -28,7 +53,7 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
 
   return (
     <>
-      <header className="site-header">
+      <header className={`site-header ${compact ? "is-compact" : ""} ${hidden && !open ? "is-hidden" : ""}`}>
         <nav className="desktop-nav" aria-label="Main navigation">
           <Link className="nav-home" href={inner ? "/#top" : "#top"}>Ali Nguyen</Link>
           {navItems.slice(1).map((item) => <Link key={item.href} href={inner ? `/${item.href}` : item.href}>{item.label}</Link>)}
@@ -47,7 +72,7 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
   );
 }
 
-const focusPhrases = ["customer intelligence", "commerce data systems", "practical AI workflows"];
+const focusPhrases = ["sales funnels", "qualified lead pathways", "commerce intelligence"];
 
 export function RotatingFocus() {
   const [index, setIndex] = useState(0);
@@ -62,8 +87,13 @@ const roles = [
   { label: "Recruiter", icon: "✦", project: "vibecode-kit", tone: "lavender" },
   { label: "Founder", icon: "↗", project: "growth-commerce-os", tone: "peach" },
   { label: "Engineer", icon: "{ }", project: "vibecode-kit", tone: "blue" },
+  { label: "Product designer", icon: "◈", project: "stos", tone: "pink" },
+  { label: "Marketer", icon: "✳", project: "growth-commerce-os", tone: "mint" },
   { label: "Growth", icon: "◎", project: "stos", tone: "yellow" },
   { label: "Data", icon: "▥", project: "kkbox-baseline", tone: "mint" },
+  { label: "Investor", icon: "⌁", project: "stos", tone: "peach" },
+  { label: "Student", icon: "✧", project: "kkbox-baseline", tone: "blue" },
+  { label: "Fellow builder", icon: "⚒", project: "vibecode-kit", tone: "lavender" },
   { label: "Just curious", icon: "◌", project: "growth-commerce-os", tone: "pink" },
 ] as const;
 

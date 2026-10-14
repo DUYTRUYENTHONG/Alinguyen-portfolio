@@ -1,9 +1,9 @@
 # Ali Nguyen
 
-**AI & Data Engineer for E-commerce** · DUYTRUYENTHONG
+**Sales, Marketing & E-commerce Builder** · DUYTRUYENTHONG
 
-I build AI and data systems that help e-commerce businesses understand customers,
-automate decisions, optimize operations and grow revenue.
+I combine sales, digital marketing, e-commerce, AI, and data to improve sales
+funnels and help businesses generate more qualified leads.
 
 ## Selected work
 
@@ -14,9 +14,9 @@ automate decisions, optimize operations and grow revenue.
 
 ## Focus
 
-AI and LLM applications · data engineering · customer analytics · commerce workflows · automation
+Sales funnels · digital marketing · e-commerce · AI and LLM applications · customer analytics · automation
 
-**Tools:** Python, SQL, PostgreSQL, Pandas, JavaScript, React, Power BI, DAX, GitHub Actions.
+**Tools:** Google Business Profile, TikTok Shop, Python, SQL, PostgreSQL, JavaScript, React, Power BI, DAX, GitHub Actions.
 
 ## Connect
 

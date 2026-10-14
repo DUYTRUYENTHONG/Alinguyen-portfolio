@@ -16,9 +16,9 @@ export type Project = {
 export const identity = {
   name: "Ali Nguyen",
   brand: "DUYTRUYENTHONG",
-  title: "AI & Data Engineer for E-commerce",
+  title: "Sales, Marketing & E-commerce Builder",
   proposition:
-    "I build AI and data systems that help e-commerce businesses understand customers, automate decisions, optimize operations and grow revenue.",
+    "I build AI, data, and digital commerce systems that help businesses improve sales funnels and generate more qualified leads.",
   email: "nquangd1510@gmail.com",
   github: "https://github.com/DUYTRUYENTHONG",
   service: "https://growth-commerce-os.vercel.app/",
@@ -109,8 +109,20 @@ export const projects: Project[] = [
 export const capabilities = [
   { group: "Languages & data", items: ["Python", "SQL", "JavaScript", "TypeScript", "Pandas"] },
   { group: "Applications", items: ["React", "Next.js", "APIs", "LLM and RAG prototypes"] },
-  { group: "Analytics", items: ["PostgreSQL", "Power BI", "DAX", "scikit-learn"] },
-  { group: "Delivery", items: ["GitHub Actions", "Testing", "Documentation", "Cloud deployment"] },
+  { group: "Sales & marketing", items: ["Sales funnels", "Google Business Profile", "TikTok Shop", "Content", "Lead workflows"] },
+  { group: "Analytics & delivery", items: ["PostgreSQL", "Power BI", "DAX", "GitHub Actions", "Testing"] },
+] as const;
+
+export const funnelStages = [
+  { number: "01", title: "Attract relevant traffic", detail: "Client discovery, local search presence, content, and TikTok/Facebook assets connect an offer with the people it serves.", source: "DUYTRUYENTHONG agency experience" },
+  { number: "02", title: "Make the next step clear", detail: "Sales pages, service journeys, and inquiry paths help visitors understand the offer and contact the right person.", source: "Growth Commerce OS and STOS" },
+  { number: "03", title: "Learn from the funnel", detail: "Customer data, lead signals, and analytics help teams find where the journey stalls and decide what to improve.", source: "Business analysis and data work" },
+] as const;
+
+export const cvTracks = [
+  { title: "Applied AI engineering", detail: "LLM applications, retrieval workflows, Python, and customer analytics prototypes.", downloads: [{ label: "Download PDF", path: "cv-applied-ai-engineer.pdf" }] },
+  { title: "Business and product", detail: "Digital marketing services, sales funnels, solution consulting, and commerce products.", downloads: [{ label: "Business & Product PDF", path: "cv-business-product.pdf" }, { label: "Business Development PDF", path: "cv-business-development.pdf" }], note: "The two supplied PDFs have identical content." },
+  { title: "AI and prompt engineering", detail: "Prompt workflows, RAG concepts, enterprise troubleshooting, and AI-assisted delivery.", downloads: [{ label: "Download DOCX", path: "cv-prompt-engineer.docx" }] },
 ] as const;
 
 export const principles = [

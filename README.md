@@ -37,3 +37,9 @@ For an exact preview of the GitHub Pages path, build with
 under `/alitech/`. The project has no server-side runtime requirement.
 
 `PROFILE_README.md` is the draft for the username-matched GitHub repository.
+
+Four owner-supplied CV files are downloadable from the site: Applied AI Engineer
+(PDF), Business & Product (PDF), Business Development (PDF), and AI / Prompt
+Engineer (DOCX). The two business PDFs are byte-identical as supplied. The
+documents retain the printed name Nguyen Quang Duy, phone number, and original
+portfolio URL; review their contents before approving public release.
