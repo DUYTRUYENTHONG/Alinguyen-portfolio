@@ -29,6 +29,8 @@ illustrations should be replaced by owner-provided screenshots when available.
 The STOS logo was supplied by the owner and is used with the founder and builder
 attribution confirmed in chat. Public STOS pages support its feature summary;
 no adoption or revenue metric is claimed.
+The DUYTRUYENTHONG logo was also supplied by the owner and appears with Growth
+Commerce OS. Both logos are preserved as supplied.
 
 For an exact preview of the GitHub Pages path, build with
 `NEXT_PUBLIC_BASE_PATH=/alitech` and serve the generated `out/` directory
