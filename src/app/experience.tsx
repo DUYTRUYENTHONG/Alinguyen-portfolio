@@ -1,28 +1,49 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
+import type { ReactNode } from "react";
 import type { Project } from "@/data/portfolio";
 import { customers } from "@/data/portfolio";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const RoleContext = createContext<{ selected: string; setSelected: (role: string) => void } | null>(null);
+
+export function PortfolioExperienceProvider({ children }: { children: ReactNode }) {
+  const [selected, setSelected] = useState("Recruiter");
+  return <RoleContext.Provider value={{ selected, setSelected }}>{children}</RoleContext.Provider>;
+}
+
+function usePortfolioRole() {
+  const context = useContext(RoleContext);
+  if (!context) throw new Error("Portfolio role provider is missing");
+  return context;
+}
 
 const navItems = [
   { label: "Home", href: "#top" },
   { label: "Highlights", href: "#highlights" },
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
   { label: "Download CVs", href: "#cvs" },
   { label: "Get in touch", href: "#contact" },
 ];
 
 export function SiteHeader({ inner = false }: { inner?: boolean }) {
+  const pathname = usePathname();
+  const activePage = pathname.startsWith("/work") ? "/work" : pathname.startsWith("/about") ? "/about" : "#top";
+  const navHref = (href: string) => href.startsWith("#") && inner ? `/${href}` : href;
   const [open, setOpen] = useState(false);
   const [compact, setCompact] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScroll = useRef(0);
   const menuButton = useRef<HTMLButtonElement>(null);
   const menuPanel = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!window.location.hash && pathname !== "/") window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
 
   useEffect(() => {
     lastScroll.current = window.scrollY;
@@ -68,8 +89,8 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
     <>
       <header className={`site-header ${compact ? "is-compact" : ""} ${hidden && !open ? "is-hidden" : ""}`}>
         <nav className="desktop-nav" aria-label="Main navigation">
-          <Link className="nav-home" href={inner ? "/#top" : "#top"}>Ali Nguyen</Link>
-          {navItems.slice(1).map((item) => <Link key={item.href} href={inner ? `/${item.href}` : item.href}>{item.label}</Link>)}
+          <Link className={activePage === "#top" ? "nav-active" : ""} href={navHref("#top")}>Ali Nguyen</Link>
+          {navItems.slice(1).map((item) => <Link className={activePage === item.href ? "nav-active" : ""} key={item.href} href={navHref(item.href)}>{item.label}</Link>)}
           <span className="nav-clock">DUYTRUYENTHONG · AI / DATA</span>
         </nav>
         <button ref={menuButton} className="menu-trigger" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>
@@ -78,7 +99,7 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
       </header>
       <div className={`menu-backdrop ${open ? "is-open" : ""}`} onClick={() => setOpen(false)} aria-hidden="true" />
       <div ref={menuPanel} id="mobile-menu" className={`mobile-menu ${open ? "is-open" : ""}`} role="dialog" aria-modal="true" aria-label="Menu" inert={!open}>
-        <nav aria-label="Mobile navigation">{navItems.map((item) => <Link key={item.href} href={inner ? `/${item.href}` : item.href} onClick={() => setOpen(false)}>{item.label}</Link>)}</nav>
+        <nav aria-label="Mobile navigation">{navItems.map((item) => <Link key={item.href} href={navHref(item.href)} onClick={() => setOpen(false)}>{item.label}</Link>)}</nav>
         <p>ALI NGUYEN · DUYTRUYENTHONG</p>
       </div>
     </>
@@ -111,13 +132,13 @@ const roles = [
 ] as const;
 
 export function VisitorPicker({ projects }: { projects: Project[] }) {
-  const [selected, setSelected] = useState<string>("Recruiter");
+  const { selected, setSelected } = usePortfolioRole();
   const role = roles.find((item) => item.label === selected) ?? roles[0];
   const orderedRoles = [role, ...roles.filter((item) => item.label !== selected)];
   const recommended = projects.find((project) => project.id === role?.project);
 
   return (
-    <section className="visitor section-shell" aria-labelledby="visitor-title">
+    <section className="visitor section-shell" id="visitor" aria-labelledby="visitor-title">
       <div className="visitor-heading"><h2 id="visitor-title">Hello stranger,<span className="visitor-heading-tail"> who are you?</span></h2></div>
       <fieldset className="role-grid"><legend className="sr-only">Choose your perspective</legend>
         {orderedRoles.map((item) => <label key={item.label} className={`role-card role-${item.tone} ${selected === item.label ? "is-selected" : ""}`}><input type="radio" name="visitor-role" value={item.label} checked={selected === item.label} onChange={() => setSelected(item.label)} /><span className="role-icon" aria-hidden="true"><img src={`${basePath}/role-art/${item.icon}.webp`} alt="" width="362" height="362" loading="lazy" /></span><span className="role-card-copy">{selected === item.label && <small>THAT&apos;S YOU</small>}<strong>{item.label}</strong>{selected === item.label && <em>{item.description}</em>}</span></label>)}
@@ -182,20 +203,37 @@ export function ProjectVisual({ id }: { id: string }) {
 }
 
 export function WorkSection({ projects }: { projects: Project[] }) {
-  const [active, setActive] = useState(projects[0]?.id);
+  const { selected } = usePortfolioRole();
+  const rolePriorities: Record<string, string[]> = {
+    Recruiter: ["vibecode-kit", "growth-commerce-os", "stos", "cho-kenh", "kkbox-baseline"],
+    Founder: ["growth-commerce-os", "stos", "cho-kenh", "vibecode-kit", "kkbox-baseline"],
+    Engineer: ["vibecode-kit", "kkbox-baseline", "stos", "growth-commerce-os", "cho-kenh"],
+    "Product designer": ["stos", "cho-kenh", "growth-commerce-os", "vibecode-kit", "kkbox-baseline"],
+    Marketer: ["growth-commerce-os", "cho-kenh", "stos", "kkbox-baseline", "vibecode-kit"],
+    Growth: ["growth-commerce-os", "stos", "cho-kenh", "kkbox-baseline", "vibecode-kit"],
+    Data: ["kkbox-baseline", "growth-commerce-os", "cho-kenh", "stos", "vibecode-kit"],
+    Investor: ["stos", "growth-commerce-os", "cho-kenh", "vibecode-kit", "kkbox-baseline"],
+    Student: ["kkbox-baseline", "vibecode-kit", "growth-commerce-os", "stos", "cho-kenh"],
+    "Fellow builder": ["vibecode-kit", "stos", "cho-kenh", "growth-commerce-os", "kkbox-baseline"],
+    "Just curious": ["growth-commerce-os", "stos", "cho-kenh", "vibecode-kit", "kkbox-baseline"],
+  };
+  const priority = rolePriorities[selected] ?? rolePriorities.Recruiter;
+  const orderedProjects = [...projects].sort((a, b) => priority.indexOf(a.id) - priority.indexOf(b.id));
+  const projectIcons: Record<string, string> = { "growth-commerce-os": "◈", stos: "✦", "cho-kenh": "◇", "vibecode-kit": "▣", "kkbox-baseline": "◉" };
+  const [active, setActive] = useState(orderedProjects[0]?.id);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       if (visible) setActive(visible.target.id.replace("project-", ""));
     }, { rootMargin: "-20% 0px -45% 0px", threshold: [0, 0.1, 0.4] });
-    for (const project of projects) {
+    for (const project of orderedProjects) {
       const element = document.getElementById(`project-${project.id}`);
       if (element) observer.observe(element);
     }
     return () => observer.disconnect();
-  }, [projects]);
+  }, [projects, selected]);
 
-  return <section className="work-section" id="work" aria-labelledby="work-title"><div className="section-shell"><div className="section-heading"><p className="eyebrow">Selected work</p><h2 id="work-title">Selected work</h2><p>Five builds across commerce products, developer tooling, and customer data.</p></div><div className="work-layout"><nav className="work-index" aria-label="Jump to project"><p>PROJECTS</p>{projects.map((project, index) => <a key={project.id} className={active === project.id ? "is-active" : ""} href={`#project-${project.id}`} aria-current={active === project.id ? "location" : undefined}><span aria-hidden="true">{["◈", "✦", "◇", "▣", "◉"][index]}</span>{project.name.replace("DUYTRUYENTHONG ", "").replace("Codex ", "")}</a>)}</nav><div className="work-cards">{projects.map((project, index) => <article className={`work-card work-card-${index + 1}`} id={`project-${project.id}`} key={project.id}><div className="work-stamp"><strong>{project.status.includes("Live") ? "LIVE" : project.status.includes("Public") ? "PUBLIC" : "PROTOTYPE"}</strong><small>{project.status}</small></div><p className="project-kicker">{["◈", "✦", "◇", "▣", "◉"][index]} &nbsp; {project.name}</p><h3>{project.headline}</h3><p className="project-summary">{project.problem}</p><ProjectVisual id={project.id} /><div className="project-proof"><div><strong>{String(index + 1).padStart(2, "0")}</strong><span>{project.proof}</span></div><Link href={`/work/${project.id}`}>Case study <span aria-hidden="true">↗</span></Link></div></article>)}</div></div></div></section>;
+  return <section className="work-section" id="work" aria-labelledby="work-title"><div className="section-shell"><div className="work-heading"><h2 id="work-title">Selected work</h2><div><a className="work-role-chip" href="#visitor">You: {selected} · <span>change</span></a><p>{selected} view: projects most relevant to your interests first.</p></div></div><nav className="work-mobile-index" aria-label="Jump to project">{orderedProjects.map((project) => <a key={project.id} className={active === project.id ? "is-active" : ""} href={`#project-${project.id}`} aria-current={active === project.id ? "location" : undefined}><span aria-hidden="true">{projectIcons[project.id]}</span>{project.name.replace("DUYTRUYENTHONG ", "").replace("Codex ", "")}</a>)}</nav><div className="work-layout"><nav className="work-index" aria-label="Jump to project"><p>IN YOUR ORDER</p>{orderedProjects.map((project) => <a key={project.id} className={active === project.id ? "is-active" : ""} href={`#project-${project.id}`} aria-current={active === project.id ? "location" : undefined}><span aria-hidden="true">{projectIcons[project.id]}</span>{project.name.replace("DUYTRUYENTHONG ", "").replace("Codex ", "")}</a>)}</nav><div className="work-cards">{orderedProjects.map((project, index) => <article className={`work-card work-card-${index + 1}`} id={`project-${project.id}`} key={project.id}><div className="work-stamp"><strong>{project.status.includes("Live") ? "LIVE" : project.status.includes("Public") ? "PUBLIC" : "PROTOTYPE"}</strong><small>{project.status}</small></div><p className="project-kicker">{projectIcons[project.id]} &nbsp; {project.name}</p><h3>{project.headline}</h3><p className="project-summary">{project.problem}</p><ProjectVisual id={project.id} /><div className="project-proof"><div><strong>{String(index + 1).padStart(2, "0")}</strong><span>{project.proof}</span></div><Link href={`/work/${project.id}`}>Case study <span aria-hidden="true">↗</span></Link></div></article>)}</div></div></div></section>;
 }
 
 export function CopyEmail({ email }: { email: string }) {
