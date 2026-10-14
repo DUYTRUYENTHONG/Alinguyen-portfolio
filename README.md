@@ -43,3 +43,10 @@ Four owner-supplied CV files are downloadable from the site: Applied AI Engineer
 Engineer (DOCX). The two business PDFs are byte-identical as supplied. The
 documents retain the printed name Nguyen Quang Duy, phone number, and original
 portfolio URL; review their contents before approving public release.
+
+The customer carousel lists ten names supplied by Ali Nguyen. It contains no
+testimonial quotes or client performance claims. The Bà Chi and Cô Ba logos
+come from local owner files. Toàn Thắng, Hưng Phú Thịnh, Biên Lan, and Bách
+Việt logos come from their apparent official websites. Đại An, 4U Home, Dê
+Cúc Phương City, and Pacific use name cards until exact logo files or official
+brand pages are confirmed. Review every client name and logo before release.

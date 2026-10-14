@@ -25,6 +25,19 @@ export const identity = {
   stos: "https://stosvn.vercel.app/stos",
 } as const;
 
+export const customers = [
+  { name: "Vựa Sầu Riêng Cô Ba", logo: "customer-co-ba.webp", href: "https://www.tiktok.com/@sauriengcoba206" },
+  { name: "Vựa Sầu Riêng Bà Chi", logo: "customer-ba-chi.webp" },
+  { name: "Vựa Sầu Riêng Đại An" },
+  { name: "Hãng xe Toàn Thắng", logo: "customer-toan-thang.svg", href: "https://toanthangcar.com/" },
+  { name: "4U Home" },
+  { name: "Xây dựng Hưng Phú Thịnh", logo: "customer-hung-phu-thinh.png", href: "https://hungphuthinh.vn/" },
+  { name: "Xây dựng Biên Lan", logo: "customer-bien-lan.png", href: "https://bienlan.vn/" },
+  { name: "Hệ thống Dê Cúc Phương City" },
+  { name: "Nhà hàng tiệc cưới Pacific · Bến Cát" },
+  { name: "Nhà hàng tiệc cưới Bách Việt", logo: "customer-bach-viet.png", href: "https://bachviet.com.vn/" },
+] as const;
+
 export const expertise = [
   {
     number: "01",

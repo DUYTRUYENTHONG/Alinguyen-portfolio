@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { Project } from "@/data/portfolio";
+import { customers } from "@/data/portfolio";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -10,6 +11,7 @@ const navItems = [
   { label: "Home", href: "#top" },
   { label: "Highlights", href: "#highlights" },
   { label: "Work", href: "#work" },
+  { label: "Customers", href: "#feedback" },
   { label: "About", href: "#about" },
   { label: "CVs", href: "#cvs" },
   { label: "Get in touch", href: "#contact" },
@@ -110,6 +112,50 @@ export function VisitorPicker({ projects }: { projects: Project[] }) {
       </fieldset>
       <div className="visitor-result" aria-live="polite">
         {recommended ? <><span>Start here for {selected?.toLowerCase()}</span><a href={`#project-${recommended.id}`}>{recommended.name} <span aria-hidden="true">↗</span></a></> : <span>Your choice changes the recommendation on this page. It is not sent or stored.</span>}
+      </div>
+    </section>
+  );
+}
+
+export function CustomerCarousel() {
+  const rail = useRef<HTMLElement>(null);
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const goTo = (index: number) => {
+    const next = (index + customers.length) % customers.length;
+    const container = rail.current;
+    const card = container?.children[next] as HTMLElement | undefined;
+    if (container && card) {
+      const left = card.getBoundingClientRect().left - container.getBoundingClientRect().left + container.scrollLeft;
+      container.scrollTo({ left, behavior: "smooth" });
+    }
+    setActive(next);
+  };
+
+  useEffect(() => {
+    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(() => goTo(active + 1), 4500);
+    return () => window.clearInterval(timer);
+  }, [active, paused]);
+
+  return (
+    <section className="customer-section" id="feedback" aria-labelledby="customers-title">
+      <div className="section-shell">
+        <div className="customer-heading"><div><p className="eyebrow">Customers &amp; collaborations</p><h2 id="customers-title">Built for real businesses.</h2><p>Customer names shared by Ali Nguyen. Individual testimonials are not quoted here.</p></div><div className="carousel-controls"><span aria-live="polite">{String(active + 1).padStart(2, "0")} / {String(customers.length).padStart(2, "0")}</span><button type="button" aria-label="Previous customer" onClick={() => goTo(active - 1)}>←</button><button type="button" aria-label="Next customer" onClick={() => goTo(active + 1)}>→</button></div></div>
+        <section className="customer-rail" ref={rail} aria-roledescription="carousel" aria-label="Customer names and logos" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }} onScroll={(event) => {
+          const container = event.currentTarget;
+          const nearest = [...container.children].reduce((best, child, index) => {
+            const distance = Math.abs(child.getBoundingClientRect().left - container.getBoundingClientRect().left);
+            return distance < best.distance ? { index, distance } : best;
+          }, { index: 0, distance: Infinity });
+          setActive(nearest.index);
+        }}>
+          {customers.map((customer, index) => {
+            const content = <><span className="customer-index">{String(index + 1).padStart(2, "0")}</span><span className="customer-mark">{"logo" in customer ? <img src={`${basePath}/${customer.logo}`} alt="" loading="lazy" /> : <span aria-hidden="true">{customer.name.split(" ").filter(Boolean).slice(-2).map((part) => part[0]).join("")}</span>}</span><strong>{customer.name}</strong>{"href" in customer && <span className="customer-link-cue">Visit brand ↗</span>}</>;
+            return "href" in customer ? <a className="customer-card" key={customer.name} href={customer.href} target="_blank" rel="noopener noreferrer" aria-label={`${customer.name} — visit brand website`}>{content}</a> : <div className="customer-card" key={customer.name}>{content}</div>;
+          })}
+        </section>
       </div>
     </section>
   );
