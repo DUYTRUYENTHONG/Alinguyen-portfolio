@@ -17,6 +17,10 @@ export const identity = {
   name: "Ali Nguyen",
   brand: "DUYTRUYENTHONG",
   title: "Sales, Marketing & E-commerce Builder",
+  experience: {
+    digitalMarketing: "4+ years in digital marketing",
+    aiEngineering: "2+ years in AI engineering and product building",
+  },
   proposition:
     "I build AI, data, and digital commerce systems that help businesses improve sales funnels and generate more qualified leads.",
   email: "nquangd1510@gmail.com",
