@@ -11,9 +11,8 @@ const navItems = [
   { label: "Home", href: "#top" },
   { label: "Highlights", href: "#highlights" },
   { label: "Work", href: "#work" },
-  { label: "Customers", href: "#feedback" },
   { label: "About", href: "#about" },
-  { label: "CVs", href: "#cvs" },
+  { label: "Download CVs", href: "#cvs" },
   { label: "Get in touch", href: "#contact" },
 ];
 
@@ -22,6 +21,8 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
   const [compact, setCompact] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScroll = useRef(0);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const menuPanel = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     lastScroll.current = window.scrollY;
@@ -46,11 +47,21 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
 
   useEffect(() => {
     if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    menuPanel.current?.querySelector<HTMLAnchorElement>("a")?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
+      if (event.key !== "Tab") return;
+      const focusable = Array.from(menuPanel.current?.querySelectorAll<HTMLAnchorElement>("a") ?? []);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
     };
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => { window.removeEventListener("keydown", onKeyDown); document.body.style.overflow = previousOverflow; menuButton.current?.focus(); };
   }, [open]);
 
   return (
@@ -61,15 +72,15 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
           {navItems.slice(1).map((item) => <Link key={item.href} href={inner ? `/${item.href}` : item.href}>{item.label}</Link>)}
           <span className="nav-clock">DUYTRUYENTHONG · AI / DATA</span>
         </nav>
-        <button className="menu-trigger" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>
-          <span aria-hidden="true">{open ? "×" : "☰"}</span>
+        <button ref={menuButton} className="menu-trigger" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>
+          <span className="menu-glyph" aria-hidden="true"><i /><i /><i /></span>
         </button>
       </header>
-      {open && <div className="menu-backdrop" onClick={() => setOpen(false)} aria-hidden="true" />}
-      <nav id="mobile-menu" className={`mobile-menu ${open ? "is-open" : ""}`} aria-label="Mobile navigation" inert={!open}>
-        {navItems.map((item) => <Link key={item.href} href={inner ? `/${item.href}` : item.href} onClick={() => setOpen(false)}>{item.label}</Link>)}
+      <div className={`menu-backdrop ${open ? "is-open" : ""}`} onClick={() => setOpen(false)} aria-hidden="true" />
+      <div ref={menuPanel} id="mobile-menu" className={`mobile-menu ${open ? "is-open" : ""}`} role="dialog" aria-modal="true" aria-label="Menu" inert={!open}>
+        <nav aria-label="Mobile navigation">{navItems.map((item) => <Link key={item.href} href={inner ? `/${item.href}` : item.href} onClick={() => setOpen(false)}>{item.label}</Link>)}</nav>
         <p>ALI NGUYEN · DUYTRUYENTHONG</p>
-      </nav>
+      </div>
     </>
   );
 }
