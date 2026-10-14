@@ -86,32 +86,33 @@ export function RotatingFocus() {
 }
 
 const roles = [
-  { label: "Recruiter", icon: "✦", project: "vibecode-kit", tone: "lavender" },
-  { label: "Founder", icon: "↗", project: "growth-commerce-os", tone: "peach" },
-  { label: "Engineer", icon: "{ }", project: "vibecode-kit", tone: "blue" },
-  { label: "Product designer", icon: "◈", project: "stos", tone: "pink" },
-  { label: "Marketer", icon: "✳", project: "growth-commerce-os", tone: "mint" },
-  { label: "Growth", icon: "◎", project: "stos", tone: "yellow" },
-  { label: "Data", icon: "▥", project: "kkbox-baseline", tone: "mint" },
-  { label: "Investor", icon: "⌁", project: "stos", tone: "peach" },
-  { label: "Student", icon: "✧", project: "kkbox-baseline", tone: "blue" },
-  { label: "Fellow builder", icon: "⚒", project: "vibecode-kit", tone: "lavender" },
-  { label: "Just curious", icon: "◌", project: "growth-commerce-os", tone: "pink" },
+  { label: "Recruiter", icon: "recruiter", description: "Looks for the fit", project: "vibecode-kit", tone: "blue" },
+  { label: "Founder", icon: "founder", description: "Builds the business", project: "growth-commerce-os", tone: "lavender" },
+  { label: "Engineer", icon: "engineer", description: "Writes the code", project: "vibecode-kit", tone: "peach" },
+  { label: "Product designer", icon: "designer", description: "Shapes the experience", project: "stos", tone: "mint" },
+  { label: "Marketer", icon: "marketer", description: "Finds the audience", project: "growth-commerce-os", tone: "pink" },
+  { label: "Growth", icon: "growth", description: "Connects the funnel", project: "stos", tone: "yellow" },
+  { label: "Data", icon: "data", description: "Reads the signals", project: "kkbox-baseline", tone: "mint" },
+  { label: "Investor", icon: "investor", description: "Looks at the model", project: "stos", tone: "blue" },
+  { label: "Student", icon: "student", description: "Learns the craft", project: "kkbox-baseline", tone: "lavender" },
+  { label: "Fellow builder", icon: "builder", description: "Ships with teams", project: "vibecode-kit", tone: "pink" },
+  { label: "Just curious", icon: "curious", description: "Explores the work", project: "growth-commerce-os", tone: "peach" },
 ] as const;
 
 export function VisitorPicker({ projects }: { projects: Project[] }) {
-  const [selected, setSelected] = useState<string | null>(null);
-  const role = roles.find((item) => item.label === selected);
+  const [selected, setSelected] = useState<string>("Recruiter");
+  const role = roles.find((item) => item.label === selected) ?? roles[0];
+  const orderedRoles = [role, ...roles.filter((item) => item.label !== selected)];
   const recommended = projects.find((project) => project.id === role?.project);
 
   return (
     <section className="visitor section-shell" aria-labelledby="visitor-title">
-      <div className="visitor-heading"><p className="eyebrow">A quick way in</p><h2 id="visitor-title">Hello, who are you?</h2><p>Pick a perspective to find the most relevant work.</p></div>
+      <div className="visitor-heading"><h2 id="visitor-title">Hello stranger,<span className="visitor-heading-tail"> who are you?</span></h2></div>
       <fieldset className="role-grid"><legend className="sr-only">Choose your perspective</legend>
-        {roles.map((item) => <label key={item.label} className={`role-card role-${item.tone} ${selected === item.label ? "is-selected" : ""}`}><input type="radio" name="visitor-role" value={item.label} checked={selected === item.label} onChange={() => setSelected(item.label)} /><span className="role-icon" aria-hidden="true">{item.icon}</span><span>{item.label}</span></label>)}
+        {orderedRoles.map((item) => <label key={item.label} className={`role-card role-${item.tone} ${selected === item.label ? "is-selected" : ""}`}><input type="radio" name="visitor-role" value={item.label} checked={selected === item.label} onChange={() => setSelected(item.label)} /><span className="role-icon" aria-hidden="true"><img src={`${basePath}/role-art/${item.icon}.webp`} alt="" width="362" height="362" loading="lazy" /></span><span className="role-card-copy">{selected === item.label && <small>THAT&apos;S YOU</small>}<strong>{item.label}</strong>{selected === item.label && <em>{item.description}</em>}</span></label>)}
       </fieldset>
       <div className="visitor-result" aria-live="polite">
-        {recommended ? <><span>Start here for {selected?.toLowerCase()}</span><a href={`#project-${recommended.id}`}>{recommended.name} <span aria-hidden="true">↗</span></a></> : <span>Your choice changes the recommendation on this page. It is not sent or stored.</span>}
+        {recommended && <><span>RECOMMENDED FOR {selected.toUpperCase()}</span><a href={`#project-${recommended.id}`}>{recommended.name} <span aria-hidden="true">↗</span></a></>}
       </div>
     </section>
   );
