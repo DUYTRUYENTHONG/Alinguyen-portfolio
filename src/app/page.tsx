@@ -26,7 +26,7 @@ export default function Home() {
     <main id="main">
       <section className="hero" id="top" aria-labelledby="hero-title">
         <div className="hero-copy section-shell">
-          <h1 id="hero-title">Ali Nguyen builds<br />sales, marketing &amp;<br />e-commerce systems.</h1>
+          <h1 id="hero-title">Ali Nguyen builds<br /> sales, marketing &amp;<br /> e-commerce systems.</h1>
           <p className="hero-rotate">I build <RotatingFocus /></p>
           <p className="hero-meta">Sales, digital marketing, and e-commerce systems for better funnels and more qualified leads. <span>DUYTRUYENTHONG</span></p>
           <p className="hero-experience"><span>{identity.experience.digitalMarketing}</span><span>{identity.experience.aiEngineering}</span></p>
