@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: `${identity.name} | ${identity.title}`,
   description: identity.proposition,
   applicationName: `${identity.name} Portfolio`,
+  icons: { icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/duytruyenthong-logo.png`, apple: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/duytruyenthong-logo.png` },
   openGraph: {
     title: `${identity.name} | ${identity.title}`,
     description: identity.proposition,

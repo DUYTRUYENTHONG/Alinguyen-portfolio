@@ -4,7 +4,7 @@ import { projects } from "@/data/portfolio";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const root = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000/alitech").replace(/\/$/, "");
+  const root = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
   const lastModified = new Date();
   return [
     { url: `${root}/`, lastModified, changeFrequency: "monthly", priority: 1 },

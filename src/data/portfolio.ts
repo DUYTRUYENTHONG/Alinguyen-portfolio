@@ -25,7 +25,7 @@ export const identity = {
     "I build AI, data, and digital commerce systems that help businesses improve sales funnels and generate more qualified leads.",
   email: "nquangd1510@gmail.com",
   github: "https://github.com/DUYTRUYENTHONG",
-  service: "https://growth-commerce-os.vercel.app/",
+  service: "https://growth-commerce-os.vercel.app/en",
   stos: "https://stosvn.vercel.app/stos",
   choKenh: "https://growth-commerce-os.vercel.app/cho-kenh",
 } as const;
@@ -79,7 +79,7 @@ export const projects: Project[] = [
     outcome: "Live service pages and demo links are available. Adoption and business impact are not independently measured here.",
     proof: "Public service site and demo links",
     technologies: ["Web products", "CMS workflows", "Analytics"],
-    link: { label: "Visit service site", href: "https://growth-commerce-os.vercel.app/" },
+    link: { label: "Visit service site", href: "https://growth-commerce-os.vercel.app/en" },
   },
   {
     id: "stos",

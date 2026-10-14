@@ -1,4 +1,4 @@
-# Ali Nguyen portfolio preview
+# Ali Nguyen portfolio
 
 Static-first Next.js and TypeScript portfolio for Ali Nguyen, branded
 DUYTRUYENTHONG. Content is maintained in `src/data/portfolio.ts`.
@@ -13,9 +13,9 @@ npm run dev
 Open `http://localhost:3000`. Run `npm run typecheck`, `npm run lint`, and
 `npm run build` for a static export in `out/`.
 
-The proposed GitHub Pages repository is `DUYTRUYENTHONG/alitech`, at
-`https://duytruyenthong.github.io/alitech/`. The workflow builds with
-`NEXT_PUBLIC_SITE_URL` set to that URL and `NEXT_PUBLIC_BASE_PATH=/alitech`.
+The GitHub Pages repository is `DUYTRUYENTHONG/Alinguyen-portfolio`, at
+`https://duytruyenthong.github.io/Alinguyen-portfolio/`. The workflow builds with
+`NEXT_PUBLIC_SITE_URL` set to that URL and `NEXT_PUBLIC_BASE_PATH=/Alinguyen-portfolio`.
 Local builds use `localhost:3000` in metadata and disallow indexing.
 The LinkedIn URL and public KKBox repository link await owner input or
 publication.
@@ -39,8 +39,8 @@ AI tools and courses are owner-described plans, not live offerings. No
 transactions or buyer outcomes are claimed.
 
 For an exact preview of the GitHub Pages path, build with
-`NEXT_PUBLIC_BASE_PATH=/alitech` and serve the generated `out/` directory
-under `/alitech/`. The project has no server-side runtime requirement.
+`NEXT_PUBLIC_BASE_PATH=/Alinguyen-portfolio` and serve the generated `out/` directory
+under `/Alinguyen-portfolio/`. The project has no server-side runtime requirement.
 
 `PROFILE_README.md` is the draft for the username-matched GitHub repository.
 

@@ -262,8 +262,8 @@ export function CustomerCarousel() {
           }, { index: 0, distance: Infinity });
           setActive(nearest.index);
         }}>
-          {customers.map((customer, index) => {
-            const content = <><span className="customer-index">{String(index + 1).padStart(2, "0")}</span><span className="customer-mark">{"logo" in customer ? <img src={`${basePath}/${customer.logo}`} alt="" loading="lazy" /> : <span aria-hidden="true">{customer.name.split(" ").filter(Boolean).slice(-2).map((part) => part[0]).join("")}</span>}</span><strong>{customer.name}</strong>{"href" in customer && <span className="customer-link-cue">Visit brand ↗</span>}</>;
+          {customers.map((customer) => {
+            const content = <span className="customer-mark">{"logo" in customer ? <img src={`${basePath}/${customer.logo}`} alt={customer.name} loading="lazy" /> : <strong>{customer.name}</strong>}</span>;
             return "href" in customer ? <a className="customer-card" key={customer.name} href={customer.href} target="_blank" rel="noopener noreferrer" aria-label={`${customer.name} — visit brand website`}>{content}</a> : <div className="customer-card" key={customer.name}>{content}</div>;
           })}
         </section>
@@ -273,6 +273,13 @@ export function CustomerCarousel() {
 }
 
 export function ProjectVisual({ id }: { id: string }) {
+  const covers: Record<string, { file: string; alt: string }> = {
+    "growth-commerce-os": { file: "duytruyenthong-site-2026.png", alt: "DUYTRUYENTHONG service homepage" },
+    stos: { file: "stos-home-desktop-2026.png", alt: "STOS sales page homepage" },
+    "cho-kenh": { file: "cho-kenh-home-2026.png", alt: "Chợ Kênh TikTok channel marketplace homepage" },
+  };
+  const cover = covers[id];
+  if (cover) return <div className={`project-screenshot project-screenshot-${id}`}><img src={`${basePath}/${cover.file}`} alt={cover.alt} loading="lazy" /></div>;
   if (id === "growth-commerce-os") return <div className="mock-browser mock-growth" role="img" aria-label="DUYTRUYENTHONG logo in an illustration of the Growth Commerce OS service site"><div className="mock-toolbar"><i /><i /><i /><span>growth-commerce-os.vercel.app</span></div><div className="mock-growth-body"><div className="mock-growth-brand"><img src={`${basePath}/duytruyenthong-logo.png`} alt="" width="92" height="92" /><span>DUYTRUYENTHONG</span></div><strong>Growth Commerce OS</strong><p>Content · Channels · Commerce</p><div className="mock-growth-bars"><i /><i /><i /><i /></div></div></div>;
   if (id === "stos") return <div className="mock-browser mock-stos" role="img" aria-label="STOS logo and an illustration of its sales page, inquiry, and insights workflow"><div className="mock-toolbar"><i /><i /><i /><span>stosvn.vercel.app/stos</span></div><div className="mock-stos-body"><img src={`${basePath}/stos-logo-dark.png`} alt="STOS logo" width="242" height="133" /><strong>A sales page that feels like yours.</strong><div><span>Your page</span><span>Inquiries</span><span>Insights</span></div></div></div>;
   if (id === "cho-kenh") return <div className="mock-browser mock-cho-kenh" role="img" aria-label="Chợ Kênh logo and an illustration of its TikTok channel catalog and inquiry workflow"><div className="mock-toolbar"><i /><i /><i /><span>growth-commerce-os.vercel.app/cho-kenh</span></div><div className="mock-cho-kenh-body"><div className="mock-market-hero"><img src={`${basePath}/cho-kenh-logo.png`} alt="" width="104" height="80" /><div><small>CHỢ KÊNH</small><strong>Find the right TikTok channel.</strong><p>Compare listings. Ask for a manual deal review.</p></div></div><div className="mock-market-list"><span>Channel catalog</span><span>Audit &amp; risk</span><span>Zalo inquiry</span></div><small className="mock-market-next">AI tools &amp; courses · coming soon</small></div></div>;

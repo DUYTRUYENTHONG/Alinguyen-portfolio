@@ -51,6 +51,26 @@ const details: Record<string, CaseDetail> = {
   },
 };
 
+const projectMedia: Record<string, { file: string; label: string }[]> = {
+  "growth-commerce-os": [
+    { file: "duytruyenthong-site-2026.png", label: "DUYTRUYENTHONG service website" },
+  ],
+  stos: [
+    { file: "stos-home-desktop-2026.png", label: "STOS landing page on desktop" },
+    { file: "stos-home-mobile-2026.png", label: "STOS landing page on mobile" },
+    { file: "stos-templates-desktop-2026.png", label: "STOS template gallery on desktop" },
+    { file: "stos-login-2026.png", label: "STOS sign-in screen" },
+    { file: "stos-signup-2026.png", label: "STOS registration screen" },
+  ],
+  "cho-kenh": [
+    { file: "cho-kenh-home-2026.png", label: "Chợ Kênh homepage and featured channels" },
+    { file: "cho-kenh-catalog-2026.png", label: "Chợ Kênh channel catalog and filters" },
+    { file: "cho-kenh-buying-flow-2026.png", label: "Chợ Kênh buying steps" },
+    { file: "cho-kenh-some-process-2026.png", label: "Chợ Kênh intermediary review process" },
+    { file: "cho-kenh-trust-layer-2026.png", label: "Chợ Kênh transaction safeguards" },
+  ],
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((item) => item.id === slug);
@@ -62,6 +82,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   const { slug } = await params;
   const project = projects.find((item) => item.id === slug);
   const detail = details[slug];
+  const media = projectMedia[slug] ?? [];
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   if (!project || !detail) notFound();
   return <>
     <a className="skip-link" href="#case-main">Skip to content</a>
@@ -73,6 +95,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       <div className="case-body section-shell">
         <div className="case-facts"><div><span>PROJECT</span><strong>{project.name}</strong></div><div><span>ROLE</span><strong>{project.role}</strong></div><div><span>STATUS</span><strong>{project.status}</strong></div><div><span>PROOF</span><strong>{project.proof}</strong></div></div>
         <CaseDepth detail={detail} />
+        {media.length > 0 && <section className="case-media" aria-labelledby="case-media-title"><div className="case-media-heading"><p className="eyebrow">Product evidence</p><h2 id="case-media-title">See the live product journey.</h2><p>Owner-supplied captures. Select a screenshot to view it at full size.</p></div><div className="case-media-grid">{media.map((item) => <figure key={item.file}><a href={`${basePath}/${item.file}`} target="_blank" rel="noopener noreferrer" aria-label={`Open full screenshot: ${item.label}`}><img src={`${basePath}/${item.file}`} alt={item.label} loading="lazy" /></a><figcaption>{item.label} ↗</figcaption></figure>)}</div></section>}
         <div className="case-links">{project.link && <a href={project.link.href}>{project.link.label} ↗</a>}<Link href="/#work">Back to all work ↑</Link></div>
       </div>
     </main>
