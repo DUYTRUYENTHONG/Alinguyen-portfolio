@@ -87,7 +87,9 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
 .work-index a{padding:12px 15px;border-radius:99px;color:#5f6469;font-size:.85rem;line-height:1.15;display:flex;gap:10px;align-items:center}
 .work-index a:hover,.work-index a.is-active{background:#fff;color:#111;box-shadow:0 3px 10px #0000000a;text-decoration:none}
 .work-index a.is-active{font-weight:700}
-.work-cards{display:grid;gap:38px;min-width:0}
+.work-cards{position:relative;display:grid;gap:38px;min-width:0}
+.guide-stage{position:absolute;inset:0;z-index:12;pointer-events:none}.guide-character{position:absolute;top:0;left:0;display:grid;place-items:center;width:68px;height:102px;padding:0;border:0;background:none;cursor:pointer;pointer-events:auto;touch-action:manipulation;will-change:transform}.guide-character:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:12px}.guide-character img{width:100%;height:100%;object-fit:contain;user-select:none;filter:drop-shadow(0 5px 5px #0003);transform-origin:center bottom}.guide-character[data-facing="left"] img{scale:-1 1}.guide-character.is-walking img{animation:guide-walk .2s ease-in-out infinite alternate}.guide-character.is-jumping img{animation:guide-jump .4s ease-out}.guide-character:hover img{filter:drop-shadow(0 9px 7px #0004)}@keyframes guide-walk{to{transform:translateY(-4px) rotate(3deg)}}@keyframes guide-jump{50%{transform:rotate(-8deg)}}
+@media(prefers-reduced-motion:reduce){.guide-character.is-walking img,.guide-character.is-jumping img{animation:none}}
 .work-card{position:relative;min-width:0;overflow:visible;padding:60px 25px 20px;border-radius:20px;background:#fff;text-align:center;scroll-margin-top:110px}
 .work-card-2{background:#eee6ff}.work-card-3{background:#f2e7ff}.work-card-4{background:#e0f9ec}.work-card-5{background:#e9edff}
 .work-stamp{position:absolute;right:24px;top:-22px;transform:rotate(-10deg);border:4px double #677184;border-radius:12px;padding:9px 15px;color:#4a5567;background:#ffffffb8;font-family:monospace;z-index:2}
