@@ -71,10 +71,12 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
 .highlight-card a{margin-top:auto;font-size:.85rem;color:#5b6065}
 .decision-map{display:grid;grid-template-columns:1fr 1fr;gap:6%;align-items:center;min-height:625px;padding-block:100px}
 .map-graphic{height:430px;position:relative;border-radius:50%;background:radial-gradient(circle at center,#f3f6f7 1px,transparent 2px);background-size:10px 10px;overflow:hidden}
-.map-circle{position:absolute;border:1px solid #d8dfe4;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}
-.map-one{width:76%;aspect-ratio:1}.map-two{width:55%;aspect-ratio:1}.map-three{width:30%;aspect-ratio:1}
-.map-node{position:absolute;background:#2c63e7;color:white;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:monospace;font-size:.75rem}
-.node-one{top:20%;left:20%}.node-two{top:61%;left:42%}.node-three{top:34%;right:13%}
+.map-orbit{position:absolute;border:1px solid #d8dfe4;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%) rotate(var(--start-angle));animation:map-orbit 30s linear infinite}
+.map-one{width:76%;aspect-ratio:1;--start-angle:-44deg;animation-duration:32s}.map-two{width:55%;aspect-ratio:1;--start-angle:174deg;animation-duration:27s;animation-direction:reverse}.map-three{width:30%;aspect-ratio:1;--start-angle:83deg;animation-duration:22s}
+.map-node{position:absolute;top:-21px;left:50%;transform:translateX(-50%) rotate(calc(0deg - var(--start-angle)));background:#2c63e7;color:white;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:monospace;font-size:.75rem;box-shadow:0 4px 14px #2c63e72b;animation:map-node-counter 30s linear infinite}
+.map-one .map-node{animation-duration:32s}.map-two .map-node{animation-duration:27s;animation-direction:reverse}.map-three .map-node{animation-duration:22s}
+@keyframes map-orbit{from{transform:translate(-50%,-50%) rotate(var(--start-angle))}to{transform:translate(-50%,-50%) rotate(calc(var(--start-angle) + 360deg))}}
+@keyframes map-node-counter{from{transform:translateX(-50%) rotate(calc(0deg - var(--start-angle)))}to{transform:translateX(-50%) rotate(calc(0deg - var(--start-angle) - 360deg))}}
 .map-copy h2{font-size:clamp(2.5rem,4vw,4rem);letter-spacing:-.04em;line-height:1.1}
 .map-copy ol{list-style:none;margin:30px 0 0;padding:0}.map-copy li{padding:14px 0;border-bottom:1px solid #eee}.map-copy li span{color:var(--blue);font-family:monospace;margin-right:18px}
 .work-section{background:var(--canvas);padding:95px 0 105px;scroll-margin-top:60px}
@@ -140,4 +142,4 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
   .contact-section{padding-block:90px 60px}.contact-section h2{font-size:2.8rem}.contact-email{font-size:1.35rem}.contact-prompts{margin-top:65px}.site-footer{padding:25px 24px;flex-wrap:wrap}
   .case-hero{padding:120px 0 65px}.case-hero h1{font-size:2.7rem}.case-hero-inner>p:last-of-type{font-size:1rem}.case-body{padding-block:50px}.case-facts{grid-template-columns:1fr;gap:0}.case-depth p{font-size:.95rem}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.identity-track,.proof-track{animation:none}.role-card,.desktop-nav,.menu-trigger,.customer-card{transition:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.identity-track,.proof-track,.map-orbit,.map-node{animation:none}.role-card,.desktop-nav,.menu-trigger,.customer-card{transition:none}}
