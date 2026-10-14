@@ -1,90 +1,58 @@
-import { capabilities, expertise, identity, principles, projects } from "@/data/portfolio";
+import { capabilities, identity, principles, projects } from "@/data/portfolio";
+import { CopyEmail, RotatingFocus, SiteHeader, VisitorPicker, WorkSection } from "./experience";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+const highlights = [
+  { icon: "↗", title: "Growth Commerce OS", description: "A live service website for the DUYTRUYENTHONG brand.", href: identity.service, link: "Visit site" },
+  { icon: "⌘", title: "Vibecode Product Kit", description: "A public developer tool with an offline CLI and CI checks.", href: "https://github.com/DUYTRUYENTHONG/vibecode-product-kit", link: "View source" },
+  { icon: "◉", title: "KKBox baseline", description: "A local churn prototype with a snapshot-date leakage check.", href: "#project-kkbox-baseline", link: "See project" },
+  { icon: "✦", title: "STOS", description: "A live sales page product for independent sellers and small businesses.", href: identity.stos, link: "Visit product" },
+  { icon: "✧", title: "Commerce focus", description: "Customer understanding, decisions, operations, and growth.", href: "#about", link: "How I work" },
+  { icon: "✓", title: "Open process", description: "Reproducible baselines, readable code, and explicit limits.", href: "#about", link: "Read approach" },
+];
 
 export default function Home() {
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: identity.name,
-    alternateName: identity.brand,
-    jobTitle: identity.title,
-    description: identity.proposition,
-    email: identity.email,
-    sameAs: [identity.github, identity.service],
+    "@context": "https://schema.org", "@type": "Person", name: identity.name,
+    alternateName: identity.brand, jobTitle: identity.title,
+    description: identity.proposition, email: identity.email,
+    sameAs: [identity.github, identity.service, identity.stos],
   };
 
-  return (
-    <>
-      <a className="skip-link" href="#main">Skip to content</a>
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="Ali Nguyen, back to top">
-          <span><strong>Ali Nguyen</strong><small>DUYTRUYENTHONG</small></span>
-        </a>
-        <nav aria-label="Main navigation">
-          <a href="#top">Home</a>
-          <a href="#work">Work</a>
-          <a href="#approach">Approach</a>
-          <a href="#expertise">Expertise</a>
-          <a className="nav-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
-        </nav>
-      </header>
+  return <>
+    <a className="skip-link" href="#main">Skip to content</a>
+    <SiteHeader />
+    <main id="main">
+      <section className="hero" id="top" aria-labelledby="hero-title">
+        <div className="hero-copy section-shell">
+          <h1 id="hero-title">Ali Nguyen is an<br />AI &amp; Data Engineer<br />for E-commerce.</h1>
+          <p className="hero-rotate">I build <RotatingFocus /></p>
+          <p className="hero-meta">Turning customer and commerce data into useful decisions. <span>DUYTRUYENTHONG</span></p>
+        </div>
+        <div className="portrait-stage">
+          <div className="portrait-halo" aria-hidden="true" />
+          <img className="portrait-photo" src={`${basePath}/ali-nguyen-portrait.png`} alt="Portrait of Ali Nguyen wearing a black suit" width="1064" height="1536" fetchPriority="high" />
+          <span className="portrait-caption">ALI NGUYEN / DUYTRUYENTHONG</span>
+        </div>
+      </section>
 
-      <main id="main">
-        <section className="hero section-shell" id="top" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <p className="eyebrow"><span className="status-dot" /> ALI NGUYEN / DUYTRUYENTHONG</p>
-            <h1 id="hero-title">Ali Nguyen builds<br /><em>AI & data systems</em><br />for commerce.</h1>
-            <p className="hero-role">AI & Data Engineer for E-commerce</p>
-            <p className="hero-value">{identity.proposition}</p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="#work">Explore selected work <span aria-hidden="true">↗</span></a>
-              <a className="button button-secondary" href="#contact">Get in touch</a>
-            </div>
-          </div>
-          <div className="hero-signature">
-            <span>COMMERCE SIGNALS</span><span className="signature-line" aria-hidden="true" /><strong>Data <b>→</b> Models <b>→</b> Action</strong><span>01 / 03</span>
-          </div>
-        </section>
+      <section className="identity-strip" aria-label="Featured work"><div className="identity-track"><span>GROWTH COMMERCE OS</span><span>STOS</span><span>VIBECODE PRODUCT KIT</span><span>KKBOX CHURN BASELINE</span><span>DUYTRUYENTHONG</span><span>GROWTH COMMERCE OS</span><span>STOS</span></div></section>
+      <VisitorPicker projects={projects} />
+      <section className="statement section-shell" aria-labelledby="statement-title"><p className="eyebrow">What I do</p><h2 id="statement-title">I turn messy commerce signals into <span>clearer systems, useful models, and practical decisions.</span></h2></section>
+      <section className="proof-ribbon" aria-label="Verified portfolio status"><div className="proof-track"><span>01 LIVE SERVICE WEBSITE <small>· Growth Commerce OS</small></span><span>01 LIVE PRODUCT WEBSITE <small>· STOS</small></span><span>01 PUBLIC DEVELOPER TOOL <small>· Vibecode Product Kit</small></span><span>01 LOCAL ML PROTOTYPE <small>· KKBox baseline</small></span></div></section>
 
-        <section className="expertise section-shell section-pad" id="expertise" aria-labelledby="expertise-title">
-          <div className="section-heading"><p className="eyebrow">What I work on</p><h2 id="expertise-title">Engineering across the commerce decision loop.</h2></div>
-          <div className="expertise-grid">
-            {expertise.map((item) => <article className="expertise-item" key={item.number}>
-              <span className="item-number">{item.number}</span><h3>{item.title}</h3><p>{item.detail}</p>
-            </article>)}
-          </div>
-        </section>
+      <section className="highlights" id="highlights" aria-labelledby="highlights-title"><div className="section-shell"><h2 id="highlights-title">Highlights</h2><div className="highlight-grid"><article className="highlight-feature"><span className="highlight-icon">✦</span><div><strong>4</strong><p>featured builds across commerce products, open-source tooling, and customer analytics.</p></div></article>{highlights.map((card) => <article className="highlight-card" key={card.title}><span className="highlight-icon">{card.icon}</span><h3>{card.title}</h3><p>{card.description}</p><a href={card.href}>{card.link} <span aria-hidden="true">↗</span></a></article>)}</div></div></section>
 
-        <section className="work section-pad" id="work" aria-labelledby="work-title">
-          <div className="section-shell">
-            <div className="section-heading"><p className="eyebrow">Selected work / 01—03</p><h2 id="work-title">Systems, tools, and experiments.</h2><p className="section-intro">A live service website, a published developer tool, and a local churn baseline. Project status and evidence are shown with each story.</p></div>
-            <div className="project-list">
-              {projects.map((project, index) => <article className="project" key={project.id}>
-                <div className={`project-art project-art-${index + 1}`} aria-hidden="true"><span>DUYTRUYENTHONG / {String(index + 1).padStart(2, "0")}</span><strong>{index === 0 ? "GROWTH / COMMERCE" : index === 1 ? "BUILD / VERIFY" : "SIGNALS / CHURN"}</strong><i /><small>{project.status}</small></div>
-                <div className="project-main"><p className="project-status">{String(index + 1).padStart(2, "0")} / {project.status}</p><h3>{project.name}</h3><p className="project-problem">{project.problem}</p>
-                  <dl className="project-details"><div><dt>For</dt><dd>{project.users}</dd></div><div><dt>My role</dt><dd>{project.role}</dd></div><div><dt>Approach</dt><dd>{project.approach}</dd></div><div><dt>Evidence</dt><dd>{project.outcome}</dd></div></dl>
-                  <div className="project-footer"><ul className="tag-list" aria-label={`${project.name} technologies`}>{project.technologies.map((tech) => <li key={tech}>{tech}</li>)}</ul>{project.link && <a className="text-link" href={project.link.href}>{project.link.label} <span aria-hidden="true">↗</span></a>}</div>
-                </div>
-              </article>)}
-            </div>
-          </div>
-        </section>
+      <section className="decision-map section-shell" aria-labelledby="map-title"><div className="map-graphic" aria-hidden="true"><div className="map-circle map-one"/><div className="map-circle map-two"/><div className="map-circle map-three"/><span className="map-node node-one">01</span><span className="map-node node-two">02</span><span className="map-node node-three">03</span></div><div className="map-copy"><p className="eyebrow">Where the work connects</p><h2 id="map-title">From signal to decision.</h2><ol><li><span>01</span> Collect and understand customer signals</li><li><span>02</span> Build reliable features and workflows</li><li><span>03</span> Put useful decisions in reach</li></ol></div></section>
+      <WorkSection projects={projects} />
 
-        <section className="case-study section-shell section-pad" id="approach" aria-labelledby="approach-title">
-          <div className="section-heading"><p className="eyebrow">Behind the build</p><h2 id="approach-title">A baseline that makes its limits visible.</h2></div>
-          <div className="case-grid"><div className="case-lead"><span className="case-label">CASE STUDY / KKBOX PROTOTYPE</span><p>Churn models need a reliable answer to one question: what did we know about a customer when the prediction would have been made?</p></div>
-            <div className="case-steps"><div><span>01 / Context</span><p>Public competition data frames a subscription-retention problem. Data access follows Kaggle terms; raw records are excluded from the repository.</p></div><div><span>02 / Implementation</span><p>Transaction and listening events are aggregated only through a chosen snapshot date. A logistic-regression baseline reports holdout metrics when a user runs it on eligible data.</p></div><div><span>03 / Result & lesson</span><p>A synthetic fixture tests that future events are excluded. Real-dataset performance and commercial impact remain unmeasured; reproducibility comes before a headline score.</p></div></div>
-          </div>
-        </section>
+      <section className="about-section" id="about" aria-labelledby="about-title"><div className="section-shell"><div className="section-heading"><p className="eyebrow">About the work</p><h2 id="about-title">Build with the evidence in view.</h2><p>My work sits where product, data, and engineering meet. Each portfolio entry says what is live, what is a prototype, and what still needs measurement.</p></div><div className="about-grid">{principles.map((item, index) => <article key={item}><span>0{index + 1}</span><h3>{item}</h3><p>{index === 0 ? "Show sources, roles, and system boundaries." : index === 1 ? "Separate technical checks from business outcomes." : index === 2 ? "Use public evidence without exposing customer records." : "Make the next change testable and understandable."}</p></article>)}</div><div className="tools-row">{capabilities.map((group) => <div key={group.group}><strong>{group.group}</strong><span>{group.items.join(" · ")}</span></div>)}</div></div></section>
 
-        <section className="capabilities section-pad" aria-labelledby="capabilities-title"><div className="section-shell"><div className="section-heading"><p className="eyebrow">Technical capabilities</p><h2 id="capabilities-title">Tools chosen for the problem.</h2></div><div className="capability-grid">{capabilities.map((group) => <div key={group.group}><h3>{group.group}</h3><p>{group.items.join(" · ")}</p></div>)}</div></div></section>
-
-        <section className="principles section-shell section-pad" aria-labelledby="principles-title"><div className="section-heading"><p className="eyebrow">Engineering principles</p><h2 id="principles-title">Build trust into the work.</h2></div><ol>{principles.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span>{item}</li>)}</ol></section>
-
-        <section className="contact section-pad" id="contact" aria-labelledby="contact-title"><div className="section-shell contact-inner"><div><p className="eyebrow">Contact</p><h2 id="contact-title">Let&apos;s make the next decision clearer.</h2><p>For AI, data, and commerce engineering conversations, email me or explore the work above.</p></div><div className="contact-actions"><a className="button button-light" href={`mailto:${identity.email}`}>Email Ali <span aria-hidden="true">↗</span></a><a href={identity.github}>GitHub <span aria-hidden="true">↗</span></a><a href={identity.service}>DUYTRUYENTHONG <span aria-hidden="true">↗</span></a></div></div></section>
-      </main>
-      <footer className="site-footer"><span>© {new Date().getFullYear()} Ali Nguyen</span><span>DUYTRUYENTHONG · AI & Data for E-commerce</span><a href="#top">Back to top ↑</a></footer>
-      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: fixed local JSON-LD content is serialized and angle brackets are escaped */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
-    </>
-  );
+      <section className="notes-section section-shell" aria-labelledby="notes-title"><div className="section-heading"><p className="eyebrow">Notes from the build</p><h2 id="notes-title">A few decisions behind the work.</h2></div><div className="notes-grid"><article><span>01 / CUSTOMER DATA</span><h3>Predict from what was known then.</h3><p>The KKBox baseline aggregates events only through a selected snapshot date, with a synthetic check for future-data leakage.</p><a href="#project-kkbox-baseline">Explore KKBox ↗</a></article><article><span>02 / PRODUCT DELIVERY</span><h3>Make quality gates visible.</h3><p>The public Vibecode kit records plans, evidence, and checks so a release can be reviewed.</p><a href="https://github.com/DUYTRUYENTHONG/vibecode-product-kit">View the kit ↗</a></article><article><span>03 / COMMERCE</span><h3>Connect the system to the decision.</h3><p>Growth Commerce OS presents service workflows around content, channels, landing pages, and leads.</p><a href={identity.service}>Visit the service site ↗</a></article></div></section>
+      <section className="contact-section" id="contact" aria-labelledby="contact-title"><div className="section-shell contact-shell"><p className="eyebrow">Contact</p><h2 id="contact-title">Want to build something useful? Drop me a line.</h2><a className="contact-email" href={`mailto:${identity.email}`}>{identity.email} <span aria-hidden="true">↗</span></a><CopyEmail email={identity.email} /><div className="contact-prompts"><p>NOT SURE WHAT TO SAY? START HERE.</p><a href={`mailto:${identity.email}?subject=Commerce%20data%20project`}>Tell me about a commerce data problem ↗</a><a href={`mailto:${identity.email}?subject=AI%20workflow%20conversation`}>Ask about an AI workflow ↗</a></div><div className="social-links"><a href={identity.github}>GitHub ↗</a><a href={identity.service}>Service website ↗</a></div></div></section>
+    </main>
+    <footer className="site-footer"><span>Ali Nguyen · DUYTRUYENTHONG</span><span>© {new Date().getFullYear()}</span><a href="#top">Back to top ↑</a></footer>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
+  </>;
 }

@@ -20,8 +20,18 @@ Local builds use `localhost:3000` in metadata and disallow indexing.
 The LinkedIn URL and public KKBox repository link await owner input or
 publication.
 
-Design reference: https://itsjiathao.com/. The site adapts its clear name-first
-hierarchy and story-led work presentation. All copy, graphics, and code here
-are original to this portfolio.
+Design reference: https://itsjiathao.com/. The revised site follows its
+page rhythm: a name-first hero, work strip, visitor chooser, highlights,
+sticky project index, case-study pages, and contact prompts. All copy,
+illustrations, and code here are original to this portfolio. The hero uses
+Ali Nguyen's supplied portrait with a transparent-background cutout. Project
+illustrations should be replaced by owner-provided screenshots when available.
+The STOS logo was supplied by the owner and is used with the founder and builder
+attribution confirmed in chat. Public STOS pages support its feature summary;
+no adoption or revenue metric is claimed.
+
+For an exact preview of the GitHub Pages path, build with
+`NEXT_PUBLIC_BASE_PATH=/alitech` and serve the generated `out/` directory
+under `/alitech/`. The project has no server-side runtime requirement.
 
 `PROFILE_README.md` is the draft for the username-matched GitHub repository.

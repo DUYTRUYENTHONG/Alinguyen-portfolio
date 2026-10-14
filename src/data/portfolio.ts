@@ -1,12 +1,14 @@
 export type Project = {
   id: string;
   name: string;
+  headline: string;
   status: string;
   problem: string;
   users: string;
   role: string;
   approach: string;
   outcome: string;
+  proof: string;
   technologies: string[];
   link?: { label: string; href: string };
 };
@@ -20,6 +22,7 @@ export const identity = {
   email: "nquangd1510@gmail.com",
   github: "https://github.com/DUYTRUYENTHONG",
   service: "https://growth-commerce-os.vercel.app/",
+  stos: "https://stosvn.vercel.app/stos",
 } as const;
 
 export const expertise = [
@@ -49,36 +52,56 @@ export const projects: Project[] = [
   {
     id: "growth-commerce-os",
     name: "DUYTRUYENTHONG Growth Commerce OS",
+    headline: "A clearer route from commerce signals to growth.",
     status: "Live service website",
     problem: "Commerce teams need a clearer path from content and channels to leads.",
     users: "Businesses exploring digital growth services.",
     role: "Founder and product operator.",
     approach: "A public service site presents CMS, landing, portfolio and channel workflows with working demo links.",
     outcome: "Live service pages and demo links are available. Adoption and business impact are not independently measured here.",
+    proof: "Public service site and demo links",
     technologies: ["Web products", "CMS workflows", "Analytics"],
     link: { label: "Visit service site", href: "https://growth-commerce-os.vercel.app/" },
   },
   {
+    id: "stos",
+    name: "STOS Sales Traffic Operating System",
+    headline: "A personal sales page with a path to better leads.",
+    status: "Live product website",
+    problem: "Independent sellers and small businesses need a shareable place to present their work, products, and contact options.",
+    users: "Independent sellers and small businesses.",
+    role: "Founder and builder.",
+    approach: "STOS presents templates, a page studio, inquiry capture, and an Insights workflow for page views, actions, and leads.",
+    outcome: "The public product website and template pages are live. Customer adoption and business impact are not independently measured here; AI suggestions are planned, not live.",
+    proof: "Live product site and public template pages",
+    technologies: ["Web product", "Page builder", "Lead workflow", "Analytics"],
+    link: { label: "Visit STOS", href: "https://stosvn.vercel.app/stos" },
+  },
+  {
     id: "vibecode-kit",
     name: "Codex Vibecode Pro Max Kit",
+    headline: "A repeatable way to build and verify product work.",
     status: "Public open-source tool",
     problem: "Small product teams need traceable planning, QA and release records.",
     users: "Developers and product teams using Codex.",
     role: "Maintainer of the public DUYTRUYENTHONG repository.",
     approach: "An offline JavaScript CLI, agent profiles, skills, templates and CI checks.",
     outcome: "Version 0.2.0 is public with successful GitHub Actions checks; adoption metrics are not claimed.",
+    proof: "Public v0.2.0 repository with passing CI",
     technologies: ["JavaScript", "Node.js", "GitHub Actions", "Codex"],
     link: { label: "View repository", href: "https://github.com/DUYTRUYENTHONG/vibecode-product-kit" },
   },
   {
     id: "kkbox-baseline",
     name: "KKBox customer churn baseline",
+    headline: "Churn predictions that respect the snapshot date.",
     status: "Local prototype · publication pending",
     problem: "Subscription churn decisions require customer-level features without future-data leakage.",
     users: "Analysts exploring retention models.",
     role: "Project owner; baseline developed with Codex assistance. The academic reference is credited separately.",
     approach: "A snapshot-date feature pipeline and a logistic-regression holdout evaluation.",
     outcome: "Synthetic-fixture checks cover future-event exclusion. Real KKBox model performance has not been measured.",
+    proof: "Synthetic leakage check; real scores pending",
     technologies: ["Python", "Pandas", "scikit-learn", "CSV"],
   },
 ];

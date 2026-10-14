@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { identity } from "@/data/portfolio";
+import "@fontsource-variable/archivo";
+import "@fontsource-variable/inter";
 import "./styles.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
