@@ -1,5 +1,5 @@
 import { capabilities, cvTracks, funnelStages, identity, principles, projects } from "@/data/portfolio";
-import { CopyEmail, CustomerCarousel, PortfolioExperienceProvider, RotatingFocus, SiteHeader, VisitorPicker, WorkSection } from "./experience";
+import { CopyEmail, CustomerCarousel, PortfolioExperienceProvider, RotatingFocus, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -40,7 +40,7 @@ export default function Home() {
 
       <section className="identity-strip" aria-label="Featured work"><div className="identity-track"><span>GROWTH COMMERCE OS</span><span>STOS</span><span>CHỢ KÊNH</span><span>VIBECODE PRODUCT KIT</span><span>KKBOX CHURN BASELINE</span><span>DUYTRUYENTHONG</span><span>GROWTH COMMERCE OS</span><span>STOS</span></div></section>
       <VisitorPicker projects={projects} />
-      <section className="statement section-shell" aria-labelledby="statement-title"><p className="eyebrow">What I do</p><h2 id="statement-title">I turn messy commerce signals into <span>clearer systems, useful models, and practical decisions.</span></h2></section>
+      <ScrollStatement />
       <section className="proof-ribbon" aria-label="Verified portfolio status"><div className="proof-track"><span>01 LIVE SERVICE WEBSITE <small>· Growth Commerce OS</small></span><span>01 LIVE PRODUCT WEBSITE <small>· STOS</small></span><span>01 LIVE MARKETPLACE WEBSITE <small>· Chợ Kênh</small></span><span>01 PUBLIC DEVELOPER TOOL <small>· Vibecode Product Kit</small></span><span>01 LOCAL ML PROTOTYPE <small>· KKBox baseline</small></span></div></section>
 
       <section className="highlights" id="highlights" aria-labelledby="highlights-title"><div className="section-shell"><h2 id="highlights-title">Highlights</h2><div className="highlight-grid"><article className="highlight-feature"><span className="highlight-icon">✦</span><div><strong>5</strong><p>featured builds across commerce products, open-source tooling, and customer analytics.</p></div></article>{highlights.map((card) => <article className="highlight-card" key={card.title}><span className="highlight-icon">{card.title === "Growth Commerce OS" ? <img src={`${basePath}/duytruyenthong-logo.png`} alt="" width="52" height="52" /> : card.title === "Chợ Kênh" ? <img src={`${basePath}/cho-kenh-logo.png`} alt="" width="52" height="52" /> : card.icon}</span><h3>{card.title}</h3><p>{card.description}</p><a href={card.href}>{card.link} <span aria-hidden="true">↗</span></a></article>)}</div></div></section>

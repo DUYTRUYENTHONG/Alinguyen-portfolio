@@ -150,6 +150,40 @@ export function VisitorPicker({ projects }: { projects: Project[] }) {
   );
 }
 
+const statement = "I turn messy commerce signals into clearer sales journeys — linking audience insight, useful systems, and practical decisions across marketing, e-commerce, and lead generation.";
+const statementWords = statement.split(" ");
+
+export function ScrollStatement() {
+  const section = useRef<HTMLElement>(null);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setProgress(1);
+      return;
+    }
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const rect = section.current?.getBoundingClientRect();
+      if (!rect) return;
+      setProgress(Math.max(0, Math.min(1, (window.innerHeight - rect.top) / window.innerHeight)));
+    };
+    const onScroll = () => { if (!frame) frame = window.requestAnimationFrame(update); };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); if (frame) window.cancelAnimationFrame(frame); };
+  }, []);
+
+  return <section ref={section} className="statement" aria-label="What I do">
+    <h2 id="statement-title" className="statement-copy"><span className="sr-only">{statement}</span><span aria-hidden="true">{statementWords.map((word, index) => {
+      const reveal = Math.max(0, Math.min(1, ((progress - 0.25) * 40 - index) / 6.5));
+      return <span className="statement-word" style={{ opacity: 0.18 + 0.82 * reveal }} key={`${word}-${index}`}>{word}{index < statementWords.length - 1 ? " " : ""}</span>;
+    })}</span></h2>
+  </section>;
+}
+
 export function CustomerCarousel() {
   const rail = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
@@ -175,7 +209,7 @@ export function CustomerCarousel() {
   return (
     <section className="customer-section" id="feedback" aria-labelledby="customers-title">
       <div className="section-shell">
-        <div className="customer-heading"><div><p className="eyebrow">Customers &amp; collaborations</p><h2 id="customers-title">Built for real businesses.</h2><p>Customer names shared by Ali Nguyen. Individual testimonials are not quoted here.</p></div><div className="carousel-controls"><span aria-live="polite">{String(active + 1).padStart(2, "0")} / {String(customers.length).padStart(2, "0")}</span><button type="button" aria-label="Previous customer" onClick={() => goTo(active - 1)}>←</button><button type="button" aria-label="Next customer" onClick={() => goTo(active + 1)}>→</button></div></div>
+        <div className="customer-heading"><div><p className="eyebrow">Customers &amp; collaborations</p><h2 id="customers-title">Built for real businesses.</h2><p>Customer names shared by Ali Nguyen. Individual testimonials are not quoted here.</p></div></div>
         <section className="customer-rail" ref={rail} aria-roledescription="carousel" aria-label="Customer names and logos" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }} onScroll={(event) => {
           const container = event.currentTarget;
           const nearest = [...container.children].reduce((best, child, index) => {
