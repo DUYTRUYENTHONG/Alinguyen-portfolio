@@ -31,6 +31,12 @@ attribution confirmed in chat. Public STOS pages support its feature summary;
 no adoption or revenue metric is claimed.
 The DUYTRUYENTHONG logo was also supplied by the owner and appears with Growth
 Commerce OS. Both logos are preserved as supplied.
+Ali Nguyen also supplied the Chợ Kênh logo and identified the marketplace as
+his product. Its live public pages show a TikTok channel catalog, filters,
+listing details, Zalo inquiries, and a manual intermediary consultation flow.
+The intermediary page states that automated checkout and escrow are unavailable.
+AI tools and courses are owner-described plans, not live offerings. No
+transactions or buyer outcomes are claimed.
 
 For an exact preview of the GitHub Pages path, build with
 `NEXT_PUBLIC_BASE_PATH=/alitech` and serve the generated `out/` directory

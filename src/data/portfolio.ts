@@ -23,6 +23,7 @@ export const identity = {
   github: "https://github.com/DUYTRUYENTHONG",
   service: "https://growth-commerce-os.vercel.app/",
   stos: "https://stosvn.vercel.app/stos",
+  choKenh: "https://growth-commerce-os.vercel.app/cho-kenh",
 } as const;
 
 export const customers = [
@@ -89,6 +90,20 @@ export const projects: Project[] = [
     proof: "Live product site and public template pages",
     technologies: ["Web product", "Page builder", "Lead workflow", "Analytics"],
     link: { label: "Visit STOS", href: "https://stosvn.vercel.app/stos" },
+  },
+  {
+    id: "cho-kenh",
+    name: "Chợ Kênh",
+    headline: "A clearer way to discover and discuss TikTok channel deals.",
+    status: "Live marketplace website",
+    problem: "A digital-products marketplace currently focused on TikTok channels, where buyers and sellers can compare listings and discuss ownership, risk, and deal terms.",
+    users: "TikTok channel buyers, sellers, and small commerce operators.",
+    role: "Owner and product builder.",
+    approach: "The live catalog offers channel filters, visible audit and risk indicators, detail pages, and Zalo inquiry paths. A separate intermediary page explains a manual proof and deal review process. AI tools and courses are planned additions.",
+    outcome: "The catalog and intermediary information pages are publicly accessible. Completed transactions, automated checkout, escrow, and business results are not claimed.",
+    proof: "Live channel catalog and manual intermediary service page",
+    technologies: ["Web marketplace", "Search and filtering", "Lead workflow"],
+    link: { label: "Visit Chợ Kênh", href: "https://growth-commerce-os.vercel.app/cho-kenh" },
   },
   {
     id: "vibecode-kit",

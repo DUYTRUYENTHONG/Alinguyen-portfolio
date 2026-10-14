@@ -25,6 +25,14 @@ const details: Record<string, CaseDetail> = {
     limits: "Customer adoption, revenue impact, and operational usage are not independently verified in this portfolio.",
     next: "Add source-backed usage or outcome data only when the owner can document the measure, period, and method.",
   },
+  "cho-kenh": {
+    context: "Buyers comparing TikTok channels need useful public signals without exposing sensitive account details. Sellers need a route to discuss proof and transfer conditions.",
+    decision: "Pair a searchable channel catalog with a human-reviewed intermediary inquiry path instead of presenting a transfer as a one-click purchase.",
+    implementation: "The public site shows category, budget, follower, view, engagement, risk, and audit filters; listing detail pages; Zalo contact paths; and a separate page that explains the manual deal review process. The site states that automated checkout and escrow are unavailable. AI tools and courses are planned additions, not live offerings.",
+    evidence: "The channel catalog and intermediary information page were reviewed on the live Chợ Kênh site. Ali Nguyen supplied the Chợ Kênh logo and identified the product as his business.",
+    limits: "Listing figures are public site content and require the team's confirmation before a deal. No completed transaction count or buyer outcome is claimed. AI tools and courses are coming soon; they are not presented as live products.",
+    next: "Publish AI tools or courses only when their pages and delivery are live, and add transaction outcomes only with a documented source and period.",
+  },
   "vibecode-kit": {
     context: "Small product teams need planning and release evidence that can be inspected after a change ships.",
     decision: "Keep the tool usable offline and make the workflow legible through a CLI, profiles, skills, and templates.",

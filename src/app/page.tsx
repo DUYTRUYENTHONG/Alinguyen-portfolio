@@ -8,7 +8,7 @@ const highlights = [
   { icon: "⌘", title: "Vibecode Product Kit", description: "A public developer tool with an offline CLI and CI checks.", href: "https://github.com/DUYTRUYENTHONG/vibecode-product-kit", link: "View source" },
   { icon: "◉", title: "KKBox baseline", description: "A local churn prototype with a snapshot-date leakage check.", href: "#project-kkbox-baseline", link: "See project" },
   { icon: "✦", title: "STOS", description: "A live sales page product for independent sellers and small businesses.", href: identity.stos, link: "Visit product" },
-  { icon: "✧", title: "Commerce focus", description: "Customer understanding, decisions, operations, and growth.", href: "#about", link: "How I work" },
+  { icon: "◇", title: "Chợ Kênh", description: "A live TikTok channel catalog with manual intermediary inquiries.", href: identity.choKenh, link: "Visit marketplace" },
   { icon: "✓", title: "Open process", description: "Reproducible baselines, readable code, and explicit limits.", href: "#about", link: "Read approach" },
 ];
 
@@ -17,7 +17,7 @@ export default function Home() {
     "@context": "https://schema.org", "@type": "Person", name: identity.name,
     alternateName: identity.brand, jobTitle: identity.title,
     description: identity.proposition, email: identity.email,
-    sameAs: [identity.github, identity.service, identity.stos],
+    sameAs: [identity.github, identity.service, identity.stos, identity.choKenh],
   };
 
   return <>
@@ -37,12 +37,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="identity-strip" aria-label="Featured work"><div className="identity-track"><span>GROWTH COMMERCE OS</span><span>STOS</span><span>VIBECODE PRODUCT KIT</span><span>KKBOX CHURN BASELINE</span><span>DUYTRUYENTHONG</span><span>GROWTH COMMERCE OS</span><span>STOS</span></div></section>
+      <section className="identity-strip" aria-label="Featured work"><div className="identity-track"><span>GROWTH COMMERCE OS</span><span>STOS</span><span>CHỢ KÊNH</span><span>VIBECODE PRODUCT KIT</span><span>KKBOX CHURN BASELINE</span><span>DUYTRUYENTHONG</span><span>GROWTH COMMERCE OS</span><span>STOS</span></div></section>
       <VisitorPicker projects={projects} />
       <section className="statement section-shell" aria-labelledby="statement-title"><p className="eyebrow">What I do</p><h2 id="statement-title">I turn messy commerce signals into <span>clearer systems, useful models, and practical decisions.</span></h2></section>
-      <section className="proof-ribbon" aria-label="Verified portfolio status"><div className="proof-track"><span>01 LIVE SERVICE WEBSITE <small>· Growth Commerce OS</small></span><span>01 LIVE PRODUCT WEBSITE <small>· STOS</small></span><span>01 PUBLIC DEVELOPER TOOL <small>· Vibecode Product Kit</small></span><span>01 LOCAL ML PROTOTYPE <small>· KKBox baseline</small></span></div></section>
+      <section className="proof-ribbon" aria-label="Verified portfolio status"><div className="proof-track"><span>01 LIVE SERVICE WEBSITE <small>· Growth Commerce OS</small></span><span>01 LIVE PRODUCT WEBSITE <small>· STOS</small></span><span>01 LIVE MARKETPLACE WEBSITE <small>· Chợ Kênh</small></span><span>01 PUBLIC DEVELOPER TOOL <small>· Vibecode Product Kit</small></span><span>01 LOCAL ML PROTOTYPE <small>· KKBox baseline</small></span></div></section>
 
-      <section className="highlights" id="highlights" aria-labelledby="highlights-title"><div className="section-shell"><h2 id="highlights-title">Highlights</h2><div className="highlight-grid"><article className="highlight-feature"><span className="highlight-icon">✦</span><div><strong>4</strong><p>featured builds across commerce products, open-source tooling, and customer analytics.</p></div></article>{highlights.map((card) => <article className="highlight-card" key={card.title}><span className="highlight-icon">{card.title === "Growth Commerce OS" ? <img src={`${basePath}/duytruyenthong-logo.png`} alt="" width="52" height="52" /> : card.icon}</span><h3>{card.title}</h3><p>{card.description}</p><a href={card.href}>{card.link} <span aria-hidden="true">↗</span></a></article>)}</div></div></section>
+      <section className="highlights" id="highlights" aria-labelledby="highlights-title"><div className="section-shell"><h2 id="highlights-title">Highlights</h2><div className="highlight-grid"><article className="highlight-feature"><span className="highlight-icon">✦</span><div><strong>5</strong><p>featured builds across commerce products, open-source tooling, and customer analytics.</p></div></article>{highlights.map((card) => <article className="highlight-card" key={card.title}><span className="highlight-icon">{card.title === "Growth Commerce OS" ? <img src={`${basePath}/duytruyenthong-logo.png`} alt="" width="52" height="52" /> : card.title === "Chợ Kênh" ? <img src={`${basePath}/cho-kenh-logo.png`} alt="" width="52" height="52" /> : card.icon}</span><h3>{card.title}</h3><p>{card.description}</p><a href={card.href}>{card.link} <span aria-hidden="true">↗</span></a></article>)}</div></div></section>
 
       <section className="decision-map section-shell" aria-labelledby="map-title"><div className="map-graphic" aria-hidden="true"><div className="map-orbit map-one"><span className="map-node">01</span></div><div className="map-orbit map-two"><span className="map-node">02</span></div><div className="map-orbit map-three"><span className="map-node">03</span></div></div><div className="map-copy"><p className="eyebrow">Where the work connects</p><h2 id="map-title">From signal to decision.</h2><ol><li><span>01</span> Collect and understand customer signals</li><li><span>02</span> Build reliable features and workflows</li><li><span>03</span> Put useful decisions in reach</li></ol></div></section>
       <WorkSection projects={projects} />
