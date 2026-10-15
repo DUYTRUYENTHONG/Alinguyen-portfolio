@@ -228,7 +228,7 @@ export function CustomerCarousel() {
   return (
     <section className="customer-section" id="feedback" aria-labelledby="customers-title">
       <div className="section-shell">
-        <div className="customer-heading"><div><p className="eyebrow">Customers &amp; collaborations</p><h2 id="customers-title">Built for real businesses.</h2><p>Customer names shared by Ali Nguyen. Individual testimonials are not quoted here.</p></div></div>
+        <div className="customer-heading"><div><p className="eyebrow">Customers &amp; collaborations</p><h2 id="customers-title">Built for real businesses.</h2><p>Customer and collaboration names confirmed by Ali Nguyen. Individual testimonials are not quoted here.</p></div></div>
         <section className="customer-rail" aria-label="Customer names and logos">
           <div className="customer-track">
             <div className="customer-group">{renderCards("primary")}</div>

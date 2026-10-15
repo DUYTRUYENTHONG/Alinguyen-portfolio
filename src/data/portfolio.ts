@@ -42,6 +42,10 @@ export const customers = [
   { name: "Bản Tôi", logo: "customer-ban-toi.png" },
   { name: "Nhà hàng tiệc cưới Pacific · Bến Cát" },
   { name: "Nhà hàng tiệc cưới Bách Việt", logo: "customer-bach-viet.png", href: "https://bachviet.com.vn/" },
+  { name: "Zalo Official Account", logo: "customer-zalo-oa.webp" },
+  { name: "Vantage", logo: "customer-vantage.webp" },
+  { name: "Dupoin", logo: "customer-dupoin.webp" },
+  { name: "DBG Markets", logo: "customer-dbg-markets.webp" },
 ] as const;
 
 export const expertise = [
