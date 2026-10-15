@@ -22,6 +22,9 @@ Upstash Redis. Set `NEXT_PUBLIC_VISITOR_API_URL=https://ali-portfolio-visitor-ap
 in `.env.local` for local development. The GitHub Pages workflow sets the same
 public URL for its build. One browser UUID counts once; choosing a different role
 updates the role totals without adding another visitor.
+The working-hours panel uses the live `Asia/Ho_Chi_Minh` clock and the visitor's
+browser time zone. Its 09:00–18:00 overlap is a planning comparison, not a promise
+of immediate availability.
 The LinkedIn URL and public KKBox repository link await owner input or
 publication.
 

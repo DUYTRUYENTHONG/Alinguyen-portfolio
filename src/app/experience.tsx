@@ -8,6 +8,7 @@ import { customers } from "@/data/portfolio";
 import { GuideCharacter } from "./guide-character";
 import { VisitorStats } from "./visitor-stats";
 import { PortfolioLink as Link } from "./portfolio-link";
+import { WorkingHours } from "./working-hours";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const RoleContext = createContext<{ selected: string; ready: boolean; setSelected: (role: string) => void } | null>(null);
@@ -47,11 +48,14 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
   const activePage = pathname.startsWith("/work") ? "/work" : pathname.startsWith("/about") ? "/about" : "#top";
   const navHref = (href: string) => href.startsWith("#") && inner ? `/${href}` : href;
   const [open, setOpen] = useState(false);
+  const [ready, setReady] = useState(false);
   const [compact, setCompact] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScroll = useRef(0);
   const menuButton = useRef<HTMLButtonElement>(null);
   const menuPanel = useRef<HTMLDivElement>(null);
+
+  useEffect(() => setReady(true), []);
 
   useEffect(() => {
     if (!window.location.hash && pathname !== "/") window.scrollTo({ top: 0, behavior: "instant" });
@@ -86,7 +90,7 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
       if (event.key !== "Tab") return;
-      const focusable = Array.from(menuPanel.current?.querySelectorAll<HTMLAnchorElement>("a") ?? []);
+      const focusable = Array.from(menuPanel.current?.querySelectorAll<HTMLElement>("a, button:not(:disabled)") ?? []);
       if (!focusable.length) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
@@ -103,15 +107,16 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
         <nav className="desktop-nav" aria-label="Main navigation">
           <Link className={activePage === "#top" ? "nav-active" : ""} href={navHref("#top")}><span>Ali Nguyen</span></Link>
           {navItems.slice(1).map((item) => <Link className={activePage === item.href ? "nav-active" : ""} key={item.href} href={navHref(item.href)}><span>{item.label}</span></Link>)}
-          <span className="nav-clock">DUYTRUYENTHONG · AI / DATA</span>
+          <WorkingHours variant="header" />
         </nav>
-        <button ref={menuButton} className="menu-trigger" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>
+        <button ref={menuButton} className="menu-trigger" type="button" disabled={!ready} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>
           <span className="menu-glyph" aria-hidden="true"><i /><i /><i /></span>
         </button>
       </header>
       <div className={`menu-backdrop ${open ? "is-open" : ""}`} onClick={() => setOpen(false)} aria-hidden="true" />
       <div ref={menuPanel} id="mobile-menu" className={`mobile-menu ${open ? "is-open" : ""}`} role="dialog" aria-modal="true" aria-label="Menu" inert={!open}>
         <nav aria-label="Mobile navigation">{navItems.map((item) => <Link key={item.href} href={navHref(item.href)} onClick={() => setOpen(false)}>{item.label}</Link>)}</nav>
+        <WorkingHours variant="menu" />
         <p>ALI NGUYEN · DUYTRUYENTHONG</p>
       </div>
     </>
