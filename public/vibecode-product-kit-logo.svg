@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 447 447" role="img" aria-label="Vibecode Product Kit orange mark">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#ff9d5c"/>
+      <stop offset=".55" stop-color="#ffab78"/>
+      <stop offset="1" stop-color="#ff6f2f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".43" r=".7">
+      <stop stop-color="#ffc49e" stop-opacity=".94"/>
+      <stop offset="1" stop-color="#ffc49e" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="shape"><rect x="1" y="1" width="445" height="445" rx="100"/></clipPath>
+  </defs>
+  <g clip-path="url(#shape)">
+    <rect x="1" y="1" width="445" height="445" fill="url(#base)"/>
+    <rect x="1" y="1" width="445" height="445" fill="url(#glow)"/>
+  </g>
+</svg>
