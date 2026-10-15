@@ -243,3 +243,4 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
   .contact-section{contain-intrinsic-size:auto 850px}
 }
 .directory-filters button:disabled{opacity:.55;cursor:wait}
+.depth-tabs button:disabled{opacity:.55;cursor:wait}

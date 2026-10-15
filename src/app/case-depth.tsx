@@ -1,6 +1,6 @@
 "use client";
 
-import { type KeyboardEvent, useState } from "react";
+import { type KeyboardEvent, useEffect, useState } from "react";
 
 export type CaseDetail = {
   context: string;
@@ -15,7 +15,10 @@ const depths = ["Skim", "Read", "Deep dive"] as const;
 
 export function CaseDepth({ detail }: { detail: CaseDetail }) {
   const [depth, setDepth] = useState<(typeof depths)[number]>("Read");
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
   const moveTab = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (!ready) return;
     const index = depths.findIndex((item) => (event.target as HTMLElement).id === `depth-tab-${item.replace(" ", "-")}`);
     if (index < 0) return;
     const next = event.key === "ArrowRight" ? (index + 1) % depths.length : event.key === "ArrowLeft" ? (index + depths.length - 1) % depths.length : event.key === "Home" ? 0 : event.key === "End" ? depths.length - 1 : -1;
@@ -25,8 +28,8 @@ export function CaseDepth({ detail }: { detail: CaseDetail }) {
     requestAnimationFrame(() => document.getElementById(`depth-tab-${depths[next].replace(" ", "-")}`)?.focus());
   };
   return <div className="case-depth">
-    <div className="depth-tabs" role="tablist" aria-label="Reading depth" onKeyDown={moveTab}>
-      {depths.map((item) => <button type="button" key={item} role="tab" id={`depth-tab-${item.replace(" ", "-")}`} tabIndex={depth === item ? 0 : -1} aria-selected={depth === item} aria-controls="depth-panel" onClick={() => setDepth(item)}>{item}</button>)}
+    <div className="depth-tabs" role="tablist" aria-label="Reading depth" aria-busy={!ready} onKeyDown={moveTab}>
+      {depths.map((item) => <button type="button" key={item} role="tab" id={`depth-tab-${item.replace(" ", "-")}`} tabIndex={depth === item ? 0 : -1} disabled={!ready} aria-selected={depth === item} aria-controls="depth-panel" onClick={() => setDepth(item)}>{item}</button>)}
     </div>
     <div id="depth-panel" role="tabpanel" aria-labelledby={`depth-tab-${depth.replace(" ", "-")}`}>
       <section><span>01 / CONTEXT</span><h2>The problem</h2><p>{detail.context}</p></section>
