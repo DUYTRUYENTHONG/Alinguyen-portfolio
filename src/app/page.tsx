@@ -1,5 +1,5 @@
 import { capabilities, cvTracks, funnelStages, identity, principles, projects } from "@/data/portfolio";
-import { CopyEmail, CustomerCarousel, RotatingFocus, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
+import { CopyEmail, CustomerCarousel, PortfolioGuide, RotatingFocus, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -23,7 +23,8 @@ export default function Home() {
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
     <SiteHeader />
-    <main id="main">
+    <main id="main" className="portfolio-main">
+      <PortfolioGuide />
       <section className="hero" id="top" aria-labelledby="hero-title">
         <div className="hero-copy section-shell">
           <h1 id="hero-title">Ali Nguyen builds<br /> sales, marketing &amp;<br /> e-commerce systems.</h1>
