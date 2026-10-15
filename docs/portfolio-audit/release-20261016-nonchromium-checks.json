@@ -1,0 +1,20 @@
+{
+  "base": "http://127.0.0.1:3009/Alinguyen-portfolio",
+  "checkedAt": "2026-10-15T17:53:49.878Z",
+  "results": [
+    {
+      "browser": "Firefox",
+      "menu": true,
+      "hash": "#work",
+      "overflow": 0,
+      "errors": []
+    },
+    {
+      "browser": "WebKit",
+      "menu": true,
+      "hash": "#work",
+      "overflow": 0,
+      "errors": []
+    }
+  ]
+}

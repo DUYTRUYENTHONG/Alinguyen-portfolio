@@ -1,0 +1,79 @@
+{
+  "base": "http://127.0.0.1:3009/Alinguyen-portfolio",
+  "capturedAt": "2026-10-15T17:53:08.102Z",
+  "checks": [
+    {
+      "name": "Recruiter: specialization and primary actions",
+      "pass": true
+    },
+    {
+      "name": "Recruiter: CV asset and contact path",
+      "pass": true,
+      "detail": {
+        "cvStatus": 200
+      }
+    },
+    {
+      "name": "Mobile/desktop deep anchor: engineering work",
+      "pass": true,
+      "detail": {
+        "top": -131.375
+      }
+    },
+    {
+      "name": "Role and guide stay consistent",
+      "pass": true
+    },
+    {
+      "name": "Engineering manager: directory and case study",
+      "pass": true,
+      "detail": {
+        "caseUrl": "http://127.0.0.1:3009/Alinguyen-portfolio/work/kkbox-baseline/"
+      }
+    },
+    {
+      "name": "Engineering manager: return to selected work",
+      "pass": true
+    },
+    {
+      "name": "Business collaborator: commerce filter and product proof",
+      "pass": true
+    },
+    {
+      "name": "Mobile: menu keyboard and focus return",
+      "pass": true
+    },
+    {
+      "name": "Mobile: primary CTA and project anchor",
+      "pass": true,
+      "detail": {
+        "top": -35.9375
+      }
+    },
+    {
+      "name": "Mobile: direct deep links into deferred sections",
+      "pass": true,
+      "detail": {
+        "project-stos": 75.796875,
+        "contact": -169.578125
+      }
+    },
+    {
+      "name": "Mobile: no horizontal overflow",
+      "pass": true,
+      "detail": {
+        "overflow": 0
+      }
+    },
+    {
+      "name": "Mobile: CV and contact actions",
+      "pass": true,
+      "detail": {
+        "cvStatus": 200
+      }
+    }
+  ],
+  "errors": [],
+  "passed": 12,
+  "failed": 0
+}

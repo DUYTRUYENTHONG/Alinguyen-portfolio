@@ -1,0 +1,134 @@
+{
+  "base": "http://127.0.0.1:3009/Alinguyen-portfolio",
+  "checkedAt": "2026-10-15T17:53:06.394Z",
+  "routes": [
+    "/",
+    "/about/",
+    "/work/",
+    "/credits/",
+    "/work/kkbox-baseline/",
+    "/work/vibecode-kit/",
+    "/work/stos/",
+    "/work/cho-kenh/",
+    "/work/growth-commerce-os/"
+  ],
+  "checked": [
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/work/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/about/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/work/vibecode-kit/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/work/growth-commerce-os/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/work/stos/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/work/cho-kenh/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/work/kkbox-baseline/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/cv-business-product.pdf",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/cv-business-development.pdf",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/cv-prompt-engineer.docx",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/credits/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/stos-home-desktop-2026.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/stos-home-mobile-2026.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/stos-templates-desktop-2026.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/stos-login-2026.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/stos-signup-2026.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/cho-kenh-home-2026.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/cho-kenh-catalog-2026.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/cho-kenh-buying-flow-2026.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/cho-kenh-some-process-2026.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/cho-kenh-trust-layer-2026.png",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3009/Alinguyen-portfolio/duytruyenthong-site-2026.png",
+      "status": 200
+    }
+  ],
+  "externalTargets": [
+    "https://apps.apple.com/tw/app/kkbox-%E9%9F%B3%E6%A8%82-podcast/id300915900",
+    "https://bachviet.com.vn/",
+    "https://bienlan.vn/",
+    "https://creativecommons.org/licenses/by/4.0/",
+    "https://github.com/DUYTRUYENTHONG",
+    "https://github.com/DUYTRUYENTHONG/vibecode-product-kit",
+    "https://github.com/jdecked/twemoji",
+    "https://growth-commerce-os.vercel.app/cho-kenh",
+    "https://growth-commerce-os.vercel.app/en",
+    "https://hungphuthinh.vn/",
+    "https://stosvn.vercel.app/stos",
+    "https://toanthangcar.com/",
+    "https://www.tiktok.com/@sauriengcoba206"
+  ],
+  "contactActions": [
+    "mailto:nquangd1510@gmail.com",
+    "mailto:nquangd1510@gmail.com?subject=AI%20and%20commerce%20workflow",
+    "mailto:nquangd1510@gmail.com?subject=Engineering%20opportunity"
+  ],
+  "issues": []
+}
