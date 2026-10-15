@@ -71,6 +71,7 @@ export function GuideCharacter({ icon }: { icon: string }) {
     let settleFrame = 0;
     let walkTimer = 0;
     let lastTime = 0;
+    let lastScrollY = window.scrollY;
     let scrolling = false;
 
     const route = () => {
@@ -78,11 +79,15 @@ export function GuideCharacter({ icon }: { icon: string }) {
       const maxX = Math.max(0, stage.clientWidth - actor.offsetWidth);
       const maxY = Math.max(0, stage.clientHeight - actor.offsetHeight);
       const readingLine = window.innerWidth < 768
-        ? window.innerHeight - actor.offsetHeight - 34
+        ? clamp(window.innerHeight * .62, 210, window.innerHeight - actor.offsetHeight - 24)
         : clamp(window.innerHeight * .58, 145, window.innerHeight - actor.offsetHeight - 24);
       const visitor = document.getElementById("visitor");
       const contact = document.getElementById("contact");
       const visible = Boolean(visitor && visitor.getBoundingClientRect().top < window.innerHeight * .8 && (!contact || contact.getBoundingClientRect().bottom > window.innerHeight * .15));
+      if (!visible) {
+        const viewportMaxX = Math.max(0, window.innerWidth - actor.offsetWidth);
+        return { x: lastPosition.current?.x ?? viewportMaxX - 8, y: lastPosition.current?.y ?? readingLine, label: stopRef.current, message: messageRef.current, visible: false, maxX: viewportMaxX };
+      }
 
       let label = "Explore the portfolio";
       let sceneIndex = 0;
@@ -103,10 +108,8 @@ export function GuideCharacter({ icon }: { icon: string }) {
         }
       }
 
-      const desktop = window.innerWidth >= 768;
-      const leftSide = desktop && [1, 3, 6, 8, 10].includes(sceneIndex);
       const edgeOffset = [8, 30, 14, 44, 22, 50, 10, 38, 18, 32, 12, 24][sceneIndex] ?? 8;
-      let x = leftSide ? edgeOffset : Math.max(0, maxX - edgeOffset);
+      let x = Math.max(0, maxX - edgeOffset);
       let y = clamp(readingLine - stageRect.top + [0, -24, 18, -15, 24, -12, 16, -22, 12, -16, 20, 0][sceneIndex], 0, maxY);
       const visitorRect = visitor?.getBoundingClientRect();
       if (visitorRect && visitorRect.top <= readingLine && visitorRect.bottom > readingLine) {
@@ -131,8 +134,22 @@ export function GuideCharacter({ icon }: { icon: string }) {
           y = mix(from.y, to.y, amount) - (reducedMotion.matches ? 0 : Math.sin(Math.PI * amount) * 20);
         }
       }
+      const safeTop = window.innerWidth < 768 ? 98 : 120;
+      const safeBottom = window.innerHeight - actor.offsetHeight - 22;
+      let screenY = clamp(y + stageRect.top, safeTop, safeBottom);
+      // Keep the guide and its message clear of the main conversion links as they pass the reading line.
+      for (const link of document.querySelectorAll<HTMLElement>(".hero-actions a, .project-proof a")) {
+        const rect = link.getBoundingClientRect();
+        if (rect.bottom < safeTop || rect.top > window.innerHeight) continue;
+        if (screenY - 20 >= rect.bottom || screenY + actor.offsetHeight + 20 <= rect.top) continue;
+        const above = rect.top - actor.offsetHeight - 32;
+        const below = rect.bottom + 32;
+        const choices = [above, below].filter((position) => position >= safeTop && position <= safeBottom);
+        if (choices.length) screenY = choices.sort((a, b) => Math.abs(a - screenY) - Math.abs(b - screenY))[0];
+      }
       const message = (projectId ? projectMessages[projectId] : null) ?? sceneMessages[label] ?? "Follow along for the work and the decisions behind it.";
-      return { x: clamp(x, 0, maxX), y: clamp(y, 0, maxY), label, message, visible, maxX, side: leftSide ? "left" : "right" };
+      const viewportMaxX = Math.max(0, window.innerWidth - actor.offsetWidth);
+      return { x: clamp(x + stageRect.left, 0, viewportMaxX), y: screenY, label, message, visible, maxX: viewportMaxX };
     };
 
     const paint = () => {
@@ -140,7 +157,6 @@ export function GuideCharacter({ icon }: { icon: string }) {
       actor.style.opacity = target.visible ? "1" : "0";
       actor.style.pointerEvents = target.visible ? "auto" : "none";
       actor.tabIndex = target.visible ? 0 : -1;
-      actor.dataset.side = target.side;
       if (stopRef.current !== target.label) {
         stopRef.current = target.label;
         setStop(target.label);
@@ -156,7 +172,15 @@ export function GuideCharacter({ icon }: { icon: string }) {
       currentY = currentY === null ? target.y : mix(currentY, target.y, amount);
       lastPosition.current = { x: currentX, y: currentY };
       actor.style.transform = `translate3d(${currentX}px, ${currentY + rise}px, 0)`;
-      actor.classList.toggle("is-walking", target.visible && !reducedMotion.matches && (held.left || held.right || scrolling));
+      const callout = actor.querySelector<HTMLElement>(".guide-callout");
+      if (callout) {
+        const width = callout.offsetWidth;
+        const idealLeft = currentX > target.maxX / 2 ? -width - 8 : actor.offsetWidth + 8;
+        const viewportX = currentX;
+        callout.style.left = `${clamp(idealLeft, 12 - viewportX, window.innerWidth - width - 12 - viewportX)}px`;
+      }
+      actor.classList.toggle("is-walking", target.visible && !reducedMotion.matches && (held.left || held.right));
+      actor.classList.toggle("is-scrolling", target.visible && !reducedMotion.matches && scrolling);
       actor.classList.toggle("is-jumping", rise < -1);
       return Math.abs(targetX - currentX) > .6 || Math.abs(target.y - currentY) > .6;
     };
@@ -203,16 +227,12 @@ export function GuideCharacter({ icon }: { icon: string }) {
     const stopWalking = () => { held.left = false; held.right = false; };
     const onScroll = () => {
       if (reducedMotion.matches) { paint(); return; }
+      if (window.scrollY !== lastScrollY) actor.dataset.scrollDirection = window.scrollY < lastScrollY ? "up" : "down";
+      lastScrollY = window.scrollY;
       scrolling = true;
       window.clearTimeout(walkTimer);
       walkTimer = window.setTimeout(() => { scrolling = false; paint(); }, 150);
       if (!scrollFrame) scrollFrame = window.requestAnimationFrame(() => { scrollFrame = 0; paint(); animate(); });
-    };
-    const settleStart = performance.now();
-    const settle = (time: number) => {
-      paint();
-      if (time - settleStart < 900) settleFrame = window.requestAnimationFrame(settle);
-      else settleFrame = 0;
     };
     const observer = new ResizeObserver(paint);
     observer.observe(stage);
@@ -222,10 +242,11 @@ export function GuideCharacter({ icon }: { icon: string }) {
     window.addEventListener("keyup", keyUp);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    window.addEventListener("load", paint);
     actor.addEventListener("click", jump);
     actor.addEventListener("blur", stopWalking);
     paint();
-    settleFrame = requestAnimationFrame(settle);
+    settleFrame = requestAnimationFrame(paint);
     return () => {
       cancelAnimationFrame(frame);
       cancelAnimationFrame(scrollFrame);
@@ -236,6 +257,7 @@ export function GuideCharacter({ icon }: { icon: string }) {
       window.removeEventListener("keyup", keyUp);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.removeEventListener("load", paint);
       actor.removeEventListener("click", jump);
       actor.removeEventListener("blur", stopWalking);
     };

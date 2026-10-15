@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Work | Ali Nguyen",
   description: "Applied AI and data prototypes, developer tools, and live commerce products by Ali Nguyen.",
   alternates: { canonical: `${siteUrl}/work/` },
-  openGraph: { title: "Selected work | Ali Nguyen", description: "Applied AI and data prototypes, developer tools, and live commerce products by Ali Nguyen." },
+  openGraph: { title: "Selected work | Ali Nguyen", description: "Applied AI and data prototypes, developer tools, and live commerce products by Ali Nguyen.", images: [`${siteUrl}/opengraph-image.png`] },
 };
 
 export default function WorkPage() {

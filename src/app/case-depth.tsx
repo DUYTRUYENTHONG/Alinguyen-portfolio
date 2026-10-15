@@ -32,7 +32,8 @@ export function CaseDepth({ detail }: { detail: CaseDetail }) {
       <section><span>01 / CONTEXT</span><h2>The problem</h2><p>{detail.context}</p></section>
       {depth !== "Skim" && <><section><span>02 / THE DECISION</span><h2>What mattered</h2><p>{detail.decision}</p></section><section><span>03 / IMPLEMENTATION</span><h2>What was built</h2><p>{detail.implementation}</p></section></>}
       <section><span>04 / EVIDENCE</span><h2>Where it stands</h2><p>{detail.evidence}</p></section>
-      {depth === "Deep dive" && <><section><span>05 / LIMITS</span><h2>What is not yet proven</h2><p>{detail.limits}</p></section><section><span>06 / NEXT STEP</span><h2>What to verify next</h2><p>{detail.next}</p></section></>}
+      <section><span>05 / LIMITS</span><h2>What is not yet proven</h2><p>{detail.limits}</p></section>
+      {depth === "Deep dive" && <section><span>06 / NEXT STEP</span><h2>What to verify next</h2><p>{detail.next}</p></section>}
     </div>
   </div>;
 }

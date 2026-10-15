@@ -41,7 +41,7 @@ export default function Home() {
         </div>
         <div className="portrait-stage">
           <div className="portrait-halo" aria-hidden="true" />
-          <img className="portrait-photo" src={`${basePath}/ali-nguyen-portrait-960.webp`} srcSet={`${basePath}/ali-nguyen-portrait-480.webp 480w, ${basePath}/ali-nguyen-portrait-960.webp 960w`} sizes="(max-width: 767px) 380px, 768px" alt="Portrait of Ali Nguyen wearing a black suit" width="1071" height="1468" fetchPriority="high" decoding="async" />
+          <img className="portrait-photo" src={`${basePath}/ali-nguyen-portrait-960.webp`} srcSet={`${basePath}/ali-nguyen-portrait-480.webp 480w, ${basePath}/ali-nguyen-portrait-960.webp 960w`} sizes="(max-width: 767px) 380px, 768px" alt="Portrait of Ali Nguyen wearing a black suit" width="1071" height="1468" fetchPriority="high" decoding="sync" />
           <span className="portrait-caption">ALI NGUYEN / DUYTRUYENTHONG</span>
         </div>
       </section>

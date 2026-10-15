@@ -76,7 +76,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const project = projects.find((item) => item.id === slug);
   if (!project) return {};
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
-  return { title: `${project.name} case study | ${identity.name}`, description: project.problem, alternates: { canonical: `${siteUrl}/work/${slug}/` }, openGraph: { title: `${project.name} case study | ${identity.name}`, description: project.problem } };
+  return { title: `${project.name} case study | ${identity.name}`, description: project.problem, alternates: { canonical: `${siteUrl}/work/${slug}/` }, openGraph: { title: `${project.name} case study | ${identity.name}`, description: project.problem, images: [`${siteUrl}/opengraph-image.png`] } };
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -91,12 +91,12 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     <SiteHeader inner />
     <main id="case-main" className="case-page">
       <section className={`case-hero case-hero-${slug}`}>
-        <div className="case-hero-inner section-shell"><Link className="case-back" href="/#work">← Back to selected work</Link><p className="case-status">{project.status}</p><h1>{project.headline}</h1><p>{project.problem}</p><ProjectVisual id={project.id} /></div>
+        <div className="case-hero-inner section-shell"><Link className="case-back" href="/#work">← Back to selected work</Link><p className="case-status">{project.status}</p><p className="case-project-name">{project.name}</p><h1>{project.headline}</h1><p>{project.problem}</p><ProjectVisual id={project.id} /></div>
       </section>
       <div className="case-body section-shell">
-        <div className="case-facts"><div><span>PROJECT</span><strong>{project.name}</strong></div><div><span>ROLE</span><strong>{project.role}</strong></div><div><span>STATUS</span><strong>{project.status}</strong></div><div><span>PROOF</span><strong>{project.proof}</strong></div></div>
+        <div className="case-facts"><div><span>PROJECT</span><strong>{project.name}</strong></div><div><span>ROLE</span><strong>{project.role}</strong></div><div><span>STATUS</span><strong>{project.status}</strong></div><div><span>PROOF</span><strong>{project.proof}</strong></div><div className="case-tech"><span>BUILT WITH</span><strong>{project.technologies.join(" · ")}</strong></div></div>
         <CaseDepth detail={detail} />
-        {media.length > 0 && <section className="case-media" aria-labelledby="case-media-title"><div className="case-media-heading"><p className="eyebrow">Product evidence</p><h2 id="case-media-title">See the live product journey.</h2><p>Owner-supplied captures. Select a screenshot to view it at full size.</p></div><div className="case-media-grid">{media.map((item) => <figure key={item.file}><a href={`${basePath}/${item.file}`} target="_blank" rel="noopener noreferrer" aria-label={`Open full screenshot: ${item.label}`}><img src={`${basePath}/${item.file}`} alt={item.label} loading="lazy" /></a><figcaption>{item.label} ↗</figcaption></figure>)}</div></section>}
+        {media.length > 0 && <section className="case-media" aria-labelledby="case-media-title"><div className="case-media-heading"><p className="eyebrow">Product evidence</p><h2 id="case-media-title">See the live product journey.</h2><p>Owner-supplied captures. Select a screenshot to view it at full size.</p></div><div className="case-media-grid">{media.map((item) => <figure key={item.file}><a href={`${basePath}/${item.file}`} target="_blank" rel="noopener noreferrer" aria-label={`Open full screenshot: ${item.label}`}><img src={`${basePath}/${item.file.replace(/\.png$/, "-preview.webp")}`} alt={item.label} loading="lazy" decoding="async" /></a><figcaption>{item.label} ↗</figcaption></figure>)}</div></section>}
         <div className="case-links">{project.link && <a href={project.link.href}>{project.link.label} ↗</a>}<Link href="/#work">Back to all work ↑</Link></div>
       </div>
     </main>

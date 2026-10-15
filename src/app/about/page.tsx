@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "About Ali Nguyen",
   description: "Ali Nguyen builds applied AI prototypes, developer tools, and commerce products with a background in digital marketing.",
   alternates: { canonical: `${siteUrl}/about/` },
-  openGraph: { title: "About Ali Nguyen", description: "Applied AI prototypes, developer tools, and commerce products with a background in digital marketing." },
+  openGraph: { title: "About Ali Nguyen", description: "Applied AI prototypes, developer tools, and commerce products with a background in digital marketing.", images: [`${siteUrl}/opengraph-image.png`] },
 };
 
 export default function AboutPage() {

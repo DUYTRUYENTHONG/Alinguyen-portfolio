@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { LayoutGroup, motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
 import type { ReactNode } from "react";
 import type { Project } from "@/data/portfolio";
 import { customers } from "@/data/portfolio";
@@ -159,9 +158,9 @@ export function VisitorPicker({ projects }: { projects: Project[] }) {
   return (
     <section className="visitor section-shell" id="visitor" aria-labelledby="visitor-title">
       <div className="visitor-heading"><h2 id="visitor-title">Hello stranger,<span className="visitor-heading-tail"> who are you?</span></h2></div>
-      <LayoutGroup id="visitor-strip"><fieldset className="role-grid"><legend className="sr-only">Choose your perspective</legend>
+      <fieldset className="role-grid"><legend className="sr-only">Choose your perspective</legend>
         {roles.map((item) => <RoleTile key={item.label} item={item} selected={selected} onSelect={setSelected} />)}
-      </fieldset></LayoutGroup>
+      </fieldset>
       <VisitorStats role={selected} />
       <div className="visitor-result" aria-live="polite">
         {recommended && <><span>RECOMMENDED FOR {selected.toUpperCase()}</span><a href={`#project-${recommended.id}`}>{recommended.name} <span aria-hidden="true">↗</span></a></>}
@@ -170,37 +169,15 @@ export function VisitorPicker({ projects }: { projects: Project[] }) {
   );
 }
 
-const roleSpring = { type: "spring" as const, stiffness: 400, damping: 40 };
-const liftSpring = { type: "spring" as const, stiffness: 150, damping: 13, mass: 1 };
-
 function RoleTile({ item, selected, onSelect }: { item: (typeof roles)[number]; selected: string; onSelect: (role: string) => void }) {
   const active = selected === item.label;
-  const reducedMotion = useReducedMotion();
-  const pointerX = useMotionValue(0);
-  const pointerY = useMotionValue(0);
-  const x = useSpring(pointerX, { stiffness: 180, damping: 24 });
-  const y = useSpring(pointerY, { stiffness: 180, damping: 24 });
-
-  return <motion.div layout="position" layoutDependency={selected} transition={reducedMotion ? { duration: 0 } : roleSpring} className={`role-cell ${active ? "is-selected" : ""}`}>
-    <motion.label
-      className={`role-card role-${item.tone} ${active ? "is-selected" : ""}`}
-      initial="rest"
-      whileHover={reducedMotion || active ? undefined : { y: -11.5, scale: 1.014, boxShadow: "0 24px 44px -14px rgba(11,21,51,.2), 0 6px 12px -4px rgba(11,21,51,.08)" }}
-      whileTap={reducedMotion || active ? undefined : { y: -4, scale: .985 }}
-      transition={reducedMotion ? { duration: 0 } : liftSpring}
-      onPointerMove={(event) => {
-        if (reducedMotion || active || event.pointerType !== "mouse") return;
-        const rect = event.currentTarget.getBoundingClientRect();
-        pointerX.set(((event.clientX - rect.left) / rect.width - .5) * 8);
-        pointerY.set(((event.clientY - rect.top) / rect.height - .5) * 8);
-      }}
-      onPointerLeave={() => { pointerX.set(0); pointerY.set(0); }}
-    >
+  return <div className={`role-cell ${active ? "is-selected" : ""}`}>
+    <label className={`role-card role-${item.tone} ${active ? "is-selected" : ""}`}>
       <input type="radio" name="visitor-role" value={item.label} checked={active} onChange={() => onSelect(item.label)} />
-      <motion.span key={active ? "active" : "rest"} className="role-icon" aria-hidden="true" style={active || reducedMotion ? undefined : { x, y }} animate={active ? { opacity: 1, scale: 1, y: 0 } : undefined} initial={active && !reducedMotion ? { opacity: 0, scale: .85, y: 10 } : false} transition={reducedMotion ? { duration: 0 } : { type: "spring", stiffness: 380, damping: 24, mass: .8, delay: active ? .08 : 0 }}><img src={`${basePath}/role-art/${item.icon}.webp`} alt="" width="362" height="362" loading="lazy" /></motion.span>
+      <span className="role-icon" aria-hidden="true"><img src={`${basePath}/role-art/${item.icon}.webp`} alt="" width="362" height="362" loading="lazy" /></span>
       <span className="role-card-copy">{active && <small>THAT&apos;S YOU</small>}<strong>{item.label}</strong>{active && <em>{item.description}</em>}</span>
-    </motion.label>
-  </motion.div>;
+    </label>
+  </div>;
 }
 
 const statement = "I turn business needs and messy data into useful digital products — connecting applied AI, engineering, and commerce workflows.";
@@ -260,9 +237,9 @@ export function CustomerCarousel() {
 
 export function ProjectVisual({ id }: { id: string }) {
   const covers: Record<string, { file: string; alt: string; width: number; height: number }> = {
-    "growth-commerce-os": { file: "duytruyenthong-site-2026.png", alt: "DUYTRUYENTHONG service homepage", width: 1900, height: 905 },
-    stos: { file: "stos-home-desktop-2026.png", alt: "STOS sales page homepage", width: 1440, height: 7026 },
-    "cho-kenh": { file: "cho-kenh-home-2026.png", alt: "Chợ Kênh TikTok channel marketplace homepage", width: 1911, height: 944 },
+    "growth-commerce-os": { file: "duytruyenthong-site-2026-preview.webp", alt: "DUYTRUYENTHONG service homepage", width: 1100, height: 524 },
+    stos: { file: "stos-home-desktop-2026-preview.webp", alt: "STOS sales page homepage", width: 1100, height: 880 },
+    "cho-kenh": { file: "cho-kenh-home-2026-preview.webp", alt: "Chợ Kênh TikTok channel marketplace homepage", width: 1100, height: 543 },
   };
   const cover = covers[id];
   if (cover) return <div className={`project-screenshot project-screenshot-${id}`}><img src={`${basePath}/${cover.file}`} alt={cover.alt} width={cover.width} height={cover.height} loading="lazy" decoding="async" /></div>;
