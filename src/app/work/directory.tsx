@@ -1,7 +1,7 @@
 "use client";
 
 import { PortfolioLink as Link } from "../portfolio-link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { projects } from "@/data/portfolio";
 import { ProjectVisual } from "../experience";
 
@@ -17,13 +17,15 @@ const featuredOrder = ["vibecode-kit", "kkbox-baseline", "growth-commerce-os", "
 
 export function WorkDirectory() {
   const [category, setCategory] = useState<(typeof categories)[number]>("All");
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
   const visible = projects
     .filter((project) => category === "All" || projectCategory[project.id] === category)
     .sort((first, second) => featuredOrder.indexOf(first.id) - featuredOrder.indexOf(second.id));
 
   return <>
-    <fieldset className="directory-filters"><legend className="sr-only">Filter projects by category</legend>
-      {categories.map((item) => <button type="button" key={item} aria-pressed={category === item} onClick={() => setCategory(item)}>{item} <span>{item === "All" ? projects.length : projects.filter((project) => projectCategory[project.id] === item).length}</span></button>)}
+    <fieldset className="directory-filters" aria-busy={!ready}><legend className="sr-only">Filter projects by category</legend>
+      {categories.map((item) => <button type="button" key={item} disabled={!ready} aria-pressed={category === item} onClick={() => setCategory(item)}>{item} <span>{item === "All" ? projects.length : projects.filter((project) => projectCategory[project.id] === item).length}</span></button>)}
     </fieldset>
     <p className="directory-count" role="status">Showing {visible.length} {visible.length === 1 ? "project" : "projects"}</p>
     <div className="directory-grid">
