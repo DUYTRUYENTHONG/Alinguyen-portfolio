@@ -1,0 +1,24 @@
+{
+  "base": "http://127.0.0.1:3007/Alinguyen-portfolio",
+  "checkedAt": "2026-10-15T07:59:08.870Z",
+  "results": [
+    {
+      "scenario": "failed-portrait",
+      "headingVisible": true,
+      "primaryActionVisible": true,
+      "pageErrors": []
+    },
+    {
+      "scenario": "delayed-assets",
+      "headingVisible": true,
+      "primaryActionVisible": true,
+      "pageErrors": []
+    },
+    {
+      "scenario": "long-scroll",
+      "headingVisible": true,
+      "primaryActionVisible": true,
+      "pageErrors": []
+    }
+  ]
+}

@@ -20,8 +20,7 @@ Sales funnels · digital marketing · e-commerce · AI and LLM applications · c
 
 ## Connect
 
+- [Portfolio and case studies](https://duytruyenthong.github.io/Alinguyen-portfolio/)
 - [Service website](https://growth-commerce-os.vercel.app/)
 - [GitHub](https://github.com/DUYTRUYENTHONG)
 - [Email](mailto:nquangd1510@gmail.com)
-
-The standalone portfolio site is in preview. A public link will be added after release approval.

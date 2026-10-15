@@ -1,0 +1,71 @@
+{
+  "base": "http://127.0.0.1:3007/Alinguyen-portfolio",
+  "checkedAt": "2026-10-15T07:59:09.153Z",
+  "routes": [
+    {
+      "route": "/",
+      "title": "Ali Nguyen | Applied AI and Product Engineer",
+      "description": "Applied AI prototypes, developer tools, and live commerce products, built with a background in digital marketing and sales workflows.",
+      "canonical": "https://duytruyenthong.github.io/Alinguyen-portfolio/",
+      "ogImage": "https://duytruyenthong.github.io/Alinguyen-portfolio/opengraph-image.png?opengraph-image.3vf2x5jee1cnk.png"
+    },
+    {
+      "route": "/about/",
+      "title": "About Ali Nguyen",
+      "description": "Ali Nguyen builds applied AI prototypes, developer tools, and commerce products with a background in digital marketing.",
+      "canonical": "https://duytruyenthong.github.io/Alinguyen-portfolio/about/",
+      "ogImage": "https://duytruyenthong.github.io/Alinguyen-portfolio/opengraph-image.png"
+    },
+    {
+      "route": "/work/",
+      "title": "Work | Ali Nguyen",
+      "description": "Applied AI and data prototypes, developer tools, and live commerce products by Ali Nguyen.",
+      "canonical": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/",
+      "ogImage": "https://duytruyenthong.github.io/Alinguyen-portfolio/opengraph-image.png"
+    },
+    {
+      "route": "/work/kkbox-baseline/",
+      "title": "KKBox customer churn baseline case study | Ali Nguyen",
+      "description": "Subscription churn decisions require customer-level features without future-data leakage.",
+      "canonical": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/kkbox-baseline/",
+      "ogImage": "https://duytruyenthong.github.io/Alinguyen-portfolio/opengraph-image.png"
+    },
+    {
+      "route": "/work/vibecode-kit/",
+      "title": "Codex Vibecode Pro Max Kit case study | Ali Nguyen",
+      "description": "Small product teams need traceable planning, QA and release records.",
+      "canonical": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/vibecode-kit/",
+      "ogImage": "https://duytruyenthong.github.io/Alinguyen-portfolio/opengraph-image.png"
+    },
+    {
+      "route": "/work/stos/",
+      "title": "STOS Sales Traffic Operating System case study | Ali Nguyen",
+      "description": "Independent sellers and small businesses need a shareable place to present their work, products, and contact options.",
+      "canonical": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/stos/",
+      "ogImage": "https://duytruyenthong.github.io/Alinguyen-portfolio/opengraph-image.png"
+    },
+    {
+      "route": "/work/cho-kenh/",
+      "title": "Chợ Kênh case study | Ali Nguyen",
+      "description": "A digital-products marketplace currently focused on TikTok channels, where buyers and sellers can compare listings and discuss ownership, risk, and deal terms.",
+      "canonical": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/cho-kenh/",
+      "ogImage": "https://duytruyenthong.github.io/Alinguyen-portfolio/opengraph-image.png"
+    },
+    {
+      "route": "/work/growth-commerce-os/",
+      "title": "DUYTRUYENTHONG Growth Commerce OS case study | Ali Nguyen",
+      "description": "Commerce teams need a clearer path from content and channels to leads.",
+      "canonical": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/growth-commerce-os/",
+      "ogImage": "https://duytruyenthong.github.io/Alinguyen-portfolio/opengraph-image.png"
+    },
+    {
+      "route": "/credits/",
+      "title": "Credits | Ali Nguyen",
+      "description": "Applied AI prototypes, developer tools, and live commerce products, built with a background in digital marketing and sales workflows.",
+      "canonical": "https://duytruyenthong.github.io/Alinguyen-portfolio/credits/",
+      "ogImage": "https://duytruyenthong.github.io/Alinguyen-portfolio/opengraph-image.png?opengraph-image.3vf2x5jee1cnk.png"
+    }
+  ],
+  "assetsChecked": 58,
+  "problems": []
+}

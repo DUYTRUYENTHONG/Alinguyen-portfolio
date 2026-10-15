@@ -1,0 +1,45 @@
+{
+  "sourceCommit": "219f2ad",
+  "environment": "Local static export on http-server; Lighthouse 13.5 mobile simulated throttling; three runs",
+  "runs": [
+    {
+      "run": 1,
+      "performance": 67,
+      "accessibility": 100,
+      "seo": 100,
+      "lcpMs": 7278.415752193406,
+      "fcpMs": 2497.915752193405,
+      "tbtMs": 194,
+      "cls": 0.01780477255431518
+    },
+    {
+      "run": 2,
+      "performance": 70,
+      "accessibility": 100,
+      "seo": 100,
+      "lcpMs": 8118.453721644023,
+      "fcpMs": 2422.8102912330187,
+      "tbtMs": 93,
+      "cls": 0.01780477255431518
+    },
+    {
+      "run": 3,
+      "performance": 50,
+      "accessibility": 100,
+      "seo": 100,
+      "lcpMs": 7329.839,
+      "fcpMs": 2461.006799999999,
+      "tbtMs": 971.8288000000011,
+      "cls": 0.0006843557275452908
+    }
+  ],
+  "median": {
+    "performance": 67,
+    "accessibility": 100,
+    "seo": 100,
+    "lcpMs": 7329.839,
+    "fcpMs": 2461.006799999999,
+    "tbtMs": 194,
+    "cls": 0.01780477255431518
+  }
+}

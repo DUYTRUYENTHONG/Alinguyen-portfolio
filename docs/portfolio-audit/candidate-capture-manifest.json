@@ -1,0 +1,361 @@
+{
+  "phase": "candidate",
+  "base": "http://127.0.0.1:3007/Alinguyen-portfolio",
+  "sourceSha": null,
+  "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+  "dirty": true,
+  "browser": "Playwright 1.64.1 with Google Chrome 154.0.8037.98",
+  "visitorApiBlocked": true,
+  "expectedBlockedRequest": "https://ali-portfolio-visitor-api.vercel.app/**",
+  "records": [
+    {
+      "name": "home-desktop",
+      "state": "default",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-home-desktop.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "capturedAt": "2026-10-15T07:48:14.698Z",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "fullPage": false,
+      "captureMode": "viewport",
+      "reducedMotion": "reduce",
+      "width": 1440,
+      "height": 900,
+      "bytes": 125871,
+      "sha256": "1dc3199f7f2bcfaaa77550632b06e591bf72e94cbdf31c0928b94517afc7f491",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "home-desktop-full",
+      "state": "default",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-home-desktop-full.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "capturedAt": "2026-10-15T07:48:21.064Z",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "fullPage": true,
+      "captureMode": "full page with offscreen content rendered",
+      "reducedMotion": "reduce",
+      "width": 1440,
+      "height": 15735,
+      "bytes": 2666749,
+      "sha256": "9ee6ca13a73d401ae3bfa61588ca98e1f91e588369a91f16e82ec46426db985f",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "home-mobile",
+      "state": "default",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-home-mobile.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "capturedAt": "2026-10-15T07:48:22.059Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": false,
+      "captureMode": "viewport",
+      "reducedMotion": "reduce",
+      "width": 390,
+      "height": 844,
+      "bytes": 61124,
+      "sha256": "f2a73cefe1c55dc0e3f200cbd7924b79b9a245b79c72edb47186f9a7fd845563",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "home-mobile-full",
+      "state": "default",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-home-mobile-full.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "capturedAt": "2026-10-15T07:48:25.238Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": true,
+      "captureMode": "full page with offscreen content rendered",
+      "reducedMotion": "reduce",
+      "width": 390,
+      "height": 17634,
+      "bytes": 1508236,
+      "sha256": "f39f2600346a89f9563127c06d475312bfe6c543c6620eb9c074976c92bcb4a0",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "home-360-full",
+      "state": "default",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-home-360-full.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "capturedAt": "2026-10-15T07:48:28.396Z",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "fullPage": true,
+      "captureMode": "full page with offscreen content rendered",
+      "reducedMotion": "reduce",
+      "width": 360,
+      "height": 18024,
+      "bytes": 1567961,
+      "sha256": "44743d3ace4185028a2e601122a898d9a36da369c055ca57be46574e14b7ac06",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "home-768-full",
+      "state": "default",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-home-768-full.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "capturedAt": "2026-10-15T07:48:33.173Z",
+      "viewport": {
+        "width": 768,
+        "height": 900
+      },
+      "fullPage": true,
+      "captureMode": "full page with offscreen content rendered",
+      "reducedMotion": "reduce",
+      "width": 768,
+      "height": 18088,
+      "bytes": 2580090,
+      "sha256": "07a7b682c5acc3e5b7dba827bcd3355d826a36fc1223a27c2027f1bdeaaac670",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "home-1024-full",
+      "state": "default",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-home-1024-full.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "capturedAt": "2026-10-15T07:48:37.955Z",
+      "viewport": {
+        "width": 1024,
+        "height": 900
+      },
+      "fullPage": true,
+      "captureMode": "full page with offscreen content rendered",
+      "reducedMotion": "reduce",
+      "width": 1024,
+      "height": 15485,
+      "bytes": 2407777,
+      "sha256": "d2176bf671dc117a495a2d20096caa6bfe6941ca28ea3e048a888510fa57145c",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "home-1920-full",
+      "state": "default",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-home-1920-full.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "capturedAt": "2026-10-15T07:48:44.763Z",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "fullPage": true,
+      "captureMode": "full page with offscreen content rendered",
+      "reducedMotion": "reduce",
+      "width": 1920,
+      "height": 15930,
+      "bytes": 2841643,
+      "sha256": "51351f0cead65149f3f9e6c77f1d9ced6b50b3186e2eb7e538d6c92f829dce28",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "work-directory",
+      "state": "default",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-work-directory.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/work/",
+      "capturedAt": "2026-10-15T07:48:45.469Z",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "fullPage": false,
+      "captureMode": "viewport",
+      "reducedMotion": "reduce",
+      "width": 1440,
+      "height": 900,
+      "bytes": 207676,
+      "sha256": "e8ec50f24a709e46f0567f3bb6efb5ac5943e61f61522f2117c59a53cad4314e",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "case-kkbox",
+      "state": "default",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-case-kkbox.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/work/kkbox-baseline/",
+      "capturedAt": "2026-10-15T07:48:46.063Z",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "fullPage": false,
+      "captureMode": "viewport",
+      "reducedMotion": "reduce",
+      "width": 1440,
+      "height": 900,
+      "bytes": 71399,
+      "sha256": "b8be0497022b5794981663df8c6ddce9805e221e7e547c7d5f6722bfc9ad5491",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "case-stos",
+      "state": "default",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-case-stos.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/work/stos/",
+      "capturedAt": "2026-10-15T07:48:46.665Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": false,
+      "captureMode": "viewport",
+      "reducedMotion": "reduce",
+      "width": 390,
+      "height": 844,
+      "bytes": 112270,
+      "sha256": "202e47d6aa943a976c70d06367f4c7fa11ae8af05ddd458feb715437819114e8",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "mobile-menu",
+      "state": "menu expanded",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-mobile-menu.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "capturedAt": "2026-10-15T07:48:47.677Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": false,
+      "captureMode": "viewport",
+      "reducedMotion": "reduce",
+      "width": 390,
+      "height": 844,
+      "bytes": 46369,
+      "sha256": "920061d160628ce8d1d54dbe2ce5e982a7d1ba9cda4af7d6f9c5070cb4bfdc5c",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "contact-mobile",
+      "state": "contact section",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-contact-mobile.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "capturedAt": "2026-10-15T07:48:48.086Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": false,
+      "captureMode": "viewport",
+      "reducedMotion": "reduce",
+      "width": 390,
+      "height": 844,
+      "bytes": 58274,
+      "sha256": "d8360f034aa6d3465a735f5fbc41dcf09df42415de6401e1ab1244391d3dccbc",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "funnel-active-mobile",
+      "state": "funnel stage selected",
+      "path": "C:\\Users\\CROSSIAN\\Documents\\Codex\\2026-10-14\\files-pasted-by-the-user-role\\outputs\\ai-data-ecommerce-portfolio\\docs\\portfolio-audit\\screenshots\\candidate-funnel-active-mobile.png",
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "capturedAt": "2026-10-15T07:48:48.750Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fullPage": false,
+      "captureMode": "viewport",
+      "reducedMotion": "reduce",
+      "width": 390,
+      "height": 844,
+      "bytes": 91972,
+      "sha256": "ccd3acab5144092b86441b920490ee3a7371e298ecf2e14ee2ffb0bb3f3f04e1",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "overflow-360",
+      "width": 360,
+      "overflow": 0,
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "overflow-390",
+      "width": 390,
+      "overflow": 0,
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "overflow-768",
+      "width": 768,
+      "overflow": 0,
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "overflow-1024",
+      "width": 1024,
+      "overflow": 0,
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "overflow-1440",
+      "width": 1440,
+      "overflow": 0,
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    },
+    {
+      "name": "overflow-1920",
+      "width": 1920,
+      "overflow": 0,
+      "url": "http://127.0.0.1:3007/Alinguyen-portfolio/",
+      "sourceSha": null,
+      "sourceHead": "b90a1e01e8ca1b240b31bdb153acdaae47d95a03",
+      "dirty": true
+    }
+  ],
+  "errors": []
+}

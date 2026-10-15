@@ -1,0 +1,29 @@
+# Implementation report — portfolio release
+
+## Changes made
+
+1. **Work evidence first.** `src/app/work/directory.tsx` now orders the public developer tool and KKBox data prototype before the commerce sites, while category filters still work. Cards show each project's existing role and three technologies. `src/app/styles.css` gives these fields readable text and stable spacing.
+2. **Clearer case identity.** `src/app/work/[slug]/page.tsx` places the actual project name above the case headline and adds the existing technology list to the facts block. No technical result, metric, or contribution was invented.
+3. **Smaller previews.** Eleven generated `public/*-preview.webp` assets serve the homepage and case galleries. `src/app/experience.tsx` and `src/app/work/[slug]/page.tsx` use previews; gallery links still open the owner-supplied original PNGs. The transformation script is retained in ignored `work/qa-tools/generate-previews.cjs`; source images remain in `public/`.
+4. **Less initial client and layout work.** `src/app/experience.tsx` uses native radio inputs and CSS hover/press states instead of Motion wrappers for role tiles. `motion` was removed from `package.json` and the lockfile. `src/app/styles.css` uses `content-visibility:auto` with measured intrinsic-height estimates on deep homepage sections; reduced-motion hover behavior is preserved. The hero portrait uses synchronous decoding in `src/app/page.tsx` while retaining eager high-priority loading.
+5. **Shareable route previews.** `src/app/about/page.tsx`, `src/app/work/page.tsx`, and `src/app/work/[slug]/page.tsx` explicitly set the existing portfolio Open Graph image. The final static HTML now contains it for those routes.
+6. **Visible evidence limits.** `src/app/case-depth.tsx` now shows the existing "What is not yet proven" text in Skim, Read, and Deep dive. This preserves the factual copy while making prototype maturity clear by default. Only the next-step section stays behind Deep dive.
+7. **Documentation accuracy.** `README.md` now describes eleven customer names and the owner-supplied Đại An, 4U Home, Dê Cúc Phương City, and Bản Tôi logos accurately. No customer result or testimonial was added.
+8. **Guide scroll correction.** `src/app/guide-character.tsx` and `src/app/styles.css` anchor the selected guide to the viewport so rapid upward scrolling cannot move it offscreen between animation frames. The guide stays on one edge between page scenes, its speech bubble is clamped inside the viewport, it steps clear of prominent conversion links, and its travel animation reflects scroll direction.
+
+## Verification
+
+- `npm run typecheck`, `npm run lint`, and `npm run build` passed with the Pages environment variables and `/Alinguyen-portfolio` base path. `git diff --check` reported no whitespace errors.
+- [Browser journey results](journey-checks.json): 12/12 checks passed, twice in isolated final runs. They cover homepage identity and CTAs, About/experience, CV HTTP 200, contact `mailto:`, persistent role/guide, project filters and case navigation, default case limitations, case tabs and arrow keys, refresh, browser Back/Forward, return path, mobile menu Escape/focus, Work and fresh-load project/contact anchors, and zero overflow. A first Back/Forward test asserted before page restoration completed; waiting for `load` resolved that test timing issue without a source change.
+- The final [asset and metadata check](asset-checks.json) returned HTTP 200 for nine routes and 58 checked same-origin assets, with no reported problem. Child routes now expose `og:image` URLs under the repository subpath.
+- [Firefox 157 and WebKit 27.2 checks](nonchromium-checks.json) completed the mobile menu, Escape, Work anchor, overflow, and page-error smoke tests: menu visible, `#work` reached, zero horizontal overflow, and no page errors in each browser. This was a smoke check, not a full browser matrix.
+- [Candidate screenshots](candidate-capture-manifest.json) cover full-page Home at 360, 390, 768, 1024, 1440, and 1920 px plus case/menu/contact/funnel states. No unexpected browser errors or horizontal overflow were recorded. Full-page captures temporarily forced offscreen sections visible solely for screenshot completeness.
+- [Case-depth baseline](baseline-case-depth-manifest.json) and [candidate](candidate-case-depth-manifest.json) captures show the limitation text absent/present in the default Read panel. The fixed navigation appears over the element-only capture because it stays in the viewport while Playwright scrolls to the panel; that overlay was not treated as a new page regression.
+- [Production route/asset](production-asset-checks.json) and [internal-link](production-link-checks.json) inventories checked the public Pages build before the new patch. External targets were recorded without navigating to the separate STOS product.
+- [Resilience checks](resilience-checks.json) retained the heading and primary action with a failed portrait request, 250 ms delays on static assets, and a long mobile scroll; no page errors were recorded.
+- Lighthouse paired medians and limitations are in [Performance report](PERFORMANCE_REPORT.md).
+- The guide was checked against the KKBox case-study link while scrolling down and back up at 390 × 844, 530 × 604, and 1440 × 900. Immediate and settled positions stayed within each viewport, the message remained horizontally visible, and the settled guide cleared the link. The 12 browser journeys passed again after this correction.
+
+## Remaining limits
+
+The owner subsequently authorized a public release. The visitor-count backend was intentionally blocked in automated checks to avoid recording test visitors; its live behavior was not revalidated. The mobile lab LCP still exceeds 2.5 s, and product-case architecture evidence remains bounded by the material available. See [release checklist](RELEASE_CHECKLIST.md) and [release verdict](RELEASE_VERDICT.md).

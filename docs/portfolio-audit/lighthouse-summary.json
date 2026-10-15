@@ -1,0 +1,278 @@
+{
+  "mobileBefore": {
+    "files": [
+      "release-1",
+      "release-2",
+      "release-3"
+    ],
+    "runs": [
+      {
+        "performance": 55.00000000000001,
+        "accessibility": 100,
+        "seo": 100,
+        "fcpMs": 2738.6195287575933,
+        "lcpMs": 8436.119528757594,
+        "tbtMs": 504.5,
+        "cls": 0.01780477255431518,
+        "transferBytes": 1321036,
+        "jsBytes": 634404,
+        "imageBytes": 377014,
+        "fontBytes": 140939,
+        "longTasks": 12,
+        "styleLayoutMs": 4216.180000000004
+      },
+      {
+        "performance": 53,
+        "accessibility": 100,
+        "seo": 100,
+        "fcpMs": 2732.2122,
+        "lcpMs": 8046.8435,
+        "tbtMs": 628,
+        "cls": 0,
+        "transferBytes": 1321036,
+        "jsBytes": 634404,
+        "imageBytes": 377014,
+        "fontBytes": 140939,
+        "longTasks": 11,
+        "styleLayoutMs": 5067.252
+      },
+      {
+        "performance": 57.99999999999999,
+        "accessibility": 100,
+        "seo": 100,
+        "fcpMs": 2738.336883747052,
+        "lcpMs": 8276.336883747052,
+        "tbtMs": 404.5,
+        "cls": 0.01780477255431518,
+        "transferBytes": 1321036,
+        "jsBytes": 634404,
+        "imageBytes": 377014,
+        "fontBytes": 140939,
+        "longTasks": 10,
+        "styleLayoutMs": 3907.2119999999995
+      }
+    ],
+    "median": {
+      "performance": 55.00000000000001,
+      "accessibility": 100,
+      "seo": 100,
+      "fcpMs": 2738.336883747052,
+      "lcpMs": 8276.336883747052,
+      "tbtMs": 504.5,
+      "cls": 0.01780477255431518,
+      "transferBytes": 1321036,
+      "jsBytes": 634404,
+      "imageBytes": 377014,
+      "fontBytes": 140939,
+      "longTasks": 11,
+      "styleLayoutMs": 4216.180000000004
+    }
+  },
+  "mobileAfter": {
+    "files": [
+      "mission-mobile-after-1",
+      "mission-mobile-after-2",
+      "mission-mobile-after-3"
+    ],
+    "runs": [
+      {
+        "performance": 65,
+        "accessibility": 100,
+        "seo": 100,
+        "fcpMs": 2253.0010679954526,
+        "lcpMs": 3395.002669988631,
+        "tbtMs": 1031.4999999999995,
+        "cls": 0.01780477255431518,
+        "transferBytes": 1143502,
+        "jsBytes": 498584,
+        "imageBytes": 377014,
+        "fontBytes": 97419,
+        "longTasks": 15,
+        "styleLayoutMs": 2838.084
+      },
+      {
+        "performance": 72,
+        "accessibility": 100,
+        "seo": 100,
+        "fcpMs": 2412.3525,
+        "lcpMs": 6891.352499999999,
+        "tbtMs": 87,
+        "cls": 0.01780477255431518,
+        "transferBytes": 1143502,
+        "jsBytes": 498584,
+        "imageBytes": 377014,
+        "fontBytes": 97419,
+        "longTasks": 5,
+        "styleLayoutMs": 822.932
+      },
+      {
+        "performance": 70,
+        "accessibility": 100,
+        "seo": 100,
+        "fcpMs": 2423.310800473888,
+        "lcpMs": 6947.810800473888,
+        "tbtMs": 138,
+        "cls": 0.01780477255431518,
+        "transferBytes": 1143502,
+        "jsBytes": 498584,
+        "imageBytes": 377014,
+        "fontBytes": 97419,
+        "longTasks": 4,
+        "styleLayoutMs": 1344.7080000000005
+      }
+    ],
+    "median": {
+      "performance": 70,
+      "accessibility": 100,
+      "seo": 100,
+      "fcpMs": 2412.3525,
+      "lcpMs": 6891.352499999999,
+      "tbtMs": 138,
+      "cls": 0.01780477255431518,
+      "transferBytes": 1143502,
+      "jsBytes": 498584,
+      "imageBytes": 377014,
+      "fontBytes": 97419,
+      "longTasks": 5,
+      "styleLayoutMs": 1344.7080000000005
+    }
+  },
+  "desktopBefore": {
+    "files": [
+      "audit-desktop-before-1",
+      "audit-desktop-before-2",
+      "audit-desktop-before-3"
+    ],
+    "runs": [
+      {
+        "performance": 95,
+        "accessibility": 100,
+        "seo": 100,
+        "fcpMs": 611.2977128815382,
+        "lcpMs": 1454.7480940679486,
+        "tbtMs": 9.499999999999886,
+        "cls": 0.003642721878550688,
+        "transferBytes": 1321036,
+        "jsBytes": 634404,
+        "imageBytes": 377014,
+        "fontBytes": 140939,
+        "longTasks": 2,
+        "styleLayoutMs": 515.6489999999993
+      },
+      {
+        "performance": 95,
+        "accessibility": 100,
+        "seo": 100,
+        "fcpMs": 593.3905919056469,
+        "lcpMs": 1477.8254932547056,
+        "tbtMs": 44.499999999999886,
+        "cls": 0.003642721878550688,
+        "transferBytes": 1321036,
+        "jsBytes": 634404,
+        "imageBytes": 377014,
+        "fontBytes": 140939,
+        "longTasks": 3,
+        "styleLayoutMs": 929.8900000000003
+      },
+      {
+        "performance": 95,
+        "accessibility": 100,
+        "seo": 100,
+        "fcpMs": 584.6719254205391,
+        "lcpMs": 1454.5599378504492,
+        "tbtMs": 43.5,
+        "cls": 0.003642721878550688,
+        "transferBytes": 1321036,
+        "jsBytes": 634404,
+        "imageBytes": 377014,
+        "fontBytes": 140939,
+        "longTasks": 3,
+        "styleLayoutMs": 1109.1700000000021
+      }
+    ],
+    "median": {
+      "performance": 95,
+      "accessibility": 100,
+      "seo": 100,
+      "fcpMs": 593.3905919056469,
+      "lcpMs": 1454.7480940679486,
+      "tbtMs": 43.5,
+      "cls": 0.003642721878550688,
+      "transferBytes": 1321036,
+      "jsBytes": 634404,
+      "imageBytes": 377014,
+      "fontBytes": 140939,
+      "longTasks": 3,
+      "styleLayoutMs": 929.8900000000003
+    }
+  },
+  "desktopAfter": {
+    "files": [
+      "mission-desktop-after-1",
+      "mission-desktop-after-2",
+      "mission-desktop-after-3"
+    ],
+    "runs": [
+      {
+        "performance": 96,
+        "accessibility": 100,
+        "seo": 100,
+        "fcpMs": 550.8920751124945,
+        "lcpMs": 1349.7433959270788,
+        "tbtMs": 23.5,
+        "cls": 0.003642721878550688,
+        "transferBytes": 1143502,
+        "jsBytes": 498584,
+        "imageBytes": 377014,
+        "fontBytes": 97419,
+        "longTasks": 2,
+        "styleLayoutMs": 416.54499999999996
+      },
+      {
+        "performance": 95,
+        "accessibility": 100,
+        "seo": 100,
+        "fcpMs": 570.60175,
+        "lcpMs": 1441.6681250000001,
+        "tbtMs": 54.5,
+        "cls": 0.003642721878550688,
+        "transferBytes": 1143502,
+        "jsBytes": 498584,
+        "imageBytes": 377014,
+        "fontBytes": 97419,
+        "longTasks": 3,
+        "styleLayoutMs": 656.9549999999997
+      },
+      {
+        "performance": 96,
+        "accessibility": 100,
+        "seo": 100,
+        "fcpMs": 550.9061092365962,
+        "lcpMs": 1358.406109236596,
+        "tbtMs": 18.5,
+        "cls": 0.003642721878550688,
+        "transferBytes": 1143502,
+        "jsBytes": 498584,
+        "imageBytes": 377014,
+        "fontBytes": 97419,
+        "longTasks": 2,
+        "styleLayoutMs": 400.58700000000016
+      }
+    ],
+    "median": {
+      "performance": 96,
+      "accessibility": 100,
+      "seo": 100,
+      "fcpMs": 550.9061092365962,
+      "lcpMs": 1358.406109236596,
+      "tbtMs": 23.5,
+      "cls": 0.003642721878550688,
+      "transferBytes": 1143502,
+      "jsBytes": 498584,
+      "imageBytes": 377014,
+      "fontBytes": 97419,
+      "longTasks": 2,
+      "styleLayoutMs": 416.54499999999996
+    }
+  }
+}
