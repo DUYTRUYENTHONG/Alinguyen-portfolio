@@ -100,8 +100,8 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
     <>
       <header className={`site-header ${compact ? "is-compact" : ""} ${hidden && !open ? "is-hidden" : ""}`}>
         <nav className="desktop-nav" aria-label="Main navigation">
-          <Link className={activePage === "#top" ? "nav-active" : ""} href={navHref("#top")}>Ali Nguyen</Link>
-          {navItems.slice(1).map((item) => <Link className={activePage === item.href ? "nav-active" : ""} key={item.href} href={navHref(item.href)}>{item.label}</Link>)}
+          <Link className={activePage === "#top" ? "nav-active" : ""} href={navHref("#top")}><span>Ali Nguyen</span></Link>
+          {navItems.slice(1).map((item) => <Link className={activePage === item.href ? "nav-active" : ""} key={item.href} href={navHref(item.href)}><span>{item.label}</span></Link>)}
           <span className="nav-clock">DUYTRUYENTHONG · AI / DATA</span>
         </nav>
         <button ref={menuButton} className="menu-trigger" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>
