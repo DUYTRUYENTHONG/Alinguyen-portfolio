@@ -22,12 +22,37 @@ const stops = [
   ["#contact", "Let's talk"],
 ] as const;
 
+const sceneMessages: Record<string, string> = {
+  "Choose your perspective": "Pick a role and I’ll keep that look as we explore the page.",
+  "What I do": "I connect marketing, commerce, and data so the next step is clearer.",
+  "Proof of work": "These labels separate live sites, public code, and local prototypes.",
+  Highlights: "Here’s the short version. Open a card when something catches your eye.",
+  "From signal to decision": "The common thread: collect a signal, build a useful workflow, then decide.",
+  "Selected work": "Browse the projects for the problem, my role, and the evidence.",
+  "Sales journey": "Try either funnel: each stage explains the job it does and the signal to watch.",
+  Customers: "These are customer names from the work behind the portfolio.",
+  "About Ali": "This is how I scope work and keep claims tied to evidence.",
+  "Download a CV": "Choose the version that fits the role you’re discussing.",
+  "Build notes": "A few decisions show how I test and explain the work.",
+  "Let's talk": "Tell me the offer, the audience, and where people get stuck.",
+};
+
+const projectMessages: Record<string, string> = {
+  "vibecode-kit": "A public CLI with plans, release checks, and passing CI to inspect.",
+  "growth-commerce-os": "A live service site connecting content, channels, and lead paths.",
+  stos: "A live sales page product for independent sellers and small businesses.",
+  "cho-kenh": "A TikTok channel catalog with manual inquiries and deal checks.",
+  "kkbox-baseline": "A local churn prototype with a check against future-data leakage.",
+};
+
 export function GuideCharacter({ icon }: { icon: string }) {
   const stageRef = useRef<HTMLDivElement>(null);
   const actorRef = useRef<HTMLButtonElement>(null);
   const lastPosition = useRef<{ x: number; y: number } | null>(null);
   const [stop, setStop] = useState("Choose your perspective");
+  const [message, setMessage] = useState(sceneMessages["Choose your perspective"]);
   const stopRef = useRef(stop);
+  const messageRef = useRef(message);
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -60,9 +85,11 @@ export function GuideCharacter({ icon }: { icon: string }) {
       const visible = Boolean(visitor && visitor.getBoundingClientRect().top < window.innerHeight * .8 && (!contact || contact.getBoundingClientRect().bottom > window.innerHeight * .15));
 
       let label = "Explore the portfolio";
-      for (const [selector, title] of stops) {
+      let sceneIndex = 0;
+      let projectId: string | null = null;
+      for (const [index, [selector, title]] of stops.entries()) {
         const rect = document.querySelector(selector)?.getBoundingClientRect();
-        if (rect && rect.top <= readingLine && rect.bottom > readingLine) { label = title; break; }
+        if (rect && rect.top <= readingLine && rect.bottom > readingLine) { label = title; sceneIndex = index; break; }
       }
       if (label === "Selected work") {
         for (const card of document.querySelectorAll<HTMLElement>(".work-card")) {
@@ -70,13 +97,17 @@ export function GuideCharacter({ icon }: { icon: string }) {
           if (rect.top <= readingLine && rect.bottom > readingLine) {
             const project = projects.find((item) => `project-${item.id}` === card.id);
             label = project?.name.replace("DUYTRUYENTHONG ", "").replace("Codex ", "") ?? label;
+            projectId = project?.id ?? null;
             break;
           }
         }
       }
 
-      let x = Math.max(0, maxX - 8);
-      let y = clamp(readingLine - stageRect.top, 0, maxY);
+      const desktop = window.innerWidth >= 768;
+      const leftSide = desktop && [1, 3, 6, 8, 10].includes(sceneIndex);
+      const edgeOffset = [8, 30, 14, 44, 22, 50, 10, 38, 18, 32, 12, 24][sceneIndex] ?? 8;
+      let x = leftSide ? edgeOffset : Math.max(0, maxX - edgeOffset);
+      let y = clamp(readingLine - stageRect.top + [0, -24, 18, -15, 24, -12, 16, -22, 12, -16, 20, 0][sceneIndex], 0, maxY);
       const visitorRect = visitor?.getBoundingClientRect();
       if (visitorRect && visitorRect.top <= readingLine && visitorRect.bottom > readingLine) {
         const card = visitor?.querySelector(".role-card.is-selected") ?? visitor?.querySelector(".role-card");
@@ -100,7 +131,8 @@ export function GuideCharacter({ icon }: { icon: string }) {
           y = mix(from.y, to.y, amount) - (reducedMotion.matches ? 0 : Math.sin(Math.PI * amount) * 20);
         }
       }
-      return { x: clamp(x, 0, maxX), y: clamp(y, 0, maxY), label, visible, maxX };
+      const message = (projectId ? projectMessages[projectId] : null) ?? sceneMessages[label] ?? "Follow along for the work and the decisions behind it.";
+      return { x: clamp(x, 0, maxX), y: clamp(y, 0, maxY), label, message, visible, maxX, side: leftSide ? "left" : "right" };
     };
 
     const paint = () => {
@@ -108,9 +140,14 @@ export function GuideCharacter({ icon }: { icon: string }) {
       actor.style.opacity = target.visible ? "1" : "0";
       actor.style.pointerEvents = target.visible ? "auto" : "none";
       actor.tabIndex = target.visible ? 0 : -1;
+      actor.dataset.side = target.side;
       if (stopRef.current !== target.label) {
         stopRef.current = target.label;
         setStop(target.label);
+      }
+      if (messageRef.current !== target.message) {
+        messageRef.current = target.message;
+        setMessage(target.message);
       }
       manualOffset = clamp(manualOffset, -target.x, target.maxX - target.x);
       const targetX = clamp(target.x + manualOffset, 0, target.maxX);
@@ -213,9 +250,9 @@ export function GuideCharacter({ icon }: { icon: string }) {
   }, [stop, icon]);
 
   return <div className="guide-stage guide-stage-journey" ref={stageRef}>
-    <button ref={actorRef} className="guide-character" type="button" aria-label={`Tour guide: ${stop}. Focus to walk with arrow keys; tap or press Up to jump.`} title="Your guide · Arrow keys walk when focused · Tap to jump">
+    <button ref={actorRef} className="guide-character" type="button" aria-label={`Tour guide: ${stop}. ${message} Focus to walk with arrow keys; tap or press Up to jump.`} title="Your guide · Arrow keys walk when focused · Tap to jump">
       <img src={`${basePath}/guide-art/${icon}.webp`} alt="" width="68" height="102" draggable="false" />
-      <span className="guide-callout" aria-hidden="true"><small>Your guide</small><strong>{stop}</strong></span>
+      <span className="guide-callout" aria-hidden="true"><small>{stop}</small><strong>{message}</strong></span>
     </button>
   </div>;
 }

@@ -146,12 +146,6 @@ export const capabilities = [
   { group: "Analytics & delivery", items: ["PostgreSQL", "Power BI", "DAX", "GitHub Actions", "Testing"] },
 ] as const;
 
-export const funnelStages = [
-  { number: "01", title: "Attract relevant traffic", detail: "Client discovery, local search presence, content, and TikTok/Facebook assets connect an offer with the people it serves.", source: "DUYTRUYENTHONG agency experience" },
-  { number: "02", title: "Make the next step clear", detail: "Sales pages, service journeys, and inquiry paths help visitors understand the offer and contact the right person.", source: "Growth Commerce OS and STOS" },
-  { number: "03", title: "Learn from the funnel", detail: "Customer data, lead signals, and analytics help teams find where the journey stalls and decide what to improve.", source: "Business analysis and data work" },
-] as const;
-
 export const cvTracks = [
   { title: "Applied AI engineering", detail: "LLM applications, retrieval workflows, Python, and customer analytics prototypes.", downloads: [{ label: "Download PDF", path: "cv-applied-ai-engineer.pdf" }] },
   { title: "Business and product", detail: "Digital marketing services, sales funnels, solution consulting, and commerce products.", downloads: [{ label: "Business & Product PDF", path: "cv-business-product.pdf" }, { label: "Business Development PDF", path: "cv-business-development.pdf" }], note: "The two supplied PDFs have identical content." },
