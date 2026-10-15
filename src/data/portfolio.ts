@@ -33,7 +33,7 @@ export const identity = {
 export const customers = [
   { name: "Vựa Sầu Riêng Cô Ba", logo: "customer-co-ba.webp", href: "https://www.tiktok.com/@sauriengcoba206" },
   { name: "Vựa Sầu Riêng Bà Chi", logo: "customer-ba-chi.webp" },
-  { name: "Vựa Sầu Riêng Đại An" },
+  { name: "Vựa Sầu Riêng Đại An", logo: "customer-dai-an.png" },
   { name: "Hãng xe Toàn Thắng", logo: "customer-toan-thang.svg", href: "https://toanthangcar.com/" },
   { name: "4U Home", logo: "customer-4u-home.png" },
   { name: "Xây dựng Hưng Phú Thịnh", logo: "customer-hung-phu-thinh.png", href: "https://hungphuthinh.vn/" },
