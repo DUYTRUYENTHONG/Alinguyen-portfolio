@@ -230,43 +230,20 @@ export function ScrollStatement() {
 }
 
 export function CustomerCarousel() {
-  const rail = useRef<HTMLElement>(null);
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  const goTo = (index: number) => {
-    const next = (index + customers.length) % customers.length;
-    const container = rail.current;
-    const card = container?.children[next] as HTMLElement | undefined;
-    if (container && card) {
-      const left = card.getBoundingClientRect().left - container.getBoundingClientRect().left + container.scrollLeft;
-      container.scrollTo({ left, behavior: "smooth" });
-    }
-    setActive(next);
-  };
-
-  useEffect(() => {
-    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => goTo(active + 1), 4500);
-    return () => window.clearInterval(timer);
-  }, [active, paused]);
+  const renderCards = (copy: "primary" | "duplicate") => customers.map((customer) => {
+    const content = <span className="customer-mark">{"logo" in customer ? <img src={`${basePath}/${customer.logo}`} alt={customer.name} loading="eager" /> : <strong>{customer.name}</strong>}</span>;
+    return "href" in customer ? <a className="customer-card" key={customer.name} href={customer.href} target="_blank" rel="noopener noreferrer" tabIndex={copy === "duplicate" ? -1 : undefined} aria-label={`${customer.name} — visit brand website`}>{content}</a> : <div className="customer-card" key={customer.name}>{content}</div>;
+  });
 
   return (
     <section className="customer-section" id="feedback" aria-labelledby="customers-title">
       <div className="section-shell">
         <div className="customer-heading"><div><p className="eyebrow">Customers &amp; collaborations</p><h2 id="customers-title">Built for real businesses.</h2><p>Customer names shared by Ali Nguyen. Individual testimonials are not quoted here.</p></div></div>
-        <section className="customer-rail" ref={rail} aria-roledescription="carousel" aria-label="Customer names and logos" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }} onScroll={(event) => {
-          const container = event.currentTarget;
-          const nearest = [...container.children].reduce((best, child, index) => {
-            const distance = Math.abs(child.getBoundingClientRect().left - container.getBoundingClientRect().left);
-            return distance < best.distance ? { index, distance } : best;
-          }, { index: 0, distance: Infinity });
-          setActive(nearest.index);
-        }}>
-          {customers.map((customer) => {
-            const content = <span className="customer-mark">{"logo" in customer ? <img src={`${basePath}/${customer.logo}`} alt={customer.name} loading="lazy" /> : <strong>{customer.name}</strong>}</span>;
-            return "href" in customer ? <a className="customer-card" key={customer.name} href={customer.href} target="_blank" rel="noopener noreferrer" aria-label={`${customer.name} — visit brand website`}>{content}</a> : <div className="customer-card" key={customer.name}>{content}</div>;
-          })}
+        <section className="customer-rail" aria-label="Customer names and logos">
+          <div className="customer-track">
+            <div className="customer-group">{renderCards("primary")}</div>
+            <div className="customer-group" aria-hidden="true" inert>{renderCards("duplicate")}</div>
+          </div>
         </section>
       </div>
     </section>
