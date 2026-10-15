@@ -17,6 +17,11 @@ The GitHub Pages repository is `DUYTRUYENTHONG/Alinguyen-portfolio`, at
 `https://duytruyenthong.github.io/Alinguyen-portfolio/`. The workflow builds with
 `NEXT_PUBLIC_SITE_URL` set to that URL and `NEXT_PUBLIC_BASE_PATH=/Alinguyen-portfolio`.
 Local builds use `localhost:3000` in metadata and disallow indexing.
+The visitor counter uses the independent Vercel API in `visitor-api/` backed by
+Upstash Redis. Set `NEXT_PUBLIC_VISITOR_API_URL=https://ali-portfolio-visitor-api.vercel.app/api/visit`
+in `.env.local` for local development. The GitHub Pages workflow sets the same
+public URL for its build. One browser UUID counts once; choosing a different role
+updates the role totals without adding another visitor.
 The LinkedIn URL and public KKBox repository link await owner input or
 publication.
 
@@ -40,7 +45,8 @@ transactions or buyer outcomes are claimed.
 
 For an exact preview of the GitHub Pages path, build with
 `NEXT_PUBLIC_BASE_PATH=/Alinguyen-portfolio` and serve the generated `out/` directory
-under `/Alinguyen-portfolio/`. The project has no server-side runtime requirement.
+under `/Alinguyen-portfolio/`. The portfolio pages are static; live visitor totals
+require the separate API.
 
 `PROFILE_README.md` is the draft for the username-matched GitHub repository.
 

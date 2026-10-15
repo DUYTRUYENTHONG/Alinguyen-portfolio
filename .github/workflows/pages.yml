@@ -28,6 +28,7 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: /Alinguyen-portfolio
           NEXT_PUBLIC_SITE_URL: https://duytruyenthong.github.io/Alinguyen-portfolio
+          NEXT_PUBLIC_VISITOR_API_URL: https://ali-portfolio-visitor-api.vercel.app/api/visit
       - run: touch out/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
