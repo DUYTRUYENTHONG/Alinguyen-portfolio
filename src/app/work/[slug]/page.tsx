@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { PortfolioLink as Link } from "@/app/portfolio-link";
 import { notFound } from "next/navigation";
 import { identity, projects } from "@/data/portfolio";
 import { CaseDepth, type CaseDetail } from "@/app/case-depth";
@@ -75,7 +75,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = projects.find((item) => item.id === slug);
   if (!project) return {};
-  return { title: `${project.name} case study | ${identity.name}`, description: project.problem };
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+  return { title: `${project.name} case study | ${identity.name}`, description: project.problem, alternates: { canonical: `${siteUrl}/work/${slug}/` }, openGraph: { title: `${project.name} case study | ${identity.name}`, description: project.problem } };
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {

@@ -16,13 +16,13 @@ export type Project = {
 export const identity = {
   name: "Ali Nguyen",
   brand: "DUYTRUYENTHONG",
-  title: "Sales, Marketing & E-commerce Builder",
+  title: "Applied AI and Product Engineer",
   experience: {
     digitalMarketing: "4+ years in digital marketing",
     aiEngineering: "2+ years in AI engineering and product building",
   },
   proposition:
-    "I build AI, data, and digital commerce systems that help businesses improve sales funnels and generate more qualified leads.",
+    "Applied AI prototypes, developer tools, and live commerce products, built with a background in digital marketing and sales workflows.",
   email: "nquangd1510@gmail.com",
   github: "https://github.com/DUYTRUYENTHONG",
   service: "https://growth-commerce-os.vercel.app/en",

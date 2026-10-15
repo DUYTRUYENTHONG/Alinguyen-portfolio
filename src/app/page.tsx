@@ -1,9 +1,13 @@
+import type { Metadata } from "next";
 import { capabilities, cvTracks, identity, principles, projects } from "@/data/portfolio";
 import { CopyEmail, CustomerCarousel, PortfolioGuide, RotatingFocus, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
 import { FunnelExperience } from "./funnel-experience";
 import "./funnel.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+export const metadata: Metadata = { alternates: { canonical: siteUrl } };
 
 const highlights = [
   { icon: "↗", title: "Growth Commerce OS", description: "A live service website for the DUYTRUYENTHONG brand.", href: identity.service, link: "Visit site" },
@@ -29,14 +33,15 @@ export default function Home() {
       <PortfolioGuide />
       <section className="hero" id="top" aria-labelledby="hero-title">
         <div className="hero-copy section-shell">
-          <h1 id="hero-title">Ali Nguyen builds<br /> sales, marketing &amp;<br /> e-commerce systems.</h1>
+          <h1 id="hero-title">Ali Nguyen builds<br /> applied AI &amp; digital<br /> products.</h1>
           <p className="hero-rotate">I build <RotatingFocus /></p>
-          <p className="hero-meta">Sales, digital marketing, and e-commerce systems for better funnels and more qualified leads. <span>DUYTRUYENTHONG</span></p>
+          <p className="hero-meta">Applied AI prototypes, developer tools, and live commerce products—grounded in customer and business needs. <span>DUYTRUYENTHONG</span></p>
+          <div className="hero-actions"><a className="hero-action-primary" href="#work">Explore engineering work <span aria-hidden="true">↗</span></a><a className="hero-action-secondary" href={`${basePath}/cv-applied-ai-engineer.pdf`} download>Download AI CV <span aria-hidden="true">↓</span></a></div>
           <p className="hero-experience"><span>{identity.experience.digitalMarketing}</span><span>{identity.experience.aiEngineering}</span></p>
         </div>
         <div className="portrait-stage">
           <div className="portrait-halo" aria-hidden="true" />
-          <img className="portrait-photo" src={`${basePath}/ali-nguyen-portrait.png`} alt="Portrait of Ali Nguyen wearing a black suit" width="1064" height="1536" fetchPriority="high" />
+          <img className="portrait-photo" src={`${basePath}/ali-nguyen-portrait-960.webp`} srcSet={`${basePath}/ali-nguyen-portrait-480.webp 480w, ${basePath}/ali-nguyen-portrait-960.webp 960w`} sizes="(max-width: 767px) 380px, 768px" alt="Portrait of Ali Nguyen wearing a black suit" width="1071" height="1468" fetchPriority="high" decoding="async" />
           <span className="portrait-caption">ALI NGUYEN / DUYTRUYENTHONG</span>
         </div>
       </section>
@@ -60,7 +65,7 @@ export default function Home() {
       <section className="cv-section" id="cvs" aria-labelledby="cv-title"><div className="section-shell"><div className="section-heading"><p className="eyebrow">Downloadable CVs</p><h2 id="cv-title">Different roles, one body of work.</h2><p>Choose the CV closest to your conversation with me. The supplied documents use the name Nguyen Quang Duy.</p></div><div className="cv-grid">{cvTracks.map((track, index) => <article className="cv-card" key={track.title}><span className="cv-index">0{index + 1} / CV</span><h3>{track.title}</h3><p>{track.detail}</p><div className="cv-downloads">{track.downloads.map((file) => <a key={file.path} href={`${basePath}/${file.path}`} download>{file.label} <span aria-hidden="true">↓</span></a>)}</div>{"note" in track && <small>{track.note}</small>}</article>)}</div></div></section>
 
       <section className="notes-section section-shell" aria-labelledby="notes-title"><div className="section-heading"><p className="eyebrow">Notes from the build</p><h2 id="notes-title">A few decisions behind the work.</h2></div><div className="notes-grid"><article><span>01 / CUSTOMER DATA</span><h3>Predict from what was known then.</h3><p>The KKBox baseline aggregates events only through a selected snapshot date, with a synthetic check for future-data leakage.</p><a href="#project-kkbox-baseline">Explore KKBox ↗</a></article><article><span>02 / PRODUCT DELIVERY</span><h3>Make quality gates visible.</h3><p>The public Vibecode kit records plans, evidence, and checks so a release can be reviewed.</p><a href="https://github.com/DUYTRUYENTHONG/vibecode-product-kit">View the kit ↗</a></article><article><span>03 / COMMERCE</span><h3>Connect the system to the decision.</h3><p>Growth Commerce OS presents service workflows around content, channels, landing pages, and leads.</p><a href={identity.service}>Visit the service site ↗</a></article></div></section>
-      <section className="contact-section" id="contact" aria-labelledby="contact-title"><div className="section-shell contact-shell"><p className="eyebrow">Contact</p><h2 id="contact-title">Want to improve your sales funnel? Drop me a line.</h2><a className="contact-email" href={`mailto:${identity.email}`}>{identity.email} <span aria-hidden="true">↗</span></a><CopyEmail email={identity.email} /><div className="contact-prompts"><p>NOT SURE WHAT TO SAY? START HERE.</p><a href={`mailto:${identity.email}?subject=Sales%20funnel%20and%20lead%20generation`}>Tell me about your sales funnel ↗</a><a href={`mailto:${identity.email}?subject=AI%20and%20commerce%20workflow`}>Ask about an AI workflow ↗</a></div><div className="social-links"><a href={identity.github}>GitHub ↗</a><a href={identity.service}>Service website ↗</a><a href="#cvs">View CVs ↗</a></div></div></section>
+      <section className="contact-section" id="contact" aria-labelledby="contact-title"><div className="section-shell contact-shell"><p className="eyebrow">Contact</p><h2 id="contact-title">Have an engineering role or product challenge in mind? Let's talk.</h2><a className="contact-email" href={`mailto:${identity.email}`}>{identity.email} <span aria-hidden="true">↗</span></a><CopyEmail email={identity.email} /><div className="contact-prompts"><p>NOT SURE WHAT TO SAY? START HERE.</p><a href={`mailto:${identity.email}?subject=Engineering%20opportunity`}>Discuss an engineering role ↗</a><a href={`mailto:${identity.email}?subject=AI%20and%20commerce%20workflow`}>Ask about an AI workflow ↗</a></div><div className="social-links"><a href={identity.github}>GitHub ↗</a><a href={identity.service}>Service website ↗</a><a href="#cvs">View CVs ↗</a></div></div></section>
     </main>
     <footer className="site-footer"><span>Ali Nguyen · DUYTRUYENTHONG</span><span>© {new Date().getFullYear()}</span><a href={`${basePath}/credits/`}>Credits</a><a href="#top">Back to top ↑</a></footer>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />

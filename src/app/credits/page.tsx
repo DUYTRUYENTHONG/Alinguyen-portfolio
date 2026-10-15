@@ -1,6 +1,8 @@
-import Link from "next/link";
+import { PortfolioLink as Link } from "../portfolio-link";
 
-export const metadata = { title: "Credits | Ali Nguyen" };
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+
+export const metadata = { title: "Credits | Ali Nguyen", alternates: { canonical: `${siteUrl}/credits/` } };
 
 export default function CreditsPage() {
   return <main className="credits-page section-shell">

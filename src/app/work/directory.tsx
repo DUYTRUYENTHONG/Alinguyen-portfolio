@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { PortfolioLink as Link } from "../portfolio-link";
 import { useState } from "react";
 import { projects } from "@/data/portfolio";
 import { ProjectVisual } from "../experience";
