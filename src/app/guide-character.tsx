@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-export function GuideCharacter({ activeProjectId }: { activeProjectId?: string }) {
+export function GuideCharacter({ activeProjectId, mode = "work", icon = "builder" }: { activeProjectId?: string; mode?: "visitor" | "work"; icon?: string }) {
   const stageRef = useRef<HTMLDivElement>(null);
   const actorRef = useRef<HTMLButtonElement>(null);
   const positionRef = useRef<number | null>(null);
@@ -22,6 +22,10 @@ export function GuideCharacter({ activeProjectId }: { activeProjectId?: string }
     let lastTime = 0;
 
     const floor = () => {
+      if (mode === "visitor") {
+        const line = stage.parentElement?.querySelector(".visitor-stats, .visitor-stats-offline");
+        return (line?.getBoundingClientRect().top ?? stage.getBoundingClientRect().bottom) - stage.getBoundingClientRect().top - actor.offsetHeight + 3;
+      }
       const card = document.getElementById(`project-${activeProjectId}`) ?? stage.parentElement?.querySelector(".work-card");
       if (!card) return 0;
       const platform = card.querySelector(".project-proof") ?? card;
@@ -30,7 +34,7 @@ export function GuideCharacter({ activeProjectId }: { activeProjectId?: string }
 
     const paint = () => {
       const maxX = Math.max(0, stage.clientWidth - actor.offsetWidth);
-      const x = Math.min(maxX, Math.max(0, positionRef.current ?? maxX * .3));
+      const x = Math.min(maxX, Math.max(0, positionRef.current ?? maxX * (mode === "visitor" ? .72 : .3)));
       positionRef.current = x;
       actor.style.transform = `translate3d(${x}px, ${floor() + rise}px, 0)`;
       actor.classList.toggle("is-walking", held.left || held.right);
@@ -41,7 +45,7 @@ export function GuideCharacter({ activeProjectId }: { activeProjectId?: string }
       const delta = Math.min((time - (lastTime || time)) / 1000, .05);
       lastTime = time;
       const direction = Number(held.right) - Number(held.left);
-      positionRef.current = (positionRef.current ?? stage.clientWidth * .3) + direction * 205 * delta;
+      positionRef.current = (positionRef.current ?? stage.clientWidth * (mode === "visitor" ? .72 : .3)) + direction * 205 * delta;
       if (rise < 0 || velocity < 0) {
         velocity += 1800 * delta;
         rise = Math.min(0, rise + velocity * delta);
@@ -76,6 +80,10 @@ export function GuideCharacter({ activeProjectId }: { activeProjectId?: string }
     const stop = () => { held.left = false; held.right = false; };
     const observer = new ResizeObserver(paint);
     observer.observe(stage);
+    if (mode === "visitor") {
+      const grid = stage.parentElement?.querySelector(".role-grid");
+      if (grid) observer.observe(grid);
+    }
     actor.addEventListener("keydown", keyDown);
     actor.addEventListener("keyup", keyUp);
     actor.addEventListener("click", jump);
@@ -89,11 +97,11 @@ export function GuideCharacter({ activeProjectId }: { activeProjectId?: string }
       actor.removeEventListener("click", jump);
       actor.removeEventListener("blur", stop);
     };
-  }, [activeProjectId]);
+  }, [activeProjectId, mode, icon]);
 
-  return <div className="guide-stage" ref={stageRef} aria-hidden="false">
+  return <div className={`guide-stage guide-stage-${mode}`} ref={stageRef} aria-hidden="false">
     <button ref={actorRef} className="guide-character" type="button" aria-label="Guide character: focus, use left and right arrow keys to walk; Up or tap to jump" title="Arrow keys walk · Up or tap jumps">
-      <img src={`${basePath}/role-art/builder.webp`} alt="" width="68" height="102" draggable="false" />
+      <img src={`${basePath}/role-art/${icon}.webp`} alt="" width="68" height="102" draggable="false" />
     </button>
   </div>;
 }

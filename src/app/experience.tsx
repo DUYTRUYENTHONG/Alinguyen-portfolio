@@ -154,6 +154,7 @@ export function VisitorPicker({ projects }: { projects: Project[] }) {
         {roles.map((item) => <RoleTile key={item.label} item={item} selected={selected} onSelect={setSelected} />)}
       </fieldset></LayoutGroup>
       <VisitorStats role={selected} />
+      <GuideCharacter mode="visitor" icon={role.icon} />
       <div className="visitor-result" aria-live="polite">
         {recommended && <><span>RECOMMENDED FOR {selected.toUpperCase()}</span><a href={`#project-${recommended.id}`}>{recommended.name} <span aria-hidden="true">↗</span></a></>}
       </div>
