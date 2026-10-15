@@ -25,17 +25,9 @@ updates the role totals without adding another visitor.
 The LinkedIn URL and public KKBox repository link await owner input or
 publication.
 
-Design reference: https://itsjiathao.com/. The revised site follows its
-page rhythm: a name-first hero, work strip, visitor chooser, highlights,
-sticky project index, case-study pages, and contact prompts. All copy,
-illustrations, and code here are original to this portfolio. The hero uses
-Ali Nguyen's supplied portrait with a transparent-background cutout. Project
-illustrations should be replaced by owner-provided screenshots when available.
-The STOS logo was supplied by the owner and is used with the founder and builder
-attribution confirmed in chat. Public STOS pages support its feature summary;
-no adoption or revenue metric is claimed.
 The DUYTRUYENTHONG logo was also supplied by the owner and appears with Growth
 Commerce OS. Both logos are preserved as supplied.
+
 Ali Nguyen also supplied the Chợ Kênh logo and identified the marketplace as
 his product. Its live public pages show a TikTok channel catalog, filters,
 listing details, Zalo inquiries, and a manual intermediary consultation flow.
