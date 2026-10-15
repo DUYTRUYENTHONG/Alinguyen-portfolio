@@ -35,10 +35,11 @@ export const customers = [
   { name: "Vựa Sầu Riêng Bà Chi", logo: "customer-ba-chi.webp" },
   { name: "Vựa Sầu Riêng Đại An" },
   { name: "Hãng xe Toàn Thắng", logo: "customer-toan-thang.svg", href: "https://toanthangcar.com/" },
-  { name: "4U Home" },
+  { name: "4U Home", logo: "customer-4u-home.png" },
   { name: "Xây dựng Hưng Phú Thịnh", logo: "customer-hung-phu-thinh.png", href: "https://hungphuthinh.vn/" },
   { name: "Xây dựng Biên Lan", logo: "customer-bien-lan.png", href: "https://bienlan.vn/" },
-  { name: "Hệ thống Dê Cúc Phương City" },
+  { name: "Hệ thống Dê Cúc Phương City", logo: "customer-de-cuc-phuong.png" },
+  { name: "Bản Tôi", logo: "customer-ban-toi.png" },
   { name: "Nhà hàng tiệc cưới Pacific · Bến Cát" },
   { name: "Nhà hàng tiệc cưới Bách Việt", logo: "customer-bach-viet.png", href: "https://bachviet.com.vn/" },
 ] as const;
