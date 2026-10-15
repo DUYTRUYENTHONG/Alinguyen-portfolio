@@ -60,6 +60,41 @@ export function WorkingHours({ variant }: { variant: "header" | "contact" | "men
   const trigger = useRef<HTMLButtonElement>(null);
   const panelId = `working-hours-${variant}-panel`;
 
+  const canHover = () => variant === "header" && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  useEffect(() => {
+    if (variant !== "header") return;
+    const element = root.current;
+    if (!element) return;
+    let closeTimer: number | null = null;
+    const clearCloseTimer = () => {
+      if (closeTimer !== null) window.clearTimeout(closeTimer);
+      closeTimer = null;
+    };
+    const onEnter = () => {
+      if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+      clearCloseTimer();
+      setOpen(true);
+    };
+    const onLeave = () => {
+      if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+      clearCloseTimer();
+      closeTimer = window.setTimeout(() => setOpen(false), 160);
+    };
+    const onFocusOut = (event: FocusEvent) => {
+      if (!element.contains(event.relatedTarget as Node | null)) setOpen(false);
+    };
+    element.addEventListener("mouseenter", onEnter);
+    element.addEventListener("mouseleave", onLeave);
+    element.addEventListener("focusout", onFocusOut);
+    return () => {
+      clearCloseTimer();
+      element.removeEventListener("mouseenter", onEnter);
+      element.removeEventListener("mouseleave", onLeave);
+      element.removeEventListener("focusout", onFocusOut);
+    };
+  }, [variant]);
+
   useEffect(() => {
     const refresh = () => setNow(new Date());
     refresh();
@@ -100,9 +135,9 @@ export function WorkingHours({ variant }: { variant: "header" | "contact" | "men
     : `No shared ${WORK_LABEL} window today. You can still email anytime.`;
 
   return <div ref={root} className={`working-hours working-hours-${variant}`}>
-    <button ref={trigger} className="working-hours-trigger" type="button" disabled={!now} aria-expanded={open} aria-controls={panelId} onClick={() => setOpen((value) => !value)}>
+    <button ref={trigger} className="working-hours-trigger" type="button" disabled={!now} aria-expanded={open} aria-controls={panelId} onClick={(event) => { if (!canHover() || event.detail === 0) setOpen((value) => !value); }}>
       <span>{variant === "header" ? `IT'S ${now ? clock(now, SAIGON_ZONE) : "--:--"} IN SAIGON` : `Working hours · Saigon ${now ? clock(now, SAIGON_ZONE) : "--:--"}`}</span>
-      <span aria-hidden="true">{open ? "−" : "↗"}</span>
+      {variant !== "header" && <span aria-hidden="true">{open ? "−" : "↗"}</span>}
     </button>
     {open && now && time && <section className="working-hours-panel" id={panelId} aria-label="Working hours across time zones">
       <div className="working-hours-times">
