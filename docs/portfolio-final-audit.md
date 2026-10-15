@@ -1,5 +1,13 @@
 # Portfolio final audit — 15 October 2026
 
+## Release follow-up — 15 October 2026
+
+After this audit, the owner explicitly requested a QA check, source and documentation push, and GitHub Pages deployment. Commit [`7c0a9f9`](https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/commit/7c0a9f9fc5cd02859c8a92d9abaa278105a341ad) was pushed to `main` and deployed by [GitHub Actions run 38680356558](https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/actions/runs/38680356558), with both build and deploy jobs passing.
+
+The release build passed typecheck, lint, and static export locally and in GitHub Actions. The public Home, Work, About, Credits, three named product case-study routes, robots.txt, and sitemap.xml returned HTTP 200. A fresh browser load displayed the revised Applied AI title and hero, and the live visitor counter returned counts. A previously open browser tab initially showed the old version; the public HTML advertises a 600-second cache lifetime, and a fresh URL loaded the deployed version.
+
+The audit verdict and mobile performance findings below are retained as the pre-release assessment. Public deployment does not resolve the measured mobile LCP or substitute for the outstanding non-Chromium, low-end-device, and content-evidence checks.
+
 **Release verdict: NOT READY.** The portfolio now leads with Ali Nguyen's Applied AI and product work, its principal recruiter actions are visible in the first mobile viewport, and the main routes work in the tested Chromium browser. The mobile lab LCP remains 8.28 seconds, well above the 2.5-second good-experience threshold. The visitor-count backend and non-Chromium browsers were not verified in this pass. This is a release gate, not a claim that the current public site is broken.
 
 ## Scope and method
