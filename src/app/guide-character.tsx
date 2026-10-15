@@ -64,10 +64,17 @@ export function GuideCharacter({ activeProjectId, mode = "work", icon = "builder
       animate();
     };
     const keyDown = (event: KeyboardEvent) => {
+      const target = event.target;
+      if (target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName))) return;
+      const bounds = actor.getBoundingClientRect();
+      if (bounds.bottom < 0 || bounds.top > window.innerHeight || bounds.right < 0 || bounds.left > window.innerWidth) return;
       if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
         event.preventDefault();
-        held[event.key === "ArrowLeft" ? "left" : "right"] = true;
+        const direction = event.key === "ArrowLeft" ? -1 : 1;
+        if (!event.repeat) positionRef.current = (positionRef.current ?? 0) + direction * 22;
+        held[direction < 0 ? "left" : "right"] = true;
         actor.dataset.facing = event.key === "ArrowLeft" ? "left" : "right";
+        paint();
         animate();
       } else if (event.key === "ArrowUp" || event.key === " ") {
         event.preventDefault();
@@ -84,24 +91,24 @@ export function GuideCharacter({ activeProjectId, mode = "work", icon = "builder
       const grid = stage.parentElement?.querySelector(".role-grid");
       if (grid) observer.observe(grid);
     }
-    actor.addEventListener("keydown", keyDown);
-    actor.addEventListener("keyup", keyUp);
+    window.addEventListener("keydown", keyDown);
+    window.addEventListener("keyup", keyUp);
     actor.addEventListener("click", jump);
     actor.addEventListener("blur", stop);
     paint();
     return () => {
       cancelAnimationFrame(frame);
       observer.disconnect();
-      actor.removeEventListener("keydown", keyDown);
-      actor.removeEventListener("keyup", keyUp);
+      window.removeEventListener("keydown", keyDown);
+      window.removeEventListener("keyup", keyUp);
       actor.removeEventListener("click", jump);
       actor.removeEventListener("blur", stop);
     };
   }, [activeProjectId, mode, icon]);
 
   return <div className={`guide-stage guide-stage-${mode}`} ref={stageRef} aria-hidden="false">
-    <button ref={actorRef} className="guide-character" type="button" aria-label="Guide character: focus, use left and right arrow keys to walk; Up or tap to jump" title="Arrow keys walk · Up or tap jumps">
-      <img src={`${basePath}/role-art/${icon}.webp`} alt="" width="68" height="102" draggable="false" />
+    <button ref={actorRef} className="guide-character" type="button" aria-label="Guide character: use left and right arrow keys to walk; Up or tap to jump" title="Arrow keys walk · Up or tap jumps">
+      <img src={`${basePath}/guide-art/${icon}.webp`} alt="" width="68" height="102" draggable="false" />
     </button>
   </div>;
 }
