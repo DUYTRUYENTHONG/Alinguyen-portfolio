@@ -67,3 +67,6 @@
 .highlight-card .highlight-icon-cho{position:relative;display:grid;place-items:center;flex:none;width:66px;height:66px;border-radius:0;background:transparent;overflow:visible}
 .highlight-card .highlight-icon-cho img{display:block;flex:none;width:109px;height:79px;max-width:none;max-height:none;object-fit:fill;border-radius:0;clip-path:circle(32px at 68px 39px);transform:translateX(-13.5px);filter:drop-shadow(0 5px 4px #2411383d)}
 @media(min-width:1024px){.highlight-card:nth-child(n+5) .highlight-icon-cho{width:66px;height:66px}}
+.highlight-card .highlight-icon-stos{flex:none;width:70px;height:45px;border-radius:9px;background:#1e1034;overflow:hidden}
+.highlight-card .highlight-icon-stos img{width:100%;height:100%;object-fit:contain;border-radius:0}
+@media(min-width:1024px){.highlight-card:nth-child(n+5) .highlight-icon-stos{width:70px;height:45px}}
