@@ -3,6 +3,7 @@ import { capabilities, cvTracks, identity, principles, projects } from "@/data/p
 import { CopyEmail, CustomerCarousel, PortfolioGuide, RotatingFocus, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
 import { FunnelExperience } from "./funnel-experience";
 import { WorkingHours } from "./working-hours";
+import { PortraitReveal } from "./portrait-reveal";
 import "./funnel.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -40,11 +41,7 @@ export default function Home() {
           <div className="hero-actions"><a className="hero-action-primary" href="#work">Explore engineering work <span aria-hidden="true">↗</span></a><a className="hero-action-secondary" href={`${basePath}/cv-applied-ai-engineer.pdf`} download>Download AI CV <span aria-hidden="true">↓</span></a></div>
           <p className="hero-experience"><span>{identity.experience.digitalMarketing}</span><span>{identity.experience.aiEngineering}</span></p>
         </div>
-        <div className="portrait-stage">
-          <div className="portrait-halo" aria-hidden="true" />
-          <img className="portrait-photo" src={`${basePath}/ali-nguyen-portrait-960.webp`} srcSet={`${basePath}/ali-nguyen-portrait-480.webp 480w, ${basePath}/ali-nguyen-portrait-960.webp 960w`} sizes="(max-width: 767px) 380px, 768px" alt="Portrait of Ali Nguyen wearing a black suit" width="1071" height="1468" fetchPriority="high" decoding="sync" />
-          <span className="portrait-caption">ALI NGUYEN / DUYTRUYENTHONG</span>
-        </div>
+        <PortraitReveal />
       </section>
 
       <section className="identity-strip" aria-label="Featured work"><div className="identity-track"><span>GROWTH COMMERCE OS</span><span>STOS</span><span>CHỢ KÊNH</span><span>VIBECODE PRODUCT KIT</span><span>KKBOX CHURN BASELINE</span><span>DUYTRUYENTHONG</span><span>GROWTH COMMERCE OS</span><span>STOS</span></div></section>

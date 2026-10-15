@@ -35,9 +35,10 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
 .hero-meta span{font-size:.73rem;vertical-align:middle;letter-spacing:.08em}
 .portrait-stage{position:relative;width:min(100%,840px);height:877px;margin:auto;overflow:hidden}
 .portrait-halo{display:none}
-.portrait-photo{position:absolute;z-index:1;left:50%;bottom:-113px;transform:translateX(-50%);width:768px;height:auto;max-width:none;object-fit:contain}
+.portrait-photo{position:absolute;z-index:1;left:50%;bottom:-113px;transform:translateX(-50%);width:768px;height:auto;max-width:none;object-fit:contain;filter:blur(var(--portrait-reveal-blur,0px))}
 .portrait-stage::after{content:"";position:absolute;z-index:1;inset:auto 0 0;height:85px;background:linear-gradient(transparent,#fff)}
 .portrait-caption{position:absolute;z-index:2;bottom:24px;left:50%;transform:translateX(-50%);font-size:.63rem;letter-spacing:.18em;color:#54575c;background:#ffffffc9;padding:7px 12px;border-radius:99px;white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.portrait-photo{filter:none}}
 .identity-strip{height:124px;overflow:hidden;border-top:1px solid #ececec;border-bottom:1px solid #ececec;display:flex;align-items:center;background:#fff}
 .identity-track{display:flex;gap:90px;align-items:center;white-space:nowrap;min-width:max-content;animation:marquee 42s linear infinite;font-family:"Archivo Variable",sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.04em}
 .identity-track span:nth-child(even){color:#727980}
