@@ -39,7 +39,7 @@ function FunnelDiagram({ id, label, intro, layers }: { id: string; label: string
   const [entered, setEntered] = useState(false);
   const [hovered, setHovered] = useState<number | null>(null);
   const [active, setActive] = useState<number | null>(null);
-  const emphasis = hovered ?? active;
+  const emphasis = active ?? hovered;
 
   useEffect(() => {
     const node = ref.current;
