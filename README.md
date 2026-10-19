@@ -45,11 +45,20 @@ require the separate API.
 
 `PROFILE_README.md` is the draft for the username-matched GitHub repository.
 
-Four owner-supplied CV files are downloadable from the site: Applied AI Engineer
-(PDF), Business & Product (PDF), Business Development (PDF), and AI / Prompt
-Engineer (DOCX). The two business PDFs are byte-identical as supplied. The
-documents retain the printed name Nguyen Quang Duy, phone number, and original
-portfolio URL; review their contents before approving public release.
+Four CV files are downloadable from the site: Applied AI Engineer (PDF),
+Business & Product (PDF), Business Development (PDF), and AI / Prompt Engineer
+(DOCX). All are generated from the shared, evidence-conscious record in
+`scripts/generate-ai-cvs.py`; run that script with Python, ReportLab, and
+python-docx to update them. The two business PDFs intentionally share one
+business-and-product CV. All files use the current GitHub Pages URL and
+distinguish prototypes from live products and unmeasured results. They retain
+the printed name Nguyen Quang Duy and the previously public phone number;
+review their contents before approving public release.
+
+The dark perspective grid and project-specific AI explanations were inspired by
+Saurav Kumar's portfolio (`https://saurav02022.github.io/`). The CSS, colors,
+copy, and layout are original to this site; the reference is credited on the
+Credits page.
 
 The customer carousel lists fifteen names confirmed by Ali Nguyen. It contains no
 testimonial quotes or client performance claims. The Bà Chi and Cô Ba logos

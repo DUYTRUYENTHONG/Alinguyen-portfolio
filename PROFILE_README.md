@@ -1,9 +1,10 @@
 # Ali Nguyen
 
-**Sales, Marketing & E-commerce Builder** · DUYTRUYENTHONG
+**Applied AI and Product Engineer** · DUYTRUYENTHONG
 
-I combine sales, digital marketing, e-commerce, AI, and data to improve sales
-funnels and help businesses generate more qualified leads.
+I build applied AI prototypes, developer tools, and digital commerce products.
+My work connects customer discovery and data workflows with testable product
+decisions. I distinguish live products from prototypes and unmeasured outcomes.
 
 ## Selected work
 
@@ -14,9 +15,12 @@ funnels and help businesses generate more qualified leads.
 
 ## Focus
 
-Sales funnels · digital marketing · e-commerce · AI and LLM applications · customer analytics · automation
+Retrieval and prompt prototypes · snapshot-date model evaluation · AI-assisted
+product delivery · commerce analytics and lead workflows
 
-**Tools:** Google Business Profile, TikTok Shop, Python, SQL, PostgreSQL, JavaScript, React, Power BI, DAX, GitHub Actions.
+**Tools:** Python, SQL, Pandas, scikit-learn, JavaScript, TypeScript, React,
+Next.js, Node.js, GitHub Actions, Power BI, DAX, Google Business Profile, and
+TikTok Shop.
 
 ## Connect
 

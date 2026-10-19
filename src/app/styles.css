@@ -283,3 +283,52 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
   .mobile-menu .working-hours-panel .working-hours-note{font-size:.72rem}
 }
 @media(prefers-reduced-motion:reduce){.working-hours-trigger{transition:none}}
+
+/* A quiet perspective grid gives the opening an engineering feel without obscuring the work. */
+.hero{position:relative;isolation:isolate;background:radial-gradient(ellipse at 50% 45%,#132d39 0%,#0b1823 48%,#080e16 100%);color:#f6f8f8}
+.hero-copy,.portrait-stage{position:relative;z-index:1}
+.hero-grid{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.hero-grid::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 83% 23%,#67d6c519,transparent 25%),radial-gradient(circle at 18% 57%,#4c83c51a,transparent 32%)}
+.hero-grid span{position:absolute;left:50%;width:1050px;height:480px;border:1px solid #5be0cb3d;background:repeating-linear-gradient(90deg,transparent 0 94px,#5be0cb34 95px 96px),repeating-linear-gradient(0deg,transparent 0 78px,#5be0cb34 79px 80px);box-shadow:0 0 35px #4fe0c414;transform-origin:50% 50%;transform:translateX(-50%) perspective(850px) rotateX(61deg) rotateZ(-11deg);mask-image:linear-gradient(90deg,transparent,#000 12% 88%,transparent)}
+.hero-grid span:nth-child(1){top:90px;left:61%;opacity:.43}
+.hero-grid span:nth-child(2){top:460px;left:39%;opacity:.28;transform:translateX(-50%) perspective(850px) rotateX(64deg) rotateZ(11deg)}
+.hero-grid span:nth-child(3){top:905px;left:57%;opacity:.25}
+.hero-kicker{margin:0 0 28px;color:#87e1d0;font:700 .7rem/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.2em}
+.hero h1{color:#f7f8f6;text-shadow:0 2px 28px #0005}
+.hero-rotate{color:#f2f5f7}
+.hero .rotating-focus{color:#86dfcd}
+.hero-meta{color:#d0d9dc}
+.hero-meta span{color:#87e1d0}
+.hero-action-primary{background:#85e0c8;color:#092017;box-shadow:0 10px 28px #52dec42a}
+.hero-action-primary:hover{background:#a5f2dc;box-shadow:0 13px 34px #52dec43d}
+.hero-action-secondary{border-color:#a9c4cc75;background:#ffffff12;color:#f7fbfb}
+.hero-action-secondary:hover{background:#ffffff25}
+.hero-experience span{border-color:#b5d1d04a;background:#ffffff12;color:#e8f0f0}
+.portrait-stage{background:radial-gradient(ellipse 43% 38% at 50% 42%,#d9e4e1b0 0%,#71939c73 47%,transparent 100%)}
+.portrait-stage::after{height:130px;background:linear-gradient(transparent,#080e16)}
+.portrait-caption{color:#e8f2f2;background:#13222bc9;border:1px solid #93c6bf50}
+
+.ai-expertise{padding:105px 0;background:#101b24;color:#f0f5f4;scroll-margin-top:85px}
+.ai-expertise-intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.8fr);column-gap:5rem;align-items:end;margin-bottom:38px}
+.ai-expertise-intro .eyebrow{grid-column:1/-1;color:#89d8ca}
+.ai-expertise-intro h2{font-size:clamp(2.5rem,4.5vw,4.5rem);line-height:1.06;letter-spacing:-.05em;margin:0}
+.ai-expertise-intro>p:last-child{max-width:470px;color:#bfcdd0;margin:0 0 6px}
+.ai-expertise-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid #85d9ce57;border-left:1px solid #85d9ce57}
+.ai-expertise-grid article{display:flex;flex-direction:column;min-height:290px;padding:27px 30px;border-right:1px solid #85d9ce57;border-bottom:1px solid #85d9ce57;background:linear-gradient(135deg,#ffffff09,transparent 65%)}
+.ai-expertise-number{color:#8bdcca;font:700 .69rem/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em}
+.ai-expertise-grid h3{font-size:clamp(1.5rem,2.5vw,2rem);letter-spacing:-.035em;line-height:1.12;margin:32px 0 11px}
+.ai-expertise-grid p{color:#becbd0;font-size:.97rem;line-height:1.55;max-width:50ch;margin:0 0 20px}
+.ai-expertise-grid a{align-self:flex-start;margin-top:auto;color:#99e6d5;font-weight:700;font-size:.84rem;text-underline-offset:5px}
+.ai-expertise-grid a:hover{text-decoration:underline}
+@media(max-width:767px){
+  .hero-grid span{width:720px;height:360px}
+  .hero-grid span:nth-child(1){top:155px;left:70%;opacity:.3}
+  .hero-grid span:nth-child(2){top:510px;left:43%;opacity:.28}
+  .hero-grid span:nth-child(3){display:none}
+  .hero-kicker{font-size:.61rem;letter-spacing:.12em;margin-bottom:20px}
+  .ai-expertise{padding:70px 0}
+  .ai-expertise-intro{display:block;margin-bottom:28px}
+  .ai-expertise-intro h2{font-size:clamp(2.3rem,9vw,3.25rem);margin-bottom:20px}
+  .ai-expertise-grid{grid-template-columns:1fr}
+  .ai-expertise-grid article{min-height:250px;padding:24px}
+}

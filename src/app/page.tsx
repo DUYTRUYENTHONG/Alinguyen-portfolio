@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { capabilities, cvTracks, identity, principles, projects } from "@/data/portfolio";
+import { capabilities, cvTracks, expertise, identity, principles, projects } from "@/data/portfolio";
 import { CopyEmail, CustomerCarousel, PortfolioGuide, RotatingFocus, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
 import { FunnelExperience } from "./funnel-experience";
 import { WorkingHours } from "./working-hours";
@@ -34,10 +34,12 @@ export default function Home() {
     <main id="main" className="portfolio-main">
       <PortfolioGuide />
       <section className="hero" id="top" aria-labelledby="hero-title">
+        <div className="hero-grid" aria-hidden="true"><span /><span /><span /></div>
         <div className="hero-copy section-shell">
+          <p className="hero-kicker">APPLIED AI / DATA / DIGITAL COMMERCE</p>
           <h1 id="hero-title">Ali Nguyen builds<br /> applied AI &amp; digital<br /> products.</h1>
           <p className="hero-rotate">I build <RotatingFocus /></p>
-          <p className="hero-meta">Applied AI prototypes, developer tools, and live commerce products—grounded in customer and business needs. <span>DUYTRUYENTHONG</span></p>
+          <p className="hero-meta">I turn customer problems into testable AI prototypes, data workflows, developer tools, and live commerce products. Explore the decisions and evidence behind each build. <span>DUYTRUYENTHONG</span></p>
           <div className="hero-actions"><a className="hero-action-primary" href="#work">Explore engineering work <span aria-hidden="true">↗</span></a><a className="hero-action-secondary" href={`${basePath}/cv-applied-ai-engineer.pdf`} download>Download AI CV <span aria-hidden="true">↓</span></a></div>
           <p className="hero-experience"><span>{identity.experience.digitalMarketing}</span><span>{identity.experience.aiEngineering}</span></p>
         </div>
@@ -50,6 +52,8 @@ export default function Home() {
       <section className="proof-ribbon" aria-label="Verified portfolio status"><div className="proof-track"><span>01 LIVE SERVICE WEBSITE <small>· Growth Commerce OS</small></span><span>01 LIVE PRODUCT WEBSITE <small>· STOS</small></span><span>01 LIVE MARKETPLACE WEBSITE <small>· Chợ Kênh</small></span><span>01 PUBLIC DEVELOPER TOOL <small>· Vibecode Product Kit</small></span><span>01 LOCAL ML PROTOTYPE <small>· KKBox baseline</small></span></div></section>
 
       <section className="highlights" id="highlights" aria-labelledby="highlights-title"><div className="section-shell"><h2 id="highlights-title">Highlights</h2><div className="highlight-grid"><article className="highlight-feature"><span className="highlight-icon">✦</span><div><strong>5</strong><p>featured builds across commerce products, open-source tooling, and customer analytics.</p></div></article>{highlights.map((card) => <article className="highlight-card" key={card.title}><span className={`highlight-icon${card.title === "Chợ Kênh" ? " highlight-icon-cho" : card.title === "STOS" ? " highlight-icon-stos" : card.title === "Vibecode Product Kit" ? " highlight-icon-vibecode" : ""}`}>{card.title === "Growth Commerce OS" ? <img src={`${basePath}/duytruyenthong-logo.png`} alt="" width="52" height="52" /> : card.title === "Vibecode Product Kit" ? <img src={`${basePath}/vibecode-product-kit-logo.svg`} alt="" width="52" height="52" /> : card.title === "KKBox baseline" ? <img src={`${basePath}/kkbox-logo.png`} alt="" width="52" height="52" /> : card.title === "STOS" ? <img src={`${basePath}/stos-logo-dark.png`} alt="" width="70" height="45" /> : card.title === "Chợ Kênh" ? <img src={`${basePath}/cho-kenh-logo.png`} alt="" width="109" height="79" /> : card.icon}</span><h3>{card.title}</h3><p>{card.description}</p><a href={card.href}>{card.link} <span aria-hidden="true">↗</span></a></article>)}</div></div></section>
+
+      <section className="ai-expertise" id="ai-expertise" aria-labelledby="ai-expertise-title"><div className="section-shell"><div className="ai-expertise-intro"><p className="eyebrow">Applied AI expertise</p><h2 id="ai-expertise-title">What I build, and how I check it.</h2><p>My work spans early AI prototypes, customer data, developer tooling, and commerce products. Each example below names the part that is working today and the part that still needs evidence.</p></div><div className="ai-expertise-grid">{expertise.map((item) => <article key={item.number}><span className="ai-expertise-number">{item.number} / 04</span><h3>{item.title}</h3><p>{item.detail}</p><a href={item.href}>{item.linkLabel} <span aria-hidden="true">↗</span></a></article>)}</div></div></section>
 
       <section className="decision-map-wrap" aria-labelledby="map-title"><div className="decision-map section-shell"><div className="map-graphic" aria-hidden="true"><div className="map-orbit map-one"><span className="map-node">01</span></div><div className="map-orbit map-two"><span className="map-node">02</span></div><div className="map-orbit map-three"><span className="map-node">03</span></div></div><div className="map-copy"><p className="eyebrow">Where the work connects</p><h2 id="map-title">From signal to decision.</h2><ol><li><span>01</span> Collect and understand customer signals</li><li><span>02</span> Build reliable features and workflows</li><li><span>03</span> Put useful decisions in reach</li></ol></div></div></section>
       <WorkSection projects={projects} />

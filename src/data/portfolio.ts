@@ -51,23 +51,31 @@ export const customers = [
 export const expertise = [
   {
     number: "01",
-    title: "AI engineering",
-    detail: "LLM applications, retrieval workflows and decision support prototypes.",
+    title: "LLM and retrieval prototypes",
+    detail: "Design a knowledge-assistant flow from source retrieval to a grounded answer, then review responses against representative questions. This work is a prototype, not a deployed support service.",
+    linkLabel: "AI and prompt engineering CV",
+    href: "#cvs",
   },
   {
     number: "02",
-    title: "Data platforms",
-    detail: "SQL, Python and customer-level features that make raw events useful.",
+    title: "Evaluation before prediction",
+    detail: "Build customer features through a chosen snapshot date and test that later events stay out. The KKBox baseline has a synthetic leakage check; real-data model scores are pending.",
+    linkLabel: "KKBox prototype",
+    href: "#project-kkbox-baseline",
   },
   {
     number: "03",
-    title: "Commerce analytics",
-    detail: "Customer behavior, funnels and retention questions tied to business decisions.",
+    title: "AI-assisted product delivery",
+    detail: "Turn an idea into a reviewable build with an offline CLI, agent profiles, templates and CI checks. Vibecode Product Kit is public; adoption is not measured here.",
+    linkLabel: "Public source and CI",
+    href: "https://github.com/DUYTRUYENTHONG/vibecode-product-kit",
   },
   {
     number: "04",
-    title: "Automation & integrations",
-    detail: "Practical workflows that connect product operations, content and measurement.",
+    title: "From signal to action",
+    detail: "Connect page views, actions and leads to a seller workflow in STOS, while keeping proposed AI suggestions separate from features that are live today.",
+    linkLabel: "Live STOS product",
+    href: "https://stosvn.vercel.app/stos",
   },
 ] as const;
 
@@ -152,7 +160,7 @@ export const capabilities = [
 
 export const cvTracks = [
   { title: "Applied AI engineering", detail: "LLM applications, retrieval workflows, Python, and customer analytics prototypes.", downloads: [{ label: "Download PDF", path: "cv-applied-ai-engineer.pdf" }] },
-  { title: "Business and product", detail: "Digital marketing services, sales funnels, solution consulting, and commerce products.", downloads: [{ label: "Business & Product PDF", path: "cv-business-product.pdf" }, { label: "Business Development PDF", path: "cv-business-development.pdf" }], note: "The two supplied PDFs have identical content." },
+  { title: "Business and product", detail: "Digital marketing services, sales funnels, solution consulting, and commerce products.", downloads: [{ label: "Business & Product PDF", path: "cv-business-product.pdf" }, { label: "Business Development PDF", path: "cv-business-development.pdf" }], note: "The two downloads share one business-and-product CV." },
   { title: "AI and prompt engineering", detail: "Prompt workflows, RAG concepts, enterprise troubleshooting, and AI-assisted delivery.", downloads: [{ label: "Download DOCX", path: "cv-prompt-engineer.docx" }] },
 ] as const;
 
