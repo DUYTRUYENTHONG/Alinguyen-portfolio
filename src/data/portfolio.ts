@@ -59,8 +59,8 @@ export const expertise = [
   {
     number: "02",
     title: "Evaluation before prediction",
-    detail: "Build customer features through a chosen snapshot date and test that later events stay out. The KKBox baseline has a synthetic leakage check; real-data model scores are pending.",
-    linkLabel: "KKBox prototype",
+    detail: "Build customer features through a chosen snapshot date, test that later events stay out, and audit the real-data holdout. The KKBox baseline reached 0.217324 log loss on an official-data local split.",
+    linkLabel: "KKBox results",
     href: "#project-kkbox-baseline",
   },
   {
@@ -140,15 +140,15 @@ export const projects: Project[] = [
     id: "kkbox-baseline",
     name: "KKBox customer churn baseline",
     headline: "Churn predictions that respect the snapshot date.",
-    status: "Public source · real-data evaluation pending",
+    status: "Public source · official-data local holdout",
     problem: "Subscription churn decisions require customer-level features without future-data leakage.",
     users: "Analysts exploring retention models.",
     role: "Project owner; baseline developed with Codex assistance. The academic reference is credited separately.",
-    approach: "A snapshot-date feature pipeline and a defined logistic-regression holdout evaluation.",
-    outcome: "Public source and synthetic-fixture checks cover future-event exclusion. Real KKBox model performance has not been measured.",
-    proof: "Public source and leakage tests; real scores pending",
-    technologies: ["Python", "Pandas", "scikit-learn", "CSV"],
-    link: { label: "View source and results status", href: "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction" },
+    approach: "Snapshot-date features from transactions and listening history, a source-coverage audit, and a fixed logistic-regression holdout.",
+    outcome: "On 970,960 official-data labels, the within-cohort holdout reached 0.217324 log loss and 0.819295 ROC AUC. This is not an out-of-time or business-impact result.",
+    proof: "Public source, leakage tests, input hashes, and measured local holdout",
+    technologies: ["Python", "DuckDB", "Pandas", "scikit-learn"],
+    link: { label: "View source and verified results", href: "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md" },
   },
 ];
 

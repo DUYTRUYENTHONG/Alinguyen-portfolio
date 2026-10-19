@@ -42,7 +42,7 @@ const projectMessages: Record<string, string> = {
   "growth-commerce-os": "A live service site connecting content, channels, and lead paths.",
   stos: "A live sales page product for independent sellers and small businesses.",
   "cho-kenh": "A TikTok channel catalog with manual inquiries and deal checks.",
-  "kkbox-baseline": "A local churn prototype with a check against future-data leakage.",
+  "kkbox-baseline": "A tested churn baseline with an audited local holdout on official data.",
 };
 
 export function GuideCharacter({ icon }: { icon: string }) {

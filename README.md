@@ -21,7 +21,7 @@ I work across product engineering and applied AI: translating customer problems 
 | Expertise | What I can show |
 | --- | --- |
 | Applied AI and retrieval | A knowledge-assistant prototype with source retrieval, prompt design, and review against representative questions. It is not a deployed support service. |
-| Data and machine learning | A public KKBox churn baseline using snapshot-date customer features, a synthetic future-event leakage check, and a defined logistic-regression holdout. Real-data scores are pending. |
+| Data and machine learning | A public KKBox churn baseline with snapshot-date features, a synthetic future-event leakage check, and an [official-data local holdout](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md): 0.217324 log loss and 0.819295 ROC AUC. |
 | Product engineering | [Vibecode Product Kit](https://github.com/DUYTRUYENTHONG/vibecode-product-kit), a public JavaScript tool with an offline CLI, reusable Codex assets, and CI checks. |
 | Digital commerce | [Growth Commerce OS](https://growth-commerce-os.vercel.app/en), [STOS](https://stosvn.vercel.app/stos), and [Chợ Kênh](https://growth-commerce-os.vercel.app/cho-kenh) show service, sales-page, and marketplace workflows. These public pages do not establish adoption or revenue results. |
 
@@ -35,7 +35,7 @@ I hold a Bachelor of Computer Science from Vietnamese-German University (2021–
 
 My strongest project examples for an academic discussion are:
 
-1. **Leakage-aware evaluation:** the [KKBox case study](https://duytruyenthong.github.io/Alinguyen-portfolio/#project-kkbox-baseline) explains why customer features must stop at a chosen snapshot date. The [public baseline](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction) includes a synthetic leakage test; real-data results still need validation.
+1. **Leakage-aware evaluation:** the [KKBox case study](https://duytruyenthong.github.io/Alinguyen-portfolio/#project-kkbox-baseline) explains why customer features must stop at a chosen snapshot date. The [public baseline](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction) includes a synthetic leakage test and a measured local holdout; an out-of-time test remains to be done.
 2. **Grounded AI responses:** my knowledge-assistant prototype explores retrieving source material before generating an answer and reviewing responses against questions. It has no published accuracy benchmark or production deployment.
 3. **Reproducible engineering:** [Vibecode Product Kit](https://github.com/DUYTRUYENTHONG/vibecode-product-kit) exposes its source, CLI, templates, and automated checks for inspection.
 
@@ -49,7 +49,7 @@ For study or supervision inquiries, [email me](mailto:nquangd1510@gmail.com?subj
 | [STOS](https://stosvn.vercel.app/stos) | Live product website | Sales pages, templates, inquiries, and illustrative insights; AI suggestions are planned. |
 | [Chợ Kênh](https://growth-commerce-os.vercel.app/cho-kenh) | Live marketplace pages | Catalog, listing details, and Zalo inquiry flow; no automated checkout or escrow. |
 | [Vibecode Product Kit](https://github.com/DUYTRUYENTHONG/vibecode-product-kit) | Public developer tool | Source and CI are available for review. |
-| [KKBox churn baseline](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction) | Public source; real-data evaluation pending | Synthetic leakage check and documented evaluation protocol; no real KKBox score yet. |
+| [KKBox churn baseline](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction) | Public source; official-data local holdout | Leakage test, input audit, and [measured within-cohort metrics](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md); no leaderboard or business-impact claim. |
 
 ## Repository notes
 
@@ -78,8 +78,8 @@ updates the role totals without adding another visitor.
 The working-hours panel uses the live `Asia/Ho_Chi_Minh` clock and the visitor's
 browser time zone. Its 09:00–18:00 overlap is a planning comparison, not a promise
 of immediate availability.
-The LinkedIn URL awaits owner input. The KKBox source repository is public; its
-real-data evaluation remains pending authorized access to the official files.
+The LinkedIn URL awaits owner input. The KKBox source and aggregate local
+evaluation are public; raw competition files and customer-level outputs are not.
 
 The DUYTRUYENTHONG logo was also supplied by the owner and appears with Growth
 Commerce OS. Both logos are preserved as supplied.

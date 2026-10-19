@@ -8,14 +8,14 @@ I am interested in reliable applied AI for customer-facing systems: retrieval-gr
 
 | Question I would like to investigate | Relevant work today | What remains to be established |
 | --- | --- | --- |
-| How can customer churn features be evaluated without information from after the decision date? | [KKBox source](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction) and [case study](https://duytruyenthong.github.io/Alinguyen-portfolio/#project-kkbox-baseline): snapshot-date features and a synthetic future-event exclusion check. | Evaluate on authorized real data, report a defined holdout and uncertainty. |
+| How can customer churn features be evaluated without information from after the decision date? | [KKBox source and measured local holdout](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md), plus a [case study](https://duytruyenthong.github.io/Alinguyen-portfolio/#project-kkbox-baseline): snapshot-date features, a synthetic future-event exclusion check, and a 0.217324 log-loss result. | Test an untouched later cohort, quantify uncertainty, and review event availability at decision time. |
 | How can retrieval improve the grounding of an assistant's answers? | [Knowledge-assistant prototype description](https://duytruyenthong.github.io/Alinguyen-portfolio/#ai-expertise): source retrieval, prompt design, and response review. | Publish a reproducible evaluation set and measure answer quality against a baseline. |
 | How can AI-assisted software delivery remain auditable? | [Vibecode Product Kit](https://github.com/DUYTRUYENTHONG/vibecode-product-kit): public CLI, templates, tests, and CI checks. | Study whether the process improves review quality or delivery outcomes in a defined setting. |
 
 ## Technical preparation and evidence
 
 - **Programming and web systems:** Python, SQL, JavaScript, TypeScript, React, and Next.js. The [portfolio repository](https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio) and [Vibecode repository](https://github.com/DUYTRUYENTHONG/vibecode-product-kit) provide public source for the web and developer-tool work.
-- **Data and machine learning:** Pandas, scikit-learn, snapshot-date feature construction, and a defined holdout evaluation are documented in the public [KKBox source repository](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction). Its real-data model results are pending.
+- **Data and machine learning:** DuckDB, Pandas, scikit-learn, snapshot-date feature construction, and a measured local holdout are documented in the public [KKBox source repository](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction). The result is within one labeled cohort; out-of-time validation remains open.
 - **Applied AI:** LLM API, prompt, and retrieval workflows are described in the [AI and prompt CV](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-prompt-engineer.docx). No published benchmark or production deployment is presented.
 - **Product context:** [Growth Commerce OS](https://growth-commerce-os.vercel.app/en), [STOS](https://stosvn.vercel.app/stos), and [Chợ Kênh](https://growth-commerce-os.vercel.app/cho-kenh) provide customer-facing problems to study. Their public pages are not controlled research evaluations.
 

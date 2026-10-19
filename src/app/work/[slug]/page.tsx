@@ -44,10 +44,10 @@ const details: Record<string, CaseDetail> = {
   "kkbox-baseline": {
     context: "A churn model can look strong for the wrong reason if its features include events that happened after the prediction date.",
     decision: "Start with a snapshot-date baseline before comparing more complex models.",
-    implementation: "The public Python baseline aggregates transaction and listening events through a selected snapshot date, then defines a logistic-regression holdout evaluation.",
-    evidence: "The public repository contains source, a synthetic future-event exclusion test, a data contract, and a results-status page. The third-party academic reference is credited separately.",
-    limits: "No real KKBox dataset score or business outcome is claimed. The raw competition data is not redistributed.",
-    next: "Run the pipeline on eligible data, record reproducible holdout metrics, and document the evaluation period and leakage checks.",
+    implementation: "The public Python and DuckDB baseline aggregates transactions and listening events through 2017-02-28, audits source coverage, and trains logistic regression on a fixed stratified split.",
+    evidence: "The public repository contains source, synthetic future-event exclusion tests, input hashes, aggregate audit counts, and official-data local holdout metrics. The third-party academic reference is credited separately.",
+    limits: "The 0.217324 log loss and 0.819295 ROC AUC are within-cohort holdout metrics, not an out-of-time or Kaggle leaderboard score. No retention impact is claimed; raw competition data is not redistributed.",
+    next: "Validate on an untouched later cohort, review calibration and late-arriving data, then test any outreach policy separately.",
   },
 };
 
