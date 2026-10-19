@@ -4,6 +4,7 @@ import { CopyEmail, CustomerCarousel, PortfolioGuide, RotatingFocus, ScrollState
 import { FunnelExperience } from "./funnel-experience";
 import { WorkingHours } from "./working-hours";
 import { PortraitReveal } from "./portrait-reveal";
+import { HeroSpace } from "./hero-space";
 import "./funnel.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -34,7 +35,7 @@ export default function Home() {
     <main id="main" className="portfolio-main">
       <PortfolioGuide />
       <section className="hero" id="top" aria-labelledby="hero-title">
-        <div className="hero-grid" aria-hidden="true"><span /><span /><span /></div>
+        <HeroSpace />
         <div className="hero-copy section-shell">
           <p className="hero-kicker">APPLIED AI / DATA / DIGITAL COMMERCE</p>
           <h1 id="hero-title">Ali Nguyen builds<br /> applied AI &amp; digital<br /> products.</h1>

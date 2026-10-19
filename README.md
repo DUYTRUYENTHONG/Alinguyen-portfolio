@@ -98,10 +98,10 @@ distinguish prototypes from live products and unmeasured results. They retain
 the printed name Nguyen Quang Duy and the previously public phone number;
 review their contents before approving public release.
 
-The dark perspective grid and project-specific AI explanations were inspired by
-Saurav Kumar's portfolio (`https://saurav02022.github.io/`). The CSS, colors,
-copy, and layout are original to this site; the reference is credited on the
-Credits page.
+The spatial background and project-specific AI explanations were inspired by
+Saurav Kumar's portfolio (`https://saurav02022.github.io/`). The projected
+canvas scene, colors, copy, and layout are original to this site; the reference
+is credited on the Credits page.
 
 The customer carousel lists fifteen names confirmed by Ali Nguyen. It contains no
 testimonial quotes or client performance claims. The Bà Chi and Cô Ba logos
