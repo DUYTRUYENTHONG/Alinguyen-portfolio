@@ -4,6 +4,16 @@
 
 [Portfolio and case studies](https://duytruyenthong.github.io/Alinguyen-portfolio/) · [Selected work](https://duytruyenthong.github.io/Alinguyen-portfolio/work/) · [About](https://duytruyenthong.github.io/Alinguyen-portfolio/about/) · [Email](mailto:nquangd1510@gmail.com)
 
+## Start here
+
+| Reviewing for | Short path |
+| --- | --- |
+| An engineering or applied AI role | [Recruiter brief](docs/RECRUITER_BRIEF.md): skills tied to public source, live work, and clearly labeled prototypes. |
+| A master's application | [Academic brief](docs/ACADEMIC_BRIEF.md): study background, research interests, methods, and evidence limits. |
+| Source quality | [This portfolio's Next.js code](src/app/) and the [public Vibecode CLI and checks](https://github.com/DUYTRUYENTHONG/vibecode-product-kit). |
+
+**Evidence key:** “Public source” means inspectable code, “live site” means a reachable product or service page, and “local prototype” means code or results are not yet independently reviewable. None of these labels implies commercial impact or research publication.
+
 ## For recruiters
 
 I work across product engineering and applied AI: translating customer problems into web workflows, building testable prototypes, and checking what the evidence supports. My experience spans digital marketing and commerce operations as well as software and data work.
@@ -21,7 +31,7 @@ I work across product engineering and applied AI: translating customer problems 
 
 ## For master's admissions
 
-I studied Computer Science at Vietnamese-German University (2021–2026). My CV lists Linear Algebra, Statistics, and Discrete Mathematics among selected coursework. I am interested in reliable applied AI, retrieval-grounded question answering, temporal evaluation of customer models, and the design of useful human-facing systems. These are research interests, not claims of publications or completed graduate research.
+I hold a Bachelor of Computer Science from Vietnamese-German University (2021–2026), as confirmed by the portfolio owner. My CV lists Linear Algebra, Statistics, and Discrete Mathematics among selected coursework. I am interested in reliable applied AI, retrieval-grounded question answering, temporal evaluation of customer models, and the design of useful human-facing systems. These are research interests, not claims of publications or completed graduate research.
 
 My strongest project examples for an academic discussion are:
 
@@ -29,7 +39,7 @@ My strongest project examples for an academic discussion are:
 2. **Grounded AI responses:** my knowledge-assistant prototype explores retrieving source material before generating an answer and reviewing responses against questions. It has no published accuracy benchmark or production deployment.
 3. **Reproducible engineering:** [Vibecode Product Kit](https://github.com/DUYTRUYENTHONG/vibecode-product-kit) exposes its source, CLI, templates, and automated checks for inspection.
 
-For study or supervision inquiries, [email me](mailto:nquangd1510@gmail.com?subject=Master%27s%20admission%20inquiry) and see the [Applied AI CV](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf). Degree completion, grades, research outputs, and recommendations should be verified directly with me and the university.
+For study or supervision inquiries, [email me](mailto:nquangd1510@gmail.com?subject=Master%27s%20admission%20inquiry) and see the [Applied AI CV](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf). The degree award is owner-confirmed; official transcripts, grades, research outputs, and recommendations should be requested directly from me and the university.
 
 ## Selected work and status
 

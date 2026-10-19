@@ -6,6 +6,8 @@ I build applied AI prototypes, developer tools, and digital commerce products.
 My work connects customer discovery, data evaluation, and testable product
 delivery. I distinguish live products from prototypes and unmeasured outcomes.
 
+**Review paths:** [Recruiter skills and evidence](https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/blob/main/docs/RECRUITER_BRIEF.md) · [Master's admissions background and research interests](https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/blob/main/docs/ACADEMIC_BRIEF.md) · [Portfolio and case studies](https://duytruyenthong.github.io/Alinguyen-portfolio/)
+
 ## Selected work
 
 - **[DUYTRUYENTHONG Growth Commerce OS](https://growth-commerce-os.vercel.app/)** — live service website connecting content, channels, landing pages and lead workflows. I am the founder and product operator; adoption and business impact are not independently measured here.
@@ -23,7 +25,7 @@ delivery. I distinguish live products from prototypes and unmeasured outcomes.
 
 ## Academic direction
 
-Computer Science studies at Vietnamese-German University (2021–2026); selected coursework in Linear Algebra, Statistics, and Discrete Mathematics. I am interested in reliable applied AI, grounded retrieval, temporal model evaluation, and human-facing systems. These are research interests, not claims of publications or graduate research.
+Bachelor of Computer Science awarded by Vietnamese-German University (2021–2026), confirmed by the portfolio owner; selected coursework in Linear Algebra, Statistics, and Discrete Mathematics. I am interested in reliable applied AI, grounded retrieval, temporal model evaluation, and human-facing systems. These are research interests, not claims of publications or graduate research.
 
 ## Connect
 
