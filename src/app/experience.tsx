@@ -11,24 +11,55 @@ import { PortfolioLink as Link } from "./portfolio-link";
 import { WorkingHours } from "./working-hours";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const RoleContext = createContext<{ selected: string; ready: boolean; setSelected: (role: string) => void } | null>(null);
+type EntryAudience = "general" | "recruiter" | "engineering" | "commerce" | "data" | "admissions";
+const RoleContext = createContext<{ selected: string; chosen: boolean; entry: EntryAudience; ready: boolean; setSelected: (role: string) => void } | null>(null);
+
+const entryRoles: Record<string, { role: string; entry: EntryAudience }> = {
+  recruiter: { role: "Recruiter", entry: "recruiter" },
+  engineering: { role: "Engineer", entry: "engineering" },
+  founder: { role: "Founder", entry: "commerce" },
+  commerce: { role: "Founder", entry: "commerce" },
+  data: { role: "Data", entry: "data" },
+  admissions: { role: "Student", entry: "admissions" },
+};
 
 export function PortfolioExperienceProvider({ children }: { children: ReactNode }) {
   const [selected, setSelectedState] = useState("Recruiter");
+  const [chosen, setChosen] = useState(false);
+  const [entry, setEntry] = useState<EntryAudience>("general");
   const [ready, setReady] = useState(false);
   useEffect(() => {
+    const requested = entryRoles[new URLSearchParams(window.location.search).get("for")?.toLowerCase() ?? ""];
     const saved = window.sessionStorage.getItem("portfolio-visitor-role");
-    if (saved && roles.some((role) => role.label === saved)) setSelectedState(saved);
+    if (requested) {
+      setSelectedState(requested.role);
+      setChosen(true);
+      setEntry(requested.entry);
+      window.sessionStorage.setItem("portfolio-visitor-role", requested.role);
+    } else if (saved && roles.some((role) => role.label === saved)) {
+      setSelectedState(saved);
+      setChosen(true);
+    } else {
+      const referrer = document.referrer;
+      if (/^https?:\/\/([^/]+\.)?github\.com\//i.test(referrer)) setEntry("engineering");
+      else if (/^https?:\/\/([^/]+\.)?linkedin\.com\//i.test(referrer)) setEntry("recruiter");
+    }
     setReady(true);
   }, []);
   const setSelected = (role: string) => {
     setSelectedState(role);
+    setChosen(true);
     window.sessionStorage.setItem("portfolio-visitor-role", role);
+    const url = new URL(window.location.href);
+    if (url.searchParams.has("for")) {
+      url.searchParams.delete("for");
+      window.history.replaceState(null, "", url);
+    }
   };
-  return <RoleContext.Provider value={{ selected, ready, setSelected }}>{children}</RoleContext.Provider>;
+  return <RoleContext.Provider value={{ selected, chosen, entry, ready, setSelected }}>{children}</RoleContext.Provider>;
 }
 
-function usePortfolioRole() {
+export function usePortfolioRole() {
   const context = useContext(RoleContext);
   if (!context) throw new Error("Portfolio role provider is missing");
   return context;

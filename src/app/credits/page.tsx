@@ -9,7 +9,7 @@ export default function CreditsPage() {
     <Link href="/">← Back to portfolio</Link>
     <h1>Credits</h1>
     <p>Portfolio design, code, and case study writing by Ali Nguyen. Product screenshots and most brand artwork were supplied by the owner. The KKBOX icon comes from its <a href="https://apps.apple.com/tw/app/kkbox-%E9%9F%B3%E6%A8%82-podcast/id300915900">App Store listing</a>.</p>
-    <p>The spatial background and evidence-led AI writing were inspired by <a href="https://saurav02022.github.io/">Saurav Kumar&apos;s portfolio</a>. The projected canvas scene, colors, copy, and layout here were made for this site.</p>
+    <p>The evidence-led AI writing was informed by <a href="https://saurav02022.github.io/">Saurav Kumar&apos;s portfolio</a>. The visual design and copy here were made for this site.</p>
     <p>Project emoji graphics use <a href="https://github.com/jdecked/twemoji">Twemoji</a>, licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
   </main>;
 }

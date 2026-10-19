@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { capabilities, cvTracks, expertise, identity, principles, projects } from "@/data/portfolio";
-import { CopyEmail, CustomerCarousel, PortfolioGuide, RotatingFocus, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
+import { CopyEmail, CustomerCarousel, PortfolioGuide, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
+import { AdaptiveHero } from "./adaptive-hero";
 import { FunnelExperience } from "./funnel-experience";
 import { WorkingHours } from "./working-hours";
 import { PortraitReveal } from "./portrait-reveal";
-import { HeroSpace } from "./hero-space";
 import "./funnel.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -35,15 +35,7 @@ export default function Home() {
     <main id="main" className="portfolio-main">
       <PortfolioGuide />
       <section className="hero" id="top" aria-labelledby="hero-title">
-        <HeroSpace />
-        <div className="hero-copy section-shell">
-          <p className="hero-kicker">APPLIED AI / DATA / DIGITAL COMMERCE</p>
-          <h1 id="hero-title">Ali Nguyen builds<br /> applied AI &amp; digital<br /> products.</h1>
-          <p className="hero-rotate">I build <RotatingFocus /></p>
-          <p className="hero-meta">I turn customer problems into testable AI prototypes, data workflows, developer tools, and live commerce products. Explore the decisions and evidence behind each build. <span>DUYTRUYENTHONG</span></p>
-          <div className="hero-actions"><a className="hero-action-primary" href="#work">Explore engineering work <span aria-hidden="true">↗</span></a><a className="hero-action-secondary" href={`${basePath}/cv-applied-ai-engineer.pdf`} download>Download AI CV <span aria-hidden="true">↓</span></a></div>
-          <p className="hero-experience"><span>{identity.experience.digitalMarketing}</span><span>{identity.experience.aiEngineering}</span></p>
-        </div>
+        <AdaptiveHero />
         <PortraitReveal />
       </section>
 
