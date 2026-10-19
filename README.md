@@ -96,7 +96,7 @@ For an exact preview of the GitHub Pages path, build with
 under `/Alinguyen-portfolio/`. The portfolio pages are static; live visitor totals
 require the separate API.
 
-`PROFILE_README.md` is a draft for the username-matched GitHub repository. That repository remains private at the owner's request, so this public README and the pinned repository carry the detailed profile.
+The [GitHub profile README](https://github.com/DUYTRUYENTHONG/DUYTRUYENTHONG) is published in the public username-matched repository. This portfolio repository holds the detailed project source, recruiter brief, and admissions brief linked from that profile.
 
 Four CV files are downloadable from the site: Applied AI Engineer (PDF),
 Business & Product (PDF), Business Development (PDF), and AI / Prompt Engineer
