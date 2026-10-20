@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { projects } from "@/data/portfolio";
+import { GuideAssistantPanel } from "./guide-assistant-panel";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
@@ -12,6 +13,7 @@ const stops = [
   [".statement", "What I do"],
   [".proof-ribbon", "Proof of work"],
   ["#highlights", "Highlights"],
+  ["#ai-expertise", "Applied AI expertise"],
   [".decision-map-wrap", "From signal to decision"],
   ["#work", "Selected work"],
   [".funnel-section", "Sales journey"],
@@ -27,6 +29,7 @@ const sceneMessages: Record<string, string> = {
   "What I do": "I connect marketing, commerce, and data so the next step is clearer.",
   "Proof of work": "These labels separate live sites, public code, and local prototypes.",
   Highlights: "Here’s the short version. Open a card when something catches your eye.",
+  "Applied AI expertise": "These examples show what I built, what I checked, and where the evidence ends.",
   "From signal to decision": "The common thread: collect a signal, build a useful workflow, then decide.",
   "Selected work": "Browse the projects for the problem, my role, and the evidence.",
   "Sales journey": "Try either funnel: each stage explains the job it does and the signal to watch.",
@@ -45,12 +48,30 @@ const projectMessages: Record<string, string> = {
   "kkbox-baseline": "A tested churn baseline with an audited local holdout on official data.",
 };
 
-export function GuideCharacter({ icon }: { icon: string }) {
+const personas: Record<string, { name: string; introduction: string }> = {
+  Recruiter: { name: "Ari", introduction: "Hi, I’m Ari. I’ll help you assess fit and find evidence you can inspect." },
+  Founder: { name: "Nova", introduction: "Hi, I’m Nova. I’ll show how Ali turns ideas into working products." },
+  Engineer: { name: "Kai", introduction: "Hi, I’m Kai. Let’s look at the code, checks, and tradeoffs." },
+  "Product designer": { name: "Mira", introduction: "Hi, I’m Mira. I’ll point out the user journeys and design choices." },
+  Marketer: { name: "Lia", introduction: "Hi, I’m Lia. Let’s follow the audience, message, and measurement." },
+  Growth: { name: "Rio", introduction: "Hi, I’m Rio. I’ll connect the funnel stages to useful signals." },
+  Data: { name: "Ada", introduction: "Hi, I’m Ada. I’ll show the data work and its evaluation limits." },
+  Investor: { name: "Sol", introduction: "Hi, I’m Sol. Let’s examine product status and the evidence behind it." },
+  Student: { name: "Emi", introduction: "Hi, I’m Emi. I’ll highlight the learning path and academic questions." },
+  "Fellow builder": { name: "Sam", introduction: "Hi, I’m Sam. Let’s inspect the tools and how the work is shipped." },
+  "Just curious": { name: "Pip", introduction: "Hi, I’m Pip. I’ll give you a quick tour of Ali’s work." },
+};
+
+export function GuideCharacter({ icon, role, chosen }: { icon: string; role: string; chosen: boolean }) {
+  const persona = personas[role] ?? personas.Recruiter;
   const stageRef = useRef<HTMLDivElement>(null);
   const actorRef = useRef<HTMLButtonElement>(null);
   const lastPosition = useRef<{ x: number; y: number } | null>(null);
   const [stop, setStop] = useState("Choose your perspective");
   const [message, setMessage] = useState(sceneMessages["Choose your perspective"]);
+  const [panelOpen, setPanelOpen] = useState(false);
+  const [showIntroduction, setShowIntroduction] = useState(false);
+  const panelOpenRef = useRef(false);
   const stopRef = useRef(stop);
   const messageRef = useRef(message);
 
@@ -108,9 +129,9 @@ export function GuideCharacter({ icon }: { icon: string }) {
         }
       }
 
-      const edgeOffset = [8, 30, 14, 44, 22, 50, 10, 38, 18, 32, 12, 24][sceneIndex] ?? 8;
+      const edgeOffset = [8, 30, 14, 44, 26, 22, 50, 10, 38, 18, 32, 12, 24][sceneIndex] ?? 8;
       let x = Math.max(0, maxX - edgeOffset);
-      let y = clamp(readingLine - stageRect.top + [0, -24, 18, -15, 24, -12, 16, -22, 12, -16, 20, 0][sceneIndex], 0, maxY);
+      let y = clamp(readingLine - stageRect.top + [0, -24, 18, -15, 10, 24, -12, 16, -22, 12, -16, 20, 0][sceneIndex], 0, maxY);
       const visitorRect = visitor?.getBoundingClientRect();
       if (visitorRect && visitorRect.top <= readingLine && visitorRect.bottom > readingLine) {
         const card = visitor?.querySelector(".role-card.is-selected") ?? visitor?.querySelector(".role-card");
@@ -154,9 +175,9 @@ export function GuideCharacter({ icon }: { icon: string }) {
 
     const paint = () => {
       const target = route();
-      actor.style.opacity = target.visible ? "1" : "0";
-      actor.style.pointerEvents = target.visible ? "auto" : "none";
-      actor.tabIndex = target.visible ? 0 : -1;
+      actor.style.opacity = target.visible && !panelOpenRef.current ? "1" : "0";
+      actor.style.pointerEvents = target.visible && !panelOpenRef.current ? "auto" : "none";
+      actor.tabIndex = target.visible && !panelOpenRef.current ? 0 : -1;
       if (stopRef.current !== target.label) {
         stopRef.current = target.label;
         setStop(target.label);
@@ -243,7 +264,7 @@ export function GuideCharacter({ icon }: { icon: string }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     window.addEventListener("load", paint);
-    actor.addEventListener("click", jump);
+    window.addEventListener("guide-panel-change", paint);
     actor.addEventListener("blur", stopWalking);
     paint();
     settleFrame = requestAnimationFrame(paint);
@@ -258,7 +279,7 @@ export function GuideCharacter({ icon }: { icon: string }) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       window.removeEventListener("load", paint);
-      actor.removeEventListener("click", jump);
+      window.removeEventListener("guide-panel-change", paint);
       actor.removeEventListener("blur", stopWalking);
     };
   }, [icon]);
@@ -269,12 +290,27 @@ export function GuideCharacter({ icon }: { icon: string }) {
     actor.classList.add("is-speaking");
     const timer = window.setTimeout(() => actor.classList.remove("is-speaking"), 2800);
     return () => window.clearTimeout(timer);
-  }, [stop, icon]);
+  }, [stop, icon, showIntroduction]);
+
+  useEffect(() => {
+    if (!chosen) return;
+    setShowIntroduction(true);
+    const timer = window.setTimeout(() => setShowIntroduction(false), 5000);
+    return () => window.clearTimeout(timer);
+  }, [chosen, role]);
+
+  const changePanel = (open: boolean) => {
+    panelOpenRef.current = open;
+    setPanelOpen(open);
+    window.dispatchEvent(new Event("guide-panel-change"));
+    if (!open) requestAnimationFrame(() => actorRef.current?.focus());
+  };
 
   return <div className="guide-stage guide-stage-journey" ref={stageRef}>
-    <button ref={actorRef} className="guide-character" type="button" aria-label={`Tour guide: ${stop}. ${message} Focus to walk with arrow keys; tap or press Up to jump.`} title="Your guide · Arrow keys walk when focused · Tap to jump">
+    <button ref={actorRef} className="guide-character" type="button" onClick={() => changePanel(true)} aria-label={`Ask ${persona.name}, Ali's AI guide. Current section: ${stop}. ${message}`} aria-haspopup="dialog" aria-expanded={panelOpen} title={`Ask ${persona.name} · Arrow keys move when focused · Up jumps`}>
       <img src={`${basePath}/guide-art/${icon}.webp`} alt="" width="68" height="102" draggable="false" />
-      <span className="guide-callout" aria-hidden="true"><small>{stop}</small><strong>{message}</strong></span>
+      <span className="guide-callout" aria-hidden="true"><small>{showIntroduction ? `Meet ${persona.name}` : stop}</small><strong>{showIntroduction ? persona.introduction : message}</strong></span>
     </button>
+    <GuideAssistantPanel open={panelOpen} onClose={() => changePanel(false)} icon={icon} name={persona.name} role={role} section={stop} />
   </div>;
 }

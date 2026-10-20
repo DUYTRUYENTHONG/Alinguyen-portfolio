@@ -22,6 +22,8 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - run: npm --prefix visitor-api ci
+      - run: npm --prefix visitor-api test
       - run: npm run typecheck
       - run: npm run lint
       - run: npm run build
@@ -29,6 +31,7 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /Alinguyen-portfolio
           NEXT_PUBLIC_SITE_URL: https://duytruyenthong.github.io/Alinguyen-portfolio
           NEXT_PUBLIC_VISITOR_API_URL: https://ali-portfolio-visitor-api.vercel.app/api/visit
+          NEXT_PUBLIC_GUIDE_API_URL: https://ali-portfolio-visitor-api.vercel.app/api/guide
       - run: touch out/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4

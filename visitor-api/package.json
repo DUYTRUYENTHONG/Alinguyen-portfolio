@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "scripts": { "test": "node --test" },
   "dependencies": {
     "@upstash/redis": "^1.35.6"
   }

@@ -1,0 +1,66 @@
+// Reviewed public portfolio facts. Keep URLs and status in sync with src/data/portfolio.ts.
+export const knowledge = [
+  {
+    id: "ali-overview",
+    title: "Ali Nguyen overview and contact",
+    url: "https://duytruyenthong.github.io/Alinguyen-portfolio/about/",
+    tags: ["ali", "about", "contact", "experience", "founder", "marketing", "degree"],
+    text: "Ali Nguyen is Nguyen Quang Duy, an applied AI and product engineer and founder of DUYTRUYENTHONG. He describes 4+ years in digital marketing and 2+ years in AI engineering and product building. His Bachelor of Computer Science degree from Vietnamese-German University was confirmed by him. For direct inquiries, use the portfolio contact section or nquangd1510@gmail.com.",
+  },
+  {
+    id: "kkbox-results",
+    title: "KKBox customer churn baseline: verified local results",
+    url: "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md",
+    tags: ["kkbox", "churn", "data", "python", "ai", "projects", "machine learning", "evaluation", "log loss", "auc", "leakage"],
+    text: "Public source and a local evaluation on official KKBox files. On 970,960 labels, the three-source logistic-regression baseline reached 0.217324 log loss and 0.819295 ROC AUC on a fixed stratified 25% holdout from the same March-label cohort. Features use transactions and listening events dated on or before 2017-02-28. This is not a Kaggle leaderboard score, out-of-time validation, deployed model, or measured retention impact. The repository credits Codex assistance and its academic reference.",
+  },
+  {
+    id: "vibecode-kit",
+    title: "Vibecode Product Kit: public developer tooling",
+    url: "https://github.com/DUYTRUYENTHONG/vibecode-product-kit",
+    tags: ["vibecode", "cli", "developer", "open source", "ci", "testing", "agent", "ai", "projects"],
+    text: "A public open-source JavaScript and Node.js CLI with agent profiles, templates, plans, and CI checks. Ali maintains the public repository. Version 0.2.0 and successful GitHub Actions checks are reported. Adoption and productivity impact have not been measured.",
+  },
+  {
+    id: "growth-commerce-os",
+    title: "DUYTRUYENTHONG Growth Commerce OS",
+    url: "https://growth-commerce-os.vercel.app/en",
+    tags: ["commerce", "marketing", "growth", "service", "website", "cms"],
+    text: "A live service website for the DUYTRUYENTHONG brand. Ali is founder and product operator. Public pages present CMS, landing-page, portfolio, and channel workflows with working demo links. Adoption and business impact are not independently measured on the portfolio.",
+  },
+  {
+    id: "stos",
+    title: "STOS Sales Traffic Operating System",
+    url: "https://stosvn.vercel.app/stos",
+    tags: ["stos", "sales", "commerce", "product", "seller", "leads", "ai"],
+    text: "A live sales-page product website for independent sellers and small businesses. Ali is founder and builder. Public product and template pages are live, with page, action, and lead insights described on the site. AI suggestions are planned, not live. Customer adoption and business impact are not independently measured here.",
+  },
+  {
+    id: "cho-kenh",
+    title: "Chợ Kênh marketplace",
+    url: "https://growth-commerce-os.vercel.app/cho-kenh",
+    tags: ["cho kenh", "chợ kênh", "tiktok", "marketplace", "commerce", "channel"],
+    text: "A live TikTok-channel catalog with filters, listing details, risk indicators, Zalo inquiry paths, and manual intermediary information. Ali is owner and product builder. Automated checkout, escrow, completed transactions, and business results are not claimed. AI tools and courses are planned additions.",
+  },
+  {
+    id: "portfolio-funnels",
+    title: "Interactive brand and B2B sales funnel examples",
+    url: "https://duytruyenthong.github.io/Alinguyen-portfolio/#funnel",
+    tags: ["funnel", "marketing", "growth", "brand", "sales", "awareness", "purchase", "conversion", "b2b"],
+    text: "The portfolio presents two interactive teaching examples: five steps from starting a brand to reporting outcomes, and six B2B buying stages from Awareness through Loyalty. Each stage explains its purpose and example content. The displayed progression counts and particle flow are illustrative, not measured customer or business results.",
+  },
+  {
+    id: "recruiter-brief",
+    title: "Recruiter brief and inspectable work",
+    url: "https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/blob/main/docs/RECRUITER_BRIEF.md",
+    tags: ["recruiter", "hire", "skills", "resume", "cv", "engineering", "portfolio"],
+    text: "The recruiter brief maps Ali's TypeScript, React, Next.js, Python, data evaluation, and product experience to public evidence. Inspectable sources include the portfolio, Vibecode Product Kit, and KKBox baseline. Live commerce sites are linked as product context; their private code is not presented as public source. No production AI traffic, customer uplift, or future-cohort performance is claimed.",
+  },
+  {
+    id: "academic-brief",
+    title: "Master's admissions brief",
+    url: "https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/blob/main/docs/ACADEMIC_BRIEF.md",
+    tags: ["master", "admission", "student", "degree", "research", "university", "academic"],
+    text: "Ali's academic interests include reliable applied AI for customer-facing systems, retrieval-grounded answers, and time-aware evaluation of customer models. He has a Bachelor of Computer Science from Vietnamese-German University, confirmed by Ali. The public brief is not an official transcript, grade verification, research publication, or admission guarantee; request official documents directly from him.",
+  },
+];

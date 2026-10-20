@@ -51,7 +51,7 @@ export default function Home() {
       <section className="decision-map-wrap" aria-labelledby="map-title"><div className="decision-map section-shell"><div className="map-graphic" aria-hidden="true"><div className="map-orbit map-one"><span className="map-node">01</span></div><div className="map-orbit map-two"><span className="map-node">02</span></div><div className="map-orbit map-three"><span className="map-node">03</span></div></div><div className="map-copy"><p className="eyebrow">Where the work connects</p><h2 id="map-title">From signal to decision.</h2><ol><li><span>01</span> Collect and understand customer signals</li><li><span>02</span> Build reliable features and workflows</li><li><span>03</span> Put useful decisions in reach</li></ol></div></div></section>
       <WorkSection projects={projects} />
 
-      <section className="funnel-section" aria-labelledby="funnel-title"><div className="section-shell"><div className="section-heading"><p className="eyebrow">What I do / sales and marketing</p><h2 id="funnel-title">From first impression to a useful conversation.</h2><p>I connect brand, content, product pages, proof, and measurement so people can understand an offer and take the next step.</p></div><FunnelExperience /></div></section>
+      <section className="funnel-section" id="funnel" aria-labelledby="funnel-title"><div className="section-shell"><div className="section-heading"><p className="eyebrow">What I do / sales and marketing</p><h2 id="funnel-title">From first impression to a useful conversation.</h2><p>I connect brand, content, product pages, proof, and measurement so people can understand an offer and take the next step.</p></div><FunnelExperience /></div></section>
 
       <CustomerCarousel />
 

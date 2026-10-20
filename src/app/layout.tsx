@@ -4,6 +4,7 @@ import { PortfolioExperienceProvider } from "./experience";
 import "@fontsource-variable/archivo";
 import "@fontsource-variable/inter";
 import "./styles.css";
+import "./guide-assistant.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 

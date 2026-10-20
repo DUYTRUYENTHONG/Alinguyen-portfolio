@@ -180,10 +180,10 @@ const roles = [
 ] as const;
 
 export function PortfolioGuide() {
-  const { selected, ready } = usePortfolioRole();
+  const { selected, chosen, ready } = usePortfolioRole();
   const role = roles.find((item) => item.label === selected) ?? roles[0];
   if (!ready) return null;
-  return <GuideCharacter icon={role.icon} />;
+  return <GuideCharacter icon={role.icon} role={selected} chosen={chosen} />;
 }
 
 export function VisitorPicker({ projects }: { projects: Project[] }) {
