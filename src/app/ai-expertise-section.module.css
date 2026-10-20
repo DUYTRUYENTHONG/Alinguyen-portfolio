@@ -1,0 +1,55 @@
+.section{padding:100px 0 108px;background:var(--canvas);color:var(--ink);scroll-margin-top:100px}
+.intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.8fr);gap:0 4.5rem;align-items:start;margin-bottom:44px}
+.eyebrow{grid-column:1/-1;color:#5d6671}
+.intro h2{max-width:13ch;margin:0;font-size:clamp(2.7rem,4.6vw,4rem);line-height:1.06;letter-spacing:-.05em;text-wrap:balance}
+.intro>p:last-child{max-width:47ch;margin:0 0 5px;color:var(--muted);font-size:1.08rem;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.card{position:relative;display:flex;flex-direction:column;min-width:0;padding:30px;border:1px solid var(--line);border-radius:27px;background:#fff;box-shadow:0 16px 34px #1c314009;overflow:hidden;transition:border-color .22s ease}
+.card:hover{border-color:#ccdaf4}
+.number{color:#2859ca;font:700 .72rem/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.11em}
+.stage{position:relative;height:174px;margin:17px 0 24px;border:1px solid #edf0f3;border-radius:18px;background:radial-gradient(ellipse at 50% 95%,#e7edf4 0,#f8fafb 48%,#fff 100%);perspective:1200px;pointer-events:none;overflow:hidden}
+.scene{position:absolute;inset:0 9%;transform-style:preserve-3d;transform:rotateX(8deg) rotateY(-10deg);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.scene>*{position:absolute;box-sizing:border-box}
+.paper{border:1px solid #dbe1e7;border-radius:7px;background:linear-gradient(145deg,#fff,#f7f9fa);box-shadow:6px 11px 15px #354b631b,inset 0 1px #fff;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.rules{display:grid;gap:7px;width:100%}.rules i{display:block;height:4px;border-radius:10px;background:#cbd3dc}.rules i:nth-child(2){width:76%}.rules i:nth-child(3){width:88%}.rules i:nth-child(4){width:55%}
+.blueDot{display:block;width:8px;height:8px;margin-bottom:14px;border-radius:50%;background:var(--blue)}
+.panelHeader{display:block;width:44%;height:6px;margin-bottom:13px;border-radius:8px;background:#556576}
+.route,.featureRoute,.signalRoute{inset:0;width:100%;height:100%;overflow:visible;fill:none;stroke:#7798d7;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.route path,.featureRoute path,.signalRoute path{stroke-dasharray:300;stroke-dashoffset:0;transition:stroke-dashoffset .65s ease}
+.sourceBack{left:7%;top:16%;width:26%;height:64%;padding:16px 12px;transform:translateZ(4px) rotate(-8deg)}
+.sourceMid{left:11%;top:18%;width:26%;height:64%;padding:16px 12px;transform:translateZ(14px) rotate(-3deg)}
+.sourceFront{left:15%;top:21%;width:26%;height:64%;padding:16px 12px;transform:translateZ(25px) rotate(3deg)}
+.retrievalNode{left:49%;top:37%;display:grid;place-items:center;width:13%;aspect-ratio:1;border:1px solid #a9bee9;border-radius:50%;background:#eaf1ff;box-shadow:4px 8px 12px #2f62b326;transform:translateZ(32px)}
+.retrievalNode span{width:27%;aspect-ratio:1;border-radius:50%;background:var(--blue)}
+.response{right:6%;top:14%;width:32%;height:71%;padding:17px 13px;transform:translateZ(18px) rotate(3deg)}
+.responseHead{display:block;width:54%;height:6px;margin-bottom:15px;border-radius:7px;background:#536477}
+.referenceDots{position:absolute;display:flex;gap:5px;left:13px;bottom:13px}.referenceDots i{width:8px;height:8px;border-radius:50%;background:var(--blue)}.referenceDots i+ i{background:#b7c7e6}
+.featurePanel{left:20%;top:7%;width:38%;height:55%;padding:16px 15px;transform:translateZ(26px) rotate(-2deg)}
+.featureSlots{position:absolute;bottom:11px;left:15px;display:flex;gap:7px}.featureSlots i{width:15px;height:7px;border:1px solid #b9ccec;border-radius:3px;background:#eaf1fc}
+.timeline{left:7%;right:6%;bottom:19%;height:20%;border:1px solid #d4dce5;border-radius:8px;background:linear-gradient(160deg,#fff,#e8edf3);box-shadow:7px 11px 14px #354b631a;transform:translateZ(5px) rotateX(7deg)}
+.timeline:before{content:"";position:absolute;left:8%;right:7%;top:50%;height:2px;background:#bdcadb}.timeline span{position:absolute;z-index:1;top:34%;width:8px;height:8px;border-radius:50%;background:var(--blue)}.timeline span:nth-child(1){left:15%}.timeline span:nth-child(2){left:28%}.timeline span:nth-child(3){left:42%}.timeline span:nth-child(4){left:72%;background:#bac3ce}.timeline span:nth-child(5){left:84%;background:#bac3ce}
+.snapshot{left:64%;top:10%;height:79%;border-left:2px dashed #5e80c8;transform:translateZ(22px)}.snapshot i{position:absolute;left:-5px;top:-1px;width:9px;height:9px;border-radius:50%;background:var(--blue)}
+.featureRoute{transform:translateZ(16px)}.afterBoundary{right:11%;top:23%;display:flex;gap:12px}.afterBoundary i{width:11px;height:11px;border:1px solid #bec6d0;border-radius:50%;background:#f7f9fa}
+.planBack{left:11%;top:14%;width:32%;height:65%;padding:18px 14px;transform:translateZ(4px) rotate(-7deg)}
+.planFront{left:15%;top:11%;width:32%;height:65%;padding:18px 14px;transform:translateZ(20px) rotate(-3deg)}
+.terminal{left:34%;top:29%;width:40%;height:60%;padding:12px 13px;border:1px solid #303c49;border-radius:8px;background:linear-gradient(145deg,#263341,#18222c);box-shadow:8px 13px 17px #22314338;transform:translateZ(30px) rotate(2deg);transition:transform .4s ease}
+.terminalTop{display:flex;gap:4px;margin-bottom:12px}.terminalTop i{width:5px;height:5px;border-radius:50%;background:#9caab8}.terminal .rules i{height:3px;background:#8695a5}.terminal .rules i:first-child{width:35%;background:#86a9ed}
+.review{right:4%;top:11%;width:27%;height:62%;padding:16px 12px;transform:translateZ(42px) rotate(6deg)}
+.reviewMarker{position:absolute;left:12px;bottom:12px;width:33%;height:7px;border-radius:8px;background:#d9e6ff}.reviewMarker:after{content:"";display:block;width:9px;height:7px;border-radius:8px;background:var(--blue);transition:transform .4s ease}
+.pagePanel{left:8%;top:12%;width:35%;height:76%;padding:14px 12px;transform:translateZ(18px) rotate(-4deg)}
+.pageBlock{display:block;width:100%;height:31%;margin-bottom:12px;border-radius:4px;background:linear-gradient(130deg,#eaf1fb,#d9e5f4)}
+.signalMarkers{left:46%;top:37%;display:flex;gap:11px;transform:translateZ(27px);transition:transform .4s ease}.signalMarkers i{width:9px;height:9px;border:2px solid var(--blue);border-radius:50%;background:#fff}.signalMarkers i:nth-child(2){margin-top:20px}.signalMarkers i:nth-child(3){margin-top:8px}
+.workflow{right:6%;top:26%;width:31%;height:62%;padding:13px;transform:translateZ(26px) rotate(4deg)}
+.workflowIcon{display:block;width:20px;height:20px;margin-bottom:10px;border:2px solid #9ab7ec;border-radius:5px;background:#eaf1ff}.workflow .rules{gap:6px}.workflow .rules i{height:3px}.workflowFooter{position:absolute;left:13px;bottom:12px;width:45%;height:7px;border-radius:8px;background:#d9e6ff}
+.suggestion{right:1%;top:7%;width:23%;height:26%;padding:10px;border:1px dashed #8da8d8;border-radius:7px;background:#fff;box-shadow:5px 7px 9px #344c6713;transform:translateZ(39px) rotate(6deg);transition:transform .4s ease}.suggestion span{display:block;width:75%;height:3px;margin:5px 0;border-radius:5px;background:#a5b7d4}.suggestion span+span{width:53%}
+.card h3{max-width:24ch;margin:0 0 10px;font-size:clamp(1.65rem,2.25vw,2rem);line-height:1.12;letter-spacing:-.04em}
+.card>p{max-width:55ch;margin:0 0 22px;color:var(--muted);font-size:1rem;line-height:1.58}
+.evidence{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;min-height:44px;margin-top:auto;border-bottom:1px solid #899fca;color:#1c4fb8;font-size:.9rem;font-weight:700;text-underline-offset:5px}.evidence:hover{text-decoration:none;border-color:#1c4fb8}.evidence span{font-size:1rem;transition:translate .2s ease}.evidence:hover span{translate:2px -2px}
+.section[data-entered="true"] .stage{animation:stage-enter .55s both}.section[data-entered="true"] .card:nth-child(2) .stage{animation-delay:75ms}.section[data-entered="true"] .card:nth-child(3) .stage{animation-delay:150ms}.section[data-entered="true"] .card:nth-child(4) .stage{animation-delay:225ms}
+@keyframes stage-enter{from{translate:0 14px}to{translate:0 0}}
+@media(hover:hover) and (pointer:fine){.card:hover .scene{transform:rotateX(10deg) rotateY(-12deg)}.card:hover .sourceBack{transform:translate(-10px,-5px) translateZ(4px) rotate(-11deg)}.card:hover .sourceMid{transform:translate(-5px,-3px) translateZ(14px) rotate(-5deg)}.card:hover .sourceFront{transform:translate(2px,-5px) translateZ(29px) rotate(3deg)}.card:hover .route path,.card:hover .featureRoute path,.card:hover .signalRoute path{animation:trace .65s ease}.card:hover .featurePanel{transform:translateY(-5px) translateZ(30px) rotate(-2deg)}.card:hover .timeline span:nth-child(-n+3){translate:0 -3px}.card:hover .snapshot{border-color:var(--blue)}.card:hover .planFront{transform:translate(3px,-4px) translateZ(22px) rotate(-2deg)}.card:hover .terminal{transform:translate(4px,-3px) translateZ(32px) rotate(1deg)}.card:hover .review{transform:translate(-3px,-4px) translateZ(43px) rotate(3deg)}.card:hover .reviewMarker:after{transform:translateX(18px)}.card:hover .signalMarkers{transform:translate(5px,-3px) translateZ(27px)}.card:hover .suggestion{transform:translate(2px,-5px) translateZ(44px) rotate(6deg)}}
+@keyframes trace{from{stroke-dashoffset:300}to{stroke-dashoffset:0}}
+@media(max-width:900px){.intro{display:block;margin-bottom:32px}.intro h2{margin-bottom:18px}.grid{gap:18px}.card{padding:24px}.stage{height:155px}.card h3{font-size:1.65rem}}
+@media(max-width:700px){.section{padding:72px 0 80px}.intro{display:block;margin-bottom:30px}.intro h2{max-width:16ch;margin-bottom:18px;font-size:clamp(2.3rem,8vw,3.25rem)}.intro>p:last-child{font-size:1rem}.grid{grid-template-columns:1fr;gap:16px}.card{padding:22px}.stage{height:145px;margin:15px 0 21px}.card h3{font-size:clamp(1.55rem,6vw,1.85rem)}}
+@media(max-width:370px){.section :global(.section-shell){width:calc(100% - 40px)}.card{padding:19px}.stage{height:128px}.scene{inset:0 4%}.intro h2{font-size:2.15rem}}
+@media(prefers-reduced-motion:reduce){.card,.section[data-entered="true"] .stage,.stage,.scene,.scene>*,.evidence span{animation:none;transition:none}.card:hover .scene{transform:rotateX(8deg) rotateY(-10deg)}.card:hover .sourceBack{transform:translateZ(4px) rotate(-8deg)}.card:hover .sourceMid{transform:translateZ(14px) rotate(-3deg)}.card:hover .sourceFront{transform:translateZ(25px) rotate(3deg)}.card:hover .featurePanel{transform:translateZ(26px) rotate(-2deg)}.card:hover .planFront{transform:translateZ(20px) rotate(-3deg)}.card:hover .terminal{transform:translateZ(30px) rotate(2deg)}.card:hover .review{transform:translateZ(42px) rotate(6deg)}.card:hover .signalMarkers{transform:translateZ(27px)}.card:hover .suggestion{transform:translateZ(39px) rotate(6deg)}.card:hover .route path,.card:hover .featureRoute path,.card:hover .signalRoute path{animation:none}.card:hover .timeline span:nth-child(-n+3){translate:none}.card:hover .reviewMarker:after{transform:none}}

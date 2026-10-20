@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { capabilities, expertise, identity, principles, projects } from "@/data/portfolio";
+import { capabilities, identity, principles, projects } from "@/data/portfolio";
 import { CopyEmail, CustomerCarousel, PortfolioGuide, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
 import { AdaptiveHero } from "./adaptive-hero";
 import { FunnelExperience } from "./funnel-experience";
@@ -7,6 +7,7 @@ import { WorkingHours } from "./working-hours";
 import { PortraitReveal } from "./portrait-reveal";
 import { CvDownloadSection } from "./cv-download-section";
 import { HighlightsSection } from "./highlights-section";
+import { AIExpertiseSection } from "./ai-expertise-section";
 import "./funnel.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -39,7 +40,7 @@ export default function Home() {
 
       <HighlightsSection />
 
-      <section className="ai-expertise" id="ai-expertise" aria-labelledby="ai-expertise-title"><div className="section-shell"><div className="ai-expertise-intro"><p className="eyebrow">Applied AI expertise</p><h2 id="ai-expertise-title">What I build, and how I check it.</h2><p>My work spans early AI prototypes, customer data, developer tooling, and commerce products. Each example below names the part that is working today and the part that still needs evidence.</p></div><div className="ai-expertise-grid">{expertise.map((item) => <article key={item.number}><span className="ai-expertise-number">{item.number} / 04</span><h3>{item.title}</h3><p>{item.detail}</p><a href={item.href}>{item.linkLabel} <span aria-hidden="true">↗</span></a></article>)}</div></div></section>
+      <AIExpertiseSection />
 
       <section className="decision-map-wrap" aria-labelledby="map-title"><div className="decision-map section-shell"><div className="map-graphic" aria-hidden="true"><div className="map-orbit map-one"><span className="map-node">01</span></div><div className="map-orbit map-two"><span className="map-node">02</span></div><div className="map-orbit map-three"><span className="map-node">03</span></div></div><div className="map-copy"><p className="eyebrow">Where the work connects</p><h2 id="map-title">From signal to decision.</h2><ol><li><span>01</span> Collect and understand customer signals</li><li><span>02</span> Build reliable features and workflows</li><li><span>03</span> Put useful decisions in reach</li></ol></div></div></section>
       <WorkSection projects={projects} />
