@@ -166,8 +166,8 @@ export const cvTracks = [
 ] as const;
 
 export const principles = [
-  "Make data ownership explicit",
-  "Measure before claiming impact",
-  "Protect customer information",
-  "Build for reliability and speed",
+  { title: "Make data ownership explicit", detail: "Show sources, roles, and system boundaries." },
+  { title: "Measure before claiming impact", detail: "Separate technical checks from business outcomes." },
+  { title: "Protect customer information", detail: "Use public evidence without exposing customer records." },
+  { title: "Build for reliability and speed", detail: "Make the next change testable and understandable." },
 ] as const;

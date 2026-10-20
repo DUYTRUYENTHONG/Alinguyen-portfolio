@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import type { Project } from "@/data/portfolio";
-import { customers } from "@/data/portfolio";
 import { GuideCharacter } from "./guide-character";
 import { VisitorStats } from "./visitor-stats";
 import { PortfolioLink as Link } from "./portfolio-link";
@@ -248,27 +247,6 @@ export function ScrollStatement() {
       return <span className="statement-word" style={{ opacity: 0.18 + 0.82 * reveal }} key={`${word}-${index}`}>{word}{index < statementWords.length - 1 ? " " : ""}</span>;
     })}</span></h2>
   </section>;
-}
-
-export function CustomerCarousel() {
-  const renderCards = (copy: "primary" | "duplicate") => customers.map((customer) => {
-    const content = <span className="customer-mark">{"logo" in customer ? <img src={`${basePath}/${customer.logo}`} alt={customer.name} width="140" height="140" loading="lazy" decoding="async" /> : <strong>{customer.name}</strong>}</span>;
-    return "href" in customer ? <a className="customer-card" key={customer.name} href={customer.href} target="_blank" rel="noopener noreferrer" tabIndex={copy === "duplicate" ? -1 : undefined} aria-label={`${customer.name} — visit brand website`}>{content}</a> : <div className="customer-card" key={customer.name}>{content}</div>;
-  });
-
-  return (
-    <section className="customer-section" id="feedback" aria-labelledby="customers-title">
-      <div className="section-shell">
-        <div className="customer-heading"><div><p className="eyebrow">Customers &amp; collaborations</p><h2 id="customers-title">Built for real businesses.</h2><p>Customer and collaboration names confirmed by Ali Nguyen. Individual testimonials are not quoted here.</p></div></div>
-        <section className="customer-rail" aria-label="Customer names and logos">
-          <div className="customer-track">
-            <div className="customer-group">{renderCards("primary")}</div>
-            <div className="customer-group" aria-hidden="true" inert>{renderCards("duplicate")}</div>
-          </div>
-        </section>
-      </div>
-    </section>
-  );
 }
 
 export function ProjectVisual({ id }: { id: string }) {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { capabilities, identity, principles, projects } from "@/data/portfolio";
-import { CopyEmail, CustomerCarousel, PortfolioGuide, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
+import { identity, projects } from "@/data/portfolio";
+import { CopyEmail, PortfolioGuide, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
 import { AdaptiveHero } from "./adaptive-hero";
 import { FunnelExperience } from "./funnel-experience";
 import { WorkingHours } from "./working-hours";
@@ -8,6 +8,8 @@ import { PortraitReveal } from "./portrait-reveal";
 import { CvDownloadSection } from "./cv-download-section";
 import { HighlightsSection } from "./highlights-section";
 import { AIExpertiseSection } from "./ai-expertise-section";
+import { CustomerCollaborationSection } from "./customer-collaboration-section";
+import { AboutWorkSection } from "./about-work-section";
 import "./funnel.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -47,9 +49,9 @@ export default function Home() {
 
       <section className="funnel-section" id="funnel" aria-labelledby="funnel-title"><div className="section-shell"><div className="section-heading"><p className="eyebrow">What I do / sales and marketing</p><h2 id="funnel-title">From first impression to a useful conversation.</h2><p>I connect brand, content, product pages, proof, and measurement so people can understand an offer and take the next step.</p></div><FunnelExperience /></div></section>
 
-      <CustomerCarousel />
+      <CustomerCollaborationSection />
 
-      <section className="about-section" id="about" aria-labelledby="about-title"><div className="section-shell"><div className="section-heading"><p className="eyebrow">About the work</p><h2 id="about-title">Build with the evidence in view.</h2><p>I bring {identity.experience.digitalMarketing} and {identity.experience.aiEngineering}. I founded and operate DUYTRUYENTHONG agency, combining client discovery with websites, local search, content, TikTok Shop operations, and analytics. Solution consulting and technical support experience shape how I scope, test, and explain each system.</p></div><div className="about-grid">{principles.map((item, index) => <article key={item}><span>0{index + 1}</span><h3>{item}</h3><p>{index === 0 ? "Show sources, roles, and system boundaries." : index === 1 ? "Separate technical checks from business outcomes." : index === 2 ? "Use public evidence without exposing customer records." : "Make the next change testable and understandable."}</p></article>)}</div><div className="tools-row">{capabilities.map((group) => <div key={group.group}><strong>{group.group}</strong><span>{group.items.join(" · ")}</span></div>)}</div></div></section>
+      <AboutWorkSection />
 
       <CvDownloadSection />
 
