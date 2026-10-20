@@ -1,0 +1,42 @@
+{
+  "sourceCommit": "d2a2cc8c8d6d6c27e25e6071e72460f821227e3e",
+  "url": "http://127.0.0.1:3014/",
+  "pathsRelativeTo": "docs/qa",
+  "browser": "In-app Chromium on Windows",
+  "captureMethod": "Native CUA screenshot; visual review performed separately",
+  "limitations": "Local candidate captures. Mobile and earlier diagram captures were recorded before the final anchor-only correction, which did not alter those diagrams.",
+  "captures": [
+    {
+      "file": "release-2026-10-20/work-desktop.jpg",
+      "sha256": "521DA8756C8600275ECF0052C315B36E31131D6A13087283CB228E5E64E03041",
+      "width": 1265,
+      "height": 712,
+      "bytes": 69801,
+      "captureUtc": "2026-10-20T04:09:22.8015151Z"
+    },
+    {
+      "file": "visual-communication/desktop-map.png",
+      "sha256": "391699523324928B1E1E61684280A8E77ED1C42196E1492899F6294252257C53",
+      "width": 1440,
+      "height": 900,
+      "bytes": 127328,
+      "captureUtc": "2026-10-20T03:46:32.0627782Z"
+    },
+    {
+      "file": "visual-communication/mobile-map.png",
+      "sha256": "0728BF11C0DED44981C22B4E30A4FCAC54F8C9774C8E21BDB970F3DD38C59568",
+      "width": 390,
+      "height": 844,
+      "bytes": 44928,
+      "captureUtc": "2026-10-20T03:44:47.6266620Z"
+    },
+    {
+      "file": "visual-communication/mobile-notes.png",
+      "sha256": "C4A8915792D031BEC53C87941B6BDB0FEA9A65C2A9D0CD6B7B4892CDC8F9E3C9",
+      "width": 390,
+      "height": 844,
+      "bytes": 42943,
+      "captureUtc": "2026-10-20T03:45:20.8339882Z"
+    }
+  ]
+}
