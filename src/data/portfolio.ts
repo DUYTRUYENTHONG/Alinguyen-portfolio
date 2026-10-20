@@ -161,7 +161,7 @@ export const capabilities = [
 
 export const cvTracks = [
   { title: "Applied AI engineering", detail: "LLM applications, retrieval workflows, Python, and customer analytics prototypes.", downloads: [{ label: "Download PDF", path: "cv-applied-ai-engineer.pdf" }] },
-  { title: "Business and product", detail: "Digital marketing services, sales funnels, solution consulting, and commerce products.", downloads: [{ label: "Business & Product PDF", path: "cv-business-product.pdf" }, { label: "Business Development PDF", path: "cv-business-development.pdf" }], note: "The two downloads share one business-and-product CV." },
+  { title: "Business and product", detail: "Digital marketing services, sales funnels, solution consulting, and commerce products.", downloads: [{ label: "Business & Product PDF", path: "cv-business-product.pdf" }, { label: "Business Development PDF", path: "cv-business-development.pdf" }], note: "Choose product delivery or client-facing business development." },
   { title: "AI and prompt engineering", detail: "Prompt workflows, RAG concepts, enterprise troubleshooting, and AI-assisted delivery.", downloads: [{ label: "Download DOCX", path: "cv-prompt-engineer.docx" }] },
 ] as const;
 

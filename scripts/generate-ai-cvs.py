@@ -1,7 +1,6 @@
 """Regenerate the two public AI CVs from one evidence-conscious content record."""
 
 from pathlib import Path
-from shutil import copyfile
 from xml.sax.saxutils import escape
 
 from docx import Document
@@ -25,6 +24,12 @@ PROFILE = (
     "troubleshooting and client discovery to scoping, testing and explaining technical work."
 )
 
+KKBOX_RESULT = (
+    "On 970,960 official-data labels, a local within-cohort 75/25 stratified holdout "
+    "reached 0.217324 log loss and 0.819295 ROC AUC. Features use a 2017-02-28 "
+    "snapshot; this is not an out-of-time, leaderboard, production or business-impact result."
+)
+
 SKILLS = [
     ("Applied AI", "LLM API and prompt workflows; retrieval-augmented generation prototypes; response review and documentation."),
     ("Data and evaluation", "Python, SQL, PostgreSQL, Pandas, scikit-learn, snapshot-date features and holdout evaluation."),
@@ -44,7 +49,7 @@ PROJECTS = [
         "KKBox customer churn baseline | Local prototype",
         [
             "Built a snapshot-date feature pipeline and logistic-regression holdout baseline for customer churn exploration.",
-            "Checked future-event exclusion with synthetic fixtures. Real KKBox model scores and business outcomes remain unmeasured.",
+            "Checked future-event exclusion with synthetic fixtures. " + KKBOX_RESULT,
         ],
     ),
     (
@@ -135,7 +140,7 @@ def build_pdf() -> None:
     para("Selected coursework: Linear Algebra, Statistics and Discrete Mathematics.", "body")
     para("English: Professional Working Proficiency | German: A2", "body")
     section("Evidence and scope")
-    para("Live websites and the public Vibecode repository can be inspected through the portfolio. The knowledge assistant and KKBox work are prototypes. No production AI deployment, KKBox model score or commercial uplift is claimed in this CV.", "body")
+    para("Live websites and public source can be inspected through the portfolio. The knowledge assistant and KKBox work are prototypes. The KKBox score is from a local within-cohort holdout; no production AI deployment or commercial uplift is claimed.", "body")
 
     def footer(canvas, doc):
         canvas.saveState()
@@ -203,7 +208,7 @@ def build_docx() -> None:
     document.add_paragraph("Selected coursework: Linear Algebra, Statistics and Discrete Mathematics.")
     document.add_paragraph("English: Professional Working Proficiency | German: A2")
     document.add_heading("EVIDENCE AND SCOPE", level=1)
-    document.add_paragraph("Live websites and the public Vibecode repository can be inspected through the portfolio. The knowledge assistant and KKBox work are prototypes. No production AI deployment, KKBox model score or commercial uplift is claimed in this CV.")
+    document.add_paragraph("Live websites and public source can be inspected through the portfolio. The knowledge assistant and KKBox work are prototypes. The KKBox score is from a local within-cohort holdout; no production AI deployment or commercial uplift is claimed.")
     footer = section.footer.paragraphs[0]
     footer.alignment = 2
     footer.add_run("NGUYEN QUANG DUY | AI AND PROMPT ENGINEERING")
@@ -213,7 +218,7 @@ def build_docx() -> None:
 
 
 def build_business_pdfs() -> None:
-    """Keep the two business download labels on one accurate, shared CV."""
+    """Generate separate product and business-development role narratives."""
     output = PUBLIC / "cv-business-product.pdf"
     accent = colors.HexColor("#125d83")
     ink = colors.HexColor("#17212d")
@@ -251,7 +256,7 @@ def build_business_pdfs() -> None:
     para("Cho Kenh | Live marketplace website", "entry")
     para("Built a TikTok channel catalog with filters, risk and audit indicators, detail pages and manual Zalo inquiry paths. The intermediary process is manual; automated checkout and completed transactions are not claimed.")
     para("KKBox customer churn baseline | Local prototype", "entry")
-    para("Explored retention features through a snapshot-date pipeline and logistic-regression holdout baseline. Synthetic fixtures check future-event exclusion; real KKBox model scores and revenue outcomes are unmeasured.")
+    para("Explored retention features through a snapshot-date pipeline and logistic-regression holdout baseline. " + KKBOX_RESULT)
     para("Vibecode Product Kit | Public developer tool", "entry")
     para("Maintained an offline CLI, Codex profiles, templates and CI checks for traceable planning and release reviews. Public repository: github.com/DUYTRUYENTHONG/vibecode-product-kit.")
     section("Education and languages")
@@ -259,7 +264,32 @@ def build_business_pdfs() -> None:
 
     doc = SimpleDocTemplate(str(output), pagesize=A4, leftMargin=17 * mm, rightMargin=17 * mm, topMargin=15 * mm, bottomMargin=16 * mm, title="Nguyen Quang Duy Business and Product CV", author="Nguyen Quang Duy")
     doc.build(story)
-    copyfile(output, PUBLIC / "cv-business-development.pdf")
+
+    development = PUBLIC / "cv-business-development.pdf"
+    story = []
+    para("NGUYEN QUANG DUY", "name")
+    para("BUSINESS DEVELOPMENT | SOLUTION CONSULTING | DIGITAL COMMERCE", "title")
+    para(CONTACT)
+    para(f"Portfolio: {PORTFOLIO}")
+    section("Profile")
+    para("Founder and solution consultant with a Computer Science background. I work from client discovery and positioning through scoped websites, content, lead paths and commerce workflows. My public portfolio distinguishes live work from prototypes and does not claim unmeasured sales outcomes.")
+    section("Relevant capabilities")
+    para("Requirements discovery, offer positioning, sales funnels, website and content planning, commerce operations, stakeholder communication, solution scoping, analytics and technical documentation.")
+    section("Client-facing experience")
+    for title, detail in (EXPERIENCE[1], EXPERIENCE[2], EXPERIENCE[0], EXPERIENCE[3], EXPERIENCE[4]):
+        para(title, "entry")
+        para(detail)
+    section("Selected commerce work")
+    para("Growth Commerce OS | Live service website", "entry")
+    para("Built a service website for the DUYTRUYENTHONG brand to explain its offer and guide visitors toward a conversation. Business impact has not been independently measured.")
+    para("STOS Sales Traffic Operating System | Live product website", "entry")
+    para("Built a sales-page product with templates, a page studio, inquiry capture and Insights for views, actions and leads. AI suggestions remain planned; customer and revenue impact are not claimed.")
+    para("Cho Kenh | Live marketplace website", "entry")
+    para("Built a TikTok channel catalog with filters, risk and audit indicators, detail pages and manual Zalo inquiry paths. The intermediary process is manual; automated checkout and completed transactions are not claimed.")
+    section("Education and languages")
+    para("Bachelor of Computer Science | Vietnamese-German University | 2021 - 2026. English: Professional Working Proficiency; German: A2.")
+    doc = SimpleDocTemplate(str(development), pagesize=A4, leftMargin=17 * mm, rightMargin=17 * mm, topMargin=15 * mm, bottomMargin=16 * mm, title="Nguyen Quang Duy Business Development CV", author="Nguyen Quang Duy")
+    doc.build(story)
 
 
 if __name__ == "__main__":

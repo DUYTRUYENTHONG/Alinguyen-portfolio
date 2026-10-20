@@ -29,8 +29,8 @@ function CardArtwork({ id }: { id: typeof cards[number]["id"] }) {
     <div className={styles.terminal}><span className={styles.terminalDots}><i /><i /><i /></span><div className={styles.terminalLines}><span><b>✓</b> Templates ready</span><span><b>✓</b> Offline CLI enabled</span><span><b>✓</b> CI checks configured</span></div></div><span className={styles.commandTile}>&gt;_</span>
   </div>;
   if (id === "kkbox") return <div className={`${styles.art} ${styles.kkboxArt}`} aria-hidden="true">
-    <div className={styles.signalCard}><span className={styles.signalHeading}>Customer signals</span><svg viewBox="0 0 180 65" fill="none" aria-hidden="true"><path d="M0 49 27 43 48 51 72 26 96 36 120 19 143 27 163 9 180 13" stroke="#218bfa" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg><span className={styles.signalBars}><i /><i /><i /><i /><i /></span></div>
-    <div className={styles.snapshotCard}><strong>Snapshot check</strong><span>Train <b>✓</b></span><span>Validation <b>✓</b></span><span>Test <b>✓</b></span></div>
+    <div className={styles.signalCard}><span className={styles.signalHeading}>Customer events over time</span><div className={styles.eventTrack}><i /><i /><i /><b /><i /><i /></div><div className={styles.eventLabels}><span>KNOWN</span><span>LATER</span></div></div>
+    <div className={styles.snapshotCard}><strong>Snapshot boundary</strong><span>Earlier events used</span><span>Later events excluded</span></div>
   </div>;
   if (id === "stos") return <div className={`${styles.art} ${styles.stosArt}`} aria-hidden="true"><div className={styles.stosDevice}><img src={`${basePath}/stos-home-mobile-2026-preview.webp`} alt="" width="382" height="288" /></div><span className={styles.stosAccent} /></div>;
   if (id === "chokenh") return <div className={`${styles.art} ${styles.chokenhArt}`} aria-hidden="true"><div className={styles.marketDevice}><img src={`${basePath}/cho-kenh-home-2026-preview.webp`} alt="" width="1100" height="523" /></div></div>;
@@ -45,7 +45,7 @@ export function HighlightsSection() {
         <div className={styles.feature}>
           <span className={styles.sparkle} aria-hidden="true">✦</span>
           <FeatureArtwork />
-          <div className={styles.featureCopy}><strong>5</strong><p>featured builds across commerce products, open-source tooling, and customer analytics.</p><div className={styles.featureFooter}><span>REAL PROJECTS.<br />PRACTICAL IMPACT.</span><a href="#work" aria-label="Explore selected work">→</a></div></div>
+          <div className={styles.featureCopy}><strong>5</strong><p>featured builds across commerce products, open-source tooling, and customer analytics.</p><div className={styles.featureFooter}><span>PUBLIC BUILDS.<br />EVIDENCE IN VIEW.</span><a href="#work" aria-label="Explore selected work">→</a></div></div>
         </div>
         {cards.map((card) => <article className={`${styles.card} ${styles[card.id]}`} key={card.id}>
           <div className={styles.cardCopy}>

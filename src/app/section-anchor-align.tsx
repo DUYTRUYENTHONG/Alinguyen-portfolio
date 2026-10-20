@@ -2,7 +2,9 @@
 
 import { useEffect } from "react";
 
-export function CvAnchorAlign() {
+const alignedIds = new Set(["work", "cvs"]);
+
+export function SectionAnchorAlign() {
   useEffect(() => {
     let frame = 0;
     let settleFrame = 0;
@@ -10,8 +12,9 @@ export function CvAnchorAlign() {
     let active = true;
     const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(() => schedule());
     const align = () => {
-      if (window.location.hash !== "#cvs") return;
-      const section = document.getElementById("cvs");
+      const id = window.location.hash.slice(1);
+      if (!alignedIds.has(id)) return;
+      const section = document.getElementById(id);
       if (!section) return;
       const margin = Number.parseFloat(window.getComputedStyle(section).scrollMarginTop) || 0;
       const difference = section.getBoundingClientRect().top - margin;
@@ -26,7 +29,7 @@ export function CvAnchorAlign() {
       if (!active) return;
       observer?.disconnect();
       window.clearTimeout(stopWatching);
-      if (window.location.hash !== "#cvs") return;
+      if (!alignedIds.has(window.location.hash.slice(1))) return;
       schedule();
       const main = document.querySelector("main");
       if (main) observer?.observe(main);

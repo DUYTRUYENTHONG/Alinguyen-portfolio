@@ -1,5 +1,4 @@
 import { cvTracks } from "@/data/portfolio";
-import { CvAnchorAlign } from "./cv-anchor-align";
 import styles from "./cv-download-section.module.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -41,7 +40,6 @@ function DownloadIcon() {
 
 export function CvDownloadSection() {
   return <section className={styles.section} id="cvs" aria-labelledby="cv-title">
-    <CvAnchorAlign />
     <div className="section-shell">
       <div className={styles.heading}><p className="eyebrow">CVs</p><h2 id="cv-title">Choose the version for your conversation.</h2></div>
       <div className={styles.grid}>{cvTracks.map((track, index) => <article className={styles.card} key={track.title}>

@@ -1,0 +1,26 @@
+{
+  "sourceCommit": "f126d960830becf246307eb5bb466336d9281adf",
+  "browser": "In-app Chromium, Windows; Chrome/155.0.0.0 user agent",
+  "method": "IAB getScreenshot at native viewport",
+  "note": "Current public page. Local visual-communication changes are unpublished.",
+  "captures": [
+    {
+      "file": "live-home-desktop-1208.jpg",
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/#top",
+      "width": 1209,
+      "height": 597,
+      "bytes": 61141,
+      "sha256": "AC32FFE978E8323D50D6039BF0B825C923D7CCBFA37256EA60FA329A459402BA",
+      "captureUtc": "2026-10-20T03:51:07.1403784Z"
+    },
+    {
+      "file": "live-cv-choices-1208.jpg",
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/#cvs",
+      "width": 1209,
+      "height": 597,
+      "bytes": 68604,
+      "sha256": "998D212A971484B99F0447426F49AD76ED07E0B63413CA35FA50E3F7108DB105",
+      "captureUtc": "2026-10-20T03:56:03.7889552Z"
+    }
+  ]
+}
