@@ -1,127 +1,67 @@
 # Ali Nguyen · Applied AI and Product Engineer
 
-**Nguyen Quang Duy (Ali Nguyen)** builds applied AI prototypes, developer tools, customer analytics, and digital commerce products through [DUYTRUYENTHONG](https://growth-commerce-os.vercel.app/en).
+The public portfolio of **Nguyen Quang Duy (Ali Nguyen)**, founder of DUYTRUYENTHONG. It presents applied AI prototypes, evaluated customer-data work, developer tooling, and live digital commerce products with their evidence and limits visible.
 
-[Portfolio and case studies](https://duytruyenthong.github.io/Alinguyen-portfolio/) · [Selected work](https://duytruyenthong.github.io/Alinguyen-portfolio/work/) · [About](https://duytruyenthong.github.io/Alinguyen-portfolio/about/) · [Email](mailto:nquangd1510@gmail.com)
+[Live portfolio](https://duytruyenthong.github.io/Alinguyen-portfolio/) · [Selected work](https://duytruyenthong.github.io/Alinguyen-portfolio/work/) · [About Ali](https://duytruyenthong.github.io/Alinguyen-portfolio/about/) · [GitHub profile](https://github.com/DUYTRUYENTHONG)
 
-## Start here
+> **Public for review; not a template.** The original design, code, writing, and owner-created assets are all rights reserved. Public access does not grant permission to reuse or redeploy them. See [LICENSE](LICENSE) and [Credits](https://duytruyenthong.github.io/Alinguyen-portfolio/credits/) for third-party material and brand marks. A public repository and public website can still be viewed, forked, cloned, or inspected; this notice states reuse terms rather than claiming a technical copy barrier.
 
-| Reviewing for | Short path |
+## Review paths
+
+| If you are reviewing | Start here |
 | --- | --- |
-| An engineering or applied AI role | [Recruiter brief](docs/RECRUITER_BRIEF.md): skills tied to public source, live work, and clearly labeled prototypes. |
-| A master's application | [Academic brief](docs/ACADEMIC_BRIEF.md): study background, research interests, methods, and evidence limits. |
-| Source quality | [This portfolio's Next.js code](src/app/) and the [public Vibecode CLI and checks](https://github.com/DUYTRUYENTHONG/vibecode-product-kit). |
+| An applied AI or engineering role | [Recruiter brief](docs/RECRUITER_BRIEF.md), [Applied AI CV](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf), and [project cases](https://duytruyenthong.github.io/Alinguyen-portfolio/work/). |
+| A master's application | [Academic brief](docs/ACADEMIC_BRIEF.md), the [KKBox evaluation](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md), and the [Applied AI CV](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf). |
+| Implementation and design | [Portfolio creation guide](docs/PORTFOLIO_CREATION_GUIDE.md), [source](src/app/), and [content data](src/data/portfolio.ts). |
 
-**Evidence key:** “Public source” means inspectable code, “live site” means a reachable product or service page, and “local prototype” means code or results are not yet independently reviewable. None of these labels implies commercial impact or research publication.
+## Selected evidence
 
-## For recruiters
-
-I work across product engineering and applied AI: translating customer problems into web workflows, building testable prototypes, and checking what the evidence supports. My experience spans digital marketing and commerce operations as well as software and data work.
-
-| Expertise | What I can show |
+| Work | Current status and what can be inspected |
 | --- | --- |
-| Applied AI and retrieval | A knowledge-assistant prototype with source retrieval, prompt design, and review against representative questions. It is not a deployed support service. |
-| Data and machine learning | A public KKBox churn baseline with snapshot-date features, a synthetic future-event leakage check, and an [official-data local holdout](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md): 0.217324 log loss and 0.819295 ROC AUC. |
-| Product engineering | [Vibecode Product Kit](https://github.com/DUYTRUYENTHONG/vibecode-product-kit), a public JavaScript tool with an offline CLI, reusable Codex assets, and CI checks. |
-| Digital commerce | [Growth Commerce OS](https://growth-commerce-os.vercel.app/en), [STOS](https://stosvn.vercel.app/stos), and [Chợ Kênh](https://growth-commerce-os.vercel.app/cho-kenh) show service, sales-page, and marketplace workflows. These public pages do not establish adoption or revenue results. |
+| [Growth Commerce OS](https://growth-commerce-os.vercel.app/en) | Live service website. Its public pages show the offer and workflows; business outcomes are not measured here. |
+| [STOS](https://stosvn.vercel.app/stos) | Live sales-page product. AI suggestions are planned, not a live capability. |
+| [Chợ Kênh](https://growth-commerce-os.vercel.app/cho-kenh) | Live catalog and manual inquiry flow; no automated checkout or escrow. |
+| [Vibecode Product Kit](https://github.com/DUYTRUYENTHONG/vibecode-product-kit) | Public developer-tool source, offline CLI, and CI checks. |
+| [KKBox churn baseline](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction) | Public source and official-data local holdout. The [results](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md) report 0.217324 log loss and 0.819295 ROC AUC on a within-cohort split, with a synthetic future-event leakage check. This is not a leaderboard, out-of-time, production, or business-impact result. |
 
-**Skills and tools:** Python, SQL, PostgreSQL, Pandas, scikit-learn, JavaScript, TypeScript, React, Next.js, Node.js, GitHub Actions, testing, Power BI, DAX, LLM API and prompt workflows, retrieval-augmented generation prototypes, customer discovery, sales funnels, and lead workflows. The linked work and CVs give context for each area; this list does not imply production experience with every tool.
+The knowledge-assistant work is a prototype, not a deployed support service. The portfolio guide is a separate, on-demand assistant for navigating public portfolio evidence; it falls back to static links if the API is unavailable. Neither feature is evidence of customer adoption.
 
-**CVs:** [Applied AI Engineer (PDF)](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf) · [AI and Prompt Engineer (DOCX)](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-prompt-engineer.docx) · [Business and Product (PDF)](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-business-product.pdf)
+## How this portfolio is made
 
-## For master's admissions
+- **Frontend:** Next.js 16 App Router, React 19, TypeScript, a static export, self-hosted Inter and Archivo fonts, and scoped CSS for the editorial sections. The hero changes its emphasis for a selected visitor perspective or entry link; the base layout stays consistent.
+- **Content:** `src/data/portfolio.ts` is the main record for identity, projects, expertise, collaborations, and capabilities. Case pages, briefs, and CVs preserve the distinction between live work, public code, prototypes, plans, and measured local results.
+- **Interactions:** The named guide characters use local motion. Questions are sent only after a visitor submits them to the separate [Vercel guide API](visitor-api/README.md). API keys stay server-side. The independent visitor counter uses that API project as well.
+- **Presentation:** The customer display shows 15 owner-confirmed names once, including 14 existing logo assets and one name-only entry. The adjacent About section uses conceptual illustrations; neither logos nor diagrams imply endorsements or measured outcomes.
+- **Deployment:** A push to `main` starts GitHub Actions. It exports the site under `/Alinguyen-portfolio` and deploys to GitHub Pages only after the checks pass.
 
-I hold a Bachelor of Computer Science from Vietnamese-German University (2021–2026), as confirmed by the portfolio owner. My CV lists Linear Algebra, Statistics, and Discrete Mathematics among selected coursework. I am interested in reliable applied AI, retrieval-grounded question answering, temporal evaluation of customer models, and the design of useful human-facing systems. These are research interests, not claims of publications or completed graduate research.
+The [portfolio creation guide](docs/PORTFOLIO_CREATION_GUIDE.md) explains the content workflow, architecture, local setup, quality checks, and release process. [Asset provenance](docs/ASSET_PROVENANCE.md) and the [Credits page](https://duytruyenthong.github.io/Alinguyen-portfolio/credits/) identify visual references and third-party assets.
 
-My strongest project examples for an academic discussion are:
+## Local development for authorized collaborators
 
-1. **Leakage-aware evaluation:** the [KKBox case study](https://duytruyenthong.github.io/Alinguyen-portfolio/#project-kkbox-baseline) explains why customer features must stop at a chosen snapshot date. The [public baseline](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction) includes a synthetic leakage test and a measured local holdout; an out-of-time test remains to be done.
-2. **Grounded AI responses:** my knowledge-assistant prototype explores retrieving source material before generating an answer and reviewing responses against questions. It has no published accuracy benchmark or production deployment.
-3. **Reproducible engineering:** [Vibecode Product Kit](https://github.com/DUYTRUYENTHONG/vibecode-product-kit) exposes its source, CLI, templates, and automated checks for inspection.
-
-For study or supervision inquiries, [email me](mailto:nquangd1510@gmail.com?subject=Master%27s%20admission%20inquiry) and see the [Applied AI CV](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf). The degree award is owner-confirmed; official transcripts, grades, research outputs, and recommendations should be requested directly from me and the university.
-
-## Selected work and status
-
-| Project | Status | Evidence |
-| --- | --- | --- |
-| [Growth Commerce OS](https://growth-commerce-os.vercel.app/en) | Live service website | Public service pages and demos; business impact unmeasured here. |
-| [STOS](https://stosvn.vercel.app/stos) | Live product website | Sales pages, templates, inquiries, and illustrative insights; AI suggestions are planned. |
-| [Chợ Kênh](https://growth-commerce-os.vercel.app/cho-kenh) | Live marketplace pages | Catalog, listing details, and Zalo inquiry flow; no automated checkout or escrow. |
-| [Vibecode Product Kit](https://github.com/DUYTRUYENTHONG/vibecode-product-kit) | Public developer tool | Source and CI are available for review. |
-| [KKBox churn baseline](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction) | Public source; official-data local holdout | Leakage test, input audit, and [measured within-cohort metrics](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md); no leaderboard or business-impact claim. |
-
-## Repository notes
-
-Static-first Next.js and TypeScript portfolio for Ali Nguyen, branded
-DUYTRUYENTHONG. Content is maintained in `src/data/portfolio.ts`.
-
-## Local preview
+Use Node.js 22 and the committed lockfile:
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open `http://localhost:3000`. Run `npm run typecheck`, `npm run lint`, and
-`npm run build` for a static export in `out/`.
+Open `http://localhost:3000`. The static pages work without API credentials. To test the optional visitor counter and guide locally, see [visitor-api/README.md](visitor-api/README.md); keep `GROQ_API_KEY`, Upstash tokens, and salts on the server, never in `NEXT_PUBLIC_` variables or this repository.
 
-The GitHub Pages repository is `DUYTRUYENTHONG/Alinguyen-portfolio`, at
-`https://duytruyenthong.github.io/Alinguyen-portfolio/`. The workflow builds with
-`NEXT_PUBLIC_SITE_URL` set to that URL and `NEXT_PUBLIC_BASE_PATH=/Alinguyen-portfolio`.
-Local builds use `localhost:3000` in metadata and disallow indexing.
-The visitor counter uses the independent Vercel API in `visitor-api/` backed by
-Upstash Redis. Set `NEXT_PUBLIC_VISITOR_API_URL=https://ali-portfolio-visitor-api.vercel.app/api/visit`
-in `.env.local` for local development. The GitHub Pages workflow sets the same
-public URL for its build. One browser UUID counts once; choosing a different role
-updates the role totals without adding another visitor.
-The working-hours panel uses the live `Asia/Ho_Chi_Minh` clock and the visitor's
-browser time zone. Its 09:00–18:00 overlap is a planning comparison, not a promise
-of immediate availability.
-The LinkedIn URL awaits owner input. The KKBox source and aggregate local
-evaluation are public; raw competition files and customer-level outputs are not.
+Before a release, run:
 
-The DUYTRUYENTHONG logo was also supplied by the owner and appears with Growth
-Commerce OS. Both logos are preserved as supplied.
+```sh
+npm run typecheck
+npm run lint
+npm --prefix visitor-api ci
+npm --prefix visitor-api test
+npm --prefix visitor-api run smoke:production
+npm run build
+```
 
-Ali Nguyen also supplied the Chợ Kênh logo and identified the marketplace as
-his product. Its live public pages show a TikTok channel catalog, filters,
-listing details, Zalo inquiries, and a manual intermediary consultation flow.
-The intermediary page states that automated checkout and escrow are unavailable.
-AI tools and courses are owner-described plans, not live offerings. No
-transactions or buyer outcomes are claimed.
+The Pages workflow supplies `NEXT_PUBLIC_BASE_PATH=/Alinguyen-portfolio`, `NEXT_PUBLIC_SITE_URL`, and the public API URLs during its build. Run `npm run build` with the same public variables to check the deployed path locally. The exported files are in `out/`.
 
-For an exact preview of the GitHub Pages path, build with
-`NEXT_PUBLIC_BASE_PATH=/Alinguyen-portfolio` and serve the generated `out/` directory
-under `/Alinguyen-portfolio/`. The portfolio pages are static; live visitor totals
-require the separate API.
+## Downloads and source notes
 
-The [GitHub profile README](https://github.com/DUYTRUYENTHONG/DUYTRUYENTHONG) is published in the public username-matched repository. This portfolio repository holds the detailed project source, recruiter brief, and admissions brief linked from that profile.
+The site offers four CV actions: [Applied AI Engineer PDF](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf), [Business & Product PDF](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-business-product.pdf), [Business Development PDF](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-business-development.pdf), and [AI / Prompt Engineer DOCX](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-prompt-engineer.docx). The two business PDFs intentionally share a business-and-product CV. The owner should review personal details before each public update; the source generator is `scripts/generate-ai-cvs.py`.
 
-Four CV files are downloadable from the site: Applied AI Engineer (PDF),
-Business & Product (PDF), Business Development (PDF), and AI / Prompt Engineer
-(DOCX). All are generated from the shared, evidence-conscious record in
-`scripts/generate-ai-cvs.py`; run that script with Python, ReportLab, and
-python-docx to update them. The two business PDFs intentionally share one
-business-and-product CV. All files use the current GitHub Pages URL and
-distinguish prototypes from live products and unmeasured results. They retain
-the printed name Nguyen Quang Duy and the previously public phone number;
-review their contents before approving public release.
-
-The project-specific AI explanations were informed by Saurav Kumar's portfolio
-(`https://saurav02022.github.io/`). The original light hero layout and portrait
-remain in place. Its introductory message and first action adapt to a visitor's
-selected role or an explicit entry link such as `?for=engineering` or
-`?for=admissions`. A recognized GitHub or LinkedIn referrer also sets an initial
-emphasis. The selected role lasts for the browser tab's session; no AI API or
-third-party tracking is used for this UI. The reference is credited on the
-Credits page.
-
-The customer carousel lists fifteen names confirmed by Ali Nguyen. It contains no
-testimonial quotes or client performance claims. The Bà Chi and Cô Ba logos
-come from local owner files. Toàn Thắng, Hưng Phú Thịnh, Biên Lan, and Bách
-Việt logos come from their apparent official websites. Đại An, 4U Home, Dê
-Cúc Phương City, and Bản Tôi logos were supplied by the owner. Pacific uses a
-name card. Zalo Official Account, Vantage, Dupoin, and DBG Markets were
-confirmed as collaborations by Ali Nguyen; their logo backgrounds were removed
-from supplied visual references. Review every client name and logo before release.
+Client and collaboration names were confirmed by Ali Nguyen. Individual testimonials and performance claims are not included. Original brand marks remain the property of their respective owners. The [Recruiter brief](docs/RECRUITER_BRIEF.md) and [Academic brief](docs/ACADEMIC_BRIEF.md) give fuller context without presenting prototypes as production systems or the KKBox local split as future-cohort performance.

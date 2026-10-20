@@ -1,6 +1,9 @@
 # Portfolio guide assistant — implementation draft
 
-Status: design for owner review, not a description of a deployed AI service.
+Status: historical design draft. The current guide client and API are implemented in
+`src/app/guide-assistant-panel.tsx` and `visitor-api/`; consult those files and
+`visitor-api/README.md` for present behavior. Proposed memory and future
+capabilities below should not be read as deployed features.
 
 ## Existing system and intended behavior
 
