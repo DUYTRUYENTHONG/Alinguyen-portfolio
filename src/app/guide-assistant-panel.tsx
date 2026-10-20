@@ -23,7 +23,10 @@ const starterQuestions: Record<string, string[]> = {
 };
 
 type Turn = { role: "user" | "assistant"; text: string; citations?: { sourceId: string; label: string; url: string }[] };
-type GuideReply = { answer: string; citations: Turn["citations"]; suggestions: string[] };
+type AnswerMotion = "nod" | "curious" | "point" | "none";
+type PanelMotion = AnswerMotion | "greet" | "attentive" | "thinking" | "reassure";
+type GuideReply = { answer: string; citations: Turn["citations"]; suggestions: string[]; motion?: AnswerMotion };
+const answerMotions = new Set<AnswerMotion>(["nod", "curious", "point", "none"]);
 
 function safeLink(url: string) {
   try {
@@ -45,10 +48,34 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [motion, setMotion] = useState<PanelMotion>("attentive");
   const [remember, setRemember] = useState(false);
   const [interests, setInterests] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const motionTimerRef = useRef<number | null>(null);
+
+  const showMotion = (next: PanelMotion, duration = 0) => {
+    if (motionTimerRef.current !== null) window.clearTimeout(motionTimerRef.current);
+    setMotion(next);
+    motionTimerRef.current = duration ? window.setTimeout(() => {
+      setMotion("attentive");
+      motionTimerRef.current = null;
+    }, duration) : null;
+  };
+
+  useEffect(() => {
+    if (!open) return;
+    setMotion("greet");
+    motionTimerRef.current = window.setTimeout(() => {
+      setMotion("attentive");
+      motionTimerRef.current = null;
+    }, 1100);
+    return () => {
+      if (motionTimerRef.current !== null) window.clearTimeout(motionTimerRef.current);
+      motionTimerRef.current = null;
+    };
+  }, [open]);
 
   useEffect(() => {
     try {
@@ -84,6 +111,7 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
     const prior = turns.slice(-4).map(({ role: speaker, text: content }) => ({ role: speaker, text: content }));
     setTurns((current) => [...current, { role: "user", text: trimmed }]);
     setBusy(true);
+    showMotion("thinking");
     try {
       if (!endpoint) throw new Error("Guide API is not configured");
       const controller = new AbortController();
@@ -100,8 +128,10 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
       const citations = Array.isArray(reply.citations) ? reply.citations.filter((item) => item && safeLink(item.url)) : [];
       setTurns((current) => [...current, { role: "assistant", text: reply.answer, citations }]);
       setSuggestions(Array.isArray(reply.suggestions) ? reply.suggestions.slice(0, 2) : []);
+      showMotion(reply.motion && answerMotions.has(reply.motion) ? reply.motion : "nod", 1600);
     } catch {
       setError("The AI guide is unavailable right now. The portfolio links below still work.");
+      showMotion("reassure", 1500);
     } finally { setBusy(false); }
   };
 
@@ -112,7 +142,7 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
     if (event.key === "Escape") { event.stopPropagation(); onClose(); }
   }}>
     <header className="guide-assistant-head">
-      <img src={`${basePath}/guide-art/${icon}.webp`} alt="" width="38" height="56" />
+      <img className="guide-assistant-avatar" data-motion={motion} src={`${basePath}/guide-art/${icon}.webp`} alt="" width="38" height="56" />
       <div><strong>Ask {name}</strong><span>Ali&apos;s AI guide · public sources</span></div>
       <button type="button" className="guide-assistant-close" onClick={onClose} aria-label="Close guide">×</button>
     </header>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PortfolioLink as Link } from "../portfolio-link";
 import { cvTracks, identity } from "@/data/portfolio";
 import { SiteHeader } from "../experience";
+import { WorkConnectsSection } from "./work-connects-section";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
@@ -22,7 +23,7 @@ export default function AboutPage() {
         <div className="about-page-copy"><h1 id="about-page-title">About Ali</h1><p className="about-page-lead">I build applied AI prototypes, developer tools, and digital commerce products.</p><p>I bring {identity.experience.digitalMarketing} and {identity.experience.aiEngineering}. As founder and builder of DUYTRUYENTHONG, I work from customer discovery through websites, content, commerce workflows, and analytics.</p><p className="about-page-name">Ali Nguyen <span>· DUYTRUYENTHONG</span></p><Link className="about-page-start" href="/work">Start with selected work →</Link></div>
         <figure className="about-page-portrait"><img src={`${basePath}/ali-nguyen-portrait-960.webp`} srcSet={`${basePath}/ali-nguyen-portrait-480.webp 480w, ${basePath}/ali-nguyen-portrait-960.webp 960w`} sizes="(max-width: 767px) 380px, 440px" alt="Portrait of Ali Nguyen wearing a black suit" width="1071" height="1468" loading="lazy" decoding="async" /><figcaption>Founder &amp; builder</figcaption></figure>
       </section>
-      <section className="about-page-path section-shell" aria-labelledby="path-title"><p className="eyebrow">The route so far</p><h2 id="path-title">Where the work connects.</h2><div className="about-page-path-grid"><article><span>01 / SALES</span><h3>Understand the offer and the buyer.</h3><p>Client discovery, positioning, content, and lead paths.</p></article><article><span>02 / COMMERCE</span><h3>Build a useful journey.</h3><p>Service sites, product pages, and digital marketplace workflows.</p></article><article><span>03 / DATA</span><h3>Learn from the signals.</h3><p>Analytics, customer data, and cautious AI prototypes.</p></article></div></section>
+      <WorkConnectsSection />
       <section className="about-page-cvs" aria-labelledby="about-cv-title"><div className="section-shell"><p className="eyebrow">CVs</p><h2 id="about-cv-title">Choose the version for your conversation.</h2><div className="about-page-cv-list">{cvTracks.map((track) => <article key={track.title}><h3>{track.title}</h3><p>{track.detail}</p><div>{track.downloads.map((file) => <a key={file.path} href={`${basePath}/${file.path}`} download>{file.label} ↓</a>)}</div></article>)}</div></div></section>
       <section className="about-page-contact section-shell"><h2>Have a project in mind?</h2><a href={`mailto:${identity.email}`}>Get in touch ↗</a></section>
     </main>

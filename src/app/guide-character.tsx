@@ -170,7 +170,8 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       }
       const message = (projectId ? projectMessages[projectId] : null) ?? sceneMessages[label] ?? "Follow along for the work and the decisions behind it.";
       const viewportMaxX = Math.max(0, window.innerWidth - actor.offsetWidth);
-      return { x: clamp(x + stageRect.left, 0, viewportMaxX), y: screenY, label, message, visible, maxX: viewportMaxX };
+      const screenX = label === "Download a CV" ? viewportMaxX : clamp(x + stageRect.left, 0, viewportMaxX);
+      return { x: screenX, y: screenY, label, message, visible, maxX: viewportMaxX };
     };
 
     const paint = () => {
@@ -187,9 +188,9 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
         setMessage(target.message);
       }
       manualOffset = clamp(manualOffset, -target.x, target.maxX - target.x);
-      const targetX = clamp(target.x + manualOffset, 0, target.maxX);
+      const targetX = target.label === "Download a CV" ? target.maxX : clamp(target.x + manualOffset, 0, target.maxX);
       const amount = reducedMotion.matches ? 1 : .22;
-      currentX = currentX === null ? targetX : mix(currentX, targetX, amount);
+      currentX = currentX === null || target.label === "Download a CV" ? targetX : mix(currentX, targetX, amount);
       currentY = currentY === null ? target.y : mix(currentY, target.y, amount);
       lastPosition.current = { x: currentX, y: currentY };
       actor.style.transform = `translate3d(${currentX}px, ${currentY + rise}px, 0)`;
@@ -295,8 +296,15 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   useEffect(() => {
     if (!chosen) return;
     setShowIntroduction(true);
+    const actor = actorRef.current;
+    actor?.classList.add("is-greeting");
     const timer = window.setTimeout(() => setShowIntroduction(false), 5000);
-    return () => window.clearTimeout(timer);
+    const motionTimer = window.setTimeout(() => actor?.classList.remove("is-greeting"), 1300);
+    return () => {
+      window.clearTimeout(timer);
+      window.clearTimeout(motionTimer);
+      actor?.classList.remove("is-greeting");
+    };
   }, [chosen, role]);
 
   const changePanel = (open: boolean) => {

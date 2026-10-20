@@ -1,0 +1,65 @@
+/* Motion does not alter the guide's route or the page reading order. */
+.guide-stage-journey .guide-character img { animation: guide-alive-idle 5.4s ease-in-out infinite; }
+.guide-stage-journey .guide-character.is-walking img { animation: guide-walk .2s ease-in-out infinite alternate; }
+.guide-stage-journey .guide-character.is-scrolling:not(.is-walking)[data-scroll-direction="up"] img { animation: guide-scroll-up .28s ease-in-out infinite alternate; }
+.guide-stage-journey .guide-character.is-scrolling:not(.is-walking)[data-scroll-direction="down"] img { animation: guide-scroll-down .28s ease-in-out infinite alternate; }
+.guide-stage-journey .guide-character.is-jumping img { animation: guide-jump .4s ease-out; }
+.guide-stage-journey .guide-character.is-speaking:not(.is-scrolling, .is-walking, .is-jumping, .is-greeting) img { animation: guide-acknowledge .75s cubic-bezier(.2,.8,.2,1) both; }
+.guide-stage-journey .guide-character.is-greeting:not(.is-scrolling, .is-walking) img { animation: guide-greet 1.2s cubic-bezier(.2,.8,.2,1) both; }
+.guide-stage-journey .guide-character:is(:hover, :focus-visible):not(.is-scrolling, .is-walking, .is-jumping, .is-greeting) img { animation: guide-attend .55s cubic-bezier(.2,.8,.2,1) both; }
+
+.guide-assistant-avatar { flex: none; transform-origin: 50% 85%; animation: guide-alive-idle 5.4s ease-in-out infinite; }
+.guide-assistant-avatar[data-motion="greet"] { animation: guide-greet 1.1s cubic-bezier(.2,.8,.2,1) both; }
+.guide-assistant-avatar[data-motion="attentive"] { animation: guide-alive-idle 5.4s ease-in-out infinite; }
+.guide-assistant-avatar[data-motion="thinking"] { animation: guide-thinking 1.4s ease-in-out infinite; }
+.guide-assistant-avatar[data-motion="nod"] { animation: guide-acknowledge .9s cubic-bezier(.2,.8,.2,1) both; }
+.guide-assistant-avatar[data-motion="curious"] { animation: guide-curious 1.35s cubic-bezier(.2,.8,.2,1) both; }
+.guide-assistant-avatar[data-motion="point"] { animation: guide-point 1.1s cubic-bezier(.2,.8,.2,1) both; }
+.guide-assistant-avatar[data-motion="reassure"] { animation: guide-reassure 1.2s ease-out both; }
+.guide-assistant-avatar[data-motion="none"] { animation: none; }
+
+@keyframes guide-alive-idle {
+  0%, 100% { transform: translateY(0) rotate(0) scale(1); }
+  18% { transform: translateY(-2px) rotate(-1deg) scale(1.015); }
+  41% { transform: translateY(-3px) rotate(.7deg) scale(1.025); }
+  66% { transform: translateY(-1px) rotate(1.1deg) scale(1.012); }
+  82% { transform: translateY(-2px) rotate(0) scale(1.018); }
+}
+@keyframes guide-greet {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  26% { transform: translateY(-6px) rotate(-7deg); }
+  48% { transform: translateY(-2px) rotate(4deg); }
+  72% { transform: translateY(-4px) rotate(-3deg); }
+}
+@keyframes guide-attend {
+  from { transform: translateY(0) rotate(0); }
+  to { transform: translateY(-4px) rotate(-4deg) scale(1.04); }
+}
+@keyframes guide-acknowledge {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  38% { transform: translateY(2px) rotate(3deg); }
+  66% { transform: translateY(-3px) rotate(-2deg); }
+}
+@keyframes guide-thinking {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-3px) rotate(3deg); }
+}
+@keyframes guide-curious {
+  0%, 100% { transform: rotate(0); }
+  35%, 72% { transform: translateY(-2px) rotate(-7deg); }
+}
+@keyframes guide-point {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  40%, 70% { transform: translateX(4px) rotate(5deg); }
+}
+@keyframes guide-reassure {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  38% { transform: translateY(2px) rotate(-3deg); }
+  72% { transform: translateY(-2px) rotate(2deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .guide-stage-journey .guide-character { transition: none; }
+  .guide-stage-journey .guide-character.guide-character img,
+  .guide-stage-journey .guide-character.guide-character:is(:hover, :focus-visible, .is-greeting, .is-speaking, .is-walking, .is-scrolling, .is-jumping) img,
+  .guide-assistant-avatar[data-motion] { animation: none; }
+}

@@ -44,17 +44,19 @@ test("guide returns only server-approved citation URLs", () => withTestEnv(async
       modelRequest = JSON.parse(options.body);
       return { ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({
         answer: "The local within-cohort holdout reached 0.217324 log loss.",
-        citations: ["kkbox-results", "invented-source"], suggestions: ["Show the limitations"],
+        citations: ["kkbox-results", "invented-source"], suggestions: ["Show the limitations"], motion: "point",
       }) } }] }) };
     },
   });
   const res = response();
   await handler(request(), res);
   assert.equal(res.statusCode, 200);
+  assert.equal(res.body.motion, "point");
   assert.deepEqual(res.body.citations.map(({ sourceId }) => sourceId), ["kkbox-results"]);
   assert.match(res.body.citations[0].url, /^https:\/\/github\.com\/DUYTRUYENTHONG\//);
   assert.equal(modelRequest.model, "openai/gpt-oss-20b");
   assert.equal(modelRequest.response_format.type, "json_schema");
+  assert.deepEqual(modelRequest.response_format.json_schema.schema.properties.motion.enum, ["nod", "curious", "point", "none"]);
   assert.match(modelRequest.messages[0].content, /guide name is Ari/);
   assert.equal(modelRequest.messages.some(({ content }) => content.includes("192.0.2.1")), false);
   assert.match(modelRequest.messages[1].content, /\[kkbox-results\]/);
@@ -68,7 +70,7 @@ test("the selected character name is supplied by the server role mapping", () =>
     modelFetch: async (_url, options) => {
       systemMessage = JSON.parse(options.body).messages[0].content;
       return { ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({
-        answer: "The local holdout reached 0.217324 log loss.", citations: ["kkbox-results"], suggestions: [],
+        answer: "The local holdout reached 0.217324 log loss.", citations: ["kkbox-results"], suggestions: [], motion: "nod",
       }) } }] }) };
     },
   });
@@ -84,14 +86,28 @@ test("guide rejects invented-only citations rather than showing an unsupported a
   const handler = createGuideHandler({
     makeRedis: () => ({ incr: async () => 1, expire: async () => 1 }),
     modelFetch: async () => ({ ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({
-      answer: "Invented claim", citations: ["invented-source"], suggestions: [],
+      answer: "Invented claim", citations: ["invented-source"], suggestions: [], motion: "point",
     }) } }] }) }),
   });
   const res = response();
   await handler(request(), res);
   assert.equal(res.statusCode, 200);
   assert.deepEqual(res.body.citations, []);
+  assert.equal(res.body.motion, "none");
   assert.match(res.body.answer, /can't verify/);
+}));
+
+test("a model cannot inject an arbitrary animation name", () => withTestEnv(async () => {
+  const handler = createGuideHandler({
+    makeRedis: () => ({ incr: async () => 1, expire: async () => 1 }),
+    modelFetch: async () => ({ ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({
+      answer: "The local holdout reached 0.217324 log loss.", citations: ["kkbox-results"], suggestions: [], motion: "spin-forever",
+    }) } }] }) }),
+  });
+  const res = response();
+  await handler(request(), res);
+  assert.equal(res.statusCode, 200);
+  assert.equal(res.body.motion, "none");
 }));
 
 test("guide validates origin, body and per-client limit before contacting the model", () => withTestEnv(async () => {
