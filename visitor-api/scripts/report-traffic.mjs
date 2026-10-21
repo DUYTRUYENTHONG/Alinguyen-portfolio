@@ -30,7 +30,7 @@ try {
 				scope,
 				interval: { startInclusive: start, endExclusive: end },
 				...report,
-				note: "Consenting recorded traffic. Browsers are not people; country counts are page views. Interval uniques are distinct memberships, never summed daily uniques.",
+				note: "Consenting recorded traffic. Browsers are not people; country/city counts are approximate page views. City totals start at cityTrackingStartedAt and are not filtered by the daily interval. Interval uniques are distinct memberships, never summed daily uniques.",
 			},
 			null,
 			2,

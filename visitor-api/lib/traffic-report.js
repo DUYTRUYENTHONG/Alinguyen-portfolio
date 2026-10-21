@@ -47,6 +47,8 @@ export async function readTrafficReport(redis, namespace, days) {
 		`${namespace}:started-utc`,
 		`${namespace}:paths`,
 		`${namespace}:countries`,
+		`${namespace}:cities`,
+		`${namespace}:cities-started-utc`,
 		...days.flatMap((d) => [
 			`${namespace}:day:${d}:views`,
 			`${namespace}:day:${d}:browsers`,
@@ -55,16 +57,16 @@ export async function readTrafficReport(redis, namespace, days) {
 	const result = await redis.eval(
 		`
 local days={};local seen={};local distinct=0
-for i=6,#KEYS,2 do
+for i=8,#KEYS,2 do
  table.insert(days,{tonumber(redis.call('GET',KEYS[i]) or '0'),redis.call('SCARD',KEYS[i+1])})
  for _,id in ipairs(redis.call('SMEMBERS',KEYS[i+1])) do if not seen[id] then seen[id]=true;distinct=distinct+1 end end
 end
-return {tonumber(redis.call('GET',KEYS[1]) or '0'),redis.call('SCARD',KEYS[2]),redis.call('GET',KEYS[3]) or '',redis.call('HGETALL',KEYS[4]),redis.call('HGETALL',KEYS[5]),distinct,days}
+return {tonumber(redis.call('GET',KEYS[1]) or '0'),redis.call('SCARD',KEYS[2]),redis.call('GET',KEYS[3]) or '',redis.call('HGETALL',KEYS[4]),redis.call('HGETALL',KEYS[5]),distinct,days,redis.call('HGETALL',KEYS[6]),redis.call('GET',KEYS[7]) or ''}
 `,
 		keys,
 		[],
 	);
-	if (!Array.isArray(result) || result.length !== 7)
+	if (!Array.isArray(result) || result.length !== 9)
 		throw Error("Invalid report");
 	const pairs = (values) =>
 		Object.fromEntries(
@@ -82,6 +84,14 @@ return {tonumber(redis.call('GET',KEYS[1]) or '0'),redis.call('SCARD',KEYS[2]),r
 		intervalApproximateUniqueBrowsers: result[5],
 		topPaths: pairs(result[3]),
 		countryPageViews: pairs(result[4]),
+		cityTrackingStartedAt: result[8] || null,
+		cityPageViews: Object.entries(pairs(result[7])).map(([key, pageViews]) => {
+			const [country, city] =
+				key === "unknown" || key === "other"
+					? [null, key]
+					: JSON.parse(key.slice(5));
+			return { country, city, pageViews };
+		}),
 		daily: days.map((date, i) => {
 			const available = Boolean(result[2] && date >= result[2].slice(0, 10));
 			return {

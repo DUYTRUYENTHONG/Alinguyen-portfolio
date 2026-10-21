@@ -79,6 +79,7 @@ test("registered project records minimal ack, project-specific HMAC, trusted cou
 	);
 	assert.ok(!JSON.stringify(event).includes(p.visitorId));
 	assert.deepEqual(Object.keys(event).sort(), [
+		"city",
 		"country",
 		"digest",
 		"eventId",
@@ -263,7 +264,7 @@ test("Redis uses one atomic EVAL, isolated project and shared keys and UTC midni
 		{ minuteCap: 120, dayCap: 1000 },
 	);
 	assert.equal(calls.length, 2);
-	assert.equal(calls[0][1].length, 12);
+	assert.equal(calls[0][1].length, 14);
 	assert.ok(
 		calls[0][1]
 			.slice(0, 10)
@@ -271,7 +272,7 @@ test("Redis uses one atomic EVAL, isolated project and shared keys and UTC midni
 	);
 	assert.ok(
 		calls[0][1]
-			.slice(10)
+			.slice(10, 12)
 			.every((k) => k.startsWith("traffic:shared:production:v1:")),
 	);
 	assert.ok(calls[0][1].some((k) => k.includes("day:2026-10-20:views")));
@@ -315,4 +316,39 @@ test("project hashing and report authorization remain separate even for the same
 	);
 	assert.throws(() => reportingDays("2026-02-30", "2026-03-01"));
 	assert.throws(() => reportingDays("2026-01-01", "2026-03-01"));
+});
+
+test("city metadata is decoded, bounded and platform-only; client city refused", async () => {
+	const f = fixture();
+	await f.handler(
+		request(body(), {
+			headers: {
+				"x-vercel-ip-country": "VN",
+				"x-vercel-ip-city": "H%E1%BB%93%20Ch%C3%AD%20Minh",
+			},
+		}),
+	);
+	assert.equal(
+		f.calls[0][3].city,
+		`city:${JSON.stringify(["VN", "Hồ Chí Minh"])}`,
+	);
+	for (const city of ["bad%", "<script>", "a".repeat(97), "", "%0Asecret"]) {
+		await f.handler(
+			request(body(), {
+				headers: { "x-vercel-ip-country": "VN", "x-vercel-ip-city": city },
+			}),
+		);
+		assert.equal(f.calls.at(-1)[3].city, "unknown");
+	}
+	const local = fixture({ env: { ...env, VERCEL: undefined } });
+	await local.handler(
+		request(body(), {
+			headers: { "x-vercel-ip-country": "VN", "x-vercel-ip-city": "Hanoi" },
+		}),
+	);
+	assert.equal(local.calls[0][3].city, "unknown");
+	assert.equal(
+		(await f.handler(request({ ...body(), city: "Hanoi" }))).status,
+		400,
+	);
 });

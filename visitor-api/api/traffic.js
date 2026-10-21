@@ -7,6 +7,7 @@ import {
 	sharedLimits,
 } from "../lib/traffic-projects.js";
 import { trafficOperation, TrafficRateLimit } from "../lib/traffic-store.js";
+import { cityCategory } from "../lib/traffic-city.js";
 
 const uuid =
 	/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -164,6 +165,7 @@ export function createTrafficHandler({
 								: "unknown",
 					}
 				: null;
+			if (event) event.city = cityCategory(request, env, event.country);
 			const totals = await operation(
 				makeRedis(),
 				project,

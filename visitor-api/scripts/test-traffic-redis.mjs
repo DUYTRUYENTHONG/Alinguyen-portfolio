@@ -45,7 +45,8 @@ const event = (
 	eventId = randomUUID(),
 	path = "/",
 	country = "unknown",
-) => ({ digest, eventId, path, country });
+	city = "unknown",
+) => ({ digest, eventId, path, country, city });
 const op = (project, mode, e = null, now = time, limits = overall) =>
 	trafficOperation(safe, project, mode, e, now, limits);
 async function cleanup() {
@@ -124,6 +125,49 @@ try {
 		`${p.namespace}:day:2026-10-20:browsers`,
 	);
 	assert.deepEqual(await op(p, "read"), { pageViews: 23, uniqueBrowsers: 2 });
+	// Existing history remains intact; city totals begin with the first upgraded event.
+	const cityProject = makeProject(),
+		city = `city:${JSON.stringify(["VN", "Hồ Chí Minh"])}`,
+		cityEvent = event(A, randomUUID(), "/", "VN", city);
+	await redis.set(`${cityProject.namespace}:views`, 7);
+	const beforeCity = await readTrafficReport(safe, cityProject.namespace, [
+		"2026-10-20",
+	]);
+	assert.equal(beforeCity.cityTrackingStartedAt, null);
+	assert.deepEqual(beforeCity.cityPageViews, []);
+	await op(cityProject, "record", cityEvent);
+	await op(cityProject, "record", cityEvent);
+	const cityReport = await readTrafficReport(safe, cityProject.namespace, [
+		"2026-10-20",
+	]);
+	assert.equal(cityReport.pageViews, 8);
+	assert.equal(cityReport.cityTrackingStartedAt, new Date(time).toISOString());
+	assert.deepEqual(cityReport.cityPageViews, [
+		{ country: "VN", city: "Hồ Chí Minh", pageViews: 1 },
+	]);
+	// Bound cardinality without losing page views; unknown stays distinct from overflow.
+	const fields = Object.fromEntries(
+		Array.from({ length: 1000 }, (_, i) => [
+			`city:${JSON.stringify(["US", `City ${i}`])}`,
+			1,
+		]),
+	);
+	await redis.hset(`${cityProject.namespace}:cities`, fields);
+	await op(
+		cityProject,
+		"record",
+		event(
+			A,
+			randomUUID(),
+			"/",
+			"VN",
+			`city:${JSON.stringify(["VN", "New City"])}`,
+		),
+	);
+	await op(cityProject, "record", event());
+	const capped = await redis.hgetall(`${cityProject.namespace}:cities`);
+	assert.equal(Number(capped.other), 1);
+	assert.equal(Number(capped.unknown), 1);
 	const limited = { ...makeProject(), minuteCap: 2 };
 	await op(limited, "record", event());
 	await op(limited, "record", event());

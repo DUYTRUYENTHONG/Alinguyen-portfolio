@@ -103,3 +103,13 @@ Rollback: disable the public NỞ flag and rebuild Pages first. Restore the prio
 The cross-repository browser mode uses `TRAFFIC_SHARED_API_TEST_PATH` pointing to this `visitor-api` directory, the ignored connection env file, and NỞ's `scripts/test-exported-counter.mjs`. Build NỞ first with the three public project variables, `NEXT_PUBLIC_COUNTER_TEST_MODE=true` and loopback endpoint `http://127.0.0.1:3205/api/traffic`. Restore the normal Pages export after this test. Do not set test mode in a production build.
 
 The review stage used no cloud deployment or production configuration change. The owner subsequently authorized release; deployment must be verified against the published API and Pages artifact. Production-safe aggregate reads can confirm readiness without adding test visits. References: [Vercel Node functions](https://vercel.com/docs/functions/runtimes/node-js), [function duration](https://vercel.com/docs/functions/configuring-functions/duration).
+
+## Compact counter and city aggregates (2026-10-21)
+
+NỞ shows only the page-view number in the header, with a localized accessible label. Loading uses an ellipsis and failure a dash; no fake zero. Browser estimates remain available privately. Consent copy discloses approximate city/country.
+
+The ingestion route reads Vercel's x-vercel-ip-city header only on the hosting platform with a valid country. It safely percent-decodes bounded Unicode city names; malformed, absent or untrusted values become unknown. No IP, GPS, coordinates, per-event location record or browser-to-city mapping is stored. Cities are aggregate page views grouped by country and city, not verified people or residence. VPNs, mobile networks and IP databases can produce inaccurate cities.
+
+Private report-traffic.mjs output now includes cityPageViews and cityTrackingStartedAt. These are lifetime aggregates from that timestamp, independent of the requested daily interval. Earlier views remain in existing totals and cannot be backfilled. Missing city history returns an empty array/null start, never invented city totals. The persistent cities hash is capped at 1000 named categories plus unknown/other buckets; new categories after capacity go to other without dropping page views. Event deduplication covers city increments atomically. Public GET still exposes only pageViews/uniqueBrowsers.
+
+Use the existing authorized report command with TRAFFIC_REPORT_PROJECTS=no-bloom and private Redis credentials; keep output private. References: [Vercel geolocation headers](https://vercel.com/docs/headers/request-headers).
