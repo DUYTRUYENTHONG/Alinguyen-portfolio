@@ -1,0 +1,205 @@
+{
+  "engine": "Chromium in-app browser; not iPhone Safari; no native keyboard",
+  "results": [
+    {
+      "controls": [
+        {
+          "bottom": 58.666666984558105,
+          "contained": true,
+          "selector": ".guide-assistant-close",
+          "top": 14.666666984558104
+        },
+        {
+          "bottom": 143.33333587646484,
+          "contained": true,
+          "selector": "#guide-question",
+          "top": 95.33333587646484
+        },
+        {
+          "bottom": 143.33333587646484,
+          "contained": true,
+          "selector": ".guide-assistant-footer form button",
+          "top": 95.33333587646484
+        }
+      ],
+      "height": 160,
+      "transcriptHeight": 21,
+      "width": 956
+    },
+    {
+      "controls": [
+        {
+          "bottom": 58.666666984558105,
+          "contained": true,
+          "selector": ".guide-assistant-close",
+          "top": 14.666666984558104
+        },
+        {
+          "bottom": 183.33334350585935,
+          "contained": true,
+          "selector": "#guide-question",
+          "top": 135.33334350585938
+        },
+        {
+          "bottom": 183.33334350585935,
+          "contained": true,
+          "selector": ".guide-assistant-footer form button",
+          "top": 135.33334350585938
+        }
+      ],
+      "height": 200,
+      "transcriptHeight": 61,
+      "width": 956
+    },
+    {
+      "controls": [
+        {
+          "bottom": 58.666666984558105,
+          "contained": true,
+          "selector": ".guide-assistant-close",
+          "top": 14.666666984558104
+        },
+        {
+          "bottom": 233.33334350585935,
+          "contained": true,
+          "selector": "#guide-question",
+          "top": 185.33334350585935
+        },
+        {
+          "bottom": 233.33334350585935,
+          "contained": true,
+          "selector": ".guide-assistant-footer form button",
+          "top": 185.33334350585935
+        }
+      ],
+      "height": 250,
+      "transcriptHeight": 111,
+      "width": 956
+    },
+    {
+      "controls": [
+        {
+          "bottom": 70.66666793823242,
+          "contained": true,
+          "selector": ".guide-assistant-close",
+          "top": 26.666667938232425
+        },
+        {
+          "bottom": 411.3333435058594,
+          "contained": true,
+          "selector": "#guide-question",
+          "top": 363.3333435058594
+        },
+        {
+          "bottom": 411.3333435058594,
+          "contained": true,
+          "selector": ".guide-assistant-footer form button",
+          "top": 363.3333435058594
+        }
+      ],
+      "height": 440,
+      "transcriptHeight": 277,
+      "width": 956
+    },
+    {
+      "controls": [
+        {
+          "bottom": 58.666666984558105,
+          "contained": true,
+          "selector": ".guide-assistant-close",
+          "top": 14.666666984558104
+        },
+        {
+          "bottom": 283.3333435058594,
+          "contained": true,
+          "selector": "#guide-question",
+          "top": 235.33334350585935
+        },
+        {
+          "bottom": 283.3333435058594,
+          "contained": true,
+          "selector": ".guide-assistant-footer form button",
+          "top": 235.33334350585935
+        }
+      ],
+      "height": 300,
+      "transcriptHeight": 161,
+      "width": 440
+    },
+    {
+      "controls": [
+        {
+          "bottom": 65.66666793823242,
+          "contained": true,
+          "selector": ".guide-assistant-close",
+          "top": 21.666667938232425
+        },
+        {
+          "bottom": 935.3333740234376,
+          "contained": true,
+          "selector": "#guide-question",
+          "top": 887.3333740234375
+        },
+        {
+          "bottom": 935.3333740234376,
+          "contained": true,
+          "selector": ".guide-assistant-footer form button",
+          "top": 887.3333740234375
+        }
+      ],
+      "height": 956,
+      "transcriptHeight": 795,
+      "width": 440
+    },
+    {
+      "controls": [
+        {
+          "bottom": 65.66666793823242,
+          "contained": true,
+          "selector": ".guide-assistant-close",
+          "top": 21.666667938232425
+        },
+        {
+          "bottom": 547.3333435058594,
+          "contained": true,
+          "selector": "#guide-question",
+          "top": 499.3333435058594
+        },
+        {
+          "bottom": 547.3333435058594,
+          "contained": true,
+          "selector": ".guide-assistant-footer form button",
+          "top": 499.3333435058594
+        }
+      ],
+      "height": 568,
+      "transcriptHeight": 407,
+      "width": 320
+    },
+    {
+      "controls": [
+        {
+          "bottom": 259.6666717529297,
+          "contained": true,
+          "selector": ".guide-assistant-close",
+          "top": 215.6666717529297
+        },
+        {
+          "bottom": 867.3333740234375,
+          "contained": true,
+          "selector": "#guide-question",
+          "top": 819.3333740234375
+        },
+        {
+          "bottom": 867.3333740234375,
+          "contained": true,
+          "selector": ".guide-assistant-footer form button",
+          "top": 819.3333740234375
+        }
+      ],
+      "height": 900,
+      "transcriptHeight": 531,
+      "width": 1440
+    }
+  ]
+}

@@ -62,7 +62,7 @@
 .guide-assistant-interests { display: flex; flex-wrap: wrap; gap: 8px; }
 .guide-assistant-interests button[aria-pressed="true"] { border-color: #2750d7; background: #2750d7; color: #fff; }
 .guide-assistant-forget { min-height: 44px; margin-top: 8px; padding: 8px 0; border: 0; background: none; color: #244bb5; text-decoration: underline; cursor: pointer; font: inherit; }
-.guide-assistant-footer > small { display: block; margin-top: 8px; color: #596579; font-size: .72rem; line-height: 1.45; }
+.guide-assistant-transcript > small { display: block; margin-bottom: 16px; color: #596579; font-size: .72rem; line-height: 1.45; }
 .guide-assistant-panel :is(button, a, input, summary):focus-visible { outline: 2px solid #2750d7; outline-offset: 2px; }
 @media (max-width: 767px) {
   .guide-assistant-panel {
@@ -81,6 +81,11 @@
 .guide-assistant-panel[data-compact="true"] .guide-assistant-head { padding-block: 6px; }
 .guide-assistant-panel[data-compact="true"] .guide-assistant-head img { height: 38px; }
 .guide-assistant-panel[data-compact="true"] .guide-assistant-footer { padding-block: 8px; }
+.guide-assistant-panel[data-short="true"] {
+  --guide-top-gap: max(8px, env(safe-area-inset-top));
+  --guide-bottom-gap: max(8px, env(safe-area-inset-bottom));
+}
+.guide-assistant-panel[data-short="true"] .guide-assistant-transcript { padding-block: 0; }
 @media (prefers-reduced-motion: reduce) {
   .guide-assistant-panel * { scroll-behavior: auto; animation: none; transition: none; }
 }

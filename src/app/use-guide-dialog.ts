@@ -28,6 +28,7 @@ export function useGuideDialog(open: boolean) {
       dialog.style.setProperty("--guide-viewport-top", `${viewport?.offsetTop ?? 0}px`);
       dialog.style.setProperty("--guide-viewport-left", `${viewport?.offsetLeft ?? 0}px`);
       dialog.dataset.compact = String((viewport?.height ?? window.innerHeight) < 480);
+      dialog.dataset.short = String((viewport?.height ?? window.innerHeight) < 300);
     };
     const schedule = () => {
       cancelAnimationFrame(frame);

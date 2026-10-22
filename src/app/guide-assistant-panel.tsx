@@ -149,6 +149,7 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
       <button type="button" className="guide-assistant-close" onClick={onClose} aria-label="Close guide">×</button>
     </header>
     <div className="guide-assistant-transcript" ref={scrollRef} aria-live="polite" aria-relevant="additions text">
+      <small id="guide-assistant-privacy">Questions are sent to an AI provider when you press send. Avoid sharing sensitive information. Chat history lasts only in this tab.</small>
       {turns.length === 0 && <div className="guide-assistant-intro">
         <p>I can point you to Ali&apos;s work, explain the evidence, and say what remains unverified.</p>
         <div className="guide-assistant-suggestions">
@@ -178,7 +179,6 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
         <input id="guide-question" value={question} onChange={(event) => setQuestion(event.target.value)} maxLength={400} placeholder="Ask about a project or skill…" readOnly={busy} autoComplete="off" enterKeyHint="send" />
         <button type="submit" disabled={busy || !question.trim()} aria-label="Send question">→</button>
       </form>
-      <small id="guide-assistant-privacy">Questions are sent to an AI provider when you press send. Avoid sharing sensitive information. Chat history lasts only in this tab.</small>
     </div>
   </dialog>, document.body);
 }
