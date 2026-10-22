@@ -15,6 +15,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      npm_config_prefer_offline: 'true'
+      npm_config_fetch_timeout: '20000'
+      npm_config_fetch_retries: '1'
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v4

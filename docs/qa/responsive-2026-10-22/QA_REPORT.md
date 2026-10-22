@@ -43,3 +43,7 @@ The static export was served at `http://localhost:3001/Alinguyen-portfolio/`. Th
 The [capture manifest](capture-manifest.json) records screenshot sizes and hashes. Representative images: [phone chat](chat-440.jpg), [320px chat](chat-320.jpg), [short viewport](chat-short-viewport.jpg), [landscape](chat-landscape.jpg), [desktop](chat-desktop.jpg), [mobile expertise](expertise-mobile.jpg) and [mobile CVs](cvs-mobile.jpg).
 
 Publication uses the existing `main` → GitHub Actions → GitHub Pages workflow. Verify the workflow result and live dialog after pushing. To recover, revert this release commit and let the same workflow publish the previous frontend. The separate Vercel API and its secrets remain outside this release.
+
+### Registry outage during publication
+
+The first publication run, [39713794172](https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/actions/runs/39713794172), stalled in `npm ci`. npm's [status page](https://status.npmjs.org/) reported degraded package installation beginning at 02:33 UTC on 22 October. The runner log confirmed an npm cache hit for the unchanged lockfile. The workflow now prefers cached packages and bounds registry requests to 20 seconds with one retry. Installation integrity, lifecycle scripts, automatic audit behavior, tests and every existing deployment gate remain enabled. This change can use available cache during an outage; it cannot supply a package absent from both cache and registry.
