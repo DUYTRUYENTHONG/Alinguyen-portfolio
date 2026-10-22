@@ -1,0 +1,692 @@
+[
+  {
+    "clippedText": [],
+    "height": 568,
+    "overflow": false,
+    "pageWidth": 305,
+    "sections": [
+      {
+        "id": "top",
+        "width": 305
+      },
+      {
+        "id": "identity-strip",
+        "width": 305
+      },
+      {
+        "id": "visitor",
+        "width": 257
+      },
+      {
+        "id": "statement",
+        "width": 305
+      },
+      {
+        "id": "proof-ribbon",
+        "width": 305
+      },
+      {
+        "id": "highlights",
+        "width": 305
+      },
+      {
+        "id": "work",
+        "width": 305
+      },
+      {
+        "id": "ai-expertise",
+        "width": 305
+      },
+      {
+        "id": "decision-map",
+        "width": 305
+      },
+      {
+        "id": "funnel",
+        "width": 305
+      },
+      {
+        "id": "feedback",
+        "width": 305
+      },
+      {
+        "id": "about",
+        "width": 305
+      },
+      {
+        "id": "cvs",
+        "width": 305
+      },
+      {
+        "id": "build-notes",
+        "width": 257
+      },
+      {
+        "id": "contact",
+        "width": 305
+      }
+    ],
+    "width": 320
+  },
+  {
+    "clippedText": [],
+    "height": 740,
+    "overflow": false,
+    "pageWidth": 345,
+    "sections": [
+      {
+        "id": "top",
+        "width": 345
+      },
+      {
+        "id": "identity-strip",
+        "width": 345
+      },
+      {
+        "id": "visitor",
+        "width": 297
+      },
+      {
+        "id": "statement",
+        "width": 345
+      },
+      {
+        "id": "proof-ribbon",
+        "width": 345
+      },
+      {
+        "id": "highlights",
+        "width": 345
+      },
+      {
+        "id": "work",
+        "width": 345
+      },
+      {
+        "id": "ai-expertise",
+        "width": 345
+      },
+      {
+        "id": "decision-map",
+        "width": 345
+      },
+      {
+        "id": "funnel",
+        "width": 345
+      },
+      {
+        "id": "feedback",
+        "width": 345
+      },
+      {
+        "id": "about",
+        "width": 345
+      },
+      {
+        "id": "cvs",
+        "width": 345
+      },
+      {
+        "id": "build-notes",
+        "width": 297
+      },
+      {
+        "id": "contact",
+        "width": 345
+      }
+    ],
+    "width": 360
+  },
+  {
+    "clippedText": [],
+    "height": 667,
+    "overflow": false,
+    "pageWidth": 360,
+    "sections": [
+      {
+        "id": "top",
+        "width": 360
+      },
+      {
+        "id": "identity-strip",
+        "width": 360
+      },
+      {
+        "id": "visitor",
+        "width": 312
+      },
+      {
+        "id": "statement",
+        "width": 360
+      },
+      {
+        "id": "proof-ribbon",
+        "width": 360
+      },
+      {
+        "id": "highlights",
+        "width": 360
+      },
+      {
+        "id": "work",
+        "width": 360
+      },
+      {
+        "id": "ai-expertise",
+        "width": 360
+      },
+      {
+        "id": "decision-map",
+        "width": 360
+      },
+      {
+        "id": "funnel",
+        "width": 360
+      },
+      {
+        "id": "feedback",
+        "width": 360
+      },
+      {
+        "id": "about",
+        "width": 360
+      },
+      {
+        "id": "cvs",
+        "width": 360
+      },
+      {
+        "id": "build-notes",
+        "width": 312
+      },
+      {
+        "id": "contact",
+        "width": 360
+      }
+    ],
+    "width": 375
+  },
+  {
+    "clippedText": [],
+    "height": 844,
+    "overflow": false,
+    "pageWidth": 375,
+    "sections": [
+      {
+        "id": "top",
+        "width": 375
+      },
+      {
+        "id": "identity-strip",
+        "width": 375
+      },
+      {
+        "id": "visitor",
+        "width": 327
+      },
+      {
+        "id": "statement",
+        "width": 375
+      },
+      {
+        "id": "proof-ribbon",
+        "width": 375
+      },
+      {
+        "id": "highlights",
+        "width": 375
+      },
+      {
+        "id": "work",
+        "width": 375
+      },
+      {
+        "id": "ai-expertise",
+        "width": 375
+      },
+      {
+        "id": "decision-map",
+        "width": 375
+      },
+      {
+        "id": "funnel",
+        "width": 375
+      },
+      {
+        "id": "feedback",
+        "width": 375
+      },
+      {
+        "id": "about",
+        "width": 375
+      },
+      {
+        "id": "cvs",
+        "width": 375
+      },
+      {
+        "id": "build-notes",
+        "width": 327
+      },
+      {
+        "id": "contact",
+        "width": 375
+      }
+    ],
+    "width": 390
+  },
+  {
+    "clippedText": [],
+    "height": 915,
+    "overflow": false,
+    "pageWidth": 397,
+    "sections": [
+      {
+        "id": "top",
+        "width": 397
+      },
+      {
+        "id": "identity-strip",
+        "width": 397
+      },
+      {
+        "id": "visitor",
+        "width": 349
+      },
+      {
+        "id": "statement",
+        "width": 397
+      },
+      {
+        "id": "proof-ribbon",
+        "width": 397
+      },
+      {
+        "id": "highlights",
+        "width": 397
+      },
+      {
+        "id": "work",
+        "width": 397
+      },
+      {
+        "id": "ai-expertise",
+        "width": 397
+      },
+      {
+        "id": "decision-map",
+        "width": 397
+      },
+      {
+        "id": "funnel",
+        "width": 397
+      },
+      {
+        "id": "feedback",
+        "width": 397
+      },
+      {
+        "id": "about",
+        "width": 397
+      },
+      {
+        "id": "cvs",
+        "width": 397
+      },
+      {
+        "id": "build-notes",
+        "width": 349
+      },
+      {
+        "id": "contact",
+        "width": 397
+      }
+    ],
+    "width": 412
+  },
+  {
+    "clippedText": [],
+    "height": 956,
+    "overflow": false,
+    "pageWidth": 425,
+    "sections": [
+      {
+        "id": "top",
+        "width": 425
+      },
+      {
+        "id": "identity-strip",
+        "width": 425
+      },
+      {
+        "id": "visitor",
+        "width": 377
+      },
+      {
+        "id": "statement",
+        "width": 425
+      },
+      {
+        "id": "proof-ribbon",
+        "width": 425
+      },
+      {
+        "id": "highlights",
+        "width": 425
+      },
+      {
+        "id": "work",
+        "width": 425
+      },
+      {
+        "id": "ai-expertise",
+        "width": 425
+      },
+      {
+        "id": "decision-map",
+        "width": 425
+      },
+      {
+        "id": "funnel",
+        "width": 425
+      },
+      {
+        "id": "feedback",
+        "width": 425
+      },
+      {
+        "id": "about",
+        "width": 425
+      },
+      {
+        "id": "cvs",
+        "width": 425
+      },
+      {
+        "id": "build-notes",
+        "width": 377
+      },
+      {
+        "id": "contact",
+        "width": 425
+      }
+    ],
+    "width": 440
+  },
+  {
+    "clippedText": [],
+    "height": 1024,
+    "overflow": false,
+    "pageWidth": 753,
+    "sections": [
+      {
+        "id": "top",
+        "width": 753
+      },
+      {
+        "id": "identity-strip",
+        "width": 753
+      },
+      {
+        "id": "visitor",
+        "width": 673
+      },
+      {
+        "id": "statement",
+        "width": 753
+      },
+      {
+        "id": "proof-ribbon",
+        "width": 753
+      },
+      {
+        "id": "highlights",
+        "width": 753
+      },
+      {
+        "id": "work",
+        "width": 753
+      },
+      {
+        "id": "ai-expertise",
+        "width": 753
+      },
+      {
+        "id": "decision-map",
+        "width": 753
+      },
+      {
+        "id": "funnel",
+        "width": 753
+      },
+      {
+        "id": "feedback",
+        "width": 753
+      },
+      {
+        "id": "about",
+        "width": 753
+      },
+      {
+        "id": "cvs",
+        "width": 753
+      },
+      {
+        "id": "build-notes",
+        "width": 705
+      },
+      {
+        "id": "contact",
+        "width": 753
+      }
+    ],
+    "width": 768
+  },
+  {
+    "clippedText": [],
+    "height": 768,
+    "overflow": false,
+    "pageWidth": 1009,
+    "sections": [
+      {
+        "id": "top",
+        "width": 1009
+      },
+      {
+        "id": "identity-strip",
+        "width": 1009
+      },
+      {
+        "id": "visitor",
+        "width": 929
+      },
+      {
+        "id": "statement",
+        "width": 1009
+      },
+      {
+        "id": "proof-ribbon",
+        "width": 1009
+      },
+      {
+        "id": "highlights",
+        "width": 1009
+      },
+      {
+        "id": "work",
+        "width": 1009
+      },
+      {
+        "id": "ai-expertise",
+        "width": 1009
+      },
+      {
+        "id": "decision-map",
+        "width": 1009
+      },
+      {
+        "id": "funnel",
+        "width": 1009
+      },
+      {
+        "id": "feedback",
+        "width": 1009
+      },
+      {
+        "id": "about",
+        "width": 1009
+      },
+      {
+        "id": "cvs",
+        "width": 1009
+      },
+      {
+        "id": "build-notes",
+        "width": 929
+      },
+      {
+        "id": "contact",
+        "width": 1009
+      }
+    ],
+    "width": 1024
+  },
+  {
+    "clippedText": [],
+    "height": 800,
+    "overflow": false,
+    "pageWidth": 1265,
+    "sections": [
+      {
+        "id": "top",
+        "width": 1265
+      },
+      {
+        "id": "identity-strip",
+        "width": 1265
+      },
+      {
+        "id": "visitor",
+        "width": 1145
+      },
+      {
+        "id": "statement",
+        "width": 1100
+      },
+      {
+        "id": "proof-ribbon",
+        "width": 1265
+      },
+      {
+        "id": "highlights",
+        "width": 1265
+      },
+      {
+        "id": "work",
+        "width": 1265
+      },
+      {
+        "id": "ai-expertise",
+        "width": 1265
+      },
+      {
+        "id": "decision-map",
+        "width": 1265
+      },
+      {
+        "id": "funnel",
+        "width": 1265
+      },
+      {
+        "id": "feedback",
+        "width": 1265
+      },
+      {
+        "id": "about",
+        "width": 1265
+      },
+      {
+        "id": "cvs",
+        "width": 1265
+      },
+      {
+        "id": "build-notes",
+        "width": 1145
+      },
+      {
+        "id": "contact",
+        "width": 1265
+      }
+    ],
+    "width": 1280
+  },
+  {
+    "clippedText": [],
+    "height": 900,
+    "overflow": false,
+    "pageWidth": 1425,
+    "sections": [
+      {
+        "id": "top",
+        "width": 1425
+      },
+      {
+        "id": "identity-strip",
+        "width": 1425
+      },
+      {
+        "id": "visitor",
+        "width": 1145
+      },
+      {
+        "id": "statement",
+        "width": 1100
+      },
+      {
+        "id": "proof-ribbon",
+        "width": 1425
+      },
+      {
+        "id": "highlights",
+        "width": 1425
+      },
+      {
+        "id": "work",
+        "width": 1425
+      },
+      {
+        "id": "ai-expertise",
+        "width": 1425
+      },
+      {
+        "id": "decision-map",
+        "width": 1425
+      },
+      {
+        "id": "funnel",
+        "width": 1425
+      },
+      {
+        "id": "feedback",
+        "width": 1425
+      },
+      {
+        "id": "about",
+        "width": 1425
+      },
+      {
+        "id": "cvs",
+        "width": 1425
+      },
+      {
+        "id": "build-notes",
+        "width": 1145
+      },
+      {
+        "id": "contact",
+        "width": 1425
+      }
+    ],
+    "width": 1440
+  }
+]

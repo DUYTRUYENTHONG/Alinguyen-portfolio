@@ -1,0 +1,112 @@
+[
+  {
+    "composerVisible": true,
+    "contained": true,
+    "height": 568,
+    "inputFont": "16px",
+    "modal": true,
+    "overflow": false,
+    "transcriptHeight": 349,
+    "width": 320
+  },
+  {
+    "composerVisible": true,
+    "contained": true,
+    "height": 740,
+    "inputFont": "16px",
+    "modal": true,
+    "overflow": false,
+    "transcriptHeight": 521,
+    "width": 360
+  },
+  {
+    "composerVisible": true,
+    "contained": true,
+    "height": 667,
+    "inputFont": "16px",
+    "modal": true,
+    "overflow": false,
+    "transcriptHeight": 449,
+    "width": 375
+  },
+  {
+    "composerVisible": true,
+    "contained": true,
+    "height": 844,
+    "inputFont": "16px",
+    "modal": true,
+    "overflow": false,
+    "transcriptHeight": 625,
+    "width": 390
+  },
+  {
+    "composerVisible": true,
+    "contained": true,
+    "height": 915,
+    "inputFont": "16px",
+    "modal": true,
+    "overflow": false,
+    "transcriptHeight": 713,
+    "width": 412
+  },
+  {
+    "composerVisible": true,
+    "contained": true,
+    "height": 956,
+    "inputFont": "16px",
+    "modal": true,
+    "overflow": false,
+    "transcriptHeight": 754,
+    "width": 440
+  },
+  {
+    "composerVisible": true,
+    "contained": true,
+    "height": 360,
+    "inputFont": "16px",
+    "modal": true,
+    "overflow": false,
+    "transcriptHeight": 180,
+    "width": 440
+  },
+  {
+    "composerVisible": true,
+    "contained": true,
+    "height": 440,
+    "inputFont": "16px",
+    "modal": true,
+    "overflow": false,
+    "transcriptHeight": 236,
+    "width": 956
+  },
+  {
+    "composerVisible": true,
+    "contained": true,
+    "height": 1024,
+    "inputFont": "16px",
+    "modal": true,
+    "overflow": false,
+    "transcriptHeight": 490,
+    "width": 768
+  },
+  {
+    "composerVisible": true,
+    "contained": true,
+    "height": 768,
+    "inputFont": "16px",
+    "modal": true,
+    "overflow": false,
+    "transcriptHeight": 490,
+    "width": 1024
+  },
+  {
+    "composerVisible": true,
+    "contained": true,
+    "height": 900,
+    "inputFont": "16px",
+    "modal": true,
+    "overflow": false,
+    "transcriptHeight": 490,
+    "width": 1440
+  }
+]

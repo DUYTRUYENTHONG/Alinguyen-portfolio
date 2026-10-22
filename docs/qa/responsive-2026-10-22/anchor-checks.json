@@ -1,0 +1,110 @@
+[
+  {
+    "id": "highlights",
+    "width": 390,
+    "margin": 96,
+    "top": 95.92708587646484
+  },
+  {
+    "id": "work",
+    "width": 390,
+    "margin": 108,
+    "top": 108.07292175292967
+  },
+  {
+    "id": "ai-expertise",
+    "width": 390,
+    "margin": 100,
+    "top": 99.96875
+  },
+  {
+    "id": "funnel",
+    "width": 390,
+    "margin": 0,
+    "top": 0.21875
+  },
+  {
+    "id": "feedback",
+    "width": 390,
+    "margin": 100,
+    "top": 99.69792175292967
+  },
+  {
+    "id": "about",
+    "width": 390,
+    "margin": 100,
+    "top": 99.82292175292967
+  },
+  {
+    "id": "cvs",
+    "width": 390,
+    "margin": 112,
+    "top": 111.78125
+  },
+  {
+    "id": "contact",
+    "width": 390,
+    "margin": 75,
+    "top": 74.82292175292969
+  },
+  {
+    "id": "project-kkbox-baseline",
+    "width": 390,
+    "margin": 148,
+    "top": 147.71875
+  },
+  {
+    "id": "highlights",
+    "width": 1440,
+    "margin": 96,
+    "top": 95.66667175292967
+  },
+  {
+    "id": "work",
+    "width": 1440,
+    "margin": 108,
+    "top": 107.84375
+  },
+  {
+    "id": "ai-expertise",
+    "width": 1440,
+    "margin": 100,
+    "top": 99.95833587646484
+  },
+  {
+    "id": "funnel",
+    "width": 1440,
+    "margin": 0,
+    "top": -0.1145833358168602
+  },
+  {
+    "id": "feedback",
+    "width": 1440,
+    "margin": 100,
+    "top": 100.3125
+  },
+  {
+    "id": "about",
+    "width": 1440,
+    "margin": 100,
+    "top": 100.01042175292967
+  },
+  {
+    "id": "cvs",
+    "width": 1440,
+    "margin": 112,
+    "top": 112.08333587646484
+  },
+  {
+    "id": "contact",
+    "width": 1440,
+    "margin": 75,
+    "top": 75.08333587646484
+  },
+  {
+    "id": "project-kkbox-baseline",
+    "width": 1440,
+    "margin": 110,
+    "top": 109.96875
+  }
+]

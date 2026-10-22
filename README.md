@@ -60,6 +60,8 @@ npm run build
 
 The Pages workflow supplies `NEXT_PUBLIC_BASE_PATH=/Alinguyen-portfolio`, `NEXT_PUBLIC_SITE_URL`, and the public API URLs during its build. Run `npm run build` with the same public variables to check the deployed path locally. The exported files are in `out/`.
 
+The guide uses a native modal dialog with visual-viewport sizing, safe-area spacing, and a scrollable conversation. For changes to it or shared layout, repeat the phone, short-viewport, keyboard, navigation and route checks recorded in the [responsive QA report](docs/qa/responsive-2026-10-22/QA_REPORT.md), including a real Safari keyboard check when an iPhone is available.
+
 ## Downloads and source notes
 
 The site offers four CV actions: [Applied AI Engineer PDF](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf), [Business & Product PDF](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-business-product.pdf), [Business Development PDF](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-business-development.pdf), and [AI / Prompt Engineer DOCX](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-prompt-engineer.docx). The business PDFs now have distinct role narratives. The AI documents state the qualified KKBox local holdout result and its limits. The owner should review personal details before each public update; the source generator is `scripts/generate-ai-cvs.py`.

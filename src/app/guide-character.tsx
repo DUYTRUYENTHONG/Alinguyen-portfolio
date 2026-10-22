@@ -311,7 +311,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     panelOpenRef.current = open;
     setPanelOpen(open);
     window.dispatchEvent(new Event("guide-panel-change"));
-    if (!open) requestAnimationFrame(() => actorRef.current?.focus());
+    if (!open) requestAnimationFrame(() => actorRef.current?.focus({ preventScroll: true }));
   };
 
   return <div className="guide-stage guide-stage-journey" ref={stageRef}>

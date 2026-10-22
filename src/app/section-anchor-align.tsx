@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 
-const alignedIds = new Set(["work", "cvs"]);
+const alignedIds = new Set(["visitor", "highlights", "work", "ai-expertise", "funnel", "feedback", "about", "cvs", "contact"]);
+const shouldAlign = (id: string) => alignedIds.has(id) || id.startsWith("project-");
 
 export function SectionAnchorAlign() {
   useEffect(() => {
@@ -13,7 +14,7 @@ export function SectionAnchorAlign() {
     const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(() => schedule());
     const align = () => {
       const id = window.location.hash.slice(1);
-      if (!alignedIds.has(id)) return;
+      if (!shouldAlign(id)) return;
       const section = document.getElementById(id);
       if (!section) return;
       const margin = Number.parseFloat(window.getComputedStyle(section).scrollMarginTop) || 0;
@@ -29,7 +30,7 @@ export function SectionAnchorAlign() {
       if (!active) return;
       observer?.disconnect();
       window.clearTimeout(stopWatching);
-      if (!alignedIds.has(window.location.hash.slice(1))) return;
+      if (!shouldAlign(window.location.hash.slice(1))) return;
       schedule();
       const main = document.querySelector("main");
       if (main) observer?.observe(main);

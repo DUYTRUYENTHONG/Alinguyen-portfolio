@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { createPortal } from "react-dom";
+import { useGuideDialog } from "./use-guide-dialog";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const endpoint = process.env.NEXT_PUBLIC_GUIDE_API_URL;
@@ -51,7 +53,7 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
   const [motion, setMotion] = useState<PanelMotion>("attentive");
   const [remember, setRemember] = useState(false);
   const [interests, setInterests] = useState<string[]>([]);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useGuideDialog(open);
   const scrollRef = useRef<HTMLDivElement>(null);
   const motionTimerRef = useRef<number | null>(null);
 
@@ -92,7 +94,6 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
     } catch { /* Private browsing or blocked storage: continue without memory. */ }
   }, []);
 
-  useEffect(() => { if (open) inputRef.current?.focus(); }, [open]);
   useEffect(() => { scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight }); }, [turns, busy]);
 
   const saveInterests = (next: string[], enabled = remember) => {
@@ -138,12 +139,13 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
   const submit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); void ask(question); };
   if (!open) return null;
 
-  return <section className="guide-assistant-panel" role="dialog" aria-label={`Ask ${name}, Ali's guide`} onKeyDown={(event) => {
-    if (event.key === "Escape") { event.stopPropagation(); onClose(); }
+  return createPortal(<dialog ref={dialogRef} className="guide-assistant-panel" aria-labelledby="guide-assistant-title" aria-describedby="guide-assistant-privacy" onCancel={(event) => {
+    event.preventDefault();
+    onClose();
   }}>
     <header className="guide-assistant-head">
       <img className="guide-assistant-avatar" data-motion={motion} src={`${basePath}/guide-art/${icon}.webp`} alt="" width="38" height="56" />
-      <div><strong>Ask {name}</strong><span>Ali&apos;s AI guide · public sources</span></div>
+      <div><strong id="guide-assistant-title">Ask {name}</strong><span>Ali&apos;s AI guide · public sources</span></div>
       <button type="button" className="guide-assistant-close" onClick={onClose} aria-label="Close guide">×</button>
     </header>
     <div className="guide-assistant-transcript" ref={scrollRef} aria-live="polite" aria-relevant="additions text">
@@ -161,22 +163,22 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
       </div>)}
       {busy && <p className="guide-assistant-status" role="status">Checking public sources…</p>}
       {error && <p className="guide-assistant-error" role="status">{error}</p>}
-      {error && <p className="guide-assistant-fallback"><a href={`${basePath}/work/`}>Work</a> · <a href={`${basePath}/about/`}>About</a> · <a href={`${basePath}/#cvs`}>CVs</a> · <a href={`${basePath}/#contact`}>Contact</a></p>}
+      {error && <p className="guide-assistant-fallback"><a href={`${basePath}/work/`} onClick={onClose}>Work</a> · <a href={`${basePath}/about/`} onClick={onClose}>About</a> · <a href={`${basePath}/#cvs`} onClick={onClose}>CVs</a> · <a href={`${basePath}/#contact`} onClick={onClose}>Contact</a></p>}
       {!busy && suggestions.length > 0 && <div className="guide-assistant-suggestions">{suggestions.map((item) =>
         <button key={item} type="button" onClick={() => void ask(item)}>{item}</button>)}</div>}
-    </div>
-    <div className="guide-assistant-footer">
-      <form onSubmit={submit}><label htmlFor="guide-question" className="sr-only">Ask a question</label>
-        <input id="guide-question" ref={inputRef} value={question} onChange={(event) => setQuestion(event.target.value)} maxLength={400} placeholder="Ask about a project or skill…" disabled={busy} />
-        <button type="submit" disabled={busy || !question.trim()} aria-label="Send question">→</button>
-      </form>
       <details className="guide-assistant-memory"><summary>Returning visitor preferences</summary>
         <label><input type="checkbox" checked={remember} onChange={(event) => { setRemember(event.target.checked); saveInterests(interests, event.target.checked); }} /> Remember selected interests on this device for 90 days</label>
         {remember && <div className="guide-assistant-interests">{interestOptions.map((item) =>
           <button type="button" key={item} aria-pressed={interests.includes(item)} onClick={() => saveInterests(interests.includes(item) ? interests.filter((value) => value !== item) : [...interests, item])}>{item}</button>)}</div>}
         {remember && <button className="guide-assistant-forget" type="button" onClick={() => { setRemember(false); saveInterests([], false); }}>Forget my preferences</button>}
       </details>
-      <small>Questions are sent to an AI provider when you press send. Avoid sharing sensitive information. Chat history lasts only in this tab.</small>
     </div>
-  </section>;
+    <div className="guide-assistant-footer">
+      <form onSubmit={submit}><label htmlFor="guide-question" className="sr-only">Ask a question</label>
+        <input id="guide-question" value={question} onChange={(event) => setQuestion(event.target.value)} maxLength={400} placeholder="Ask about a project or skill…" readOnly={busy} autoComplete="off" enterKeyHint="send" />
+        <button type="submit" disabled={busy || !question.trim()} aria-label="Send question">→</button>
+      </form>
+      <small id="guide-assistant-privacy">Questions are sent to an AI provider when you press send. Avoid sharing sensitive information. Chat history lasts only in this tab.</small>
+    </div>
+  </dialog>, document.body);
 }

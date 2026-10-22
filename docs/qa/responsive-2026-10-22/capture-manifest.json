@@ -1,0 +1,100 @@
+[
+  {
+    "file": "about-mobile.jpg",
+    "width": 375,
+    "height": 812,
+    "bytes": 38895,
+    "sha256": "0a3aede8d5790c71290669ddd4fc968f6a9afadc7642150dd7de7286b3ae59e2"
+  },
+  {
+    "file": "chat-320.jpg",
+    "width": 320,
+    "height": 568,
+    "bytes": 30234,
+    "sha256": "302c753bd58bc60d43106dd13f68a2420ff41f70ff603e8df9dbe22f794dbd21"
+  },
+  {
+    "file": "chat-440.jpg",
+    "width": 440,
+    "height": 956,
+    "bytes": 32329,
+    "sha256": "8d66adbd03995b2ce226c83735f846be304bdf2935f0353e963a068d01e0cb64"
+  },
+  {
+    "file": "chat-desktop.jpg",
+    "width": 1280,
+    "height": 800,
+    "bytes": 69732,
+    "sha256": "70719558ffbc900b47b0adc5c2f45c61f85b53c77dc9efa40156a83d35ecc941"
+  },
+  {
+    "file": "chat-landscape.jpg",
+    "width": 956,
+    "height": 440,
+    "bytes": 47889,
+    "sha256": "57b6fa93b64c18d24cbbdad5cc419d1589beffda0e0ca489aea554e8b0d138db"
+  },
+  {
+    "file": "chat-short-viewport.jpg",
+    "width": 440,
+    "height": 360,
+    "bytes": 23233,
+    "sha256": "d5c9134e063f09cff63311f90bfbedc515de1ab845a9f0fbfb7c0893568135ce"
+  },
+  {
+    "file": "contact-mobile.jpg",
+    "width": 375,
+    "height": 812,
+    "bytes": 36333,
+    "sha256": "a04d782943a2f549a734ed91955b73580a43a533e879c7e3857a4b0eded37ba2"
+  },
+  {
+    "file": "customers-mobile.jpg",
+    "width": 375,
+    "height": 812,
+    "bytes": 34117,
+    "sha256": "0f54d0f361b9be08f7a2a7a3e492c2eaa9bead2cf573e41ea5691aefc09ce7a1"
+  },
+  {
+    "file": "cvs-mobile.jpg",
+    "width": 375,
+    "height": 812,
+    "bytes": 28928,
+    "sha256": "d036d9c75c6ee6676bcebe5bba1e69e52cbd2fca8071b85e6c92b9a7416b8e10"
+  },
+  {
+    "file": "expertise-mobile.jpg",
+    "width": 375,
+    "height": 812,
+    "bytes": 35498,
+    "sha256": "63f9f69f6fdc0ba96bdf704e3eeaef65733536f29fdaa6bc97414b5d8f7b8f0d"
+  },
+  {
+    "file": "funnel-mobile.jpg",
+    "width": 375,
+    "height": 812,
+    "bytes": 38770,
+    "sha256": "db19afe3080bf66429d4e6d9ead0be221f38003c28ec66c78bb1974a469976bc"
+  },
+  {
+    "file": "highlights-mobile.jpg",
+    "width": 375,
+    "height": 812,
+    "bytes": 29020,
+    "sha256": "54466d90a485677b5c140d2b832d8bf5acbacccfeda97e4c920530d598c168ba"
+  },
+  {
+    "file": "principles-mobile.jpg",
+    "width": 375,
+    "height": 812,
+    "bytes": 42316,
+    "sha256": "bc745d42a5796b23978ecf51a0402e6fa0db31c0c81742ca507cf44b1b385848"
+  },
+  {
+    "file": "work-directory-mobile.jpg",
+    "width": 375,
+    "height": 812,
+    "bytes": 37569,
+    "sha256": "196112de1ef82db8c482c84d7ef02c3d7fe3a96701dcb9c97cbfad97532cb94d"
+  }
+]
