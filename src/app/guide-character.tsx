@@ -159,7 +159,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       const safeBottom = window.innerHeight - actor.offsetHeight - 22;
       let screenY = clamp(y + stageRect.top, safeTop, safeBottom);
       // Keep the guide and its message clear of the main conversion links as they pass the reading line.
-      for (const link of document.querySelectorAll<HTMLElement>(".hero-actions a, .project-proof a")) {
+      for (const link of document.querySelectorAll<HTMLElement>(".hero-actions a, .project-proof a, #cvs a, #contact a, #contact button")) {
         const rect = link.getBoundingClientRect();
         if (rect.bottom < safeTop || rect.top > window.innerHeight) continue;
         if (screenY - 20 >= rect.bottom || screenY + actor.offsetHeight + 20 <= rect.top) continue;
@@ -170,7 +170,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       }
       const message = (projectId ? projectMessages[projectId] : null) ?? sceneMessages[label] ?? "Follow along for the work and the decisions behind it.";
       const viewportMaxX = Math.max(0, window.innerWidth - actor.offsetWidth);
-      const screenX = label === "Download a CV" ? viewportMaxX : clamp(x + stageRect.left, 0, viewportMaxX);
+      const screenX = window.innerWidth < 768 || label === "Download a CV" ? viewportMaxX : clamp(x + stageRect.left, 0, viewportMaxX);
       return { x: screenX, y: screenY, label, message, visible, maxX: viewportMaxX };
     };
 

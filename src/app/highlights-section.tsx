@@ -4,11 +4,11 @@ import styles from "./highlights-section.module.css";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const cards = [
-  { id: "growth", title: "Growth Commerce OS", description: "A live service website for the DUYTRUYENTHONG brand.", href: identity.service, action: "Visit site", logo: "duytruyenthong-logo.png" },
+  { id: "growth", title: "Growth Commerce OS", description: "A live service website for the DUYTRUYENTHONG brand.", href: identity.service, action: "Visit site", logo: "duytruyenthong-logo-transparent.webp" },
   { id: "vibecode", title: "Vibecode Product Kit", description: "A public developer tool with an offline CLI and CI checks.", href: "https://github.com/DUYTRUYENTHONG/vibecode-product-kit", action: "View source", logo: "vibecode-product-kit-logo.svg" },
   { id: "kkbox", title: "KKBox baseline", description: "An audited churn holdout on official data with a snapshot-date leakage check.", href: "#project-kkbox-baseline", action: "See project", logo: "kkbox-logo.png" },
-  { id: "stos", title: "STOS", description: "A live sales page product for independent sellers and small businesses.", href: identity.stos, action: "Visit product", logo: "stos-logo-dark.png" },
-  { id: "chokenh", title: "Chợ Kênh", description: "A live TikTok channel catalog with manual intermediary inquiries.", href: identity.choKenh, action: "Visit marketplace", logo: "cho-kenh-logo.png" },
+  { id: "stos", title: "STOS", description: "A live sales page product for independent sellers and small businesses.", href: identity.stos, action: "Visit product", logo: "stos-symbol-transparent.webp" },
+  { id: "chokenh", title: "Chợ Kênh", description: "A live TikTok channel catalog with manual intermediary inquiries.", href: identity.choKenh, action: "Visit marketplace", logo: "cho-kenh-logo-transparent.webp" },
   { id: "process", title: "Open process", description: "Reproducible baselines, readable code, and explicit limits.", href: "#about", action: "Read approach", logo: null },
 ] as const;
 

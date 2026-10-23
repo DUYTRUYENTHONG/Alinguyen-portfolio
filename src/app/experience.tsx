@@ -29,12 +29,11 @@ export function PortfolioExperienceProvider({ children }: { children: ReactNode 
   const [ready, setReady] = useState(false);
   useEffect(() => {
     const requested = entryRoles[new URLSearchParams(window.location.search).get("for")?.toLowerCase() ?? ""];
-    const saved = window.sessionStorage.getItem("portfolio-visitor-role");
+    let saved: string | null = null;
+    try { saved = window.sessionStorage.getItem("portfolio-visitor-role"); } catch { /* Perspective remains optional without storage. */ }
     if (requested) {
       setSelectedState(requested.role);
-      setChosen(true);
       setEntry(requested.entry);
-      window.sessionStorage.setItem("portfolio-visitor-role", requested.role);
     } else if (saved && roles.some((role) => role.label === saved)) {
       setSelectedState(saved);
       setChosen(true);
@@ -48,7 +47,7 @@ export function PortfolioExperienceProvider({ children }: { children: ReactNode 
   const setSelected = (role: string) => {
     setSelectedState(role);
     setChosen(true);
-    window.sessionStorage.setItem("portfolio-visitor-role", role);
+    try { window.sessionStorage.setItem("portfolio-visitor-role", role); } catch { /* Keep the in-tab choice. */ }
     const url = new URL(window.location.href);
     if (url.searchParams.has("for")) {
       url.searchParams.delete("for");
@@ -158,8 +157,24 @@ const focusPhrases = ["applied AI prototypes", "developer tools", "commerce prod
 export function RotatingFocus() {
   const [index, setIndex] = useState(0);
   useEffect(() => {
-    const timer = window.setInterval(() => setIndex((current) => (current + 1) % focusPhrases.length), 3200);
-    return () => window.clearInterval(timer);
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer = 0;
+    let current = 0;
+    const settle = () => { window.clearTimeout(timer); setIndex(0); };
+    const advance = () => {
+      if (preference.matches || document.hidden) return;
+      current += 1;
+      setIndex(current);
+      if (current < focusPhrases.length - 1) timer = window.setTimeout(advance, 2200);
+    };
+    if (!preference.matches) timer = window.setTimeout(advance, 2200);
+    preference.addEventListener("change", settle);
+    document.addEventListener("visibilitychange", settle);
+    return () => {
+      window.clearTimeout(timer);
+      preference.removeEventListener("change", settle);
+      document.removeEventListener("visibilitychange", settle);
+    };
   }, []);
   return <span className="rotating-focus" aria-live="off">{focusPhrases[index]}</span>;
 }
@@ -186,25 +201,26 @@ export function PortfolioGuide() {
 }
 
 export function VisitorPicker({ projects }: { projects: Project[] }) {
-  const { selected, setSelected } = usePortfolioRole();
+  const { selected, chosen, ready, setSelected } = usePortfolioRole();
   const role = roles.find((item) => item.label === selected) ?? roles[0];
   const recommended = projects.find((project) => project.id === role?.project);
 
   return (
     <section className="visitor section-shell" id="visitor" aria-labelledby="visitor-title">
       <div className="visitor-heading"><h2 id="visitor-title">Hello stranger,<span className="visitor-heading-tail"> who are you?</span></h2></div>
+      <p className="visitor-optional">Optional: choose a perspective to prioritize relevant projects. All work and CVs are available without choosing.</p>
       <fieldset className="role-grid"><legend className="sr-only">Choose your perspective</legend>
-        {roles.map((item) => <RoleTile key={item.label} item={item} selected={selected} onSelect={setSelected} />)}
+        {roles.map((item) => <RoleTile key={item.label} item={item} selected={chosen ? selected : null} onSelect={setSelected} />)}
       </fieldset>
-      <VisitorStats role={selected} />
+      {ready && <VisitorStats role={chosen ? selected : null} />}
       <div className="visitor-result" aria-live="polite">
-        {recommended && <><span>RECOMMENDED FOR {selected.toUpperCase()}</span><a href={`#project-${recommended.id}`}>{recommended.name} <span aria-hidden="true">↗</span></a></>}
+        {recommended && <><span>{chosen ? `RECOMMENDED FOR ${selected.toUpperCase()}` : "A PROJECT TO EXPLORE"}</span><a href={`#project-${recommended.id}`}>{recommended.name} <span aria-hidden="true">↗</span></a></>}
       </div>
     </section>
   );
 }
 
-function RoleTile({ item, selected, onSelect }: { item: (typeof roles)[number]; selected: string; onSelect: (role: string) => void }) {
+function RoleTile({ item, selected, onSelect }: { item: (typeof roles)[number]; selected: string | null; onSelect: (role: string) => void }) {
   const active = selected === item.label;
   return <div className={`role-cell ${active ? "is-selected" : ""}`}>
     <label className={`role-card role-${item.tone} ${active ? "is-selected" : ""}`}>
@@ -270,7 +286,7 @@ function ProjectEmoji({ id }: { id: string }) {
 }
 
 export function WorkSection({ projects }: { projects: Project[] }) {
-  const { selected } = usePortfolioRole();
+  const { selected, chosen } = usePortfolioRole();
   const rolePriorities: Record<string, string[]> = {
     Recruiter: ["vibecode-kit", "growth-commerce-os", "stos", "cho-kenh", "kkbox-baseline"],
     Founder: ["growth-commerce-os", "stos", "cho-kenh", "vibecode-kit", "kkbox-baseline"],
@@ -299,19 +315,22 @@ export function WorkSection({ projects }: { projects: Project[] }) {
     return () => observer.disconnect();
   }, [projects, selected]);
 
-  return <section className="work-section" id="work" aria-labelledby="work-title"><div className="section-shell"><div className="work-heading"><h2 id="work-title">Selected work</h2><div><a className="work-role-chip" href="#visitor">You: {selected} · <span>change</span></a><p>{selected} view: projects most relevant to your interests first.</p></div></div><nav className="work-mobile-index" aria-label="Jump to project">{orderedProjects.map((project) => <a key={project.id} className={active === project.id ? "is-active" : ""} href={`#project-${project.id}`} aria-current={active === project.id ? "location" : undefined}><span aria-hidden="true"><ProjectEmoji id={project.id} /></span>{project.name.replace("DUYTRUYENTHONG ", "").replace("Codex ", "")}</a>)}</nav><div className="work-layout"><nav className="work-index" aria-label="Jump to project"><p>IN YOUR ORDER</p>{orderedProjects.map((project) => <a key={project.id} className={active === project.id ? "is-active" : ""} href={`#project-${project.id}`} aria-current={active === project.id ? "location" : undefined}><span aria-hidden="true"><ProjectEmoji id={project.id} /></span>{project.name.replace("DUYTRUYENTHONG ", "").replace("Codex ", "")}</a>)}</nav><div className="work-cards">{orderedProjects.map((project, index) => <article className={`work-card work-card-${index + 1}`} id={`project-${project.id}`} key={project.id}><div className="work-stamp"><strong>{project.status.includes("Live") ? "LIVE" : project.status.includes("Public") ? "PUBLIC" : "PROTOTYPE"}</strong><small>{project.status}</small></div><p className="project-kicker"><ProjectEmoji id={project.id} /> &nbsp; {project.name}</p><h3>{project.headline}</h3><p className="project-summary">{project.problem}</p><ProjectVisual id={project.id} /><div className="project-proof"><div><strong>{String(index + 1).padStart(2, "0")}</strong><span>{project.proof}</span></div><Link href={`/work/${project.id}`}>Case study <span aria-hidden="true">↗</span></Link></div></article>)}</div></div></div></section>;
+  return <section className="work-section" id="work" aria-labelledby="work-title"><div className="section-shell"><div className="work-heading"><h2 id="work-title">Selected work</h2><div><a className="work-role-chip" href="#visitor">{chosen ? `You: ${selected}` : "Optional perspective"} · <span>{chosen ? "change" : "choose"}</span></a><p>{chosen ? `${selected} view: projects most relevant to your interests first.` : "Explore all five projects, or choose a perspective to change their order."}</p></div></div><nav className="work-mobile-index" aria-label="Jump to project">{orderedProjects.map((project) => <a key={project.id} className={active === project.id ? "is-active" : ""} href={`#project-${project.id}`} aria-current={active === project.id ? "location" : undefined}><span aria-hidden="true"><ProjectEmoji id={project.id} /></span>{project.name.replace("DUYTRUYENTHONG ", "").replace("Codex ", "")}</a>)}</nav><div className="work-layout"><nav className="work-index" aria-label="Jump to project"><p>{chosen ? "IN YOUR ORDER" : "PROJECT INDEX"}</p>{orderedProjects.map((project) => <a key={project.id} className={active === project.id ? "is-active" : ""} href={`#project-${project.id}`} aria-current={active === project.id ? "location" : undefined}><span aria-hidden="true"><ProjectEmoji id={project.id} /></span>{project.name.replace("DUYTRUYENTHONG ", "").replace("Codex ", "")}</a>)}</nav><div className="work-cards">{orderedProjects.map((project, index) => <article className={`work-card work-card-${index + 1}`} id={`project-${project.id}`} key={project.id}><div className="work-stamp"><strong>{project.status.includes("Live") ? "LIVE" : project.status.includes("Public") ? "PUBLIC" : "PROTOTYPE"}</strong><small>{project.status}</small></div><p className="project-kicker"><ProjectEmoji id={project.id} /> &nbsp; {project.name}</p><h3>{project.headline}</h3><p className="project-summary">{project.problem}</p><ProjectVisual id={project.id} /><div className="project-proof"><div><strong>{String(index + 1).padStart(2, "0")}</strong><span>{project.proof}</span></div><Link href={`/work/${project.id}`}>Case study <span aria-hidden="true">↗</span></Link></div></article>)}</div></div></div></section>;
 }
 
 export function CopyEmail({ email }: { email: string }) {
   const [copied, setCopied] = useState(false);
+  const [failed, setFailed] = useState(false);
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(email);
+      setFailed(false);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2400);
     } catch {
+      setFailed(true);
       setCopied(false);
     }
   };
-  return <button className="copy-email" type="button" onClick={copy} aria-label={`Copy email address ${email}`}>{copied ? "Copied ✓" : "Copy email"}</button>;
+  return <><button className="copy-email" type="button" onClick={copy} aria-label={`Copy email address ${email}`}>{copied ? "Copied ✓" : "Copy email"}</button><p className="copy-feedback" role="status">{failed ? "Copy unavailable. Select the email address above to copy it, or open it in your email app." : copied ? "Email address copied." : ""}</p></>;
 }

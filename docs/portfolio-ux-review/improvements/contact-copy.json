@@ -1,0 +1,18 @@
+{
+  "mailLinks": [
+    {
+      "href": "mailto:nquangd1510@gmail.com",
+      "label": "nquangd1510@gmail.com ↗"
+    },
+    {
+      "href": "mailto:nquangd1510@gmail.com?subject=Engineering%20opportunity",
+      "label": "Discuss an engineering role ↗"
+    },
+    {
+      "href": "mailto:nquangd1510@gmail.com?subject=AI%20and%20commerce%20workflow",
+      "label": "Ask about an AI workflow ↗"
+    }
+  ],
+  "feedback": "Email address copied.",
+  "messagesSent": false
+}

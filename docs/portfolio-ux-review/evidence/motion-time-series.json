@@ -1,0 +1,1217 @@
+[
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 63930.541000016776
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 146410.12100000147
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146293.45700000043
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146410.12100000147
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146410.12100000147
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146410.12100000147
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146410.12100000147
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146410.12100000147
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 146293.45700000043
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146410.12100000147
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146410.12100000147
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146410.12100000147
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146410.12100000147
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 146410.12100000147
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 71446.82800002261
+      }
+    ],
+    "ms": 508,
+    "text": "applied AI prototypes"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 64430.44100001677
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 146910.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146793.35700000043
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146910.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146910.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146910.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146910.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146910.0210000015
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 146793.35700000043
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146910.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146910.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146910.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 146910.0210000015
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 146910.0210000015
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 71946.7280000226
+      }
+    ],
+    "ms": 1003,
+    "text": "applied AI prototypes"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 64930.44100001677
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 147410.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147293.35700000043
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147410.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147410.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147410.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147410.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147410.0210000015
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 147293.35700000043
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147410.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147410.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147410.0210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147410.0210000015
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 147410.0210000015
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 72446.7280000226
+      }
+    ],
+    "ms": 1509,
+    "text": "developer tools"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 65447.00700001678
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 147926.58700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147809.92300000045
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147926.58700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147926.58700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147926.58700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147926.58700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147926.58700000148
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 147809.92300000045
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147926.58700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147926.58700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147926.58700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 147926.58700000148
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 147926.58700000148
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 72963.29400002261
+      }
+    ],
+    "ms": 2010,
+    "text": "developer tools"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 65930.34100001676
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 148409.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148293.25700000045
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148409.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148409.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148409.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148409.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148409.9210000015
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 148293.25700000045
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148409.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148409.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148409.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148409.9210000015
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 148409.9210000015
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 73446.6280000226
+      }
+    ],
+    "ms": 2504,
+    "text": "developer tools"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 66447.04100001678
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 148926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148809.95700000046
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148926.6210000015
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 148809.95700000046
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 148926.6210000015
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 148926.6210000015
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 73963.32800002261
+      }
+    ],
+    "ms": 3012,
+    "text": "developer tools"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 66947.04100001678
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 149426.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149309.95700000046
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149426.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149426.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149426.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149426.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149426.6210000015
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 149309.95700000046
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149426.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149426.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149426.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149426.6210000015
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 149426.6210000015
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 74463.32800002261
+      }
+    ],
+    "ms": 3513,
+    "text": "developer tools"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 67447.04100001678
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 149926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149809.95700000046
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149926.6210000015
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 149809.95700000046
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149926.6210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 149926.6210000015
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 149926.6210000015
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 74963.32800002261
+      }
+    ],
+    "ms": 4013,
+    "text": "developer tools"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 67946.90700001678
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 150426.48700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150309.82300000044
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150426.48700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150426.48700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150426.48700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150426.48700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150426.48700000148
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 150309.82300000044
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150426.48700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150426.48700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150426.48700000148
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150426.48700000148
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 150426.48700000148
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 75463.19400002262
+      }
+    ],
+    "ms": 4510,
+    "text": "developer tools"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 68430.34100001676
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 150909.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150793.25700000045
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150909.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150909.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150909.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150909.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150909.9210000015
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 150793.25700000045
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150909.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150909.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150909.9210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 150909.9210000015
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 150909.9210000015
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 75946.6280000226
+      }
+    ],
+    "ms": 5009,
+    "text": "commerce products"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 68930.24100001679
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 151409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151293.15700000047
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151409.8210000015
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 151293.15700000047
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151409.8210000015
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 151409.8210000015
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 76446.52800002262
+      }
+    ],
+    "ms": 5505,
+    "text": "commerce products"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 69430.1410000168
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 151909.7210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151793.05700000047
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151909.7210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151909.7210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151909.7210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151909.7210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151909.7210000015
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 151793.05700000047
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151909.7210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151909.7210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151909.7210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 151909.7210000015
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 151909.7210000015
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 76946.42800002263
+      }
+    ],
+    "ms": 6007,
+    "text": "commerce products"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 69930.24100001679
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 152409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152293.15700000047
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152409.8210000015
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 152293.15700000047
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152409.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152409.8210000015
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 152409.8210000015
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 77446.52800002262
+      }
+    ],
+    "ms": 6504,
+    "text": "commerce products"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 70430.24100001679
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 152909.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152793.15700000047
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152909.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152909.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152909.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152909.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152909.8210000015
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 152793.15700000047
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152909.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152909.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152909.8210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 152909.8210000015
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 152909.8210000015
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 77946.52800002262
+      }
+    ],
+    "ms": 7001,
+    "text": "commerce products"
+  },
+  {
+    "animations": [
+      {
+        "name": "guide-alive-idle",
+        "target": "",
+        "time": 70946.84100001678
+      },
+      {
+        "name": "marquee",
+        "target": "identity-track",
+        "time": 153426.4210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 153309.75700000045
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 153426.4210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 153426.4210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 153426.4210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 153426.4210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 153426.4210000015
+      },
+      {
+        "name": "avatar-greet",
+        "target": "",
+        "time": 153309.75700000045
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 153426.4210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 153426.4210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 153426.4210000015
+      },
+      {
+        "name": "avatar-breathe",
+        "target": "",
+        "time": 153426.4210000015
+      },
+      {
+        "name": "marquee",
+        "target": "proof-track",
+        "time": 153426.4210000015
+      },
+      {
+        "name": "project-emoji-bob",
+        "target": "project-emoji",
+        "time": 78463.12800002261
+      }
+    ],
+    "ms": 7512,
+    "text": "commerce products"
+  }
+]

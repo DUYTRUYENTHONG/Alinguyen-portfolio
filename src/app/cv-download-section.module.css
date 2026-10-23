@@ -17,46 +17,9 @@
 .actions a:focus-visible { outline: 3px solid #326bff; outline-offset: 3px; }
 .actions svg { flex: none; }
 
-.illustration { display: grid; place-items: center; height: 166px; margin-bottom: 22px; perspective: 1200px; pointer-events: none; }
-.scene { position: relative; width: 190px; height: 136px; transform-style: preserve-3d; transform: rotateX(9deg) rotateY(-10deg) rotateZ(-3deg); }
-.sheet { position: absolute; display: block; width: 134px; height: 120px; border: 1px solid #d7d7d3; border-radius: 4px; background: #fafaf8; box-shadow: 1px 3px 4px #292c2e12, 10px 15px 22px #292c2e18; backface-visibility: hidden; }
-.paperRules { position: absolute; display: grid; gap: 6px; left: 18px; right: 18px; top: 59px; }
-.paperRules i { display: block; width: 100%; height: 2px; border-radius: 2px; background: #c8c9c6; }
-.paperRules i:nth-child(2) { width: 78%; }
-.paperRules i:nth-child(3) { width: 88%; }
-.paperRules i:nth-child(4) { width: 58%; }
-.format { position: absolute; right: 12px; bottom: 10px; font: 700 .55rem/1 monospace; letter-spacing: .08em; color: #60656a; }
-
-.engineerRear { left: 25px; top: 13px; transform: translateZ(0) rotateZ(-4deg); background: #e9e9e5; }
-.engineerMiddle { left: 29px; top: 9px; transform: translateZ(7px) rotateZ(2deg); background: #f5f5f1; }
-.engineerFront { left: 32px; top: 5px; transform: translateZ(15px); transition: transform .22s ease; }
-.paperBand { position: absolute; top: 0; left: 0; right: 0; height: 17px; border-radius: 3px 3px 0 0; background: #282a2d; }
-.nodeMotif { position: absolute; width: 76px; height: 36px; left: 27px; top: 25px; color: #71787c; }
-.engineerFront .paperRules { top: 72px; }
-
-.folderBack { position: absolute; left: 20px; top: 26px; width: 153px; height: 108px; border: 1px solid #6c6b68; border-radius: 3px 7px 5px 5px; background: #777774; transform: translateZ(0); box-shadow: 9px 14px 22px #292c2e1c; }
-.folderBack::before { position: absolute; content: ""; top: -13px; left: -1px; width: 58px; height: 16px; border: 1px solid #6c6b68; border-bottom: 0; border-radius: 4px 5px 0 0; background: #777774; }
-.folderPaperOne { left: 38px; top: 4px; height: 111px; transform: translateZ(7px) rotateZ(-4deg); }
-.folderPaperTwo { left: 49px; top: 1px; height: 111px; transform: translateZ(13px) rotateZ(3deg); transition: transform .22s ease; }
-.folderPaperOne .paperRules, .folderPaperTwo .paperRules { top: 35px; }
-.folderFront { position: absolute; left: 21px; top: 80px; width: 153px; height: 55px; border: 1px solid #575754; border-radius: 2px 2px 5px 5px; background: #646562; transform: translateZ(20px); box-shadow: 2px 5px 8px #292c2e1a; }
-
-.manuscriptRear { left: 33px; top: 12px; transform: translateZ(0) rotateZ(4deg); background: #e9e9e5; }
-.manuscriptFront { left: 27px; top: 3px; transform: translateZ(13px) rotateZ(-2deg); transition: transform .22s ease; }
-.manuscriptFront::after { position: absolute; content: ""; top: -1px; right: -1px; width: 24px; height: 24px; border-left: 1px solid #d7d7d3; border-bottom: 1px solid #d7d7d3; background: linear-gradient(225deg, #fff 0 50%, #e8e8e4 50% 100%); }
-.manuscriptBracket { position: absolute; top: 18px; left: 18px; color: #5f6568; font: 600 1.35rem/1 monospace; letter-spacing: .35em; }
-.manuscriptFront .paperRules { top: 53px; }
-
-@media (hover: hover) and (pointer: fine) {
-  .card:hover .engineerFront { transform: translateZ(21px) translateY(-4px) rotateZ(1deg); }
-  .card:hover .folderPaperTwo { transform: translateZ(19px) translateY(-4px) rotateZ(4deg); }
-  .card:hover .manuscriptFront { transform: translateZ(19px) translateY(-4px) rotateZ(-1deg); }
-}
-
 @media (max-width: 1099px) {
   .grid { grid-template-columns: 1fr; gap: 18px; }
   .card { display: grid; grid-template-columns: 205px minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 28px; min-height: 0; padding: 25px 30px; }
-  .illustration { grid-row: 1 / 3; height: 160px; margin: 0; }
   .actions { margin-top: 0; padding-top: 22px; }
   .cardCopy h3 { font-size: clamp(1.75rem, 3vw, 2.1rem); }
 }
@@ -67,8 +30,6 @@
   .heading h2 { font-size: clamp(2.125rem, 9vw, 2.5rem); }
   .grid { gap: 16px; margin-top: 36px; }
   .card { display: flex; padding: 22px; border-radius: 24px; }
-  .illustration { height: 126px; margin-bottom: 18px; }
-  .scene { transform: scale(.81) rotateX(9deg) rotateY(-10deg) rotateZ(-3deg); }
   .cardCopy h3 { font-size: clamp(1.6rem, 7vw, 1.85rem); }
   .cardCopy p { font-size: 1rem; }
   .actions { padding-top: 24px; }
@@ -80,9 +41,10 @@
   .actions a { padding-inline: 13px; font-size: .78rem; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .engineerFront, .folderPaperTwo, .manuscriptFront, .actions a { transition: none; }
-  .card:hover .engineerFront { transform: translateZ(15px); }
-  .card:hover .folderPaperTwo { transform: translateZ(13px) rotateZ(3deg); }
-  .card:hover .manuscriptFront { transform: translateZ(13px) rotateZ(-2deg); }
-}
+@media (prefers-reduced-motion: reduce) { .actions a { transition: none; } }
+.format { display: block; margin-bottom: 10px; color: var(--muted); font-size: .75rem; font-weight: 700; letter-spacing: .1em; }
+.fileChoice { min-width: 0; }
+.fileChoice p { margin: 0 0 9px; color: #5c6268; font-size: .85rem; line-height: 1.5; }
+.actions { gap: 18px; }
+.actions a span { min-width: 0; overflow-wrap: anywhere; }
+.cardCopy { min-width: 0; overflow-wrap: anywhere; }

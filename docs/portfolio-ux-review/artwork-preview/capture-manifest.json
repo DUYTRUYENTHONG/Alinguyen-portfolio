@@ -1,0 +1,92 @@
+[
+  {
+    "file": "cvs-1024.png",
+    "bytes": 82197,
+    "size": [
+      1009,
+      964
+    ],
+    "sha256": "da84af5618f74b2cf63cea92f2eb0d2b74aa775cff800f3c6a6923d9f08d4933"
+  },
+  {
+    "file": "cvs-1280.png",
+    "bytes": 113515,
+    "size": [
+      1265,
+      967
+    ],
+    "sha256": "8aa4739cde85e5a1df98405b69eedbf0e3421ef3a519d5ccefc6d742c667ab76"
+  },
+  {
+    "file": "cvs-1440.png",
+    "bytes": 115227,
+    "size": [
+      1425,
+      968
+    ],
+    "sha256": "7c80e9676d9492fd35ae52c3067c36ec77c9362bdedb54628217be43aef8b863"
+  },
+  {
+    "file": "cvs-320.png",
+    "bytes": 36672,
+    "size": [
+      305,
+      933
+    ],
+    "sha256": "28d5b9b5f038e73cfcb2f2e0e60ec18968f8ac717192e57c4384385a7e6fd3e9"
+  },
+  {
+    "file": "cvs-390.png",
+    "bytes": 41585,
+    "size": [
+      375,
+      941
+    ],
+    "sha256": "4dbc2eeff1a541bb100657e37905d2e9d81663db84262a950bd032866ce19418"
+  },
+  {
+    "file": "cvs-768.png",
+    "bytes": 76327,
+    "size": [
+      753,
+      960
+    ],
+    "sha256": "2d798836beea28c32477214699253427c98a38d2420c6730acf02ce5940c8e2c"
+  },
+  {
+    "file": "cvs-final-1280.png",
+    "bytes": 111031,
+    "size": [
+      1265,
+      967
+    ],
+    "sha256": "83f3fdd39cb0a0fe2b201908cbb50aecbc29bd465c03295b716cb297816ae405"
+  },
+  {
+    "file": "cvs-hover-1280.png",
+    "bytes": 111179,
+    "size": [
+      1265,
+      967
+    ],
+    "sha256": "d2201f928627564b9029daa3b20a369f6354e0ba347f75428c1d2bb508af90f4"
+  },
+  {
+    "file": "cvs-nojs-1280.png",
+    "bytes": 15003,
+    "size": [
+      1265,
+      967
+    ],
+    "sha256": "cd0f04d667bc963c004a882dbcb9dd659b06afb97723515c7be9c7c4d872cbd0"
+  },
+  {
+    "file": "logos-1280.png",
+    "bytes": 121911,
+    "size": [
+      1265,
+      967
+    ],
+    "sha256": "853105842e85f7acb597436a90070d2ffafa732b733f5f1c60b0133ce8b66f23"
+  }
+]

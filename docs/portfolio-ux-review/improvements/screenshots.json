@@ -1,0 +1,149 @@
+[
+  {
+    "file": "before-cvs-1280.png",
+    "bytes": 101474,
+    "width": 1265,
+    "height": 889,
+    "sha256": "d5c4567d48e4a4543afde7884ff241ea76be2d027b3c0def0fe513215a8a4b08"
+  },
+  {
+    "file": "cv-1024.png",
+    "bytes": 81488,
+    "width": 1009,
+    "height": 964,
+    "sha256": "13eda6544e83e93bb42144b2885f6aa8f31dbb882dd6c11760f3833b4d567406"
+  },
+  {
+    "file": "cv-1280.png",
+    "bytes": 93246,
+    "width": 1265,
+    "height": 860,
+    "sha256": "2a1dbc1399c463e6b067caac8b114b0ceba6768ef97040801bb90d32ccff42c7"
+  },
+  {
+    "file": "cv-1440.png",
+    "bytes": 108764,
+    "width": 1425,
+    "height": 968,
+    "sha256": "7096f16118d68b689cbe5da48b10226d7efcf503d289bf9f6bb4403b0fbd0f1b"
+  },
+  {
+    "file": "cv-320.png",
+    "bytes": 36266,
+    "width": 305,
+    "height": 933,
+    "sha256": "c67e2085a4496e3b6754d6c962c7a262e1c116f4cc7f1a39fa62280fdea2480c"
+  },
+  {
+    "file": "cv-390.png",
+    "bytes": 40210,
+    "width": 375,
+    "height": 941,
+    "sha256": "3b30c03cac7c53ca55d3da0ca5ba3f48caa8a08c096ae2e59a3b4293b73f2f3a"
+  },
+  {
+    "file": "cv-768.png",
+    "bytes": 44020,
+    "width": 753,
+    "height": 720,
+    "sha256": "5497a6a3da192320532544a482b21a25c3f588c935ffcf4ab85c96914d743f1b"
+  },
+  {
+    "file": "cv-cards-final-1280.png",
+    "bytes": 102968,
+    "width": 1265,
+    "height": 967,
+    "sha256": "10bc25f2c3fb5c40fffab7250c7a1220f1bd01b45d0dcb75aafd2a5d1415d833"
+  },
+  {
+    "file": "cv-final-1024.png",
+    "bytes": 62255,
+    "width": 1009,
+    "height": 771,
+    "sha256": "7c299bd826994d74700ca9aed0403ff90bc0ea54961313fbc71603474ac86c3a"
+  },
+  {
+    "file": "cv-final-1280.png",
+    "bytes": 106030,
+    "width": 1265,
+    "height": 967,
+    "sha256": "de8ab88816a7f9e9e3a9f42343ae41e759fa3ff382f304fd4a88830e80b37544"
+  },
+  {
+    "file": "cv-final-1440.png",
+    "bytes": 106408,
+    "width": 1425,
+    "height": 968,
+    "sha256": "18ca0930ba23d6d56278018a55165ea02c737a7cc6e09e042d1f568d8cc0b8cf"
+  },
+  {
+    "file": "cv-final-320.png",
+    "bytes": 34692,
+    "width": 305,
+    "height": 933,
+    "sha256": "9081f8b056f4875bbf8757a97c1ffa19f3a59a0e02c6d811db12bad55ff5555f"
+  },
+  {
+    "file": "cv-final-390.png",
+    "bytes": 39120,
+    "width": 375,
+    "height": 941,
+    "sha256": "bc7d9c9ef3a4e587cfb8075fbfdd5b24bc89351d7770e24b7c02cae1ea10e44d"
+  },
+  {
+    "file": "cv-final-768.png",
+    "bytes": 44857,
+    "width": 753,
+    "height": 720,
+    "sha256": "f41282f06de1d0c238c19d002994d54d579b99ea7fc411a382e8a045dac6c1ad"
+  },
+  {
+    "file": "text200-contact-320.png",
+    "bytes": 29202,
+    "width": 305,
+    "height": 765,
+    "sha256": "9134bdddb2b9c8da529ef188c6e7ccaf49d8922f26b8e241e9ec9ccd6186740d"
+  },
+  {
+    "file": "text200-contact-390.png",
+    "bytes": 2187,
+    "width": 315,
+    "height": 962,
+    "sha256": "7cee6de29dc222895a1d5e5662cf4dce3de657ef867ce460119d4ac12f1477ba"
+  },
+  {
+    "file": "text200-contact-final-320.png",
+    "bytes": 30308,
+    "width": 305,
+    "height": 933,
+    "sha256": "e17eeb9021dc952cae1861c955285a18679350a53650bd868cc40340d3ba1631"
+  },
+  {
+    "file": "text200-contact-final-390.png",
+    "bytes": 9768,
+    "width": 315,
+    "height": 963,
+    "sha256": "40d290f86b2b10fefb22d925842888669eab25045acea7d5f4408743f9184dfb"
+  },
+  {
+    "file": "text200-final-320.png",
+    "bytes": 27731,
+    "width": 305,
+    "height": 765,
+    "sha256": "1eb376aaa43075fc4f5320284d5d7d845ffc9e36588438a22e28d7f25fd4eda7"
+  },
+  {
+    "file": "text200-final-390.png",
+    "bytes": 9939,
+    "width": 320,
+    "height": 979,
+    "sha256": "12e4381977c6fd9a43b8d455e8272ecab3049b2211edb53093ac7dd70d82fee4"
+  },
+  {
+    "file": "text200-focus-final-320.png",
+    "bytes": 24719,
+    "width": 305,
+    "height": 933,
+    "sha256": "8bbb8af334c4f7430f61f871a6086ed95d30f6d567d5e566be8e097993972aae"
+  }
+]

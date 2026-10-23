@@ -1,0 +1,44 @@
+[
+  {
+    "file": "duytruyenthong-logo-transparent.webp",
+    "bytes": 16636,
+    "size": [
+      177,
+      192
+    ],
+    "mode": "RGBA",
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sha256": "2f32a0d34dbed67dc4e5da7f832b537bff2de19af5ef92f7fc655aa4da1b11f1"
+  },
+  {
+    "file": "stos-symbol-transparent.webp",
+    "bytes": 7068,
+    "size": [
+      126,
+      192
+    ],
+    "mode": "RGBA",
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sha256": "bee14f0dd3b14e459167879ba04fbcae89658c990994866e382c81891e116f98"
+  },
+  {
+    "file": "cho-kenh-logo-transparent.webp",
+    "bytes": 19162,
+    "size": [
+      192,
+      192
+    ],
+    "mode": "RGBA",
+    "alphaRange": [
+      0,
+      255
+    ],
+    "sha256": "a929f99c6c5afe24ecf0c1cf4603b474d3fc4c671e1700db4ae717096815243c"
+  }
+]

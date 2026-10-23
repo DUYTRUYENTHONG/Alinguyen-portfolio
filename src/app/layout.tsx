@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { identity } from "@/data/portfolio";
 import { PortfolioExperienceProvider } from "./experience";
 import "@fontsource-variable/archivo";
@@ -6,6 +7,11 @@ import "@fontsource-variable/inter";
 import "./styles.css";
 import "./guide-assistant.css";
 import "./guide-motion.css";
+
+// Preload the existing Latin faces with metric-adjusted fallbacks. Fontsource
+// remains available for the existing Vietnamese and extended character subsets.
+const inter = localFont({ src: "../../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2", variable: "--font-inter", weight: "100 900", display: "swap" });
+const archivo = localFont({ src: "../../node_modules/@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2", variable: "--font-archivo", weight: "100 900", display: "swap" });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -26,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${archivo.variable}`}>
       <body><PortfolioExperienceProvider>{children}</PortfolioExperienceProvider></body>
     </html>
   );

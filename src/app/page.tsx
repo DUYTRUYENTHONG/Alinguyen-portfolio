@@ -38,7 +38,7 @@ export default function Home() {
         <PortraitReveal />
       </section>
 
-      <section className="identity-strip" aria-label="Featured work"><div className="identity-track"><span>GROWTH COMMERCE OS</span><span>STOS</span><span>CHỢ KÊNH</span><span>VIBECODE PRODUCT KIT</span><span>KKBOX CHURN BASELINE</span><span>DUYTRUYENTHONG</span><span>GROWTH COMMERCE OS</span><span>STOS</span></div></section>
+      <section className="identity-strip" aria-label="Featured work"><div className="identity-track"><span>GROWTH COMMERCE OS</span><span>STOS</span><span>CHỢ KÊNH</span><span>VIBECODE PRODUCT KIT</span><span>KKBOX CHURN BASELINE</span><span>DUYTRUYENTHONG</span><span aria-hidden="true">GROWTH COMMERCE OS</span><span aria-hidden="true">STOS</span></div></section>
       <VisitorPicker projects={projects} />
       <ScrollStatement />
       <section className="proof-ribbon" aria-label="Project status"><div className="proof-track"><span>01 LIVE SERVICE WEBSITE <small>· Growth Commerce OS</small></span><span>01 LIVE PRODUCT WEBSITE <small>· STOS</small></span><span>01 LIVE MARKETPLACE WEBSITE <small>· Chợ Kênh</small></span><span>01 PUBLIC DEVELOPER TOOL <small>· Vibecode Product Kit</small></span><span>01 AUDITED ML BASELINE <small>· KKBox baseline</small></span></div></section>

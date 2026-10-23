@@ -1,0 +1,11 @@
+{
+  "keyboardFunnel": {
+    "detail": "STAGE 01Start a brandDefine the audience, promise, and proof before buying attention.Positioning · audience · offer1,000illustrative people reaching this stageStarting sample",
+    "focused": "funnel-layer is-emphasized is-active",
+    "pressed": 2
+  },
+  "toggleFunnel": {
+    "pressed": 0
+  },
+  "method": "Playwright press Enter/Space; native wrapper keys proved unreliable and excluded"
+}

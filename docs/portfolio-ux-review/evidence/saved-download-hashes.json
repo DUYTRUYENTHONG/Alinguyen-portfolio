@@ -1,0 +1,66 @@
+[
+  {
+    "source": "public",
+    "file": "cv-applied-ai-engineer.pdf",
+    "savedPath": "C:\\Users\\CROSSIAN\\Downloads\\cv-applied-ai-engineer (3).pdf",
+    "bytes": 5853,
+    "sha256": "641c3cc457e576a87c99ec07282eff20251b1658dece954432067df48282e8c3",
+    "matchesPublicFile": true
+  },
+  {
+    "source": "public",
+    "file": "cv-business-product.pdf",
+    "savedPath": "C:\\Users\\CROSSIAN\\Downloads\\cv-business-product (2).pdf",
+    "bytes": 4212,
+    "sha256": "21416a02b7982c4d67ec575720e5cef0986ac7171e0637a7c3901cece0cee4ca",
+    "matchesPublicFile": true
+  },
+  {
+    "source": "public",
+    "file": "cv-business-development.pdf",
+    "savedPath": "C:\\Users\\CROSSIAN\\Downloads\\cv-business-development (2).pdf",
+    "bytes": 3862,
+    "sha256": "0700807255d52f3350c24b115fdeaef1c88370fa336e4f9afaadb8177fe9cad3",
+    "matchesPublicFile": true
+  },
+  {
+    "source": "public",
+    "file": "cv-prompt-engineer.docx",
+    "savedPath": "C:\\Users\\CROSSIAN\\Downloads\\cv-prompt-engineer (2).docx",
+    "bytes": 39516,
+    "sha256": "8e59c5f4561f895f75d2d3606aac0bb9e7797ff0310e9e6a111163c0b822b475",
+    "matchesPublicFile": true
+  },
+  {
+    "source": "local",
+    "file": "cv-applied-ai-engineer.pdf",
+    "savedPath": "C:\\Users\\CROSSIAN\\Downloads\\cv-applied-ai-engineer (2).pdf",
+    "bytes": 5853,
+    "sha256": "641c3cc457e576a87c99ec07282eff20251b1658dece954432067df48282e8c3",
+    "matchesPublicFile": true
+  },
+  {
+    "source": "local",
+    "file": "cv-business-product.pdf",
+    "savedPath": "C:\\Users\\CROSSIAN\\Downloads\\cv-business-product (1).pdf",
+    "bytes": 4212,
+    "sha256": "21416a02b7982c4d67ec575720e5cef0986ac7171e0637a7c3901cece0cee4ca",
+    "matchesPublicFile": true
+  },
+  {
+    "source": "local",
+    "file": "cv-business-development.pdf",
+    "savedPath": "C:\\Users\\CROSSIAN\\Downloads\\cv-business-development (1).pdf",
+    "bytes": 3862,
+    "sha256": "0700807255d52f3350c24b115fdeaef1c88370fa336e4f9afaadb8177fe9cad3",
+    "matchesPublicFile": true
+  },
+  {
+    "source": "local",
+    "file": "cv-prompt-engineer.docx",
+    "savedPath": "C:\\Users\\CROSSIAN\\Downloads\\cv-prompt-engineer (1).docx",
+    "bytes": 39516,
+    "sha256": "8e59c5f4561f895f75d2d3606aac0bb9e7797ff0310e9e6a111163c0b822b475",
+    "matchesPublicFile": true
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "file": "cv-applied-ai-engineer.pdf",
+    "status": 200,
+    "type": "application/pdf",
+    "bytes": 5853,
+    "matchesOriginal": true,
+    "sha256": "641c3cc457e576a87c99ec07282eff20251b1658dece954432067df48282e8c3"
+  },
+  {
+    "file": "cv-business-product.pdf",
+    "status": 200,
+    "type": "application/pdf",
+    "bytes": 4212,
+    "matchesOriginal": true,
+    "sha256": "21416a02b7982c4d67ec575720e5cef0986ac7171e0637a7c3901cece0cee4ca"
+  },
+  {
+    "file": "cv-business-development.pdf",
+    "status": 200,
+    "type": "application/pdf",
+    "bytes": 3862,
+    "matchesOriginal": true,
+    "sha256": "0700807255d52f3350c24b115fdeaef1c88370fa336e4f9afaadb8177fe9cad3"
+  },
+  {
+    "file": "cv-prompt-engineer.docx",
+    "status": 200,
+    "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "bytes": 39516,
+    "matchesOriginal": true,
+    "sha256": "8e59c5f4561f895f75d2d3606aac0bb9e7797ff0310e9e6a111163c0b822b475"
+  },
+  {
+    "file": "duytruyenthong-logo-transparent.webp",
+    "status": 200,
+    "type": "image/webp",
+    "bytes": 16636,
+    "matchesOriginal": true,
+    "sha256": "2f32a0d34dbed67dc4e5da7f832b537bff2de19af5ef92f7fc655aa4da1b11f1"
+  },
+  {
+    "file": "stos-symbol-transparent.webp",
+    "status": 200,
+    "type": "image/webp",
+    "bytes": 7068,
+    "matchesOriginal": true,
+    "sha256": "bee14f0dd3b14e459167879ba04fbcae89658c990994866e382c81891e116f98"
+  },
+  {
+    "file": "cho-kenh-logo-transparent.webp",
+    "status": 200,
+    "type": "image/webp",
+    "bytes": 19162,
+    "matchesOriginal": true,
+    "sha256": "a929f99c6c5afe24ecf0c1cf4603b474d3fc4c671e1700db4ae717096815243c"
+  }
+]

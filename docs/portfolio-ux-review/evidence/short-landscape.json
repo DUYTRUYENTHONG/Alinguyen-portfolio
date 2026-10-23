@@ -1,0 +1,34 @@
+{
+  "controls": [
+    {
+      "bottom": 58.666666984558105,
+      "s": ".guide-assistant-close",
+      "top": 14.666666984558104,
+      "visible": true
+    },
+    {
+      "bottom": 223.33334350585935,
+      "s": "#guide-question",
+      "top": 175.33334350585938,
+      "visible": true
+    },
+    {
+      "bottom": 223.33334350585935,
+      "s": "button[aria-label=\"Send question\"]",
+      "top": 175.33334350585938,
+      "visible": true
+    }
+  ],
+  "dialog": {
+    "bottom": 232,
+    "height": 224,
+    "left": 516,
+    "right": 936,
+    "top": 8,
+    "width": 420,
+    "x": 516,
+    "y": 8
+  },
+  "h": 240,
+  "w": 956
+}

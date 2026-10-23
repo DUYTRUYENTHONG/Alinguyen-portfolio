@@ -1,0 +1,128 @@
+[
+  {
+    "section": "top",
+    "file": "screenshots/top-1280.png",
+    "scrollY": 0,
+    "top": 0,
+    "w": 1280
+  },
+  {
+    "section": "highlights",
+    "file": "screenshots/highlights-1280.png",
+    "scrollY": 2679.333251953125,
+    "top": 111.77083587646484,
+    "w": 1280
+  },
+  {
+    "section": "work",
+    "file": "screenshots/work-1280.png",
+    "scrollY": 3704,
+    "top": 112.35417175292967,
+    "w": 1280
+  },
+  {
+    "section": "ai-expertise",
+    "file": "screenshots/ai-expertise-1280.png",
+    "scrollY": 8354.6669921875,
+    "top": 111.80208587646484,
+    "w": 1280
+  },
+  {
+    "section": "funnel",
+    "file": "screenshots/funnel-1280.png",
+    "scrollY": 10259.3330078125,
+    "top": 112.27083587646484,
+    "w": 1280
+  },
+  {
+    "section": "feedback",
+    "file": "screenshots/feedback-1280.png",
+    "scrollY": 13168,
+    "top": 111.84375,
+    "w": 1280
+  },
+  {
+    "section": "about",
+    "file": "screenshots/about-1280.png",
+    "scrollY": 14122.6669921875,
+    "top": 112.20833587646484,
+    "w": 1280
+  },
+  {
+    "section": "cvs",
+    "file": "screenshots/cvs-1280.png",
+    "scrollY": 14936,
+    "top": 111.79167175292967,
+    "w": 1280
+  },
+  {
+    "section": "contact",
+    "file": "screenshots/contact-1280.png",
+    "scrollY": 16618,
+    "top": 112,
+    "w": 1280
+  },
+  {
+    "section": "top",
+    "file": "screenshots/top-390.png",
+    "scrollY": 0,
+    "top": 0,
+    "w": 390
+  },
+  {
+    "section": "highlights",
+    "file": "screenshots/highlights-390.png",
+    "scrollY": 2296,
+    "top": 112.1875,
+    "w": 390
+  },
+  {
+    "section": "work",
+    "file": "screenshots/work-390.png",
+    "scrollY": 5706.66650390625,
+    "top": 111.66667175292967,
+    "w": 390
+  },
+  {
+    "section": "ai-expertise",
+    "file": "screenshots/ai-expertise-390.png",
+    "scrollY": 9665.3330078125,
+    "top": 112,
+    "w": 390
+  },
+  {
+    "section": "funnel",
+    "file": "screenshots/funnel-390.png",
+    "scrollY": 12930.6669921875,
+    "top": 112.26042175292967,
+    "w": 390
+  },
+  {
+    "section": "feedback",
+    "file": "screenshots/feedback-390.png",
+    "scrollY": 17374.666015625,
+    "top": 111.65625,
+    "w": 390
+  },
+  {
+    "section": "about",
+    "file": "screenshots/about-390.png",
+    "scrollY": 18820.666015625,
+    "top": 112.45833587646484,
+    "w": 390
+  },
+  {
+    "section": "cvs",
+    "file": "screenshots/cvs-390.png",
+    "scrollY": 20994,
+    "top": 111.75,
+    "w": 390
+  },
+  {
+    "section": "contact",
+    "file": "screenshots/contact-390.png",
+    "scrollY": 24072.666015625,
+    "top": 112.125,
+    "w": 390
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "name": "cv-applied-ai-engineer.pdf",
+    "path": "C:\\Users\\CROSSIAN\\Downloads\\cv-applied-ai-engineer (2).pdf",
+    "error": null,
+    "events": [
+      {
+        "sequence": 12047,
+        "source": {
+          "tabId": 11
+        },
+        "method": "Page.downloadWillBegin",
+        "params": {
+          "frameId": "A0D987799FD9A1973903FE9B4EF5E2EE",
+          "guid": "2d9bd606-2d75-4bd9-88c4-2d5305a5407b",
+          "suggestedFilename": "cv-applied-ai-engineer.pdf",
+          "url": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-applied-ai-engineer.pdf"
+        }
+      }
+    ]
+  },
+  {
+    "name": "cv-business-product.pdf",
+    "path": "C:\\Users\\CROSSIAN\\Downloads\\cv-business-product (1).pdf",
+    "error": null,
+    "events": [
+      {
+        "sequence": 12056,
+        "source": {
+          "tabId": 11
+        },
+        "method": "Page.downloadWillBegin",
+        "params": {
+          "frameId": "A0D987799FD9A1973903FE9B4EF5E2EE",
+          "guid": "97a11172-b338-4dc8-bae6-90c498835dbf",
+          "suggestedFilename": "cv-business-product.pdf",
+          "url": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-product.pdf"
+        }
+      }
+    ]
+  },
+  {
+    "name": "cv-business-development.pdf",
+    "path": "C:\\Users\\CROSSIAN\\Downloads\\cv-business-development (1).pdf",
+    "error": null,
+    "events": [
+      {
+        "sequence": 12065,
+        "source": {
+          "tabId": 11
+        },
+        "method": "Page.downloadWillBegin",
+        "params": {
+          "frameId": "A0D987799FD9A1973903FE9B4EF5E2EE",
+          "guid": "67402ec9-1283-4ef1-ba8d-07c941874c9c",
+          "suggestedFilename": "cv-business-development.pdf",
+          "url": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-development.pdf"
+        }
+      }
+    ]
+  },
+  {
+    "name": "cv-prompt-engineer.docx",
+    "path": "C:\\Users\\CROSSIAN\\Downloads\\cv-prompt-engineer (1).docx",
+    "error": null,
+    "events": [
+      {
+        "sequence": 12074,
+        "source": {
+          "tabId": 11
+        },
+        "method": "Page.downloadWillBegin",
+        "params": {
+          "frameId": "A0D987799FD9A1973903FE9B4EF5E2EE",
+          "guid": "2207e7a9-0979-4689-a59c-71dc1fdb8432",
+          "suggestedFilename": "cv-prompt-engineer.docx",
+          "url": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-prompt-engineer.docx"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,374 @@
+[
+  {
+    "doc": 305,
+    "font": "16px",
+    "labels": [
+      {
+        "fits": true,
+        "text": "Recruiter",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Founder",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Engineer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Product designer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Marketer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Growth",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Data",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Investor",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Student",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Fellow builder",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Just curious",
+        "visible": true
+      }
+    ],
+    "width": 320
+  },
+  {
+    "doc": 375,
+    "font": "16px",
+    "labels": [
+      {
+        "fits": true,
+        "text": "Recruiter",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Founder",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Engineer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Product designer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Marketer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Growth",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Data",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Investor",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Student",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Fellow builder",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Just curious",
+        "visible": true
+      }
+    ],
+    "width": 390
+  },
+  {
+    "doc": 425,
+    "font": "16px",
+    "labels": [
+      {
+        "fits": true,
+        "text": "Recruiter",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Founder",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Engineer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Product designer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Marketer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Growth",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Data",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Investor",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Student",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Fellow builder",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Just curious",
+        "visible": true
+      }
+    ],
+    "width": 440
+  },
+  {
+    "doc": 305,
+    "font": "32px",
+    "labels": [
+      {
+        "fits": true,
+        "text": "Recruiter",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Founder",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Engineer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Product designer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Marketer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Growth",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Data",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Investor",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Student",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Fellow builder",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Just curious",
+        "visible": true
+      }
+    ],
+    "width": 320
+  },
+  {
+    "doc": 375,
+    "font": "32px",
+    "labels": [
+      {
+        "fits": true,
+        "text": "Recruiter",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Founder",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Engineer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Product designer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Marketer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Growth",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Data",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Investor",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Student",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Fellow builder",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Just curious",
+        "visible": true
+      }
+    ],
+    "width": 390
+  },
+  {
+    "doc": 425,
+    "font": "32px",
+    "labels": [
+      {
+        "fits": true,
+        "text": "Recruiter",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Founder",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Engineer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Product designer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Marketer",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Growth",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Data",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Investor",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Student",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Fellow builder",
+        "visible": true
+      },
+      {
+        "fits": true,
+        "text": "Just curious",
+        "visible": true
+      }
+    ],
+    "width": 440
+  }
+]

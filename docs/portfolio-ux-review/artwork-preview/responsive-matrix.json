@@ -1,0 +1,608 @@
+[
+  {
+    "actions": [
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+        "label": "Download PDF — Applied AI engineering CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-product.pdf",
+        "label": "Business & Product PDF — Business and product CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-development.pdf",
+        "label": "Business Development PDF — Business and product CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-prompt-engineer.docx",
+        "label": "Download DOCX — AI and prompt engineering CV"
+      }
+    ],
+    "artTabStops": 0,
+    "cvTop": 112.08333587646484,
+    "docWidth": 1425,
+    "headings": [
+      {
+        "rect": {
+          "bottom": 770.0104598999023,
+          "height": 75.27083587646484,
+          "left": 168.5,
+          "right": 476.8333435058594,
+          "top": 694.7396240234375,
+          "width": 308.3333435058594,
+          "x": 168.5,
+          "y": 694.7396240234375
+        },
+        "text": "Applied AI engineering"
+      },
+      {
+        "rect": {
+          "bottom": 770.0104598999023,
+          "height": 75.27083587646484,
+          "left": 558.1666870117188,
+          "right": 866.5000305175781,
+          "top": 694.7396240234375,
+          "width": 308.3333435058594,
+          "x": 558.1666870117188,
+          "y": 694.7396240234375
+        },
+        "text": "Business and product"
+      },
+      {
+        "rect": {
+          "bottom": 770.0104598999023,
+          "height": 75.27083587646484,
+          "left": 947.8333740234376,
+          "right": 1256.1667175292969,
+          "top": 694.7396240234375,
+          "width": 308.3333435058594,
+          "x": 947.8333740234376,
+          "y": 694.7396240234375
+        },
+        "text": "AI and prompt engineering"
+      }
+    ],
+    "stages": [
+      {
+        "bottom": 670.7395935058594,
+        "height": 196,
+        "left": 168.5,
+        "right": 476.8333435058594,
+        "top": 474.7395935058594,
+        "width": 308.3333435058594,
+        "x": 168.5,
+        "y": 474.7395935058594
+      },
+      {
+        "bottom": 670.7395935058594,
+        "height": 196,
+        "left": 558.1666870117188,
+        "right": 866.5000305175781,
+        "top": 474.7395935058594,
+        "width": 308.3333435058594,
+        "x": 558.1666870117188,
+        "y": 474.7395935058594
+      },
+      {
+        "bottom": 670.7395935058594,
+        "height": 196,
+        "left": 947.8333740234376,
+        "right": 1256.1667175292969,
+        "top": 474.7395935058594,
+        "width": 308.3333435058594,
+        "x": 947.8333740234376,
+        "y": 474.7395935058594
+      }
+    ],
+    "width": 1440
+  },
+  {
+    "actions": [
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+        "label": "Download PDF — Applied AI engineering CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-product.pdf",
+        "label": "Business & Product PDF — Business and product CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-development.pdf",
+        "label": "Business Development PDF — Business and product CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-prompt-engineer.docx",
+        "label": "Download DOCX — AI and prompt engineering CV"
+      }
+    ],
+    "artTabStops": 0,
+    "cvTop": 111.85417175292967,
+    "docWidth": 1265,
+    "headings": [
+      {
+        "rect": {
+          "bottom": 714.3854370117188,
+          "height": 33.6875,
+          "left": 88.5,
+          "right": 396.8333435058594,
+          "top": 680.6979370117188,
+          "width": 308.3333435058594,
+          "x": 88.5,
+          "y": 680.6979370117188
+        },
+        "text": "Applied AI engineering"
+      },
+      {
+        "rect": {
+          "bottom": 714.3854370117188,
+          "height": 33.6875,
+          "left": 478.1666870117187,
+          "right": 786.5000305175781,
+          "top": 680.6979370117188,
+          "width": 308.3333435058594,
+          "x": 478.1666870117187,
+          "y": 680.6979370117188
+        },
+        "text": "Business and product"
+      },
+      {
+        "rect": {
+          "bottom": 748.0729370117188,
+          "height": 67.375,
+          "left": 867.8333740234375,
+          "right": 1176.1667175292969,
+          "top": 680.6979370117188,
+          "width": 308.3333435058594,
+          "x": 867.8333740234375,
+          "y": 680.6979370117188
+        },
+        "text": "AI and prompt engineering"
+      }
+    ],
+    "stages": [
+      {
+        "bottom": 656.6979370117188,
+        "height": 196,
+        "left": 88.5,
+        "right": 396.8333435058594,
+        "top": 460.6979370117187,
+        "width": 308.3333435058594,
+        "x": 88.5,
+        "y": 460.6979370117187
+      },
+      {
+        "bottom": 656.6979370117188,
+        "height": 196,
+        "left": 478.1666870117187,
+        "right": 786.5000305175781,
+        "top": 460.6979370117187,
+        "width": 308.3333435058594,
+        "x": 478.1666870117187,
+        "y": 460.6979370117187
+      },
+      {
+        "bottom": 656.6979370117188,
+        "height": 196,
+        "left": 867.8333740234375,
+        "right": 1176.1667175292969,
+        "top": 460.6979370117187,
+        "width": 308.3333435058594,
+        "x": 867.8333740234375,
+        "y": 460.6979370117187
+      }
+    ],
+    "width": 1280
+  },
+  {
+    "actions": [
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+        "label": "Download PDF — Applied AI engineering CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-product.pdf",
+        "label": "Business & Product PDF — Business and product CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-development.pdf",
+        "label": "Business Development PDF — Business and product CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-prompt-engineer.docx",
+        "label": "Download DOCX — AI and prompt engineering CV"
+      }
+    ],
+    "artTabStops": 0,
+    "cvTop": 112.1875,
+    "docWidth": 1009,
+    "headings": [
+      {
+        "rect": {
+          "bottom": 467.5312728881836,
+          "height": 34.395835876464844,
+          "left": 303.66668701171875,
+          "right": 938.0000610351562,
+          "top": 433.1354370117187,
+          "width": 634.3333740234375,
+          "x": 303.66668701171875,
+          "y": 433.1354370117187
+        },
+        "text": "Applied AI engineering"
+      },
+      {
+        "rect": {
+          "bottom": 708.8645858764648,
+          "height": 34.395835876464844,
+          "left": 303.66668701171875,
+          "right": 938.0000610351562,
+          "top": 674.46875,
+          "width": 634.3333740234375,
+          "x": 303.66668701171875,
+          "y": 674.46875
+        },
+        "text": "Business and product"
+      },
+      {
+        "rect": {
+          "bottom": 1003.9270858764648,
+          "height": 34.395835876464844,
+          "left": 303.66668701171875,
+          "right": 938.0000610351562,
+          "top": 969.53125,
+          "width": 634.3333740234375,
+          "x": 303.66668701171875,
+          "y": 969.53125
+        },
+        "text": "AI and prompt engineering"
+      }
+    ],
+    "stages": [
+      {
+        "bottom": 605.1354370117188,
+        "height": 172,
+        "left": 70.66667175292969,
+        "right": 275.6666717529297,
+        "top": 433.1354370117187,
+        "width": 205,
+        "x": 70.66667175292969,
+        "y": 433.1354370117187
+      },
+      {
+        "bottom": 846.46875,
+        "height": 172,
+        "left": 70.66667175292969,
+        "right": 275.6666717529297,
+        "top": 674.46875,
+        "width": 205,
+        "x": 70.66667175292969,
+        "y": 674.46875
+      },
+      {
+        "bottom": 1141.53125,
+        "height": 172,
+        "left": 70.66667175292969,
+        "right": 275.6666717529297,
+        "top": 969.53125,
+        "width": 205,
+        "x": 70.66667175292969,
+        "y": 969.53125
+      }
+    ],
+    "width": 1024
+  },
+  {
+    "actions": [
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+        "label": "Download PDF — Applied AI engineering CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-product.pdf",
+        "label": "Business & Product PDF — Business and product CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-development.pdf",
+        "label": "Business Development PDF — Business and product CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-prompt-engineer.docx",
+        "label": "Download DOCX — AI and prompt engineering CV"
+      }
+    ],
+    "artTabStops": 0,
+    "cvTop": 112.30208587646484,
+    "docWidth": 753,
+    "headings": [
+      {
+        "rect": {
+          "bottom": 451.4791679382324,
+          "height": 31.354167938232425,
+          "left": 287.66668701171875,
+          "right": 698.0000305175781,
+          "top": 420.125,
+          "width": 410.3333435058594,
+          "x": 287.66668701171875,
+          "y": 420.125
+        },
+        "text": "Applied AI engineering"
+      },
+      {
+        "rect": {
+          "bottom": 692.8125419616699,
+          "height": 31.354167938232425,
+          "left": 287.66668701171875,
+          "right": 698.0000305175781,
+          "top": 661.4583740234375,
+          "width": 410.3333435058594,
+          "x": 287.66668701171875,
+          "y": 661.4583740234375
+        },
+        "text": "Business and product"
+      },
+      {
+        "rect": {
+          "bottom": 984.8333549499512,
+          "height": 31.354167938232425,
+          "left": 287.66668701171875,
+          "right": 698.0000305175781,
+          "top": 953.4791870117188,
+          "width": 410.3333435058594,
+          "x": 287.66668701171875,
+          "y": 953.4791870117188
+        },
+        "text": "AI and prompt engineering"
+      }
+    ],
+    "stages": [
+      {
+        "bottom": 592.125,
+        "height": 172,
+        "left": 54.66666793823242,
+        "right": 259.6666679382324,
+        "top": 420.125,
+        "width": 205,
+        "x": 54.66666793823242,
+        "y": 420.125
+      },
+      {
+        "bottom": 833.4583740234375,
+        "height": 172,
+        "left": 54.66666793823242,
+        "right": 259.6666679382324,
+        "top": 661.4583740234375,
+        "width": 205,
+        "x": 54.66666793823242,
+        "y": 661.4583740234375
+      },
+      {
+        "bottom": 1125.4791870117188,
+        "height": 172,
+        "left": 54.66666793823242,
+        "right": 259.6666679382324,
+        "top": 953.4791870117188,
+        "width": 205,
+        "x": 54.66666793823242,
+        "y": 953.4791870117188
+      }
+    ],
+    "width": 768
+  },
+  {
+    "actions": [
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+        "label": "Download PDF — Applied AI engineering CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-product.pdf",
+        "label": "Business & Product PDF — Business and product CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-development.pdf",
+        "label": "Business Development PDF — Business and product CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-prompt-engineer.docx",
+        "label": "Download DOCX — AI and prompt engineering CV"
+      }
+    ],
+    "artTabStops": 0,
+    "cvTop": 112.08333587646484,
+    "docWidth": 375,
+    "headings": [
+      {
+        "rect": {
+          "bottom": 576.8958549499512,
+          "height": 30.572917938232425,
+          "left": 42.66666793823242,
+          "right": 332.0000114440918,
+          "top": 546.3229370117188,
+          "width": 289.3333435058594,
+          "x": 42.66666793823242,
+          "y": 546.3229370117188
+        },
+        "text": "Applied AI engineering"
+      },
+      {
+        "rect": {
+          "bottom": 1013.1771049499512,
+          "height": 30.572917938232425,
+          "left": 42.66666793823242,
+          "right": 332.0000114440918,
+          "top": 982.6041870117188,
+          "width": 289.3333435058594,
+          "x": 42.66666793823242,
+          "y": 982.6041870117188
+        },
+        "text": "Business and product"
+      },
+      {
+        "rect": {
+          "bottom": 1538.0313339233398,
+          "height": 61.14583587646485,
+          "left": 42.66666793823242,
+          "right": 332.0000114440918,
+          "top": 1476.885498046875,
+          "width": 289.3333435058594,
+          "x": 42.66666793823242,
+          "y": 1476.885498046875
+        },
+        "text": "AI and prompt engineering"
+      }
+    ],
+    "stages": [
+      {
+        "bottom": 524.3229370117188,
+        "height": 164,
+        "left": 42.66666793823242,
+        "right": 332.0000114440918,
+        "top": 360.3229370117187,
+        "width": 289.3333435058594,
+        "x": 42.66666793823242,
+        "y": 360.3229370117187
+      },
+      {
+        "bottom": 960.6041870117188,
+        "height": 164,
+        "left": 42.66666793823242,
+        "right": 332.0000114440918,
+        "top": 796.6041870117188,
+        "width": 289.3333435058594,
+        "x": 42.66666793823242,
+        "y": 796.6041870117188
+      },
+      {
+        "bottom": 1454.885498046875,
+        "height": 164,
+        "left": 42.66666793823242,
+        "right": 332.0000114440918,
+        "top": 1290.885498046875,
+        "width": 289.3333435058594,
+        "x": 42.66666793823242,
+        "y": 1290.885498046875
+      }
+    ],
+    "width": 390
+  },
+  {
+    "actions": [
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+        "label": "Download PDF — Applied AI engineering CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-product.pdf",
+        "label": "Business & Product PDF — Business and product CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-business-development.pdf",
+        "label": "Business Development PDF — Business and product CV"
+      },
+      {
+        "height": 48,
+        "href": "http://127.0.0.1:3022/Alinguyen-portfolio/cv-prompt-engineer.docx",
+        "label": "Download DOCX — AI and prompt engineering CV"
+      }
+    ],
+    "artTabStops": 0,
+    "cvTop": 112.11458587646484,
+    "docWidth": 305,
+    "headings": [
+      {
+        "rect": {
+          "bottom": 635.0312728881836,
+          "height": 57.33333587646485,
+          "left": 35.66666793823242,
+          "right": 269.0000114440918,
+          "top": 577.6979370117188,
+          "width": 233.33334350585935,
+          "x": 35.66666793823242,
+          "y": 577.6979370117188
+        },
+        "text": "Applied AI engineering"
+      },
+      {
+        "rect": {
+          "bottom": 1116.8645858764648,
+          "height": 57.33333587646485,
+          "left": 35.66666793823242,
+          "right": 269.0000114440918,
+          "top": 1059.53125,
+          "width": 233.33334350585935,
+          "x": 35.66666793823242,
+          "y": 1059.53125
+        },
+        "text": "Business and product"
+      },
+      {
+        "rect": {
+          "bottom": 1656.6979598999023,
+          "height": 57.33333587646485,
+          "left": 35.66666793823242,
+          "right": 269.0000114440918,
+          "top": 1599.3646240234375,
+          "width": 233.33334350585935,
+          "x": 35.66666793823242,
+          "y": 1599.3646240234375
+        },
+        "text": "AI and prompt engineering"
+      }
+    ],
+    "stages": [
+      {
+        "bottom": 555.6979370117188,
+        "height": 164,
+        "left": 35.66666793823242,
+        "right": 269.0000114440918,
+        "top": 391.6979370117187,
+        "width": 233.33334350585935,
+        "x": 35.66666793823242,
+        "y": 391.6979370117187
+      },
+      {
+        "bottom": 1037.53125,
+        "height": 164,
+        "left": 35.66666793823242,
+        "right": 269.0000114440918,
+        "top": 873.53125,
+        "width": 233.33334350585935,
+        "x": 35.66666793823242,
+        "y": 873.53125
+      },
+      {
+        "bottom": 1577.3646240234375,
+        "height": 164,
+        "left": 35.66666793823242,
+        "right": 269.0000114440918,
+        "top": 1413.3646240234375,
+        "width": 233.33334350585935,
+        "x": 35.66666793823242,
+        "y": 1413.3646240234375
+      }
+    ],
+    "width": 320
+  }
+]

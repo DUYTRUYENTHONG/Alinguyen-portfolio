@@ -1,0 +1,153 @@
+[
+  {
+    "scenario": "home",
+    "run": 1,
+    "cls": 0.032940391034115925,
+    "cvTop": 15761.1875,
+    "domContentLoaded": 2509,
+    "lcp": 2424,
+    "load": 7333.40000000596,
+    "longTaskMs": 147,
+    "longTasks": 2,
+    "paint": [
+      {
+        "name": "first-paint",
+        "startTime": 2424
+      },
+      {
+        "name": "first-contentful-paint",
+        "startTime": 2424
+      }
+    ],
+    "resources": 35,
+    "transferBytes": 1299264,
+    "ttfb": 7.200000017881393,
+    "url": "http://127.0.0.1:3022/Alinguyen-portfolio/?audit=home-1"
+  },
+  {
+    "scenario": "home",
+    "run": 2,
+    "cls": 0.032940391034115925,
+    "cvTop": 15761.1875,
+    "domContentLoaded": 2502.300000011921,
+    "lcp": 2412,
+    "load": 7350.200000017881,
+    "longTaskMs": 491,
+    "longTasks": 3,
+    "paint": [
+      {
+        "name": "first-paint",
+        "startTime": 2412
+      },
+      {
+        "name": "first-contentful-paint",
+        "startTime": 2412
+      }
+    ],
+    "resources": 35,
+    "transferBytes": 1299264,
+    "ttfb": 5.800000011920929,
+    "url": "http://127.0.0.1:3022/Alinguyen-portfolio/?audit=home-2"
+  },
+  {
+    "scenario": "home",
+    "run": 3,
+    "cls": 0.032940391034115925,
+    "cvTop": 15761.1875,
+    "domContentLoaded": 2796.800000011921,
+    "lcp": 2588,
+    "load": 7351.100000023842,
+    "longTaskMs": 378,
+    "longTasks": 4,
+    "paint": [
+      {
+        "name": "first-paint",
+        "startTime": 2588
+      },
+      {
+        "name": "first-contentful-paint",
+        "startTime": 2588
+      }
+    ],
+    "resources": 35,
+    "transferBytes": 1299264,
+    "ttfb": 7.400000005960464,
+    "url": "http://127.0.0.1:3022/Alinguyen-portfolio/?audit=home-3"
+  },
+  {
+    "scenario": "cvs",
+    "run": 1,
+    "cls": 0.21120673799083048,
+    "cvTop": -0.2083333432674408,
+    "domContentLoaded": 2935.7999999821186,
+    "lcp": 2684,
+    "load": 10560.59999999404,
+    "longTaskMs": 1141,
+    "longTasks": 5,
+    "paint": [
+      {
+        "name": "first-paint",
+        "startTime": 2684
+      },
+      {
+        "name": "first-contentful-paint",
+        "startTime": 2684
+      }
+    ],
+    "resources": 55,
+    "transferBytes": 1922123,
+    "ttfb": 12.299999982118608,
+    "url": "http://127.0.0.1:3022/Alinguyen-portfolio/?audit=cvs-1#cvs"
+  },
+  {
+    "scenario": "cvs",
+    "run": 2,
+    "navigationToolTimedOut": true,
+    "cls": 0.44141011705649474,
+    "cvTop": 112.20833587646484,
+    "domContentLoaded": 11920.19999998808,
+    "lcp": 11388,
+    "load": 16674.5,
+    "longTaskMs": 2360,
+    "longTasks": 19,
+    "paint": [
+      {
+        "name": "first-paint",
+        "startTime": 11388
+      },
+      {
+        "name": "first-contentful-paint",
+        "startTime": 11388
+      }
+    ],
+    "resources": 56,
+    "transferBytes": 1968639,
+    "ttfb": 10.799999982118608,
+    "url": "http://127.0.0.1:3022/Alinguyen-portfolio/?audit=cvs-2#cvs"
+  },
+  {
+    "scenario": "cvs",
+    "run": 3,
+    "cls": 0.10000757356677414,
+    "cvTop": 111.67708587646484,
+    "domContentLoaded": 3600.7999999821186,
+    "lcp": 3132,
+    "load": 11140.09999999404,
+    "longTaskMs": 2860,
+    "longTasks": 11,
+    "paint": [
+      {
+        "name": "first-paint",
+        "startTime": 3132
+      },
+      {
+        "name": "first-contentful-paint",
+        "startTime": 3132
+      }
+    ],
+    "resources": 50,
+    "transferBytes": 1915404,
+    "ttfb": 42.099999994039536,
+    "url": "http://127.0.0.1:3022/Alinguyen-portfolio/?audit=cvs-3#cvs"
+  }
+]

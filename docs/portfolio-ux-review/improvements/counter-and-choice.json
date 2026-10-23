@@ -1,0 +1,7 @@
+{
+  "fixtureOnly": true,
+  "initialRole": null,
+  "checked": "Engineer",
+  "focus": "Engineer",
+  "note": "Initial success fixture hid the role statistic; explicit keyboard choice retained radio focus. Delayed second fixture reached the bounded timeout."
+}

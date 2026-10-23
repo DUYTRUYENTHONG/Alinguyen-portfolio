@@ -1,0 +1,322 @@
+[
+  {
+    "file": "screenshots/about-1280.png",
+    "bytes": 110612,
+    "width": 1265,
+    "height": 889,
+    "sha256": "b300df92fa3bbb3f5a30d46b7a0720a0d688f6705586774e03dec5f47a50a641",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/about-390.png",
+    "bytes": 41951,
+    "width": 375,
+    "height": 812,
+    "sha256": "14b89ec36e011d65b7d0c615bf7fa402c84c4aa42c7bf5fc901b45bdcba341cf",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/ai-expertise-1280.png",
+    "bytes": 94907,
+    "width": 1265,
+    "height": 889,
+    "sha256": "2692a440ab1c9c601cc0242dc1a4ecc008ec4ef7db5920929b128c2287e8ab58",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/ai-expertise-390.png",
+    "bytes": 40352,
+    "width": 375,
+    "height": 812,
+    "sha256": "adc6f50c42222f3850107b628ec356ca94ede22c66175715f455eca3e49e67de",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/analytics-fixture-success-390.png",
+    "bytes": 27685,
+    "width": 375,
+    "height": 812,
+    "sha256": "460a6eb97155eef082e28495719b1efd11d0644c9f70e8e63a373b8a256ea889",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/analytics-fixture-unavailable-390.png",
+    "bytes": 28560,
+    "width": 375,
+    "height": 812,
+    "sha256": "db705c4eb70f7275a6408a7131ae222538f8396e390372b8cf7b4a6b3cacfd9a",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/analytics-loading-390.png",
+    "bytes": 30811,
+    "width": 375,
+    "height": 812,
+    "sha256": "1455cb12743f9a9abb099bf20f6e1ff13f66c5d181b4764c0430cf9734a33b58",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/contact-1280.png",
+    "bytes": 64294,
+    "width": 1265,
+    "height": 889,
+    "sha256": "6ab58c08b4a6ed492a9c22d54091cc94461880a9d6ca8585be48b4ca1f2540a8",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/contact-390.png",
+    "bytes": 34155,
+    "width": 375,
+    "height": 812,
+    "sha256": "a42f8e9540d1878a5566db41d8fc9778a7d9c5aa14ba4a30cf244b4a7faa221f",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/contact-copy-1280.png",
+    "bytes": 63498,
+    "width": 1265,
+    "height": 889,
+    "sha256": "a014771e1329ac0f1b5f3c561ff941ed4ea634436057c04975c003288f8dca1c",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/cvs-1024.png",
+    "bytes": 66393,
+    "width": 1009,
+    "height": 887,
+    "sha256": "dbd8b943e0118476ffeca8fa9dce145dc4a4a75d55049f0dca443823dec5d2bd",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/cvs-1440.png",
+    "bytes": 86248,
+    "width": 1425,
+    "height": 891,
+    "sha256": "5d9889661a8be83a7010ef5e792aa4d176496a3c4e136b28cc1e4df4edaf2be0",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/cvs-320.png",
+    "bytes": 28236,
+    "width": 305,
+    "height": 858,
+    "sha256": "fdd7bd89d91d71fe5ab43859a85aad42f6139f74956940e4e3b2e12a1c7c591c",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/cvs-390.png",
+    "bytes": 29433,
+    "width": 375,
+    "height": 865,
+    "sha256": "80f33554eeebbb2fd9edc59d1592a660d98c73de3b4f8aff29bd3b0a0ab4137c",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/cvs-768.png",
+    "bytes": 59554,
+    "width": 753,
+    "height": 882,
+    "sha256": "5b43b39d67592bdab951547cf8e10a580a1b2a723a33ce2cf473db01d197c18f",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/deployed-cvs-1280.png",
+    "bytes": 86139,
+    "width": 1265,
+    "height": 889,
+    "sha256": "5f55be5237a8379d01850c4669f2b3699a1c6ee9386933d6720b02bf743aa74b",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/deployed-home-1280.png",
+    "bytes": 74557,
+    "width": 1265,
+    "height": 889,
+    "sha256": "57a3c925f97107dcd3f5bb9b39361c565428b17d306dd6796eafd810d95d67c2",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/feedback-1280.png",
+    "bytes": 91400,
+    "width": 1265,
+    "height": 889,
+    "sha256": "af4cacc3584ab20df4f8ca789d6df014537317aee60c3c0fc8d4ce9e379015c8",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/feedback-390.png",
+    "bytes": 34994,
+    "width": 375,
+    "height": 812,
+    "sha256": "c77d25cbbeb1111022936b07fab2e276c244ccb1c42fb879bdb5b7b5930d3455",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/funnel-1280.png",
+    "bytes": 92729,
+    "width": 1265,
+    "height": 889,
+    "sha256": "b9d828f904f59272d171c4f19af1ba32ab76d6e833d8d5134abe18c55640e7ef",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/funnel-390.png",
+    "bytes": 38988,
+    "width": 375,
+    "height": 812,
+    "sha256": "e5f58d352c94f70423f1a7d726d76849fffc17ec4452437a0a44e0ee154587f3",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/hero-reduced-motion-390.png",
+    "bytes": 38258,
+    "width": 375,
+    "height": 812,
+    "sha256": "e943923c0cf6b1f2d59944479aa006ad67be6986ca789db3ac60fc3a2c9c5fc1",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/highlights-1280.png",
+    "bytes": 115771,
+    "width": 1265,
+    "height": 889,
+    "sha256": "604ee5debd48f25b30d2eb1f0582bd573facb6414f447109d02a4366193d59f4",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/highlights-390.png",
+    "bytes": 28178,
+    "width": 375,
+    "height": 812,
+    "sha256": "acc81873a603ce8f60a4cb6969ad072098636423a3a8fd16fdfeb1dd7dfada4e",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/kkbox-case-entry-1280.png",
+    "bytes": 74906,
+    "width": 1265,
+    "height": 889,
+    "sha256": "1e544e5a8f5de1e7db3ea5b2b84fe8ad0fde6aa562187bb597cc964902bf5ce0",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/kkbox-deep-dive-1280.png",
+    "bytes": 62938,
+    "width": 1265,
+    "height": 889,
+    "sha256": "61dd5b7160d9d362e4842dde81b1d6bd24588559cf8cb861976698cf098be5ca",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/marketing-focused-1280.png",
+    "bytes": 72323,
+    "width": 1265,
+    "height": 889,
+    "sha256": "8209a47379fd811e2eb4ca27baf051d994cff079b4fd0ca4a1f525a3b281c3eb",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/marketing-keyboard-selected-390.png",
+    "bytes": 30652,
+    "width": 375,
+    "height": 812,
+    "sha256": "a113cdce157b8e4c6e5c9962f5775898eb61b0574ce0a861d91d3b62216d3ecb",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/mobile-menu-focused-390.png",
+    "bytes": 24094,
+    "width": 390,
+    "height": 844,
+    "sha256": "8f1b1b224461e4db6444e8353165ce0c027e775ad529a8a9a76aee5407be96ed",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/perspective-data-selected-1280.png",
+    "bytes": 84887,
+    "width": 1265,
+    "height": 889,
+    "sha256": "36dbc21b5dd0fb86bfa151538ca6ea22bec5dddfec7daf03cf8c3535810cc9a8",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/text200-1280.png",
+    "bytes": 97460,
+    "width": 1265,
+    "height": 889,
+    "sha256": "0d7451e22a48350683311bf2238d3795a81065070ea89f094780cb70f196aab9",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/text200-320.png",
+    "bytes": 31473,
+    "width": 305,
+    "height": 858,
+    "sha256": "4ec55ff0148f3b23ae2a6ebc3946d78abfb0cffa7942e5bbdfe72886169774f4",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/text200-390.png",
+    "bytes": 38842,
+    "width": 375,
+    "height": 865,
+    "sha256": "538ae83b8330610be8f212be1f5a869c7b512362824ad4d00bf1791a81612849",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/top-1280.png",
+    "bytes": 74915,
+    "width": 1265,
+    "height": 889,
+    "sha256": "431a8069b41ca8a964851031b40ef300a00025e810738720ac34295aeef07af1",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/top-390.png",
+    "bytes": 36897,
+    "width": 375,
+    "height": 812,
+    "sha256": "467d50c8be3d71cf85694c5043796a05b7e22a6f5211b0bc1bc1acbf65cd8349",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/work-1280.png",
+    "bytes": 83109,
+    "width": 1265,
+    "height": 889,
+    "sha256": "976e97ebacef4e61d55b2df0430c6c17b7749fe114672ad4c24d7f11ec3117bd",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/work-390.png",
+    "bytes": 41368,
+    "width": 375,
+    "height": 812,
+    "sha256": "e69ed31a648409b9104310c7fd584f81032cda4e98e429f6f70c024be4f7acc9",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "screenshots/work-directory-1280.png",
+    "bytes": 109407,
+    "width": 1265,
+    "height": 889,
+    "sha256": "79732a33daa31786ff5de9643ceeb9c31676e01756e5dc79ac5632b585297687",
+    "status": "captured; reviewed in contact sheet or individually"
+  },
+  {
+    "file": "evidence/invalid-captures/chat-short-landscape.png",
+    "bytes": 704,
+    "width": 85,
+    "height": 240,
+    "sha256": "d18861519b6a4b1bebafa78f79eacb9fdb05a19d2506ec9016d3036f38152c7a",
+    "status": "INVALID COMPOSITOR CAPTURE: excluded from visual findings"
+  },
+  {
+    "file": "evidence/invalid-captures/cvs-1280.png",
+    "bytes": 5064,
+    "width": 1265,
+    "height": 209,
+    "sha256": "787623d14258ac2fdef2775cd0d4d4fe45ece28a4be6bc74626f44b97fa0304e",
+    "status": "INVALID COMPOSITOR CAPTURE: excluded from visual findings"
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "clipped": [],
+    "doc": 1265,
+    "nav": {
+      "bottom": 80.21624755859375,
+      "height": 62.21624755859375,
+      "left": -6.1078290939331055,
+      "right": 1270.774495124817,
+      "top": 18,
+      "width": 1276.88232421875,
+      "x": -6.1078290939331055,
+      "y": 18
+    },
+    "root": "32px",
+    "w": 1280
+  },
+  {
+    "clipped": [
+      {
+        "cls": "",
+        "tag": "A",
+        "text": "Growth Commerce OS"
+      },
+      {
+        "cls": "",
+        "tag": "A",
+        "text": "STOS Sales Traffic Operating System"
+      },
+      {
+        "cls": "",
+        "tag": "A",
+        "text": "Chợ Kênh"
+      },
+      {
+        "cls": "",
+        "tag": "A",
+        "text": "KKBox customer churn baseline"
+      },
+      {
+        "cls": "contact-email",
+        "tag": "A",
+        "text": "nquangd1510@gmail.com ↗"
+      }
+    ],
+    "doc": 483,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "root": "32px",
+    "w": 390
+  },
+  {
+    "clipped": [
+      {
+        "cls": "is-active",
+        "tag": "A",
+        "text": "Vibecode Pro Max Kit"
+      },
+      {
+        "cls": "",
+        "tag": "A",
+        "text": "Growth Commerce OS"
+      },
+      {
+        "cls": "",
+        "tag": "A",
+        "text": "STOS Sales Traffic Operating System"
+      },
+      {
+        "cls": "",
+        "tag": "A",
+        "text": "Chợ Kênh"
+      },
+      {
+        "cls": "",
+        "tag": "A",
+        "text": "KKBox customer churn baseline"
+      },
+      {
+        "cls": "",
+        "tag": "H3",
+        "text": "Attract"
+      },
+      {
+        "cls": "",
+        "tag": "P",
+        "text": "Help the right people recognize the offer."
+      },
+      {
+        "cls": "",
+        "tag": "P",
+        "text": "One distinct primary action, simple navigation, and a subtle sense of progress."
+      },
+      {
+        "cls": "",
+        "tag": "H3",
+        "text": "Build confidence"
+      },
+      {
+        "cls": "",
+        "tag": "P",
+        "text": "Answer questions before asking for commitment."
+      },
+      {
+        "cls": "",
+        "tag": "P",
+        "text": "Familiar layouts, digestible sections, and proof close to the claim it supports."
+      },
+      {
+        "cls": "",
+        "tag": "H3",
+        "text": "Make action easy"
+      },
+      {
+        "cls": "",
+        "tag": "P",
+        "text": "Turn qualified interest into a useful conversation."
+      },
+      {
+        "cls": "",
+        "tag": "P",
+        "text": "Large tap targets, prompt feedback, and a direct visual path to the next action."
+      },
+      {
+        "cls": "eyebrow",
+        "tag": "P",
+        "text": "About the work"
+      }
+    ],
+    "doc": 483,
+    "nav": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "root": "32px",
+    "w": 320
+  }
+]

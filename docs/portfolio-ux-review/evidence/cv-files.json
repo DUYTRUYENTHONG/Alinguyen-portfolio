@@ -1,0 +1,61 @@
+[
+  {
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+    "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+    "status": 200,
+    "mime": "application/pdf",
+    "disposition": null,
+    "filename": "cv-applied-ai-engineer.pdf",
+    "bytes": 5853,
+    "signature": "255044462d312e34",
+    "sha256": "641c3cc457e576a87c99ec07282eff20251b1658dece954432067df48282e8c3",
+    "matchesRepository": true,
+    "pages": 2,
+    "title": "Nguyen Quang Duy Applied AI Engineer CV",
+    "identityExcerpt": "NGUYEN QUANG DUY\n1\nNGUYEN QUANG DUY\nAPPLIED AI ENGINEER | DATA WORKFLOWS | PRODUCT ENGINEERING\nHo Chi Minh City, Vietnam | 0902577827 | nquangd1510@gmail.com\nPortfolio: https://duytruyenthong.github.io/Alinguyen-portfolio/\nPROFILE\nComputer Science graduate building applied AI prototypes, customer-data workflows and digital products. Work spans retrieval\nand prompt design, a leakage-checked local churn baseline, public developer tooling and live commerce websites. I bring\nenterprise troubleshooting and client discovery to scoping, testing and explaining technical work.\nRELEVANT SKILLS\nApplied AI: LLM API and prompt workflows; retrieval-augmented generation prototypes; response review and documentation.\nData and evaluation: Python, SQL, PostgreSQL, Pandas, scikit-learn, snapshot-date features and holdout evaluation.\nProduct engineering: JavaScript, TypeScript, React, Next.js, Node.js, GitHub Actions, debugging and testing.\nBusiness context: Requirements discovery, commerce analytics, sales funnels and stakeholder communication.\nSELECTED AI AND PRODUCT WORK\nAI Knowledge Assistant | Retrieval and prompt prototype\n- Designed a retrieval-plus-generation flow for answering questions from internal knowledge sources.\n \n- Prototyped prompt and retrieval steps and reviewed responses to representative knowledge questions. No production\n deployment or measured accuracy is claimed.\nKKBox customer churn baseline | Local prototype\n- Built a snapshot-date feature pipeline and logistic-regression holdout baseline for customer churn exploration.\n \n- Checked future-event exclusion with synthetic fixtures. On 970,960 official-data labels, a local within-cohort 75/25 stratified\n holdout reached 0.217324 log loss and 0.819295 ROC AUC. Features use a 2017-02-28 snapshot; this is not an out-of-"
+  },
+  {
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-business-product.pdf",
+    "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-business-product.pdf",
+    "status": 200,
+    "mime": "application/pdf",
+    "disposition": null,
+    "filename": "cv-business-product.pdf",
+    "bytes": 4212,
+    "signature": "255044462d312e34",
+    "sha256": "21416a02b7982c4d67ec575720e5cef0986ac7171e0637a7c3901cece0cee4ca",
+    "matchesRepository": true,
+    "pages": 1,
+    "title": "Nguyen Quang Duy Business and Product CV",
+    "identityExcerpt": "NGUYEN QUANG DUY\nBUSINESS AND PRODUCT | DIGITAL COMMERCE | DATA-INFORMED DELIVERY\nHo Chi Minh City, Vietnam | 0902577827 | nquangd1510@gmail.com\nPortfolio: https://duytruyenthong.github.io/Alinguyen-portfolio/\nPROFILE\nFounder and product operator with a Computer Science background and experience in digital marketing, solution consulting,\nenterprise support and applied AI prototypes. I turn client needs into clear requirements, commerce workflows and reviewable\nproduct builds. My data and AI work is presented with its measured and unmeasured limits.\nCORE COMPETENCIES\nClient discovery, business analysis, product scoping, sales funnels, website and content operations, SQL, Python, Power BI/DAX,\nstakeholder communication, testing and technical documentation.\nPROFESSIONAL EXPERIENCE\niTechWX | Microsoft Technical Support Specialist | Apr 2025 - Present\nDiagnose Microsoft 365 incidents across OneDrive, SharePoint, Exchange Online and Teams; reproduce symptoms, isolate causes,\ndocument evidence and coordinate escalations.\nDUYTRUYENTHONG Agency | Founder and Operator | Feb 2024 - Present\nTranslate client goals into websites, content systems and commerce workflows. Build and test internal product prototypes and use\nCodex-assisted development with reviewable QA records.\nNINA Web Service | Solution Consultant | Dec 2023 - Dec 2024\nGather requirements, define website architecture and workflows, and align client needs with delivery scope.\nNINA Web Service | Web Developer | Jun 2023 - Dec 2023\nDeveloped React and JavaScript features; debugged and tested interfaces; prototyped a retrieval-based support chatbot.\nAmazing Tech | Junior Front-End Developer | Sep 2022 - Jan 2023\nSupported responsive UI work, front-end refactoring, debugging and code-maintainability improvements.\nSELECTED PR"
+  },
+  {
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-business-development.pdf",
+    "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-business-development.pdf",
+    "status": 200,
+    "mime": "application/pdf",
+    "disposition": null,
+    "filename": "cv-business-development.pdf",
+    "bytes": 3862,
+    "signature": "255044462d312e34",
+    "sha256": "0700807255d52f3350c24b115fdeaef1c88370fa336e4f9afaadb8177fe9cad3",
+    "matchesRepository": true,
+    "pages": 1,
+    "title": "Nguyen Quang Duy Business Development CV",
+    "identityExcerpt": "NGUYEN QUANG DUY\nBUSINESS DEVELOPMENT | SOLUTION CONSULTING | DIGITAL COMMERCE\nHo Chi Minh City, Vietnam | 0902577827 | nquangd1510@gmail.com\nPortfolio: https://duytruyenthong.github.io/Alinguyen-portfolio/\nPROFILE\nFounder and solution consultant with a Computer Science background. I work from client discovery and positioning through scoped\nwebsites, content, lead paths and commerce workflows. My public portfolio distinguishes live work from prototypes and does not\nclaim unmeasured sales outcomes.\nRELEVANT CAPABILITIES\nRequirements discovery, offer positioning, sales funnels, website and content planning, commerce operations, stakeholder\ncommunication, solution scoping, analytics and technical documentation.\nCLIENT-FACING EXPERIENCE\nDUYTRUYENTHONG Agency | Founder and Operator | Feb 2024 - Present\nTranslate client goals into websites, content systems and commerce workflows. Build and test internal product prototypes and use\nCodex-assisted development with reviewable QA records.\nNINA Web Service | Solution Consultant | Dec 2023 - Dec 2024\nGather requirements, define website architecture and workflows, and align client needs with delivery scope.\niTechWX | Microsoft Technical Support Specialist | Apr 2025 - Present\nDiagnose Microsoft 365 incidents across OneDrive, SharePoint, Exchange Online and Teams; reproduce symptoms, isolate causes,\ndocument evidence and coordinate escalations.\nNINA Web Service | Web Developer | Jun 2023 - Dec 2023\nDeveloped React and JavaScript features; debugged and tested interfaces; prototyped a retrieval-based support chatbot.\nAmazing Tech | Junior Front-End Developer | Sep 2022 - Jan 2023\nSupported responsive UI work, front-end refactoring, debugging and code-maintainability improvements.\nSELECTED COMMERCE WORK\nGrowth Commerce OS | Live service "
+  },
+  {
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-prompt-engineer.docx",
+    "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-prompt-engineer.docx",
+    "status": 200,
+    "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "disposition": null,
+    "filename": "cv-prompt-engineer.docx",
+    "bytes": 39516,
+    "signature": "504b030414000000",
+    "sha256": "8e59c5f4561f895f75d2d3606aac0bb9e7797ff0310e9e6a111163c0b822b475",
+    "matchesRepository": true,
+    "wordDocumentPresent": true,
+    "identityExcerpt": "NGUYEN QUANG DUY AI AND PROMPT ENGINEER | RAG PROTOTYPES | PYTHON Ho Chi Minh City, Vietnam  |  0902577827  |  nquangd1510@gmail.com Portfolio: https://duytruyenthong.github.io/Alinguyen-portfolio/ PROFILE Computer Science graduate building applied AI prototypes, customer-data workflows and digital products. Work spans retrieval and prompt design, a leakage-checked local churn baseline, public developer tooling and live commerce websites. I bring enterprise troubleshooting and client discovery to scoping, testing and explaining technical work. RELEVANT SKILLS Applied AI:  LLM API and prompt workflows; retrieval-augmented generation prototypes; response review and documentation. Data and evaluation:  Python, SQL, PostgreSQL, Pandas, scikit-learn, snapshot-date features and holdout evaluation. Product engineering:  JavaScript, TypeScript, React, Next.js, Node.js, GitHub Actions, debugging and testing. Business context:  Requirements discovery, commerce analytics, sales funnels and stakeholder communication. SELECTED AI AND PRODUCT WORK AI Knowledge Assistant | Retrieval and prompt prototype Designed a retrieval-plus-generation flow for answering questions from internal knowledge sources. Prototyped prompt and retrieval steps and reviewed responses to representative knowledge questions. No production deployment or measured accuracy is claimed. KKBox customer churn baseline | Local prototype Built a snapshot-date feature pipeline and logistic-regression holdout baseline for customer churn exploration. Checked future-event exclusion with synthetic fixtures. On 970,960 official-data labels, a local within-cohort 75/25 stratified holdout reached 0.217324 log loss and 0.819295 ROC AUC. Features use a 2017-02-28 snapshot; this is not an out-of-time, leaderboard, production or bu"
+  }
+]

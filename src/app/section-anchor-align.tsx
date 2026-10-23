@@ -2,52 +2,27 @@
 
 import { useEffect } from "react";
 
-const alignedIds = new Set(["visitor", "highlights", "work", "ai-expertise", "funnel", "feedback", "about", "cvs", "contact"]);
-const shouldAlign = (id: string) => alignedIds.has(id) || id.startsWith("project-");
-
+// Native fragment navigation owns clicks and Back/Forward. Only correct the
+// initial deep link once, after fonts settle, unless the visitor has moved on.
 export function SectionAnchorAlign() {
   useEffect(() => {
-    let frame = 0;
-    let settleFrame = 0;
-    let stopWatching = 0;
-    let active = true;
-    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(() => schedule());
-    const align = () => {
-      const id = window.location.hash.slice(1);
-      if (!shouldAlign(id)) return;
-      const section = document.getElementById(id);
+    const hash = window.location.hash;
+    if (!hash) return;
+    let cancelled = false;
+    const cancel = () => { cancelled = true; };
+    const events = ["wheel", "touchstart", "pointerdown", "keydown", "hashchange", "popstate"] as const;
+    for (const event of events) window.addEventListener(event, cancel, { passive: true });
+    document.fonts.ready.then(() => {
+      if (cancelled || window.location.hash !== hash) return;
+      const section = document.getElementById(hash.slice(1));
       if (!section) return;
       const margin = Number.parseFloat(window.getComputedStyle(section).scrollMarginTop) || 0;
       const difference = section.getBoundingClientRect().top - margin;
-      if (Math.abs(difference) > 2) window.scrollTo({ top: window.scrollY + difference, behavior: "instant" });
-    };
-    const schedule = () => {
-      window.cancelAnimationFrame(frame);
-      window.cancelAnimationFrame(settleFrame);
-      frame = window.requestAnimationFrame(() => { settleFrame = window.requestAnimationFrame(align); });
-    };
-    const watch = () => {
-      if (!active) return;
-      observer?.disconnect();
-      window.clearTimeout(stopWatching);
-      if (!shouldAlign(window.location.hash.slice(1))) return;
-      schedule();
-      const main = document.querySelector("main");
-      if (main) observer?.observe(main);
-      stopWatching = window.setTimeout(() => observer?.disconnect(), 2500);
-    };
-    watch();
-    window.addEventListener("hashchange", watch);
-    window.addEventListener("load", watch);
-    document.fonts.ready.then(watch);
+      if (Math.abs(difference) > 2) window.scrollBy({ top: difference, behavior: "instant" });
+    });
     return () => {
-      active = false;
-      window.cancelAnimationFrame(frame);
-      window.cancelAnimationFrame(settleFrame);
-      window.clearTimeout(stopWatching);
-      observer?.disconnect();
-      window.removeEventListener("hashchange", watch);
-      window.removeEventListener("load", watch);
+      cancel();
+      for (const event of events) window.removeEventListener(event, cancel);
     };
   }, []);
   return null;

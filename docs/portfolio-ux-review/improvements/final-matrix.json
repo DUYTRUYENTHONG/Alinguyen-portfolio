@@ -1,0 +1,152 @@
+[
+  {
+    "actions": [
+      {
+        "height": 48,
+        "label": "Download PDF"
+      },
+      {
+        "height": 48,
+        "label": "Business & Product PDF"
+      },
+      {
+        "height": 48,
+        "label": "Business Development PDF"
+      },
+      {
+        "height": 48,
+        "label": "Download DOCX"
+      }
+    ],
+    "callout": "block",
+    "cvTop": 112.08333587646484,
+    "documentWidth": 1425,
+    "projects": 5,
+    "width": 1440
+  },
+  {
+    "actions": [
+      {
+        "height": 48,
+        "label": "Download PDF"
+      },
+      {
+        "height": 48,
+        "label": "Business & Product PDF"
+      },
+      {
+        "height": 48,
+        "label": "Business Development PDF"
+      },
+      {
+        "height": 48,
+        "label": "Download DOCX"
+      }
+    ],
+    "callout": "block",
+    "cvTop": 111.77083587646484,
+    "documentWidth": 1265,
+    "projects": 5,
+    "width": 1280
+  },
+  {
+    "actions": [
+      {
+        "height": 48,
+        "label": "Download PDF"
+      },
+      {
+        "height": 48,
+        "label": "Business & Product PDF"
+      },
+      {
+        "height": 48,
+        "label": "Business Development PDF"
+      },
+      {
+        "height": 48,
+        "label": "Download DOCX"
+      }
+    ],
+    "callout": "block",
+    "cvTop": 112.32292175292967,
+    "documentWidth": 1009,
+    "projects": 5,
+    "width": 1024
+  },
+  {
+    "actions": [
+      {
+        "height": 48,
+        "label": "Download PDF"
+      },
+      {
+        "height": 48,
+        "label": "Business & Product PDF"
+      },
+      {
+        "height": 48,
+        "label": "Business Development PDF"
+      },
+      {
+        "height": 48,
+        "label": "Download DOCX"
+      }
+    ],
+    "callout": "block",
+    "cvTop": 112.30208587646484,
+    "documentWidth": 753,
+    "projects": 5,
+    "width": 768
+  },
+  {
+    "actions": [
+      {
+        "height": 48,
+        "label": "Download PDF"
+      },
+      {
+        "height": 48,
+        "label": "Business & Product PDF"
+      },
+      {
+        "height": 48,
+        "label": "Business Development PDF"
+      },
+      {
+        "height": 48,
+        "label": "Download DOCX"
+      }
+    ],
+    "callout": "none",
+    "cvTop": 111.83333587646484,
+    "documentWidth": 375,
+    "projects": 5,
+    "width": 390
+  },
+  {
+    "actions": [
+      {
+        "height": 48,
+        "label": "Download PDF"
+      },
+      {
+        "height": 48,
+        "label": "Business & Product PDF"
+      },
+      {
+        "height": 48,
+        "label": "Business Development PDF"
+      },
+      {
+        "height": 48,
+        "label": "Download DOCX"
+      }
+    ],
+    "callout": "none",
+    "cvTop": 111.75,
+    "documentWidth": 305,
+    "projects": 5,
+    "width": 320
+  }
+]

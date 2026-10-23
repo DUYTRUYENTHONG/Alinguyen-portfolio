@@ -1,0 +1,187 @@
+{
+  "query": {
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/?release=6244bcd#cvs",
+    "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/?release=6244bcd#cvs",
+    "status": 200,
+    "mime": "text/html",
+    "disposition": null,
+    "sha256": "11bce59d508d1882bd51a192fcb38aaf3c67b24f9d440e254ff81bbaaed49b8d",
+    "bytes": 111550,
+    "scripts": [
+      "/Alinguyen-portfolio/_next/static/chunks/3srfjz42u14tx.js",
+      "/Alinguyen-portfolio/_next/static/chunks/3dmm3v_fq28gc.js",
+      "/Alinguyen-portfolio/_next/static/chunks/1c6yf3v-slhqk.js",
+      "/Alinguyen-portfolio/_next/static/chunks/turbopack-1u0e_le9_dbtr.js",
+      "/Alinguyen-portfolio/_next/static/chunks/1obgyd15uzj2l.js",
+      "/Alinguyen-portfolio/_next/static/chunks/43ao3jh8m-brx.js",
+      "/Alinguyen-portfolio/_next/static/chunks/0umf92h1sb77c.js",
+      "/Alinguyen-portfolio/_next/static/chunks/0cz1d0mv5g_q7.js",
+      "/Alinguyen-portfolio/_next/static/chunks/2hz8yws_wswjz.js"
+    ],
+    "styles": [
+      "/Alinguyen-portfolio/_next/static/chunks/0-4_a2ykwjuf0.css",
+      "/Alinguyen-portfolio/_next/static/chunks/0zzl3jg1t0-ij.css"
+    ]
+  },
+  "plain": {
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/",
+    "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/",
+    "status": 200,
+    "mime": "text/html",
+    "disposition": null,
+    "sha256": "11bce59d508d1882bd51a192fcb38aaf3c67b24f9d440e254ff81bbaaed49b8d",
+    "bytes": 111550,
+    "scripts": [
+      "/Alinguyen-portfolio/_next/static/chunks/3srfjz42u14tx.js",
+      "/Alinguyen-portfolio/_next/static/chunks/3dmm3v_fq28gc.js",
+      "/Alinguyen-portfolio/_next/static/chunks/1c6yf3v-slhqk.js",
+      "/Alinguyen-portfolio/_next/static/chunks/turbopack-1u0e_le9_dbtr.js",
+      "/Alinguyen-portfolio/_next/static/chunks/1obgyd15uzj2l.js",
+      "/Alinguyen-portfolio/_next/static/chunks/43ao3jh8m-brx.js",
+      "/Alinguyen-portfolio/_next/static/chunks/0umf92h1sb77c.js",
+      "/Alinguyen-portfolio/_next/static/chunks/0cz1d0mv5g_q7.js",
+      "/Alinguyen-portfolio/_next/static/chunks/2hz8yws_wswjz.js"
+    ],
+    "styles": [
+      "/Alinguyen-portfolio/_next/static/chunks/0-4_a2ykwjuf0.css",
+      "/Alinguyen-portfolio/_next/static/chunks/0zzl3jg1t0-ij.css"
+    ]
+  },
+  "sameServedHtml": true,
+  "localHtmlSha256": "d2ff77ef91571baaf77002f25065bc8c3dade2cbe0d68325cecd80d84ddae4df",
+  "exactHtmlMatch": false,
+  "localScripts": [
+    "/Alinguyen-portfolio/_next/static/chunks/3srfjz42u14tx.js",
+    "/Alinguyen-portfolio/_next/static/chunks/3dmm3v_fq28gc.js",
+    "/Alinguyen-portfolio/_next/static/chunks/1c6yf3v-slhqk.js",
+    "/Alinguyen-portfolio/_next/static/chunks/turbopack-1u0e_le9_dbtr.js",
+    "/Alinguyen-portfolio/_next/static/chunks/1obgyd15uzj2l.js",
+    "/Alinguyen-portfolio/_next/static/chunks/43ao3jh8m-brx.js",
+    "/Alinguyen-portfolio/_next/static/chunks/0umf92h1sb77c.js",
+    "/Alinguyen-portfolio/_next/static/chunks/0cz1d0mv5g_q7.js",
+    "/Alinguyen-portfolio/_next/static/chunks/2hz8yws_wswjz.js"
+  ],
+  "assets": [
+    {
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/3srfjz42u14tx.js",
+      "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/3srfjz42u14tx.js",
+      "status": 200,
+      "mime": "application/javascript",
+      "disposition": null,
+      "bytes": 29981,
+      "sha256": "c9dbc9d74b2ea0fefb8491e70ab13111e063fb197ce025dd15898a61ee5a1adb",
+      "localExists": true,
+      "localMatch": true
+    },
+    {
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/3dmm3v_fq28gc.js",
+      "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/3dmm3v_fq28gc.js",
+      "status": 200,
+      "mime": "application/javascript",
+      "disposition": null,
+      "bytes": 229820,
+      "sha256": "12c72318dee8d15a8fc5ea65c908da89cbbbfdc3ec455040db8b2fd3d2e7e0f8",
+      "localExists": true,
+      "localMatch": true
+    },
+    {
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/1c6yf3v-slhqk.js",
+      "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/1c6yf3v-slhqk.js",
+      "status": 200,
+      "mime": "application/javascript",
+      "disposition": null,
+      "bytes": 166852,
+      "sha256": "922efea97e3eaa77b462b1be8accaee1caa4db27140cdfbc09f1c845ddbf451f",
+      "localExists": true,
+      "localMatch": true
+    },
+    {
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/turbopack-1u0e_le9_dbtr.js",
+      "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/turbopack-1u0e_le9_dbtr.js",
+      "status": 200,
+      "mime": "application/javascript",
+      "disposition": null,
+      "bytes": 10050,
+      "sha256": "1bb411f266faf3048534821eb7d8d354e55dd0193f236eb3b0d62e334f011e20",
+      "localExists": true,
+      "localMatch": true
+    },
+    {
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/1obgyd15uzj2l.js",
+      "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/1obgyd15uzj2l.js",
+      "status": 200,
+      "mime": "application/javascript",
+      "disposition": null,
+      "bytes": 54258,
+      "sha256": "1edd76c55a4bc9a5e04c918f990a5a842ed3f81456b2bf3cc3e2151c62e01ed2",
+      "localExists": true,
+      "localMatch": true
+    },
+    {
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/43ao3jh8m-brx.js",
+      "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/43ao3jh8m-brx.js",
+      "status": 200,
+      "mime": "application/javascript",
+      "disposition": null,
+      "bytes": 24386,
+      "sha256": "662250f2016fb6e0dc5f0385284513496d2f2195891d7503fce6cd22574470bd",
+      "localExists": true,
+      "localMatch": true
+    },
+    {
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/0umf92h1sb77c.js",
+      "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/0umf92h1sb77c.js",
+      "status": 200,
+      "mime": "application/javascript",
+      "disposition": null,
+      "bytes": 13822,
+      "sha256": "c410d0f2543e080768fc14f73b2bd1fdf103e26956e9730390b5e41c4fb5ff8b",
+      "localExists": true,
+      "localMatch": true
+    },
+    {
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/0cz1d0mv5g_q7.js",
+      "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/0cz1d0mv5g_q7.js",
+      "status": 200,
+      "mime": "application/javascript",
+      "disposition": null,
+      "bytes": 112594,
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "localExists": true,
+      "localMatch": true
+    },
+    {
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/2hz8yws_wswjz.js",
+      "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/2hz8yws_wswjz.js",
+      "status": 200,
+      "mime": "application/javascript",
+      "disposition": null,
+      "bytes": 6105,
+      "sha256": "544f2cc51d8e4231243c7ded6856145ab6cbe91de1586275bcfc9ce2f1351bcc",
+      "localExists": true,
+      "localMatch": true
+    },
+    {
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/0-4_a2ykwjuf0.css",
+      "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/0-4_a2ykwjuf0.css",
+      "status": 200,
+      "mime": "text/css",
+      "disposition": null,
+      "bytes": 67239,
+      "sha256": "481fd6982a091f209c9fe8477799d4ba9a6cc72406567072910c7d460fd4edc2",
+      "localExists": true,
+      "localMatch": true
+    },
+    {
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/0zzl3jg1t0-ij.css",
+      "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/_next/static/chunks/0zzl3jg1t0-ij.css",
+      "status": 200,
+      "mime": "text/css",
+      "disposition": null,
+      "bytes": 55144,
+      "sha256": "77fa3e3f3e0a8f710836576233fca47edb46d9772fa934a99c554b6036fff4c2",
+      "localExists": true,
+      "localMatch": true
+    }
+  ]
+}

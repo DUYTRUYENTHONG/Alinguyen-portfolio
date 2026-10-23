@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Download PDF — Applied AI engineering CV",
+    "outcome": "blocked or incomplete",
+    "error": "Error: Timed out after 12000ms waiting for download."
+  },
+  {
+    "label": "Business & Product PDF — Business and product CV",
+    "outcome": "blocked or incomplete",
+    "error": "Error: Timed out after 12000ms waiting for download."
+  },
+  {
+    "label": "Business Development PDF — Business and product CV",
+    "outcome": "blocked or incomplete",
+    "error": "Error: Timed out after 12000ms waiting for download."
+  },
+  {
+    "label": "Download DOCX — AI and prompt engineering CV",
+    "outcome": "blocked or incomplete",
+    "error": "Error: Timed out after 12000ms waiting for download."
+  }
+]

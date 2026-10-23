@@ -1,0 +1,15 @@
+{
+  "cvArrival": {
+    "hash": "#cvs",
+    "top": 111.77083587646484
+  },
+  "cvBack": {
+    "hash": "#cvs",
+    "top": 111.77083587646484
+  },
+  "homeForward": {
+    "hash": "#top",
+    "y": 0
+  },
+  "note": "Fixed header links avoid test-induced footer scrolling before history navigation."
+}

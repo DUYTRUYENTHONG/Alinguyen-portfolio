@@ -1,5 +1,6 @@
 .section{padding:60px 0 98px;background:#fff;scroll-margin-top:100px}
 .intro{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);align-items:end;gap:58px;margin-bottom:44px}
+.intro>*{min-width:0;overflow-wrap:anywhere}
 .intro h2{max-width:520px;margin:0;font-size:clamp(2.8rem,4.6vw,3.8rem);line-height:1.08;letter-spacing:-.05em}
 .intro>p{max-width:61ch;margin:0;color:#555d66;font-size:1.075rem;line-height:1.7}
 .principles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}

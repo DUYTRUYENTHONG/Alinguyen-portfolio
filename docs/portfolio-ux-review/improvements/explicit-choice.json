@@ -1,0 +1,22 @@
+{
+  "fixtureOnly": true,
+  "initialRole": "Engineer",
+  "explicitRole": "Data",
+  "workBefore": [
+    "project-vibecode-kit",
+    "project-kkbox-baseline",
+    "project-stos",
+    "project-growth-commerce-os",
+    "project-cho-kenh"
+  ],
+  "checked": "Data",
+  "focus": "Data",
+  "stats": "42VISITORS SO FAR#7YOUR VISITOR NUMBER8DATA VISITORSVISITORS FROM 1 COUNTRYVNCounts are per browser. The portfolio counter stores a salted browser ID hash, chosen role, and country code; it does not write IP addresses to its database.",
+  "workAfter": [
+    "project-kkbox-baseline",
+    "project-growth-commerce-os",
+    "project-cho-kenh",
+    "project-stos",
+    "project-vibecode-kit"
+  ]
+}

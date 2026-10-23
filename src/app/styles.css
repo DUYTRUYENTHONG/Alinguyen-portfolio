@@ -1,9 +1,10 @@
 :root{--ink:#08090b;--muted:#6c7076;--canvas:#f7f7f7;--line:#e9e9e9;--blue:#326bff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:#fff;color:var(--ink);font-family:"Inter Variable",Inter,system-ui,sans-serif;line-height:1.5}
+html:has(:target){scroll-behavior:auto}
+body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-inter),"Inter Variable",Inter,system-ui,sans-serif;line-height:1.5}
 h1,h2,h3,p{margin-top:0}
-h1,h2,h3{font-family:"Archivo Variable",Archivo,Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:var(--font-archivo),"Archivo Variable",Archivo,Inter,system-ui,sans-serif}
 a{color:inherit;text-decoration:none}
 a:hover{text-decoration:underline;text-underline-offset:4px}
 button{font:inherit;cursor:pointer}
@@ -89,7 +90,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
 .work-cards{position:relative;display:grid;gap:38px;min-width:0}
 .guide-stage{position:absolute;inset:0;z-index:12;pointer-events:none}.guide-character{position:absolute;top:0;left:0;display:grid;place-items:center;width:68px;height:102px;padding:0;border:0;background:none;cursor:pointer;pointer-events:auto;touch-action:manipulation;will-change:transform}.guide-character:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:12px}.guide-character img{width:100%;height:100%;object-fit:contain;user-select:none;filter:drop-shadow(0 5px 5px #0003);transform-origin:center bottom;animation:avatar-breathe 3s ease-in-out infinite}.guide-character[data-facing="left"] img{scale:-1 1}.guide-character.is-walking img{animation:guide-walk .2s ease-in-out infinite alternate}.guide-character.is-scrolling[data-scroll-direction="up"] img{animation:guide-scroll-up .28s ease-in-out infinite alternate}.guide-character.is-scrolling[data-scroll-direction="down"] img{animation:guide-scroll-down .28s ease-in-out infinite alternate}.guide-character.is-jumping img{animation:guide-jump .4s ease-out}.guide-character:hover img{filter:drop-shadow(0 9px 7px #0004)}@keyframes guide-walk{to{transform:translateY(-4px) rotate(3deg)}}@keyframes guide-scroll-up{to{transform:translateY(-4px) rotate(-3deg)}}@keyframes guide-scroll-down{to{transform:translateY(3px) rotate(3deg)}}@keyframes guide-jump{50%{transform:rotate(-8deg)}}
 .portfolio-main{position:relative}.guide-stage-journey .guide-character{position:fixed;width:54px;height:82px;transition:opacity .25s ease}@media(max-width:767px){.guide-stage-journey .guide-character{width:38px;height:58px}}
-.guide-stage-work .guide-character{width:58px;height:88px}.guide-callout{position:absolute;left:calc(100% + 8px);top:45%;width:170px;padding:9px 12px;border:1px solid #e3e7ee;border-radius:13px;background:#fffffff0;box-shadow:0 6px 18px #00000013;backdrop-filter:blur(12px);text-align:left;opacity:0;transform:translate(6px,-50%);transition:opacity .2s ease,transform .2s ease;pointer-events:none}.guide-callout small,.guide-callout strong{display:block}.guide-callout small{margin-bottom:3px;color:#68717c;font:700 .56rem/1.3 monospace;letter-spacing:.1em;text-transform:uppercase}.guide-callout strong{color:#17202b;font-size:.73rem;line-height:1.25}.guide-character.is-speaking .guide-callout,.guide-character:hover .guide-callout,.guide-character:focus-visible .guide-callout{opacity:1;transform:translate(0,-50%)}@media(max-width:767px){.guide-stage-work .guide-character{width:38px;height:58px}.guide-callout{width:132px;padding:7px 9px}.guide-callout strong{font-size:.64rem}}
+.guide-stage-work .guide-character{width:58px;height:88px}.guide-callout{position:absolute;left:calc(100% + 8px);top:45%;width:170px;padding:9px 12px;border:1px solid #e3e7ee;border-radius:13px;background:#fffffff0;box-shadow:0 6px 18px #00000013;backdrop-filter:blur(12px);text-align:left;opacity:0;transform:translate(6px,-50%);transition:opacity .2s ease,transform .2s ease;pointer-events:none}.guide-callout small,.guide-callout strong{display:block}.guide-callout small{margin-bottom:3px;color:#68717c;font:700 .56rem/1.3 monospace;letter-spacing:.1em;text-transform:uppercase}.guide-callout strong{color:#17202b;font-size:.73rem;line-height:1.25}.guide-character:hover .guide-callout,.guide-character:focus-visible .guide-callout{opacity:1;transform:translate(0,-50%)}@media(max-width:767px){.guide-stage-work .guide-character{width:38px;height:58px}.guide-callout{width:132px;padding:7px 9px}.guide-callout strong{font-size:.64rem}}
 @media(prefers-reduced-motion:reduce){.role-icon img,.role-card.is-selected .role-icon img,.guide-character img,.guide-character.is-walking img,.guide-character.is-scrolling img,.guide-character.is-jumping img,.project-emoji,.work-index a:hover .project-emoji,.work-index a.is-active .project-emoji,.work-mobile-index a:hover .project-emoji,.work-mobile-index a.is-active .project-emoji,.work-card:hover .project-emoji{animation:none}}
 .work-card{position:relative;min-width:0;overflow:visible;padding:60px 25px 20px;border-radius:20px;background:#fff;text-align:center;scroll-margin-top:110px}
 .work-card-2{background:#eee6ff}.work-card-3{background:#f2e7ff}.work-card-4{background:#e0f9ec}.work-card-5{background:#e9edff}
@@ -129,7 +130,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
   .hero-experience{justify-content:flex-start;margin-top:18px;max-width:330px}.hero-experience span{font-size:.7rem}
   .portrait-stage{height:450px;margin-top:30px}.portrait-halo{width:350px;height:350px;top:10%}.portrait-photo{width:auto;height:520px;bottom:-75px}.portrait-caption{font-size:.5rem;bottom:15px}
   .identity-strip{height:94px}.identity-track{gap:40px;font-size:1.2rem}
-  .visitor{padding-block:24px 55px;width:min(100% - 3rem,1145px)}.visitor h2{font-size:30px;line-height:1.08;max-width:100%}.visitor-heading-tail{display:block}.role-grid{grid-template-rows:141px repeat(2,82px);gap:16px 8px;margin-top:20px}.role-card{border-radius:20px;gap:0}.role-card.is-selected{padding:16px;gap:16px}.role-card.is-selected .role-icon{width:72px;height:108px;flex:none}.role-card.is-selected .role-card-copy strong{font-size:1.25rem}.role-card.is-selected .role-card-copy small{font-size:.55rem}.role-card.is-selected .role-card-copy em{font-size:.73rem}.role-card:not(.is-selected) .role-icon{width:100%;height:100%}.role-card:not(.is-selected) .role-card-copy{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.visitor-result{font-size:.78rem;gap:5px;margin-top:25px;padding-top:20px;display:block}.visitor-result span,.visitor-result a{display:block}
+  .visitor{padding-block:24px 55px;width:min(100% - 3rem,1145px)}.visitor h2{font-size:30px;line-height:1.08;max-width:100%}.visitor-heading-tail{display:block}.role-grid{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:minmax(146px,auto);gap:12px 8px;margin-top:20px}.role-card{border-radius:20px;gap:0}.role-card.is-selected{padding:16px;gap:16px}.role-card.is-selected .role-icon{width:72px;height:108px;flex:none}.role-card.is-selected .role-card-copy strong{font-size:1.25rem}.role-card.is-selected .role-card-copy small{font-size:.55rem}.role-card.is-selected .role-card-copy em{font-size:.73rem}.role-card:not(.is-selected){padding:10px 5px;gap:8px}.role-card:not(.is-selected) .role-icon{width:100%;height:88px;flex:none}.role-card:not(.is-selected) .role-card-copy{position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:normal}.visitor-result{font-size:.78rem;gap:5px;margin-top:25px;padding-top:20px;display:block}.visitor-result span,.visitor-result a{display:block}
   .statement{padding:80px 24px}.statement-copy{font-size:28px;line-height:1.25}
   .highlights{padding-block:70px}.highlights h2,.work-section h2,.notes-section h2{font-size:2.4rem}.highlight-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.highlight-feature{grid-column:span 2;grid-row:auto;min-height:240px}.highlight-feature strong{font-size:3.9rem}.highlight-card{min-height:240px;padding:18px;border-radius:18px}.highlight-card h3{font-size:1.13rem;margin-top:18px}.highlight-card p,.highlight-card a{font-size:.72rem}.highlight-icon{width:42px;height:42px;font-size:1.3rem}
   .work-section{padding-block:70px}.work-section .section-heading{margin-bottom:44px}.work-layout{display:block}.work-index{top:0;z-index:20;display:flex;flex-direction:row;overflow-x:auto;gap:4px;background:var(--canvas);padding:12px 0;margin:0 -24px 22px;scrollbar-width:none}.work-index p{display:none}.work-index a{white-space:nowrap;background:#f9f9f9;flex:none;padding:12px 15px;font-size:.78rem}.work-index a:first-of-type{margin-left:24px}.work-index a:last-of-type{margin-right:24px}
@@ -191,16 +192,11 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
 @media(max-width:767px){.directory-card{min-height:490px}.directory-card-copy{min-height:255px;padding:28px 20px 0}.case-project-name{font-size:.9rem}}
 @media(prefers-reduced-motion:reduce){.role-card:not(.is-selected):hover,.role-card:not(.is-selected):active{transform:none;box-shadow:none}}
 
-/* Skip layout work for long sections until a visitor approaches them. */
-.highlights{content-visibility:auto;contain-intrinsic-size:auto 650px}
-.work-section{content-visibility:auto;contain-intrinsic-size:auto 4650px}
-.funnel-section{content-visibility:auto;contain-intrinsic-size:auto 3100px}
+/* Keep sections before the CV anchor in normal layout: estimated heights
+   displaced deep links as skipped content became visible. */
 .cv-section{content-visibility:auto;contain-intrinsic-size:auto 840px}
 .contact-section{content-visibility:auto;contain-intrinsic-size:auto 960px}
 @media(max-width:767px){
-  .highlights{contain-intrinsic-size:auto 1050px}
-  .work-section{contain-intrinsic-size:auto 4100px}
-  .funnel-section{contain-intrinsic-size:auto 4300px}
   .cv-section{contain-intrinsic-size:auto 1280px}
   .contact-section{contain-intrinsic-size:auto 850px}
 }
@@ -245,3 +241,17 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
   .mobile-menu .working-hours-panel .working-hours-note{font-size:.72rem}
 }
 @media(prefers-reduced-motion:reduce){.working-hours-trigger{transition:none}}
+
+/* Reading resilience: wrap real content rather than clipping the page. */
+.visitor-optional { max-width: 65ch; margin: 16px auto 28px; color: #565e64; text-align: center; }
+.contact-email { max-width: 100%; overflow-wrap: anywhere; }
+.contact-shell, .funnel-journey-card, .funnel-detail { min-width: 0; }
+.funnel-section h2, .funnel-section h3, .funnel-section p { overflow-wrap: anywhere; }
+.copy-feedback { max-width: 50ch; margin: 12px auto 0; color: #565e64; font-size: .9rem; }
+@media (max-width: 767px) { .guide-callout { display: none; } }
+.working-hours-contact { max-width: 100%; }
+.working-hours-contact .working-hours-trigger { max-width: 100%; padding-block: 10px; white-space: normal; overflow-wrap: anywhere; }
+.working-hours-contact .working-hours-trigger > span:first-child { min-width: 0; }
+.role-card-copy { min-width: 0; overflow-wrap: anywhere; }
+.portfolio-main :where(h1, h2, h3, p) { overflow-wrap: anywhere; }
+.hero-actions > a { min-width: 0; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }

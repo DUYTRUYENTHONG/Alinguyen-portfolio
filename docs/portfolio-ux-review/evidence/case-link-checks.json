@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "growth-commerce-os",
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/growth-commerce-os/",
+    "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/growth-commerce-os/",
+    "status": 200,
+    "mime": "text/html",
+    "heading": "A clearer route from commerce signals to growth."
+  },
+  {
+    "slug": "stos",
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/stos/",
+    "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/stos/",
+    "status": 200,
+    "mime": "text/html",
+    "heading": "A personal sales page with a path to better leads."
+  },
+  {
+    "slug": "cho-kenh",
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/cho-kenh/",
+    "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/cho-kenh/",
+    "status": 200,
+    "mime": "text/html",
+    "heading": "A clearer way to discover and discuss TikTok channel deals."
+  },
+  {
+    "slug": "vibecode-kit",
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/vibecode-kit/",
+    "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/vibecode-kit/",
+    "status": 200,
+    "mime": "text/html",
+    "heading": "A repeatable way to build and verify product work."
+  },
+  {
+    "slug": "kkbox-baseline",
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/kkbox-baseline/",
+    "finalUrl": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/kkbox-baseline/",
+    "status": 200,
+    "mime": "text/html",
+    "heading": "Churn predictions that respect the snapshot date."
+  }
+]

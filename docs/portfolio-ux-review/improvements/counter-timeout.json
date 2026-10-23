@@ -1,0 +1,6 @@
+{
+  "role": null,
+  "request": "intercepted before transmission; no production write",
+  "state": "Live visitor counts are unavailable right now. The portfolio remains available.",
+  "timeoutMs": 8000
+}

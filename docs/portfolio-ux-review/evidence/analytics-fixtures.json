@@ -1,0 +1,21 @@
+{
+  "safety": "CDP Fetch interception enabled before fixture navigation. OPTIONS fulfilled locally; Data POST fulfilled with fixture JSON; Engineer POST fulfilled with 503. No production visit POST continued. Browser UUID deliberately omitted.",
+  "states": [
+    {
+      "state": "loading",
+      "request": "held locally",
+      "pageUsable": true
+    },
+    {
+      "state": "success",
+      "values": "fixture only: total 42, ordinal 7, roleCount 8, VN"
+    },
+    {
+      "state": "unavailable",
+      "status": 503,
+      "role": "Engineer",
+      "firstProject": "project-vibecode-kit",
+      "message": "Live visitor counts will appear when the counter is connected."
+    }
+  ]
+}
