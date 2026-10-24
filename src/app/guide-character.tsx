@@ -72,6 +72,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   const [stop, setStop] = useState("Choose your perspective");
   const [message, setMessage] = useState(sceneMessages["Choose your perspective"]);
   const [panelOpen, setPanelOpen] = useState(false);
+  const [conversationSection, setConversationSection] = useState(stop);
   const [messageSlot, setMessageSlot] = useState<HTMLElement | null>(null);
   useEffect(() => setMessageSlot(document.getElementById("visitor-guide-message")), []);
   const [showIntroduction, setShowIntroduction] = useState(false);
@@ -95,6 +96,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     let scrollFrame = 0;
     let settleFrame = 0;
     let walkTimer = 0;
+    let tiltFrame = 0;
     let lastTime = 0;
     let lastScrollY = window.scrollY;
     let scrolling = false;
@@ -181,6 +183,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     const paint = () => {
       const target = route();
       actor.style.opacity = target.visible && !panelOpenRef.current ? "1" : "0";
+      actor.dataset.active = String(target.visible && !panelOpenRef.current);
       actor.style.pointerEvents = target.visible && !panelOpenRef.current ? "auto" : "none";
       actor.tabIndex = target.visible && !panelOpenRef.current ? 0 : -1;
       if (stopRef.current !== target.label) {
@@ -261,6 +264,22 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       if (event.key === "ArrowLeft" || event.key === "ArrowRight") held[event.key === "ArrowLeft" ? "left" : "right"] = false;
     };
     const stopWalking = () => { held.left = false; held.right = false; };
+    const tilt = (event: PointerEvent) => {
+      if (reducedMotion.matches || event.pointerType !== "mouse") return;
+      cancelAnimationFrame(tiltFrame);
+      const bounds = actor.getBoundingClientRect();
+      const x = clamp((event.clientX - bounds.left) / bounds.width - .5, -.5, .5);
+      const y = clamp((event.clientY - bounds.top) / bounds.height - .5, -.5, .5);
+      tiltFrame = requestAnimationFrame(() => {
+        actor.style.setProperty("--guide-tilt-x", `${-y * 10}deg`);
+        actor.style.setProperty("--guide-tilt-y", `${x * 12}deg`);
+      });
+    };
+    const resetTilt = () => {
+      cancelAnimationFrame(tiltFrame);
+      actor.style.setProperty("--guide-tilt-x", "0deg");
+      actor.style.setProperty("--guide-tilt-y", "0deg");
+    };
     const onScroll = () => {
       if (reducedMotion.matches) { paint(); return; }
       if (window.scrollY !== lastScrollY) actor.dataset.scrollDirection = window.scrollY < lastScrollY ? "up" : "down";
@@ -283,6 +302,8 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     actor.addEventListener("blur", stopWalking);
     actor.addEventListener("focus", paint);
     actor.addEventListener("pointerenter", paint);
+    actor.addEventListener("pointermove", tilt);
+    actor.addEventListener("pointerleave", resetTilt);
     actor.addEventListener("guide-message-change", paint);
     paint();
     settleFrame = requestAnimationFrame(paint);
@@ -290,6 +311,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       cancelAnimationFrame(frame);
       cancelAnimationFrame(scrollFrame);
       cancelAnimationFrame(settleFrame);
+      cancelAnimationFrame(tiltFrame);
       window.clearTimeout(walkTimer);
       observer.disconnect();
       window.removeEventListener("keydown", keyDown);
@@ -301,6 +323,8 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       actor.removeEventListener("blur", stopWalking);
       actor.removeEventListener("focus", paint);
       actor.removeEventListener("pointerenter", paint);
+      actor.removeEventListener("pointermove", tilt);
+      actor.removeEventListener("pointerleave", resetTilt);
       actor.removeEventListener("guide-message-change", paint);
     };
   }, [icon]);
@@ -310,7 +334,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     if (!actor) return;
     actor.classList.add("is-speaking");
     actor.dispatchEvent(new Event("guide-message-change"));
-    const timer = window.setTimeout(() => actor.classList.remove("is-speaking"), 2800);
+    const timer = window.setTimeout(() => actor.classList.remove("is-speaking"), 6500);
     return () => window.clearTimeout(timer);
   }, [stop, icon, showIntroduction]);
 
@@ -329,6 +353,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   }, [chosen, role]);
 
   const changePanel = (open: boolean) => {
+    if (open) setConversationSection(stopRef.current);
     panelOpenRef.current = open;
     setPanelOpen(open);
     window.dispatchEvent(new Event("guide-panel-change"));
@@ -337,10 +362,11 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
 
   return <div className="guide-stage guide-stage-journey" ref={stageRef}>
     <button ref={actorRef} className={`guide-character${stop === "Choose your perspective" ? " has-inline-message" : ""}`} type="button" onClick={() => changePanel(true)} aria-label={`Ask ${persona.name}, Ali's AI guide. Current section: ${stop}. ${message}`} aria-haspopup="dialog" aria-expanded={panelOpen} title={`Ask ${persona.name} · Arrow keys move when focused · Up jumps`}>
-      <img src={`${basePath}/guide-art/${icon}.webp`} alt="" width="68" height="102" draggable="false" />
+      <span className="guide-character-model" aria-hidden="true"><img src={`${basePath}/guide-art/${icon}.webp`} alt="" width="68" height="102" draggable="false" /></span>
+      <span className="guide-character-label" aria-hidden="true">Ask {persona.name} <span>↗</span></span>
       <span className="guide-callout" aria-hidden="true"><small>{showIntroduction ? `Meet ${persona.name}` : stop}</small><strong>{showIntroduction ? persona.introduction : message}</strong></span>
     </button>
     {messageSlot && createPortal(<div className="guide-inline-message"><div><small>{showIntroduction ? `Meet ${persona.name}` : "Your portfolio guide"}</small><p>{showIntroduction ? persona.introduction : sceneMessages["Choose your perspective"]}</p></div><button type="button" aria-haspopup="dialog" aria-expanded={panelOpen} onClick={() => changePanel(true)}>Ask {persona.name} <span aria-hidden="true">↗</span></button></div>, messageSlot)}
-    <GuideAssistantPanel open={panelOpen} onClose={() => changePanel(false)} icon={icon} name={persona.name} role={role} section={stop} />
+    <GuideAssistantPanel open={panelOpen} onClose={() => changePanel(false)} icon={icon} name={persona.name} role={role} section={conversationSection} />
   </div>;
 }

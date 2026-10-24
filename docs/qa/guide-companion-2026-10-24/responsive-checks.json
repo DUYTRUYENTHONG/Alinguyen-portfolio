@@ -1,0 +1,188 @@
+[
+  {
+    "context": "EXPLORING NOWGrowth Commerce OS",
+    "controls": [
+      {
+        "bottom": 237.6666717529297,
+        "label": "Close guide",
+        "top": 193.6666717529297,
+        "width": 44
+      },
+      {
+        "bottom": 867.3333740234375,
+        "label": "guide-question",
+        "top": 819.3333740234375,
+        "width": 350.66668701171875
+      },
+      {
+        "bottom": 867.3333740234375,
+        "label": "Send question",
+        "top": 819.3333740234375,
+        "width": 48
+      }
+    ],
+    "dialog": {
+      "bottom": 880,
+      "left": 980,
+      "right": 1420,
+      "top": 160
+    },
+    "overflow": false,
+    "width": 1440
+  },
+  {
+    "context": "EXPLORING NOWGrowth Commerce OS",
+    "controls": [
+      {
+        "bottom": 237.6666717529297,
+        "label": "Close guide",
+        "top": 193.6666717529297,
+        "width": 44
+      },
+      {
+        "bottom": 867.3333740234375,
+        "label": "guide-question",
+        "top": 819.3333740234375,
+        "width": 350.66668701171875
+      },
+      {
+        "bottom": 867.3333740234375,
+        "label": "Send question",
+        "top": 819.3333740234375,
+        "width": 48
+      }
+    ],
+    "dialog": {
+      "bottom": 880,
+      "left": 820,
+      "right": 1260,
+      "top": 160
+    },
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "context": "EXPLORING NOWGrowth Commerce OS",
+    "controls": [
+      {
+        "bottom": 237.6666717529297,
+        "label": "Close guide",
+        "top": 193.6666717529297,
+        "width": 44
+      },
+      {
+        "bottom": 867.3333740234375,
+        "label": "guide-question",
+        "top": 819.3333740234375,
+        "width": 350.66668701171875
+      },
+      {
+        "bottom": 867.3333740234375,
+        "label": "Send question",
+        "top": 819.3333740234375,
+        "width": 48
+      }
+    ],
+    "dialog": {
+      "bottom": 880,
+      "left": 308,
+      "right": 748,
+      "top": 160
+    },
+    "overflow": false,
+    "width": 768
+  },
+  {
+    "context": "EXPLORING NOWGrowth Commerce OS",
+    "controls": [
+      {
+        "bottom": 83.66666793823242,
+        "label": "Close guide",
+        "top": 39.66666793823242,
+        "width": 44
+      },
+      {
+        "bottom": 879.3333740234375,
+        "label": "guide-question",
+        "top": 831.3333740234375,
+        "width": 332.66668701171875
+      },
+      {
+        "bottom": 879.3333740234375,
+        "label": "Send question",
+        "top": 831.3333740234375,
+        "width": 48
+      }
+    ],
+    "dialog": {
+      "bottom": 892,
+      "left": 8,
+      "right": 422,
+      "top": 8
+    },
+    "overflow": false,
+    "width": 430
+  },
+  {
+    "context": "EXPLORING NOWGrowth Commerce OS",
+    "controls": [
+      {
+        "bottom": 83.66666793823242,
+        "label": "Close guide",
+        "top": 39.66666793823242,
+        "width": 44
+      },
+      {
+        "bottom": 879.3333740234375,
+        "label": "guide-question",
+        "top": 831.3333740234375,
+        "width": 292.66668701171875
+      },
+      {
+        "bottom": 879.3333740234375,
+        "label": "Send question",
+        "top": 831.3333740234375,
+        "width": 48
+      }
+    ],
+    "dialog": {
+      "bottom": 892,
+      "left": 8,
+      "right": 382,
+      "top": 8
+    },
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "context": "EXPLORING NOWGrowth Commerce OS",
+    "controls": [
+      {
+        "bottom": 88.86458587646484,
+        "label": "Close guide",
+        "top": 44.86458587646485,
+        "width": 44
+      },
+      {
+        "bottom": 879.3333740234375,
+        "label": "guide-question",
+        "top": 831.3333740234375,
+        "width": 222.6666717529297
+      },
+      {
+        "bottom": 879.3333740234375,
+        "label": "Send question",
+        "top": 831.3333740234375,
+        "width": 48
+      }
+    ],
+    "dialog": {
+      "bottom": 892,
+      "left": 8,
+      "right": 312,
+      "top": 8
+    },
+    "overflow": false,
+    "width": 320
+  }
+]

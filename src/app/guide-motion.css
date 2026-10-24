@@ -1,4 +1,14 @@
 /* Motion does not alter the guide's route or the page reading order. */
+.guide-stage-journey .guide-character { width: 64px; height: 96px; }
+.guide-character-model { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transform: perspective(650px) rotateX(var(--guide-tilt-x, 0deg)) rotateY(var(--guide-tilt-y, 0deg)); transition: transform .25s ease; }
+.guide-character-model::before { content: ""; position: absolute; left: 15%; right: 15%; bottom: 0; height: 10px; border-radius: 50%; background: #1f304b25; filter: blur(4px); transform: rotateX(60deg) translateZ(-8px); pointer-events: none; }
+.guide-character-label { position: absolute; right: 0; bottom: -10px; display: flex; align-items: center; gap: 6px; white-space: nowrap; padding: 5px 8px; border: 1px solid #d4deef; border-radius: 20px; background: #fff; box-shadow: 0 3px 9px #17243b12; color: #254c9d; font: 650 .65rem/1.3 "Inter Variable", sans-serif; }
+.guide-character-label span { font-size: .75rem; }
+.guide-stage-journey .guide-callout { width: 220px; padding: 12px 14px; background: #fff; backdrop-filter: none; border-radius: 16px 16px 4px 16px; }
+.guide-stage-journey .guide-callout small { font-size: .6rem; line-height: 1.4; }
+.guide-stage-journey .guide-callout strong { font-size: .8rem; line-height: 1.45; }
+.guide-stage-journey .guide-character[data-active="false"] img { animation-play-state: paused; }
+@media(max-width:767px) { .guide-stage-journey .guide-character { width: 48px; height: 74px; } .guide-character-label { font-size: .6rem; gap: 4px; padding-inline: 6px; } }
 .guide-stage-journey .guide-character img { animation: guide-alive-idle 5.4s ease-in-out infinite; }
 .guide-stage-journey .guide-character.is-walking img { animation: guide-walk .2s ease-in-out infinite alternate; }
 .guide-stage-journey .guide-character.is-scrolling:not(.is-walking)[data-scroll-direction="up"] img { animation: guide-scroll-up .28s ease-in-out infinite alternate; }
@@ -17,6 +27,11 @@
 .guide-assistant-avatar[data-motion="point"] { animation: guide-point 1.1s cubic-bezier(.2,.8,.2,1) both; }
 .guide-assistant-avatar[data-motion="reassure"] { animation: guide-reassure 1.2s ease-out both; }
 .guide-assistant-avatar[data-motion="none"] { animation: none; }
+.guide-thinking-dots { display: inline-flex; gap: 4px; }
+.guide-thinking-dots i { width: 5px; height: 5px; border-radius: 50%; background: #326bff; animation: guide-thought 1s ease-in-out infinite alternate; }
+.guide-thinking-dots i:nth-child(2) { animation-delay: .18s; }
+.guide-thinking-dots i:nth-child(3) { animation-delay: .36s; }
+@keyframes guide-thought { to { transform: translateY(-3px); opacity: .4; } }
 
 @keyframes guide-alive-idle {
   0%, 100% { transform: translateY(0) rotate(0) scale(1); }
@@ -59,6 +74,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .guide-stage-journey .guide-character { transition: none; }
+  .guide-character-model { transform: none; transition: none; }
   .guide-stage-journey .guide-character.guide-character img,
   .guide-stage-journey .guide-character.guide-character:is(:hover, :focus-visible, .is-greeting, .is-speaking, .is-walking, .is-scrolling, .is-jumping) img,
   .guide-assistant-avatar[data-motion] { animation: none; }
