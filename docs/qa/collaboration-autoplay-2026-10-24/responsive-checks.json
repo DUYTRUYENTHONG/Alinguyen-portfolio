@@ -1,0 +1,134 @@
+[
+  {
+    "buttons": [
+      {
+        "h": 46,
+        "label": "Pause",
+        "w": 64
+      },
+      {
+        "h": 46,
+        "label": "←",
+        "w": 46
+      },
+      {
+        "h": 46,
+        "label": "→",
+        "w": 46
+      }
+    ],
+    "entries": 15,
+    "overflow": false,
+    "width": 1440
+  },
+  {
+    "buttons": [
+      {
+        "h": 46,
+        "label": "Pause",
+        "w": 64
+      },
+      {
+        "h": 46,
+        "label": "←",
+        "w": 46
+      },
+      {
+        "h": 46,
+        "label": "→",
+        "w": 46
+      }
+    ],
+    "entries": 15,
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "buttons": [
+      {
+        "h": 46,
+        "label": "Pause",
+        "w": 64
+      },
+      {
+        "h": 46,
+        "label": "←",
+        "w": 46
+      },
+      {
+        "h": 46,
+        "label": "→",
+        "w": 46
+      }
+    ],
+    "entries": 15,
+    "overflow": false,
+    "width": 1024
+  },
+  {
+    "buttons": [
+      {
+        "h": 46,
+        "label": "Pause",
+        "w": 64
+      },
+      {
+        "h": 46,
+        "label": "←",
+        "w": 46
+      },
+      {
+        "h": 46,
+        "label": "→",
+        "w": 46
+      }
+    ],
+    "entries": 15,
+    "overflow": false,
+    "width": 768
+  },
+  {
+    "buttons": [
+      {
+        "h": 46,
+        "label": "Pause",
+        "w": 64
+      },
+      {
+        "h": 46,
+        "label": "←",
+        "w": 46
+      },
+      {
+        "h": 46,
+        "label": "→",
+        "w": 46
+      }
+    ],
+    "entries": 15,
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "buttons": [
+      {
+        "h": 46,
+        "label": "Pause",
+        "w": 64
+      },
+      {
+        "h": 46,
+        "label": "←",
+        "w": 46
+      },
+      {
+        "h": 46,
+        "label": "→",
+        "w": 46
+      }
+    ],
+    "entries": 15,
+    "overflow": false,
+    "width": 320
+  }
+]

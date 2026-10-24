@@ -7,6 +7,7 @@
 .buttons{display:flex;gap:8px;flex-shrink:0}
 .buttons button{display:grid;place-items:center;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--ink);font-size:1.3rem;cursor:pointer}
 .buttons button:disabled{opacity:.4;cursor:default}
+.buttons .rotation{width:auto;min-width:64px;padding:0 12px;border-radius:24px;font:600 .8125rem/1.2 "Inter Variable",sans-serif}
 .buttons button:enabled:hover{border-color:var(--blue);color:var(--blue)}
 .buttons button:focus-visible,.rail:focus-visible,.surface:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .rail{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#b7bec8 transparent;border-radius:4px;overscroll-behavior-x:contain}
@@ -26,5 +27,5 @@ a.surface:hover,a.surface:focus-visible{border-color:#9badcf;box-shadow:0 7px 16
 .section[data-entered="true"] .plaque:nth-child(4n+4)::before{animation-delay:165ms}
 @keyframes settle{from{opacity:.55;transform:rotateX(6deg) translateY(10px) translateZ(-10px)}to{opacity:1;transform:rotateX(6deg) translateZ(-10px)}}
 @media(max-width:900px){.grid{grid-auto-columns:calc((100% - 20px)/2)}.section{padding-top:72px}}
-@media(max-width:600px){.section{padding-top:66px}.grid{grid-auto-columns:85%;gap:14px}.plaque{height:145px}.surface{padding:20px}.surface img{height:100px}.intro{margin-bottom:28px}.controls>span{max-width:165px}.range{display:block;margin:4px 0 0}}
+@media(max-width:600px){.section{padding-top:66px}.grid{grid-auto-columns:85%;gap:14px}.plaque{height:145px}.surface{padding:20px}.surface img{height:100px}.intro{margin-bottom:28px}.controls{flex-wrap:wrap}.controls>span{max-width:165px}.range{display:block;margin:4px 0 0}}
 @media(prefers-reduced-motion:reduce){.section[data-entered="true"] .plaque::before{animation:none}.plaque::before,.surface{transition:none}}
