@@ -1,0 +1,93 @@
+[
+  {
+    "orientation": "portrait",
+    "viewport": [
+      440,
+      956
+    ],
+    "resume": {
+      "controls": [
+        {
+          "h": 46,
+          "text": "Pause",
+          "w": 64
+        },
+        {
+          "h": 46,
+          "text": "←",
+          "w": 46
+        },
+        {
+          "h": 46,
+          "text": "→",
+          "w": 46
+        }
+      ],
+      "overflow": false,
+      "scroll": 1336.6666259765625
+    },
+    "pauseBefore": {
+      "play": "Play",
+      "scroll": 1336.6666259765625
+    },
+    "pauseAfter": {
+      "play": "Play",
+      "scroll": 1336.6666259765625
+    }
+  },
+  {
+    "orientation": "landscape",
+    "viewport": [
+      956,
+      440
+    ],
+    "play": {
+      "controls": [
+        {
+          "bottom": 243.2916717529297,
+          "text": "Pause",
+          "top": 197.2916717529297
+        },
+        {
+          "bottom": 243.2916717529297,
+          "text": "←",
+          "top": 197.2916717529297
+        },
+        {
+          "bottom": 243.2916717529297,
+          "text": "→",
+          "top": 197.2916717529297
+        }
+      ],
+      "overflow": false,
+      "rail": {
+        "bottom": 440.2916870117187,
+        "height": 181,
+        "left": 40,
+        "right": 900.6666870117188,
+        "top": 259.29168701171875,
+        "width": 860.6666870117188,
+        "x": 40,
+        "y": 259.29168701171875
+      },
+      "scroll": 880.6666870117188
+    },
+    "resume": {
+      "play": "Pause",
+      "scroll": 1761.3333740234375
+    },
+    "pauseBefore": {
+      "play": "Play",
+      "scroll": 1761.3333740234375
+    },
+    "pauseAfter": {
+      "play": "Play",
+      "scroll": 1761.3333740234375
+    }
+  },
+  {
+    "check": "landscape Play resumes after touch",
+    "before": 1761.3333740234375,
+    "after": 880.6666870117188
+  }
+]

@@ -11,6 +11,7 @@ export function CustomerCollaborationSection() {
   const sectionRef = useOnceVisible<HTMLElement>();
   const railRef = useRef<HTMLElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const stopSlideRef = useRef<(() => void) | null>(null);
   const [playing, setPlaying] = useState(true);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [range, setRange] = useState({ first: 1, last: 4, atStart: true, atEnd: false });
@@ -37,7 +38,10 @@ export function CustomerCollaborationSection() {
 
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReducedMotion(preference.matches);
+    const update = () => {
+      if (preference.matches) stopSlideRef.current?.();
+      setReducedMotion(preference.matches);
+    };
     update();
     preference.addEventListener("change", update);
     return () => preference.removeEventListener("change", update);
@@ -55,6 +59,7 @@ export function CustomerCollaborationSection() {
       // Stop an in-progress smooth slide before a visitor interacts with a logo.
       rail.scrollTo({ left: rail.scrollLeft, behavior: "instant" });
     };
+    stopSlideRef.current = stop;
     const schedule = () => {
       clearTimeout(timer);
       if (hovered || !visible || document.hidden) return;
@@ -69,7 +74,7 @@ export function CustomerCollaborationSection() {
       }, 4000);
     };
     const enter = (event: PointerEvent) => {
-      if (event.pointerType !== "mouse") return;
+      if (event.pointerType !== "mouse" || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
       hovered = true;
       stop();
     };
@@ -102,7 +107,9 @@ export function CustomerCollaborationSection() {
     carousel.addEventListener("focusin", focus);
     document.addEventListener("visibilitychange", visibility);
     return () => {
-      stop(); observer.disconnect();
+      // Interaction handlers stop the old slide before starting any new one.
+      // Cleanup must not cancel the manual scroll started in the same render.
+      clearTimeout(timer); stopSlideRef.current = null; observer.disconnect();
       carousel.removeEventListener("pointerenter", enter);
       carousel.removeEventListener("pointerleave", leave);
       carousel.removeEventListener("pointerdown", pointer);
@@ -116,6 +123,7 @@ export function CustomerCollaborationSection() {
   function move(direction: number) {
     const rail = railRef.current;
     if (!rail) return;
+    stopSlideRef.current?.();
     setPlaying(false);
     rail.scrollBy({ left: direction * rail.clientWidth,
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
@@ -132,7 +140,7 @@ export function CustomerCollaborationSection() {
       <div className={styles.controls}>
         <span>Browse the collection <span className={styles.range}>{range.first}–{range.last} / {customers.length}</span></span>
         <div className={styles.buttons}>
-          <button className={styles.rotation} data-rotation-control type="button" aria-controls="collaboration-logos" disabled={reducedMotion} onClick={() => setPlaying(!playing)}>{reducedMotion ? "Motion off" : playing ? "Pause" : "Play"}</button>
+          <button className={styles.rotation} data-rotation-control type="button" aria-controls="collaboration-logos" disabled={reducedMotion} onClick={() => { stopSlideRef.current?.(); setPlaying(!playing); }}>{reducedMotion ? "Motion off" : playing ? "Pause" : "Play"}</button>
           <button type="button" aria-label="Previous collaborations" aria-controls="collaboration-logos" disabled={range.atStart} onClick={() => move(-1)}>←</button>
           <button type="button" aria-label="Next collaborations" aria-controls="collaboration-logos" disabled={range.atEnd} onClick={() => move(1)}>→</button>
         </div>
