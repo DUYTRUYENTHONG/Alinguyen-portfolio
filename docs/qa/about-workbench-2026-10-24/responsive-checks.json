@@ -1,0 +1,50 @@
+[
+  {
+    "capabilityItems": 19,
+    "columns": "560.5px 560.5px",
+    "headingTop": 211.78125,
+    "overflow": false,
+    "principles": 4,
+    "width": 1440
+  },
+  {
+    "capabilityItems": 19,
+    "columns": "560.5px 560.5px",
+    "headingTop": 211.96875,
+    "overflow": false,
+    "principles": 4,
+    "width": 1280
+  },
+  {
+    "capabilityItems": 19,
+    "columns": "452.333px 452.333px",
+    "headingTop": 211.8541717529297,
+    "overflow": false,
+    "principles": 4,
+    "width": 1024
+  },
+  {
+    "capabilityItems": 19,
+    "columns": "340.333px 340.333px",
+    "headingTop": 211.4791717529297,
+    "overflow": false,
+    "principles": 4,
+    "width": 768
+  },
+  {
+    "capabilityItems": 19,
+    "columns": "326.667px",
+    "headingTop": 214.5416717529297,
+    "overflow": false,
+    "principles": 4,
+    "width": 390
+  },
+  {
+    "capabilityItems": 19,
+    "columns": "256.667px",
+    "headingTop": 196.0416717529297,
+    "overflow": false,
+    "principles": 4,
+    "width": 320
+  }
+]
