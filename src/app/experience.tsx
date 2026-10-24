@@ -209,6 +209,7 @@ export function VisitorPicker({ projects }: { projects: Project[] }) {
     <section className="visitor section-shell" id="visitor" aria-labelledby="visitor-title">
       <div className="visitor-heading"><h2 id="visitor-title">Hello stranger,<span className="visitor-heading-tail"> who are you?</span></h2></div>
       <p className="visitor-optional">Optional: choose a perspective to prioritize relevant projects. All work and CVs are available without choosing.</p>
+      <div id="visitor-guide-message" className="visitor-guide-message" />
       <fieldset className="role-grid"><legend className="sr-only">Choose your perspective</legend>
         {roles.map((item) => <RoleTile key={item.label} item={item} selected={chosen ? selected : null} onSelect={setSelected} />)}
       </fieldset>

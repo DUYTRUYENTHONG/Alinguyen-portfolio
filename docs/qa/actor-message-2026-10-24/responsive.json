@@ -1,0 +1,42 @@
+[
+  {
+    "ctaHeight": 44,
+    "doc": 1209,
+    "message": "Meet AriHi, I’m Ari. I’ll help you assess fit and find evidence you can inspect.Ask Ari ↗",
+    "messageVisible": true,
+    "overlapsChoices": false,
+    "width": 1224
+  },
+  {
+    "ctaHeight": 44,
+    "doc": 1009,
+    "message": "Meet AriHi, I’m Ari. I’ll help you assess fit and find evidence you can inspect.Ask Ari ↗",
+    "messageVisible": true,
+    "overlapsChoices": false,
+    "width": 1024
+  },
+  {
+    "ctaHeight": 44,
+    "doc": 753,
+    "message": "Meet AriHi, I’m Ari. I’ll help you assess fit and find evidence you can inspect.Ask Ari ↗",
+    "messageVisible": true,
+    "overlapsChoices": false,
+    "width": 768
+  },
+  {
+    "ctaHeight": 44,
+    "doc": 375,
+    "message": "Meet AriHi, I’m Ari. I’ll help you assess fit and find evidence you can inspect.Ask Ari ↗",
+    "messageVisible": true,
+    "overlapsChoices": false,
+    "width": 390
+  },
+  {
+    "ctaHeight": 44,
+    "doc": 305,
+    "message": "Meet AriHi, I’m Ari. I’ll help you assess fit and find evidence you can inspect.Ask Ari ↗",
+    "messageVisible": true,
+    "overlapsChoices": false,
+    "width": 320
+  }
+]
