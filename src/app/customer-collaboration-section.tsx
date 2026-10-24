@@ -14,27 +14,6 @@ export function CustomerCollaborationSection() {
   const stopSlideRef = useRef<(() => void) | null>(null);
   const [playing, setPlaying] = useState(true);
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [range, setRange] = useState({ first: 1, last: 4, atStart: true, atEnd: false });
-
-  useEffect(() => {
-    const rail = railRef.current;
-    if (!rail) return;
-    const update = () => {
-      const cards = Array.from(rail.querySelectorAll("li"));
-      const bounds = rail.getBoundingClientRect();
-      const visible = cards.flatMap((card, index) => {
-        const rect = card.getBoundingClientRect();
-        return rect.right > bounds.left + 8 && rect.left < bounds.right - 8 ? [index + 1] : [];
-      });
-      setRange({ first: visible[0] ?? 1, last: visible.at(-1) ?? customers.length,
-        atStart: rail.scrollLeft <= 2, atEnd: rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2 });
-    };
-    update();
-    rail.addEventListener("scroll", update, { passive: true });
-    const observer = new ResizeObserver(update);
-    observer.observe(rail);
-    return () => { rail.removeEventListener("scroll", update); observer.disconnect(); };
-  }, []);
 
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -83,13 +62,12 @@ export function CustomerCollaborationSection() {
       hovered = false;
       schedule();
     };
-    const interact = (event?: Event) => {
-      if (event?.target instanceof HTMLElement && event.target.closest("[data-rotation-control]")) return;
+    const interact = () => {
       stop(); setPlaying(false);
     };
-    const pointer = (event: PointerEvent) => { if (event.pointerType !== "mouse") interact(event); };
+    const pointer = (event: PointerEvent) => { if (event.pointerType !== "mouse") interact(); };
     const focus = (event: FocusEvent) => {
-      if (!(event.target instanceof HTMLElement) || event.target.closest("[data-rotation-control]")) return;
+      if (!(event.target instanceof HTMLElement)) return;
       interact();
     };
     const visibility = () => { stop(); schedule(); };
@@ -120,15 +98,6 @@ export function CustomerCollaborationSection() {
     };
   }, [playing, reducedMotion]);
 
-  function move(direction: number) {
-    const rail = railRef.current;
-    if (!rail) return;
-    stopSlideRef.current?.();
-    setPlaying(false);
-    rail.scrollBy({ left: direction * rail.clientWidth,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
-  }
-
   return <section ref={sectionRef} className={styles.section} id="feedback" aria-labelledby="customers-title">
     <div className="section-shell">
       <div className={styles.intro}>
@@ -137,14 +106,6 @@ export function CustomerCollaborationSection() {
         <p>Customer and collaboration names confirmed by Ali Nguyen. Individual testimonials are not quoted here.</p>
       </div>
       <div ref={carouselRef}>
-      <div className={styles.controls}>
-        <span>Browse the collection <span className={styles.range}>{range.first}–{range.last} / {customers.length}</span></span>
-        <div className={styles.buttons}>
-          <button className={styles.rotation} data-rotation-control type="button" aria-controls="collaboration-logos" disabled={reducedMotion} onClick={() => { stopSlideRef.current?.(); setPlaying(!playing); }}>{reducedMotion ? "Motion off" : playing ? "Pause" : "Play"}</button>
-          <button type="button" aria-label="Previous collaborations" aria-controls="collaboration-logos" disabled={range.atStart} onClick={() => move(-1)}>←</button>
-          <button type="button" aria-label="Next collaborations" aria-controls="collaboration-logos" disabled={range.atEnd} onClick={() => move(1)}>→</button>
-        </div>
-      </div>
       <section ref={railRef} className={styles.rail} id="collaboration-logos" aria-label="Customer and collaboration carousel">
       <ul className={styles.grid} aria-label="Customer and collaboration names">
         {customers.map((customer) => {
