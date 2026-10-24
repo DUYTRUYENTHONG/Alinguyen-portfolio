@@ -1,0 +1,62 @@
+[
+  {
+    "cardWidth": 271.25,
+    "entries": 15,
+    "headingTop": 342.0833435058594,
+    "missingImages": 0,
+    "pageOverflow": false,
+    "railScrollWidth": 4349,
+    "railWidth": 1145,
+    "width": 1440
+  },
+  {
+    "cardWidth": 271.25,
+    "entries": 15,
+    "headingTop": 223.6041717529297,
+    "missingImages": 0,
+    "pageOverflow": false,
+    "railScrollWidth": 4349,
+    "railWidth": 1145,
+    "width": 1280
+  },
+  {
+    "cardWidth": 217.1666717529297,
+    "entries": 15,
+    "headingTop": 162.20834350585938,
+    "missingImages": 0,
+    "pageOverflow": false,
+    "railScrollWidth": 3538,
+    "railWidth": 929,
+    "width": 1024
+  },
+  {
+    "cardWidth": 342.3333435058594,
+    "entries": 15,
+    "headingTop": 1615.3333740234375,
+    "missingImages": 0,
+    "pageOverflow": false,
+    "railScrollWidth": 5415,
+    "railWidth": 705,
+    "width": 768
+  },
+  {
+    "cardWidth": 277.66668701171875,
+    "entries": 15,
+    "headingTop": 3383.73974609375,
+    "missingImages": 0,
+    "pageOverflow": false,
+    "railScrollWidth": 4361,
+    "railWidth": 327,
+    "width": 390
+  },
+  {
+    "cardWidth": 218.1666717529297,
+    "entries": 15,
+    "headingTop": 4311.5107421875,
+    "missingImages": 0,
+    "pageOverflow": false,
+    "railScrollWidth": 3469,
+    "railWidth": 257,
+    "width": 320
+  }
+]
