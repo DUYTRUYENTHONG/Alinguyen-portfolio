@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "typecheck": "tsc --noEmit",
-    "test:guide": "node --experimental-strip-types --test test/guide-callout-placement.test.mjs",
+    "test:guide": "node --experimental-strip-types --test test/guide-*.test.mjs",
     "lint": "biome lint src",
     "build": "next build"
   },

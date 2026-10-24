@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
 import { useGuideDialog } from "./use-guide-dialog";
+import { conversationScrollTop } from "./guide-conversation-scroll";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const endpoint = process.env.NEXT_PUBLIC_GUIDE_API_URL;
@@ -57,6 +58,7 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
   const scrollRef = useRef<HTMLDivElement>(null);
   const motionTimerRef = useRef<number | null>(null);
   const requestPending = useRef(false);
+  const followingReply = useRef(true);
   const contextQuestion = section.includes("KKBox") ? "How was KKBox evaluated?"
     : section.includes("STOS") ? "What does STOS do?"
     : section.includes("Growth Commerce") ? "What does Growth Commerce OS do?"
@@ -102,7 +104,44 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
     } catch { /* Private browsing or blocked storage: continue without memory. */ }
   }, []);
 
-  useEffect(() => { scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight }); }, [turns, busy]);
+  useEffect(() => {
+    const transcript = scrollRef.current;
+    if (!open || !transcript) return;
+    let frame = 0;
+    const follow = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const current = transcript.querySelector<HTMLElement>("[data-guide-current]")
+          ?? (document.activeElement?.id === "guide-question" ? transcript.querySelector<HTMLElement>(".guide-assistant-welcome") : null);
+        if (!current) return;
+        const viewport = transcript.getBoundingClientRect();
+        const target = current.getBoundingClientRect();
+        transcript.scrollTo({ top: conversationScrollTop({ scrollTop: transcript.scrollTop,
+          scrollHeight: transcript.scrollHeight, viewportTop: viewport.top,
+          viewportHeight: transcript.clientHeight, targetTop: target.top, targetHeight: target.height }), behavior: "instant" });
+      });
+    };
+    const readHistory = () => { followingReply.current = false; };
+    const keyboardHistory = (event: KeyboardEvent) => {
+      if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End"].includes(event.key)) readHistory();
+    };
+    const observer = new ResizeObserver(() => {
+      if (followingReply.current) follow();
+    });
+    observer.observe(transcript);
+    transcript.addEventListener("wheel", readHistory, { passive: true });
+    transcript.addEventListener("touchstart", readHistory, { passive: true });
+    transcript.addEventListener("keydown", keyboardHistory);
+    // A new turn follows the active bubble, rather than the preferences below it.
+    followingReply.current = true;
+    follow();
+    return () => {
+      cancelAnimationFrame(frame); observer.disconnect();
+      transcript.removeEventListener("wheel", readHistory);
+      transcript.removeEventListener("touchstart", readHistory);
+      transcript.removeEventListener("keydown", keyboardHistory);
+    };
+  }, [open, turns, busy, error]);
 
   const saveInterests = (next: string[], enabled = remember) => {
     setInterests(next);
@@ -168,13 +207,13 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
             <button key={item} type="button" disabled={busy} onClick={() => void ask(item)}>{item}<span aria-hidden="true">↗</span></button>)}
         </div>
       </div>}
-      {turns.map((turn, index) => <div className={`guide-assistant-turn guide-assistant-turn-${turn.role}`} key={`${index}-${turn.role}`}>
+      {turns.map((turn, index) => <div className={`guide-assistant-turn guide-assistant-turn-${turn.role}`} data-guide-current={index === turns.length - 1 && !busy && !error ? "true" : undefined} key={`${index}-${turn.role}`}>
         <span>{turn.role === "assistant" && <img src={`${basePath}/guide-art/${icon}.webp`} width="20" height="28" alt="" />}{turn.role === "user" ? "You" : name}</span><p>{turn.text}</p>
         {turn.citations?.length ? <div className="guide-assistant-citations">{turn.citations.map((citation) =>
           <a key={citation.sourceId} href={citation.url} target="_blank" rel="noopener noreferrer">{citation.label} ↗</a>)}</div> : null}
       </div>)}
-      {busy && <div className="guide-assistant-status" role="status"><span className="guide-thinking-dots" aria-hidden="true"><i /><i /><i /></span><span>{name} is checking public sources…</span></div>}
-      {error && <p className="guide-assistant-error" role="status">{error}</p>}
+      {busy && <div className="guide-assistant-status" data-guide-current="true" role="status"><span className="guide-thinking-dots" aria-hidden="true"><i /><i /><i /></span><span>{name} is checking public sources…</span></div>}
+      {error && <p className="guide-assistant-error" data-guide-current="true" role="status">{error}</p>}
       {error && <p className="guide-assistant-fallback"><a href={`${basePath}/work/`} onClick={onClose}>Work</a> · <a href={`${basePath}/about/`} onClick={onClose}>About</a> · <a href={`${basePath}/#cvs`} onClick={onClose}>CVs</a> · <a href={`${basePath}/#contact`} onClick={onClose}>Contact</a></p>}
       {!busy && suggestions.length > 0 && <div className="guide-assistant-suggestions">{suggestions.map((item) =>
         <button key={item} type="button" onClick={() => void ask(item)}>{item}</button>)}</div>}
@@ -187,7 +226,7 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
     </div>
     <div className="guide-assistant-footer">
       <form onSubmit={submit}><label htmlFor="guide-question" className="sr-only">Ask a question</label>
-        <input id="guide-question" value={question} onChange={(event) => setQuestion(event.target.value)} onFocus={() => { if (!busy) showMotion("curious", 900); }} maxLength={400} placeholder={`Ask ${name} about the work…`} readOnly={busy} autoComplete="off" enterKeyHint="send" />
+        <input id="guide-question" value={question} onChange={(event) => setQuestion(event.target.value)} onFocus={() => { followingReply.current = true; if (!busy) showMotion("curious", 900); }} maxLength={400} placeholder={`Ask ${name} about the work…`} readOnly={busy} autoComplete="off" enterKeyHint="send" />
         <button type="submit" disabled={busy || !question.trim()} aria-label="Send question">→</button>
       </form>
     </div>
