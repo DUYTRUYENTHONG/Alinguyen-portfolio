@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { projects } from "@/data/portfolio";
 import { GuideAssistantPanel } from "./guide-assistant-panel";
+import { placeGuideActor } from "./guide-actor-placement";
 import { placeGuideCallout } from "./guide-callout-placement";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
-const mix = (start: number, end: number, amount: number) => start + (end - start) * amount;
 
 const stops = [
   ["#visitor", "Choose your perspective"],
@@ -86,25 +86,17 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     if (!stage || !actor) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const held = { left: false, right: false };
-    let currentX = lastPosition.current?.x ?? null;
-    let currentY = lastPosition.current?.y ?? null;
-    let manualOffset = 0;
-    let rise = 0;
-    let velocity = 0;
-    let frame = 0;
+    let currentX = lastPosition.current?.x ?? 0;
+    let currentY = lastPosition.current?.y ?? 0;
     let scrollFrame = 0;
-    let settleFrame = 0;
-    let walkTimer = 0;
     let tiltFrame = 0;
-    let lastTime = 0;
-    let lastScrollY = window.scrollY;
-    let scrolling = false;
+    const obstacleSelector = "main article, main [aria-hidden=true], main h1, main h2, main h3, main p, main img, main a, main button, main input, main summary, .proof-ribbon, .role-card, .visitor-stats, .visitor-result, #collaboration-logos, [data-guide-obstacle]";
+    const contentBoxes = () => Array.from(document.querySelectorAll<HTMLElement>(obstacleSelector))
+      .filter((element) => !stage.contains(element))
+      .map((element) => element.getBoundingClientRect())
+      .filter((rect) => rect.width > 2 && rect.height > 2 && rect.bottom > 0 && rect.top < window.innerHeight);
 
     const route = () => {
-      const stageRect = stage.getBoundingClientRect();
-      const maxX = Math.max(0, stage.clientWidth - actor.offsetWidth);
-      const maxY = Math.max(0, stage.clientHeight - actor.offsetHeight);
       const readingLine = window.innerWidth < 768
         ? clamp(window.innerHeight * .62, 210, window.innerHeight - actor.offsetHeight - 24)
         : clamp(window.innerHeight * .58, 145, window.innerHeight - actor.offsetHeight - 24);
@@ -117,11 +109,10 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       }
 
       let label = "Explore the portfolio";
-      let sceneIndex = 0;
       let projectId: string | null = null;
-      for (const [index, [selector, title]] of stops.entries()) {
+      for (const [selector, title] of stops) {
         const rect = document.querySelector(selector)?.getBoundingClientRect();
-        if (rect && rect.top <= readingLine && rect.bottom > readingLine) { label = title; sceneIndex = index; break; }
+        if (rect && rect.top <= readingLine && rect.bottom > readingLine) { label = title; break; }
       }
       if (label === "Selected work") {
         for (const card of document.querySelectorAll<HTMLElement>(".work-card")) {
@@ -135,49 +126,14 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
         }
       }
 
-      const edgeOffset = [8, 30, 14, 44, 26, 22, 50, 10, 38, 18, 32, 12, 24][sceneIndex] ?? 8;
-      let x = Math.max(0, maxX - edgeOffset);
-      let y = clamp(readingLine - stageRect.top + [0, -24, 18, -15, 10, 24, -12, 16, -22, 12, -16, 20, 0][sceneIndex], 0, maxY);
-      const visitorRect = visitor?.getBoundingClientRect();
-      if (visitorRect && visitorRect.top <= readingLine && visitorRect.bottom > readingLine) {
-        const card = visitor?.querySelector(".role-card.is-selected") ?? visitor?.querySelector(".role-card");
-        const stats = visitor?.querySelector(".visitor-stats, .visitor-stats-offline");
-        const result = visitor?.querySelector(".visitor-result");
-        if (card && stats && result) {
-          const cardRect = card.getBoundingClientRect();
-          const statsRect = stats.getBoundingClientRect();
-          const resultRect = result.getBoundingClientRect();
-          const points = [
-            { x: cardRect.left - stageRect.left + cardRect.width / 2 - actor.offsetWidth / 2, y: cardRect.bottom - stageRect.top - actor.offsetHeight + 3 },
-            { x: maxX * .72, y: statsRect.top - stageRect.top - actor.offsetHeight + 3 },
-            { x: maxX * .3, y: resultRect.top - stageRect.top - actor.offsetHeight + 3 },
-          ];
-          const first = clamp((readingLine - cardRect.bottom) / Math.max(1, statsRect.top - cardRect.bottom), 0, 1);
-          const second = clamp((readingLine - statsRect.top) / Math.max(1, resultRect.top - statsRect.top), 0, 1);
-          const from = second > 0 ? points[1] : points[0];
-          const to = second > 0 ? points[2] : points[1];
-          const amount = second > 0 ? second : first;
-          x = mix(from.x, to.x, amount);
-          y = mix(from.y, to.y, amount) - (reducedMotion.matches ? 0 : Math.sin(Math.PI * amount) * 20);
-        }
-      }
-      const safeTop = window.innerWidth < 768 ? 98 : 120;
-      const safeBottom = window.innerHeight - actor.offsetHeight - 22;
-      let screenY = clamp(y + stageRect.top, safeTop, safeBottom);
-      // Keep the guide and its message clear of the main conversion links as they pass the reading line.
-      for (const link of document.querySelectorAll<HTMLElement>(".hero-actions a, .project-proof a, #cvs a, #contact a, #contact button")) {
-        const rect = link.getBoundingClientRect();
-        if (rect.bottom < safeTop || rect.top > window.innerHeight) continue;
-        if (screenY - 20 >= rect.bottom || screenY + actor.offsetHeight + 20 <= rect.top) continue;
-        const above = rect.top - actor.offsetHeight - 32;
-        const below = rect.bottom + 32;
-        const choices = [above, below].filter((position) => position >= safeTop && position <= safeBottom);
-        if (choices.length) screenY = choices.sort((a, b) => Math.abs(a - screenY) - Math.abs(b - screenY))[0];
-      }
+      // Measure the entire button, including its label, against actual content.
+      const position = placeGuideActor(
+        { width: actor.offsetWidth, height: actor.offsetHeight },
+        { width: document.documentElement.clientWidth, height: window.innerHeight }, contentBoxes(), lastPosition.current,
+      );
       const message = (projectId ? projectMessages[projectId] : null) ?? sceneMessages[label] ?? "Follow along for the work and the decisions behind it.";
       const viewportMaxX = Math.max(0, window.innerWidth - actor.offsetWidth);
-      const screenX = window.innerWidth < 768 || label === "Choose your perspective" || label === "Download a CV" ? viewportMaxX : clamp(x + stageRect.left, 0, viewportMaxX);
-      return { x: screenX, y: screenY, label, message, visible, maxX: viewportMaxX };
+      return { x: position.left, y: position.top, label, message, visible, maxX: viewportMaxX };
     };
 
     const paint = () => {
@@ -194,76 +150,26 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
         messageRef.current = target.message;
         setMessage(target.message);
       }
-      manualOffset = clamp(manualOffset, -target.x, target.maxX - target.x);
-      const targetX = target.label === "Download a CV" ? target.maxX : clamp(target.x + manualOffset, 0, target.maxX);
-      const amount = reducedMotion.matches ? 1 : .22;
-      currentX = currentX === null || target.label === "Download a CV" ? targetX : mix(currentX, targetX, amount);
-      currentY = currentY === null ? target.y : mix(currentY, target.y, amount);
+      // Keep the target still while it is being hovered or keyboard focused.
+      const engaged = actor.matches(":hover, :focus-visible") && lastPosition.current;
+      const inside = currentX + actor.offsetWidth <= document.documentElement.clientWidth - 16 && currentY + actor.offsetHeight <= window.innerHeight - 24;
+      if (!engaged || !inside) { currentX = target.x; currentY = target.y; }
       lastPosition.current = { x: currentX, y: currentY };
-      actor.style.transform = `translate3d(${currentX}px, ${currentY + rise}px, 0)`;
+      actor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
       const callout = actor.querySelector<HTMLElement>(".guide-callout");
       if (callout) {
         const speaking = !actor.classList.contains("has-inline-message") && (actor.classList.contains("is-speaking") || actor.matches(":hover, :focus-visible"));
-        const obstacles = speaking && window.innerWidth >= 768
-          ? Array.from(document.querySelectorAll<HTMLElement>("main h1, main h2, main h3, main p, .role-card-copy strong, .role-card-copy small, .role-card-copy em, .role-icon, main a, main button, main input, main summary"))
-            .filter((element) => element !== actor && !actor.contains(element))
-            .map((element) => element.getBoundingClientRect())
-            .filter((rect) => rect.width > 2 && rect.height > 2 && rect.bottom > 104 && rect.top < window.innerHeight)
-          : [];
+        const obstacles = contentBoxes();
         const placement = speaking && window.innerWidth >= 768 ? placeGuideCallout(
-          { left: currentX, top: currentY + rise, width: actor.offsetWidth, height: actor.offsetHeight },
+          { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight },
           { width: callout.offsetWidth, height: callout.offsetHeight },
           { width: window.innerWidth, height: window.innerHeight }, obstacles,
         ) : null;
         actor.classList.toggle("has-callout-space", Boolean(placement));
         if (placement) { callout.style.left = `${placement.left}px`; callout.style.top = `${placement.top}px`; }
       }
-      actor.classList.toggle("is-walking", target.visible && !reducedMotion.matches && (held.left || held.right));
-      actor.classList.toggle("is-scrolling", target.visible && !reducedMotion.matches && scrolling);
-      actor.classList.toggle("is-jumping", rise < -1);
-      return Math.abs(targetX - currentX) > .6 || Math.abs(target.y - currentY) > .6;
     };
 
-    const step = (time: number) => {
-      const delta = Math.min((time - (lastTime || time)) / 1000, .05);
-      lastTime = time;
-      const direction = Number(held.right) - Number(held.left);
-      manualOffset += direction * 205 * delta;
-      if (rise < 0 || velocity < 0) {
-        velocity += 1800 * delta;
-        rise = Math.min(0, rise + velocity * delta);
-        if (rise === 0) velocity = 0;
-      }
-      const following = paint();
-      if (direction !== 0 || rise < 0 || following) frame = requestAnimationFrame(step);
-      else { frame = 0; lastTime = 0; }
-    };
-    const animate = () => { if (!frame && !reducedMotion.matches) frame = requestAnimationFrame(step); };
-    const jump = () => {
-      if (reducedMotion.matches || rise < 0) return;
-      velocity = -650;
-      rise = -.1;
-      animate();
-    };
-    const keyDown = (event: KeyboardEvent) => {
-      if (event.target !== actor) return;
-      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
-        event.preventDefault();
-        const direction = event.key === "ArrowLeft" ? -1 : 1;
-        if (!event.repeat) manualOffset += direction * 22;
-        held[direction < 0 ? "left" : "right"] = true;
-        actor.dataset.facing = event.key === "ArrowLeft" ? "left" : "right";
-        paint();
-        animate();
-      } else if (event.key === "ArrowUp") {
-        event.preventDefault();
-        jump();
-      }
-    };
-    const keyUp = (event: KeyboardEvent) => {
-      if (event.key === "ArrowLeft" || event.key === "ArrowRight") held[event.key === "ArrowLeft" ? "left" : "right"] = false;
-    };
-    const stopWalking = () => { held.left = false; held.right = false; };
     const tilt = (event: PointerEvent) => {
       if (reducedMotion.matches || event.pointerType !== "mouse") return;
       cancelAnimationFrame(tiltFrame);
@@ -281,47 +187,33 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       actor.style.setProperty("--guide-tilt-y", "0deg");
     };
     const onScroll = () => {
-      if (reducedMotion.matches) { paint(); return; }
-      if (window.scrollY !== lastScrollY) actor.dataset.scrollDirection = window.scrollY < lastScrollY ? "up" : "down";
-      lastScrollY = window.scrollY;
-      scrolling = true;
-      window.clearTimeout(walkTimer);
-      walkTimer = window.setTimeout(() => { scrolling = false; paint(); }, 150);
-      if (!scrollFrame) scrollFrame = window.requestAnimationFrame(() => { scrollFrame = 0; paint(); animate(); });
+      if (!scrollFrame) scrollFrame = window.requestAnimationFrame(() => { scrollFrame = 0; paint(); });
     };
     const observer = new ResizeObserver(paint);
     observer.observe(stage);
     const grid = document.querySelector(".role-grid");
     if (grid) observer.observe(grid);
-    window.addEventListener("keydown", keyDown);
-    window.addEventListener("keyup", keyUp);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     window.addEventListener("load", paint);
     window.addEventListener("guide-panel-change", paint);
-    actor.addEventListener("blur", stopWalking);
     actor.addEventListener("focus", paint);
+    actor.addEventListener("blur", paint);
     actor.addEventListener("pointerenter", paint);
     actor.addEventListener("pointermove", tilt);
     actor.addEventListener("pointerleave", resetTilt);
     actor.addEventListener("guide-message-change", paint);
     paint();
-    settleFrame = requestAnimationFrame(paint);
     return () => {
-      cancelAnimationFrame(frame);
       cancelAnimationFrame(scrollFrame);
-      cancelAnimationFrame(settleFrame);
       cancelAnimationFrame(tiltFrame);
-      window.clearTimeout(walkTimer);
       observer.disconnect();
-      window.removeEventListener("keydown", keyDown);
-      window.removeEventListener("keyup", keyUp);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       window.removeEventListener("load", paint);
       window.removeEventListener("guide-panel-change", paint);
-      actor.removeEventListener("blur", stopWalking);
       actor.removeEventListener("focus", paint);
+      actor.removeEventListener("blur", paint);
       actor.removeEventListener("pointerenter", paint);
       actor.removeEventListener("pointermove", tilt);
       actor.removeEventListener("pointerleave", resetTilt);
@@ -361,7 +253,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   };
 
   return <div className="guide-stage guide-stage-journey" ref={stageRef}>
-    <button ref={actorRef} className={`guide-character${stop === "Choose your perspective" ? " has-inline-message" : ""}`} type="button" onClick={() => changePanel(true)} aria-label={`Ask ${persona.name}, Ali's AI guide. Current section: ${stop}. ${message}`} aria-haspopup="dialog" aria-expanded={panelOpen} title={`Ask ${persona.name} · Arrow keys move when focused · Up jumps`}>
+    <button ref={actorRef} className={`guide-character${stop === "Choose your perspective" ? " has-inline-message" : ""}`} type="button" onClick={() => changePanel(true)} aria-label={`Ask ${persona.name}, Ali's AI guide. Current section: ${stop}. ${message}`} aria-haspopup="dialog" aria-expanded={panelOpen} title={`Ask ${persona.name}, Ali’s AI guide`}>
       <span className="guide-character-model" aria-hidden="true"><img src={`${basePath}/guide-art/${icon}.webp`} alt="" width="68" height="102" draggable="false" /></span>
       <span className="guide-character-label" aria-hidden="true">Ask {persona.name} <span>↗</span></span>
       <span className="guide-callout" aria-hidden="true"><small>{showIntroduction ? `Meet ${persona.name}` : stop}</small><strong>{showIntroduction ? persona.introduction : message}</strong></span>

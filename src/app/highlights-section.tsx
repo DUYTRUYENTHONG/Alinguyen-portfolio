@@ -42,7 +42,7 @@ export function HighlightsSection() {
     <div className={styles.shell}>
       <h2 id="highlights-title" className={styles.srOnly}>Highlights</h2>
       <div className={styles.grid}>
-        <div className={styles.feature}>
+        <div className={styles.feature} data-guide-obstacle>
           <span className={styles.sparkle} aria-hidden="true">✦</span>
           <FeatureArtwork />
           <div className={styles.featureCopy}><strong>5</strong><p>featured builds across commerce products, open-source tooling, and customer analytics.</p><div className={styles.featureFooter}><span>PUBLIC BUILDS.<br />EVIDENCE IN VIEW.</span><a href="#work" aria-label="Explore selected work">→</a></div></div>

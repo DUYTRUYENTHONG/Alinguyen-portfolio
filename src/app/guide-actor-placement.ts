@@ -1,0 +1,18 @@
+import type { GuideBox } from "./guide-callout-placement";
+
+// Prefer a stable empty edge pocket. In dense views choose the least occupied
+// pocket, keeping the complete native button inside the safe viewport.
+export function placeGuideActor(size: { width: number; height: number }, viewport: { width: number; height: number }, obstacles: GuideBox[], previous: { x: number; y: number } | null) {
+  const left = viewport.width <= 1024 && viewport.width > viewport.height ? 64 : 16;
+  const right = Math.max(left, viewport.width - size.width - left);
+  const top = Math.min(112, Math.max(16, viewport.height - size.height - 24));
+  const bottom = Math.max(top, viewport.height - size.height - 24);
+  const preferred = Math.min(bottom, Math.max(top, viewport.height * .58));
+  const area = (box: GuideBox) => obstacles.reduce((sum, obstacle) => sum + Math.max(0, Math.min(box.left + box.width + 10, obstacle.left + obstacle.width) - Math.max(box.left - 10, obstacle.left)) * Math.max(0, Math.min(box.top + box.height + 10, obstacle.top + obstacle.height) - Math.max(box.top - 10, obstacle.top)), 0);
+  if (previous && previous.x >= left && previous.x <= right && previous.y >= top && previous.y <= bottom && area({ ...size, left: previous.x, top: previous.y }) === 0) return { left: previous.x, top: previous.y };
+  const ys = [preferred, top, bottom, ...obstacles.flatMap((box) => [box.top - size.height - 12, box.top + box.height + 12])];
+  const candidates = [right, left].flatMap((x) => ys.map((y) => ({ ...size, left: x, top: Math.min(bottom, Math.max(top, y)) })));
+  candidates.sort((a, b) => area(a) - area(b) || Math.abs(a.top - preferred) - Math.abs(b.top - preferred) || b.left - a.left);
+  return { left: candidates[0].left, top: candidates[0].top };
+}
+

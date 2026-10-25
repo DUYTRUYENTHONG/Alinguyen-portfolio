@@ -1,14 +1,14 @@
 /* Motion does not alter the guide's route or the page reading order. */
-.guide-stage-journey .guide-character { width: 64px; height: 96px; }
+.guide-stage-journey .guide-character { width: 80px; height: 120px; padding: 0 8px 24px; }
 .guide-character-model { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transform: perspective(650px) rotateX(var(--guide-tilt-x, 0deg)) rotateY(var(--guide-tilt-y, 0deg)); transition: transform .25s ease; }
 .guide-character-model::before { content: ""; position: absolute; left: 15%; right: 15%; bottom: 0; height: 10px; border-radius: 50%; background: #1f304b25; filter: blur(4px); transform: rotateX(60deg) translateZ(-8px); pointer-events: none; }
-.guide-character-label { position: absolute; right: 0; bottom: -10px; display: flex; align-items: center; gap: 6px; white-space: nowrap; padding: 5px 8px; border: 1px solid #d4deef; border-radius: 20px; background: #fff; box-shadow: 0 3px 9px #17243b12; color: #254c9d; font: 650 .65rem/1.3 "Inter Variable", sans-serif; }
+.guide-character-label { position: absolute; right: 0; bottom: 0; display: flex; align-items: center; gap: 6px; white-space: nowrap; padding: 5px 8px; border: 1px solid #d4deef; border-radius: 20px; background: #fff; box-shadow: 0 3px 9px #17243b12; color: #254c9d; font: 650 .65rem/1.3 "Inter Variable", sans-serif; }
 .guide-character-label span { font-size: .75rem; }
 .guide-stage-journey .guide-callout { width: 220px; padding: 12px 14px; background: #fff; backdrop-filter: none; border-radius: 16px 16px 4px 16px; }
 .guide-stage-journey .guide-callout small { font-size: .6rem; line-height: 1.4; }
 .guide-stage-journey .guide-callout strong { font-size: .8rem; line-height: 1.45; }
 .guide-stage-journey .guide-character[data-active="false"] img { animation-play-state: paused; }
-@media(max-width:767px) { .guide-stage-journey .guide-character { width: 48px; height: 74px; } .guide-character-label { font-size: .6rem; gap: 4px; padding-inline: 6px; } }
+@media(max-width:767px) { .guide-stage-journey .guide-character { width: 68px; height: 96px; padding: 0 10px 22px; } .guide-character-label { font-size: .6rem; gap: 4px; padding-inline: 6px; } }
 .guide-stage-journey .guide-character img { animation: guide-alive-idle 5.4s ease-in-out infinite; }
 .guide-stage-journey .guide-character.is-walking img { animation: guide-walk .2s ease-in-out infinite alternate; }
 .guide-stage-journey .guide-character.is-scrolling:not(.is-walking)[data-scroll-direction="up"] img { animation: guide-scroll-up .28s ease-in-out infinite alternate; }
