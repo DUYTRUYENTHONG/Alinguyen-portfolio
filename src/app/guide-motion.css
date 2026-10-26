@@ -87,3 +87,33 @@
 .guide-stage-journey .guide-character.has-callout-space:is(.is-speaking,:hover,:focus-visible) .guide-callout { visibility: visible; transform: none; pointer-events: auto; }
 @media(max-width:767px) { .guide-stage-journey .guide-character .guide-callout { width: 200px; padding: 10px 12px; } .guide-stage-journey .guide-character .guide-callout strong { font-size: .8rem; } }
 @media(prefers-reduced-motion:reduce) { .guide-stage-journey .guide-character .guide-callout { transition: none; } }
+/* Persistent, dismissible NPC greeting, independent of the moving actor. */
+.guide-npc-card { position: fixed; z-index: 45; right: max(20px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom)); width: min(380px, calc(100vw - 32px)); max-height: calc(100dvh - 112px); overflow-y: auto; overscroll-behavior: contain; background: #fff; color: var(--ink); border: 1px solid #dce3ed; border-radius: 24px; box-shadow: 0 14px 42px #17243b24; }
+.guide-npc-head { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 12px 12px 12px 18px; background: #f7f9fd; border-bottom: 1px solid #e5eaf1; }
+.guide-npc-head small { display:block; font-size:.6rem; letter-spacing:.1em; color:#53647d; margin-bottom:4px; }
+.guide-npc-head strong { font-size:1rem; }
+.guide-npc-head strong span { font-size:.75rem; font-weight:500; color:#53647d; }
+.guide-npc-head button { flex:none; width:44px; height:44px; border:1px solid #d9e1ef; border-radius:50%; background:#fff; font-size:1.5rem; cursor:pointer; }
+.guide-npc-body { display:grid; grid-template-columns:84px minmax(0,1fr); gap:12px; padding:22px 18px 18px; align-items:center; }
+.guide-npc-scene { position:relative; height:132px; perspective:650px; }
+.guide-npc-scene img { position:relative; width:84px; height:126px; object-fit:contain; transform-origin:50% 90%; filter:drop-shadow(3px 5px 4px #17243b24); animation: npc-arrive 1.1s ease-out both; }
+.guide-npc-scene img[data-motion="point"] { animation:npc-point .8s ease-out both; }
+.guide-npc-ground { position:absolute; bottom:0; left:14px; width:58px; height:12px; background:#c9d5e7; border-radius:50%; filter:blur(4px); transform:rotateX(40deg); }
+.guide-npc-speech { position:relative; padding:14px; border:1px solid #dbe4f2; border-radius:16px 16px 16px 4px; background:#f7faff; box-shadow:2px 4px 0 #edf1f8; }
+.guide-npc-speech small { color:#48618a; font:650 .62rem/1.4 monospace; letter-spacing:.08em; }
+.guide-npc-speech p { margin:7px 0 0; font-size:.9rem; line-height:1.6; }
+.guide-npc-speech strong { display:block; margin-top:10px; font-size:.78rem; }
+.guide-npc-choices { display:flex; flex-direction:column; gap:8px; padding:0 18px; }
+.guide-npc-choices a,.guide-npc-choices button { display:flex; justify-content:center; align-items:center; min-height:44px; padding:10px 14px; border:1px solid #d9e1ef; border-radius:13px; background:#fff; color:#254c9d; font:650 .85rem/1.4 "Inter Variable",sans-serif; text-align:center; cursor:pointer; text-decoration:none; }
+.guide-npc-choices .guide-npc-primary { background:#17243b; color:#fff; border-color:#17243b; }
+.guide-npc-card :is(a,button):focus-visible { outline:3px solid var(--blue); outline-offset:2px; }
+.guide-npc-note { padding:0 18px 16px; margin:12px 0 0; font-size:.7rem; line-height:1.5; color:#647085; }
+@keyframes npc-arrive { 0% { transform:translateY(8px) rotateY(-18deg) rotateZ(-5deg); } 40% { transform:translateY(-4px) rotateY(12deg) rotateZ(5deg); } 70% { transform:rotateY(-6deg) rotateZ(-2deg); } 100% { transform:none; } }
+@keyframes npc-point { 35% { transform:translateX(5px) rotateY(-14deg) rotateZ(5deg); } 100% { transform:none; } }
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) { .guide-npc-scene:hover img { animation:guide-curious 1s ease-out both; } }
+@media(max-width:767px) { .guide-npc-card { right:max(8px,env(safe-area-inset-right)); bottom:max(8px,env(safe-area-inset-bottom)); width:calc(100% - 16px); max-height: min(520px,calc(100dvh - 88px)); border-radius:20px; } .guide-npc-body { padding:16px 14px; grid-template-columns:64px minmax(0,1fr); gap:10px; } .guide-npc-scene img { width:64px; height:110px; } .guide-npc-scene { height:116px; } .guide-npc-ground { width:44px; left:10px; } }
+@media(max-height:480px) { .guide-npc-card { max-height:calc(100dvh - 24px); bottom:12px; } .guide-npc-body { padding-block:12px; } }
+@media(prefers-reduced-motion:reduce) { .guide-npc-scene img[data-motion],.guide-npc-scene:hover img { animation:none; transform:none; } }
+
+
+

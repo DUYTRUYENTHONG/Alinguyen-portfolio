@@ -119,3 +119,9 @@ Run `npm --prefix analytics ci` and `npm --prefix analytics test` for SQL checks
 ## Shared with the community
 
 The homepage includes a separate community resource after the applied AI examples: [Vietnam Career Agent Kit](https://github.com/DUYTRUYENTHONG/vietnam-career-agent-kit). It is a free MIT-licensed Python/SQLite kit for local job-search preparation and supervised application workflows. Agent services may cost separately; no employment outcome is promised. The five featured commerce/developer/data builds remain unchanged. Content lives in `communityResource` in `src/data/portfolio.ts`; presentation is scoped to `community-resource-section`.
+
+## NPC-style portfolio companion
+
+Choosing a perspective opens a persistent introduction with a three-stop, role-aware tour. Visitors control navigation and explicitly choose when to open AI chat. Existing character artwork uses lightweight layered motion; it is not a rigged 3D model. Reduced-motion preferences disable the new animation.
+
+See [the executed implementation prompt and acceptance criteria](docs/NPC_GUIDE_IMPLEMENTATION_PROMPT.md).
