@@ -28,6 +28,23 @@ The knowledge-assistant work is a prototype, not a deployed support service. The
 
 ## How this portfolio is made
 
+This repository contains three deployable parts: a static portfolio, a separate AI/traffic API, and a private analytics importer. See the [AI engineering implementation guide](docs/AI_ENGINEERING_IMPLEMENTATION.md) for the source map, request lifecycle, evaluation procedure and operational boundaries.
+
+```mermaid
+flowchart LR
+  Visitor[Visitor] --> Site[Next.js static site / GitHub Pages]
+  Site -->|Submitted question| API[Vercel guide API]
+  Evidence[Reviewed knowledge documents] --> Retrieval[Keyword retrieval + role context]
+  API --> Retrieval
+  Retrieval --> Model[Groq structured generation]
+  Model --> Answer[Answer + approved citations + motion cue]
+  Answer --> Site
+  Source[Upstash no-bloom daily aggregates] --> Job[GitHub Actions restricted importer]
+  Job --> Warehouse[Private Supabase PostgreSQL schema]
+```
+
+**The warehouse is not currently connected to guide retrieval.** Consent-based portfolio interaction signals are approved work, but their collection and recommendation ranking are not implemented. The `no-bloom` source is a separate project, not portfolio engagement data.
+
 - **Frontend:** Next.js 16 App Router, React 19, TypeScript, a static export, self-hosted Inter and Archivo fonts, and scoped CSS for the editorial sections. The hero changes its emphasis for a selected visitor perspective or entry link; the base layout stays consistent.
 - **Content:** `src/data/portfolio.ts` is the main record for identity, projects, expertise, collaborations, and capabilities. Case pages, briefs, and CVs preserve the distinction between live work, public code, prototypes, plans, and measured local results.
 - **Interactions:** The named guide characters use local motion. Questions are sent only after a visitor submits them to the separate [Vercel guide API](visitor-api/README.md). API keys stay server-side. The independent visitor counter uses that API project as well.
@@ -54,6 +71,9 @@ npm run typecheck
 npm run lint
 npm --prefix visitor-api ci
 npm --prefix visitor-api test
+npm --prefix analytics ci
+npm --prefix analytics test
+npm run test:guide
 npm --prefix visitor-api run smoke:production
 npm run build
 ```
@@ -70,10 +90,28 @@ Client and collaboration names were confirmed by Ali Nguyen. Individual testimon
 
 ## Engineering evidence added October 2026
 
-- [Traffic-to-PostgreSQL pipeline and hosted migration runbook](analytics/README.md): locally verified with persistent PGlite PostgreSQL, transactional snapshots, replay protection and daily/weekly SQL views. Upstash remains the operational store. No online warehouse or scheduled job is claimed.
+- [Traffic-to-PostgreSQL pipeline](analytics/README.md): verified locally with PGlite and on hosted Supabase PostgreSQL. The restricted loader imports `no-bloom` production daily aggregates with TLS verification, transactional snapshots, reconciliation and replay protection. The [first manually dispatched production job passed](https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/actions/runs/40283819868); daily scheduling is enabled at 00:17 UTC / 07:17 Bangkok. The first time-triggered execution has not yet been observed in this report. Upstash remains the operational store.
 - [AI guide evaluation](docs/evidence/AI_GUIDE_EVALUATION.md): 16 live baseline requests, 12 HTTP 200 responses, four service errors, nine original heuristic passes. Full failures and rubric limitations are retained; this is not an accuracy benchmark.
 - [Evidence page](https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/): a clearly labelled synthetic analytics demonstration and the guide baseline. Actual traffic records remain private.
 
 Run `npm --prefix analytics ci` and `npm --prefix analytics test` for SQL checks. Use `npm --prefix analytics run demo` to regenerate the synthetic record. Regenerate only the AI CVs with `python scripts/generate-ai-cvs.py --ai-only`; render and inspect both outputs before committing them. Business CVs remain unchanged by that option.
 
-For the next hosted step, follow [Create a new Supabase analytics project](docs/SUPABASE_SETUP.md). It includes private connection setup, migration, replay verification and access checks.
+## Documentation map
+
+| Guide | Purpose |
+| --- | --- |
+| [AI engineering implementation](docs/AI_ENGINEERING_IMPLEMENTATION.md) | Retrieval, generation, citations, evaluation, source updates and limitations |
+| [Portfolio creation](docs/PORTFOLIO_CREATION_GUIDE.md) | Frontend architecture, design and content maintenance |
+| [API setup](visitor-api/README.md) | Separate Vercel service, environment configuration and traffic API |
+| [Analytics pipeline](analytics/README.md) | Snapshot semantics, SQL, replay and local reproduction |
+| [Supabase setup](docs/SUPABASE_SETUP.md) | Hosted schema and access restrictions |
+| [Automated imports](docs/AUTOMATED_TRAFFIC_IMPORTS.md) | Private credentials, daily runner, recovery and activation gates |
+| [Hosted QA evidence](docs/evidence/SUPABASE_WAREHOUSE_QA.md) | Dated checks and remaining operational work |
+
+### Current limits
+
+- Retrieval uses reviewed documents and weighted keywords; no embedding model, vector index, fine-tuning or warehouse-driven recommendations are deployed.
+- The live guide evaluation is a historical baseline, not a measurement of the latest release. A successful smoke check does not establish factual accuracy.
+- Public analytics examples are synthetic. Private visitor data and database credentials must never enter Git, browser bundles or model prompts.
+- External stale-import alerts, backup restoration tests and load testing remain outstanding.
+- Some existing CV/site/guide evidence still describes the earlier local warehouse milestone. Updating those claims requires coordinated source updates and evaluation; this documentation update does not silently upgrade them.
