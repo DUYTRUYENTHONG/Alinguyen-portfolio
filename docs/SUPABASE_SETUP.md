@@ -69,7 +69,7 @@ npm --prefix analytics ci
 npm --prefix analytics test
 ```
 
-Expected: twelve tests pass. These are local PostgreSQL checks, not confirmation that Supabase is reachable.
+Expected: fourteen tests pass. These are local PostgreSQL checks, not confirmation that Supabase is reachable.
 
 ## 6. Create the schema and import a snapshot
 
@@ -135,6 +135,8 @@ from (values ('anon'), ('authenticated')) as roles(role_name);
 Both privileges should be false for both roles. If they are true, stop before loading more data and review grants and exposed schemas.
 
 ## 8. Prepare regular imports after the first hosted check
+
+The restricted role and scheduled runner are now prepared. Follow [Automated traffic imports](AUTOMATED_TRAFFIC_IMPORTS.md) for private password setup, the exact local environment-file location and GitHub activation gates. The role remains unable to log in until its password is set; a deployed workflow alone does not prove a successful automated import.
 
 The initial database owner is for setup only. Before scheduling, create a separate loader login with `USAGE` on `traffic_analytics` and `SELECT, INSERT, UPDATE` on its two tables, plus explicit RLS policies scoped to that loader's allowed projects. Do not grant schema creation, table deletion, or `BYPASSRLS` to the scheduled loader. Because the views use `security_invoker`, a reporting role also needs corresponding base-table SELECT grants and matching RLS policies; a view grant alone is insufficient. Keep passwords in the runner's secret manager. This provisioning has not been performed yet.
 

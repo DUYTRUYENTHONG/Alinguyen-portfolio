@@ -1,0 +1,41 @@
+name: Import traffic analytics
+
+on:
+  schedule:
+    - cron: '17 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: traffic-analytics-production
+  cancel-in-progress: false
+
+jobs:
+  import:
+    if: github.ref == 'refs/heads/main' && vars.ANALYTICS_IMPORT_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: traffic-analytics-production
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            analytics/package-lock.json
+            visitor-api/package-lock.json
+      - run: npm --prefix analytics ci --ignore-scripts
+      - run: npm --prefix visitor-api ci --ignore-scripts
+      - run: npm --prefix analytics test
+      - name: Export, import and reconcile private aggregates
+        run: node analytics/scripts/automated-import.mjs
+        env:
+          ANALYTICS_DATABASE_URL: ${{ secrets.ANALYTICS_DATABASE_URL }}
+          ANALYTICS_CA_PEM: ${{ secrets.ANALYTICS_CA_PEM }}
+          KV_REST_API_URL: ${{ secrets.TRAFFIC_SOURCE_REDIS_URL }}
+          KV_REST_API_TOKEN: ${{ secrets.TRAFFIC_SOURCE_REDIS_TOKEN }}

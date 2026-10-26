@@ -17,7 +17,9 @@ SELECT 'api_roles_denied' AS check_name,
   AND (SELECT NOT bool_or(has_table_privilege(r.oid,o.oid,'SELECT,INSERT,UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER')) FROM roles r CROSS JOIN objects o) AS passed
 UNION ALL SELECT 'two_tables_with_rls', (SELECT count(*)=2 AND bool_and(relrowsecurity) FROM objects WHERE relkind='r')
 UNION ALL SELECT 'two_invoker_views', (SELECT count(*)=2 AND bool_and(reloptions @> ARRAY['security_invoker=true']) FROM objects WHERE relkind='v')
-UNION ALL SELECT 'no_rls_allow_policies', NOT EXISTS (SELECT 1 FROM pg_policies WHERE schemaname='traffic_analytics')
+UNION ALL SELECT 'no_unapproved_rls_roles', NOT EXISTS (
+  SELECT 1 FROM pg_policies WHERE schemaname='traffic_analytics'
+  AND NOT (roles <@ ARRAY['traffic_loader']::name[]))
 UNION ALL SELECT 'imported_data_matches_batch_payloads',
   EXISTS (SELECT 1 FROM latest) AND NOT EXISTS (
     SELECT 1 FROM latest e FULL JOIN traffic_analytics.daily_counts d
