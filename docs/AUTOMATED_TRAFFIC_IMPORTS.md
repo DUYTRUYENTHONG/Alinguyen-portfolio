@@ -4,7 +4,7 @@
 
 The scheduled runner imports **no-bloom / production** daily aggregates from the existing Upstash source. It does not relabel those records as portfolio traffic or infer which portfolio projects visitors prefer.
 
-The hosted `traffic_loader` role was created on 2026-10-26 with login disabled, pending owner password setup. All 14 local analytics tests passed. A hosted metadata query returned `restricted_grants_verified=true` and `login_enabled=false`. SQL Editor impersonation was denied (`42501`); no role memberships were added to bypass that restriction. Live password authentication and the first scheduled import must be verified before enabling the schedule. The separate manual warehouse bootstrap is documented in [hosted QA](evidence/SUPABASE_WAREHOUSE_QA.md).
+On 2026-10-26 the owner activated the restricted `traffic_loader` login. The local live import passed with verified TLS using the Supabase dashboard's CA certificate, exact row reconciliation and replay verification. GitHub environment secrets were installed, the schedule gate enabled, and the first manually dispatched production runner [passed](https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/actions/runs/40283819868), including all 14 analytics tests. The first clock-triggered execution has not yet been observed. The separate manual warehouse bootstrap is documented in [hosted QA](evidence/SUPABASE_WAREHOUSE_QA.md).
 
 ## 1. Set the restricted role's password privately
 
@@ -81,6 +81,6 @@ Failures produce a nonzero job result with a sanitized phase. Review the Actions
 
 The current actor retrieves approved factual documents using keyword relevance and selected role/section context. Traffic statistics are not factual evidence of project quality, business impact, or a person's interests. No-bloom traffic must not bias portfolio project recommendations without a meaningful source mapping.
 
-Any subsequent portfolio signal collection requires an explicit consent choice, allowlisted project/evidence IDs, aggregate-only export, freshness/volume checks and retrieval regression evaluation. The language model should receive approved evidence, not raw visitor data or private traffic totals. A ranking signal can reorder relevant evidence; it must never introduce unsupported claims or override an explicit project question. That extension is pending the user's choice of data source and is not active in this release.
+The owner approved consent-based portfolio interaction signals on 2026-10-26. Implementation must still include visitor opt-in, allowlisted project/evidence IDs, aggregate-only export, freshness/volume checks and retrieval regression evaluation. The language model should receive approved evidence, not raw visitor data or private traffic totals. A ranking signal can reorder relevant evidence; it must never introduce unsupported claims or override an explicit project question. This extension is approved but not active in this release.
 
 References: [Supabase roles](https://supabase.com/docs/guides/database/postgres/roles), [connection options](https://supabase.com/docs/guides/database/connecting-to-postgres), [GitHub schedule behavior](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).

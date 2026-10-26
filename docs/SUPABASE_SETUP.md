@@ -136,11 +136,11 @@ Both privileges should be false for both roles. If they are true, stop before lo
 
 ## 8. Prepare regular imports after the first hosted check
 
-The restricted role and scheduled runner are now prepared. Follow [Automated traffic imports](AUTOMATED_TRAFFIC_IMPORTS.md) for private password setup, the exact local environment-file location and GitHub activation gates. The role remains unable to log in until its password is set; a deployed workflow alone does not prove a successful automated import.
+The restricted role and scheduled runner are active. Follow [Automated traffic imports](AUTOMATED_TRAFFIC_IMPORTS.md) for private credential locations, verification evidence and GitHub activation gates. A deployed workflow alone does not prove a successful import; check its execution result.
 
-The initial database owner is for setup only. The restricted `traffic_loader` role and project-scoped RLS policies have been applied. Login activation, private credentials and the first live restricted import remain pending. The loader has no DELETE, schema creation or BYPASSRLS privileges. A future reporting role requires its own reviewed grants and policies.
+The initial database owner is for setup only. The restricted `traffic_loader` role and project-scoped RLS policies have been applied. Login activation, encrypted runner credentials and the first live restricted import were verified on 2026-10-26. The loader has no DELETE, schema creation or BYPASSRLS privileges. A future reporting role requires its own reviewed grants and policies.
 
-The gated workflow exports seven previous UTC days plus the current partial day at 00:17 UTC daily. It remains disabled until live verification passes. Verify the first execution and configure failure notifications; backup and restore testing remain separate requirements.
+The enabled workflow exports seven previous UTC days plus the current partial day at 00:17 UTC daily. Its first manually dispatched production run passed; the first clock-triggered run remains to be observed. Configure failure notifications; backup and restore testing remain separate requirements.
 
 The exporter and exact environment variables are documented in [the pipeline runbook](../analytics/README.md). Each additional site must first be registered in the shared traffic API with its legitimate origin and project ID. One warehouse can hold their isolated aggregate records.
 

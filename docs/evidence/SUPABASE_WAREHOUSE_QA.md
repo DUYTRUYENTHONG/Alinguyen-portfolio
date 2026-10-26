@@ -32,10 +32,18 @@ Refreshed Security Advisor: **0 errors, 0 warnings**, two informational “RLS E
 
 Local verification: the original ten PostgreSQL tests passed, plus two new tests covering the SQL Editor fallback against the regular loader (replay, newer/stale snapshots, conflict rollback) and Supabase-role hardening with all nine QA assertions. Local tests use PGlite; hosted checks above ran on Supabase PostgreSQL.
 
+## Automation follow-up — 2026-10-26
+
+The restricted `traffic_loader` login now authenticates through the Session pooler with full certificate verification using the CA downloaded from Supabase Database Settings. The initial `SELF_SIGNED_CERT_IN_CHAIN` failure was resolved by configuring that CA, not by disabling verification.
+
+The local live importer passed runtime privilege assertions, exact batch/row reconciliation and replay verification over eight UTC day records. The first GitHub production import [passed](https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/actions/runs/40283819868), including all 14 analytics tests. Environment secrets are stored in `traffic-analytics-production`, limited to the `main` branch. Daily scheduling is enabled at 00:17 UTC / 07:17 Bangkok. No private counts or credentials were committed.
+
+The owner-level nine-check SQL includes reporting views that are intentionally not granted to the loader; running it as the loader returns `42501`. The successful runtime checks and reconciliation use only the loader's approved tables. The earlier nine-check results above describe the bootstrap stage; its no-policy state predates the scoped loader policies.
+
 ## Remaining operational work
 
-- `ANALYTICS_DATABASE_URL` is not configured, so the existing Node loader's direct TLS connection to Supabase is not verified.
-- Scheduled ingestion, restricted runtime credentials/policies, stale-import alerting, backup restore and load testing remain pending. This is a verified manual warehouse bootstrap, not a production-ready scheduled pipeline.
+- Observe the first clock-triggered execution; only the manually dispatched production run has been observed so far.
+- External stale-import alerting, backup restore and load testing remain pending.
 - The source snapshot's original observation time is retained. Importing it today does not make its traffic fresh.
 - No CV or frontend claims were upgraded to “automated production pipeline.”
 
