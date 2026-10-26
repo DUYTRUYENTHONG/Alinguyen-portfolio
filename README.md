@@ -125,3 +125,7 @@ The homepage includes a separate community resource after the applied AI example
 Choosing a perspective opens a persistent introduction with a three-stop, role-aware tour. Visitors control navigation and explicitly choose when to open AI chat. Existing character artwork uses lightweight layered motion; it is not a rigged 3D model. Reduced-motion preferences disable the new animation.
 
 See [the executed implementation prompt and acceptance criteria](docs/NPC_GUIDE_IMPLEMENTATION_PROMPT.md).
+
+### Work directory community listing
+
+`/work/` includes Vietnam Career Agent Kit alongside the five featured builds (six total; two in AI & data). It reuses `communityResource` from `src/data/portfolio.ts` and links directly to the public repository. The homepage still has five featured case studies plus its separate community section. Browser QA checked All/AI & data counts, the GitHub destination, 44px filter targets, and overflow at 320, 390, 768 and 1280px.

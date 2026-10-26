@@ -266,3 +266,11 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
 
 /* Shallow portrait depth on fine pointers; text remains stable. */
 @media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) { .portrait-photo { transition: transform .65s ease; } .portrait-stage:hover .portrait-photo { transform: translateX(-50%) perspective(1200px) rotateY(-3deg) translateZ(10px); } }
+
+/* Community kit uses the shared directory layout and source record. */
+.directory-community{background:#edf3ff}
+.directory-career-workflow{padding:20px;text-align:left;flex:1;width:100%;min-width:0}
+.directory-career-workflow p{font-size:.9rem;line-height:1.55;margin:0 0 18px}
+.directory-career-workflow ol{padding-left:24px;display:grid;gap:10px;font-weight:650;font-size:.9rem}
+.directory-career-workflow small{display:block;font-size:.8rem;line-height:1.5;color:#4b5563;margin-top:20px}
+.directory-filters button{min-height:44px}
