@@ -122,7 +122,7 @@ The homepage includes a separate community resource after the applied AI example
 
 ## NPC-style portfolio companion
 
-Choosing a perspective opens a persistent introduction with a three-stop, role-aware tour. Visitors control navigation and explicitly choose when to open AI chat. Existing character artwork uses lightweight layered motion; it is not a rigged 3D model. Reduced-motion preferences disable the new animation.
+The actor opens AI chat only when selected. The automatic welcome/tour card was removed at the owner’s request. A saved perspective never opens a panel or navigates the page. Existing character artwork uses lightweight layered motion; it is not a rigged 3D model.
 
 See [the executed implementation prompt and acceptance criteria](docs/NPC_GUIDE_IMPLEMENTATION_PROMPT.md).
 

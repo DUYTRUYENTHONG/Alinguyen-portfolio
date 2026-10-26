@@ -1,3 +1,5 @@
+> Superseded: the owner requested removal of the welcome/tour card on 2026-10-26. The actor now opens chat directly. The earlier implementation and QA below are historical.
+
 # NPC portfolio guide — implementation prompt and acceptance
 
 ## Executed implementation prompt
@@ -27,3 +29,11 @@ Separate the interactive card from the actor button so links/buttons are not nes
 - Reduced-motion animation override corrected and verified as `animation-name: none`.
 - `npm run test:guide`: 24 passed. `npm run lint`, `npm run typecheck`, and production `npm run build`: passed.
 - Browser checks use Chromium emulation. Physical iPhone Safari, its software keyboard, and true rigged 3D animation are not claimed.
+
+## Entry and chat update — 2026-10-26
+
+- Removed the welcome/tour overlay and its automatic saved-role opening behavior.
+- Actor and inline Ask buttons open the existing AI chat directly.
+- Fresh homepage entries start at the header. Direct/reloaded stale `#work` URLs normalize to `#top`; explicit CV links, same-site Work return links, and Back/Forward remain available.
+- QA: lint, TypeScript, 23 guide tests and the production static build passed. Browser checks covered saved roles, popup absence, direct chat opening, CV anchor/reload, stale Work reload, and 390×844 / 844×390 layouts. No horizontal overflow; chat close/send controls remained within the viewport.
+- Mobile checks used browser viewport emulation, not physical iPhone Safari or the iOS keyboard.

@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { projects } from "@/data/portfolio";
-import { GuideNpcCard } from "./guide-npc-card";
 import { GuideAssistantPanel } from "./guide-assistant-panel";
 import { placeGuideActor } from "./guide-actor-placement";
 import { placeGuideCallout } from "./guide-callout-placement";
@@ -75,8 +74,6 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   const [stop, setStop] = useState("Choose your perspective");
   const [message, setMessage] = useState(sceneMessages["Choose your perspective"]);
   const [panelOpen, setPanelOpen] = useState(false);
-  const [tourOpen, setTourOpen] = useState(false);
-  const tourOpenRef = useRef(false);
   const [conversationSection, setConversationSection] = useState(stop);
   const [messageSlot, setMessageSlot] = useState<HTMLElement | null>(null);
   useEffect(() => setMessageSlot(document.getElementById("visitor-guide-message")), []);
@@ -143,10 +140,10 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
 
     const paint = () => {
       const target = route();
-      actor.style.opacity = target.visible && !panelOpenRef.current && !tourOpenRef.current ? "1" : "0";
-      actor.dataset.active = String(target.visible && !panelOpenRef.current && !tourOpenRef.current);
-      actor.style.pointerEvents = target.visible && !panelOpenRef.current && !tourOpenRef.current ? "auto" : "none";
-      actor.tabIndex = target.visible && !panelOpenRef.current && !tourOpenRef.current ? 0 : -1;
+      actor.style.opacity = target.visible && !panelOpenRef.current ? "1" : "0";
+      actor.dataset.active = String(target.visible && !panelOpenRef.current);
+      actor.style.pointerEvents = target.visible && !panelOpenRef.current ? "auto" : "none";
+      actor.tabIndex = target.visible && !panelOpenRef.current ? 0 : -1;
       if (stopRef.current !== target.label) {
         stopRef.current = target.label;
         setStop(target.label);
@@ -247,9 +244,6 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   useEffect(() => {
     if (!chosen) return;
     setShowIntroduction(true);
-    tourOpenRef.current = true;
-    setTourOpen(true);
-    window.dispatchEvent(new Event("guide-panel-change"));
     const actor = actorRef.current;
     actor?.classList.add("is-greeting");
     const timer = window.setTimeout(() => setShowIntroduction(false), 5000);
@@ -261,18 +255,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     };
   }, [chosen, role]);
 
-  const changeTour = (open: boolean) => {
-    tourOpenRef.current = open;
-    setTourOpen(open);
-    window.dispatchEvent(new Event("guide-panel-change"));
-    requestAnimationFrame(() => {
-      if (open) document.querySelector<HTMLButtonElement>("#guide-npc-card button")?.focus({ preventScroll: true });
-      else actorRef.current?.focus({ preventScroll: true });
-    });
-  };
-
   const changePanel = (open: boolean) => {
-    if (open) { tourOpenRef.current = false; setTourOpen(false); }
     if (open) setConversationSection(stopRef.current);
     panelOpenRef.current = open;
     setPanelOpen(open);
@@ -281,13 +264,12 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   };
 
   return <div className="guide-stage guide-stage-journey" ref={stageRef}>
-    <button ref={actorRef} className="guide-character" type="button" onClick={() => changeTour(true)} aria-label={`Talk with ${persona.name}, Ali's portfolio guide. Current section: ${stop}. ${message}`} aria-controls="guide-npc-card" aria-expanded={tourOpen} title={`Ask ${persona.name}, Ali’s AI guide`}>
+    <button ref={actorRef} className="guide-character" type="button" onClick={() => changePanel(true)} aria-label={`Talk with ${persona.name}, Ali's portfolio guide. Current section: ${stop}. ${message}`} aria-haspopup="dialog" aria-expanded={panelOpen} title={`Ask ${persona.name}, Ali’s AI guide`}>
       <span className="guide-character-model" aria-hidden="true"><img src={`${basePath}/guide-art/${icon}.webp`} alt="" width="68" height="102" draggable="false" /></span>
       <span className="guide-character-label" aria-hidden="true">Ask {persona.name}</span>
       <span className="guide-callout" aria-hidden="true"><small>{showIntroduction ? `Meet ${persona.name}` : stop}</small><strong>{showIntroduction ? persona.introduction : message}</strong></span>
     </button>
-    {messageSlot && createPortal(<div className="guide-inline-message"><div><small>{showIntroduction ? `Meet ${persona.name}` : "Your portfolio guide"}</small><p>{showIntroduction ? persona.introduction : sceneMessages["Choose your perspective"]}</p></div><button type="button" aria-controls="guide-npc-card" aria-expanded={tourOpen} onClick={() => changeTour(true)}>Meet {persona.name}</button></div>, messageSlot)}
-    {tourOpen && createPortal(<GuideNpcCard key={role} name={persona.name} introduction={persona.introduction} icon={icon} role={role} onClose={() => changeTour(false)} onChat={() => changePanel(true)} />, document.body)}
+    {messageSlot && createPortal(<div className="guide-inline-message"><div><small>{showIntroduction ? `Meet ${persona.name}` : "Your portfolio guide"}</small><p>{showIntroduction ? persona.introduction : sceneMessages["Choose your perspective"]}</p></div><button type="button" aria-haspopup="dialog" aria-expanded={panelOpen} onClick={() => changePanel(true)}>Ask {persona.name}</button></div>, messageSlot)}
     <GuideAssistantPanel open={panelOpen} onClose={() => changePanel(false)} icon={icon} name={persona.name} role={role} section={conversationSection} />
   </div>;
 }
