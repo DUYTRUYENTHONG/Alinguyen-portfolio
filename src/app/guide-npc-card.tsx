@@ -9,7 +9,7 @@ export function GuideNpcCard({ name, introduction, icon, role, onClose, onChat }
   const current = stops[step];
   const next = stops[step + 1];
   return <section id="guide-npc-card" className="guide-npc-card" aria-label={`Conversation with ${name}`} onKeyDown={(event) => { if (event.key === "Escape") { event.stopPropagation(); onClose(); } }}>
-    <header className="guide-npc-head"><div><small>YOUR PORTFOLIO COMPANION</small><strong>{name} <span>· {role} perspective</span></strong></div><button type="button" onClick={onClose} aria-label="Minimize guide introduction">×</button></header>
+    <button className="guide-npc-close" type="button" onClick={onClose} aria-label="Minimize guide introduction">×</button>
     <div className="guide-npc-body">
       <div className="guide-npc-scene" aria-hidden="true"><span className="guide-npc-ground"/><img key={step} data-motion={step < 0 ? "greet" : "point"} src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/guide-art/${icon}.webp`} alt="" width="84" height="126" draggable="false"/></div>
       <div className="guide-npc-speech" aria-live="polite" aria-atomic="true"><small>{current ? `TOUR ${step + 1} / ${stops.length}` : `MEET ${name.toUpperCase()}`}</small><p>{current ? current.message : introduction}</p>{current && <strong>{current.title}</strong>}</div>
