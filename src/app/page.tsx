@@ -7,6 +7,7 @@ import { WorkingHours } from "./working-hours";
 import { PortraitReveal } from "./portrait-reveal";
 import { CvDownloadSection } from "./cv-download-section";
 import { HighlightsSection } from "./highlights-section";
+import { CommunityResourceSection } from "./community-resource-section";
 import { AIExpertiseSection } from "./ai-expertise-section";
 import { CustomerCollaborationSection } from "./customer-collaboration-section";
 import { AboutWorkSection } from "./about-work-section";
@@ -48,6 +49,8 @@ export default function Home() {
       <WorkSection projects={projects} />
 
       <AIExpertiseSection />
+
+      <CommunityResourceSection />
 
       <DecisionMapSection />
 

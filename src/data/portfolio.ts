@@ -171,3 +171,24 @@ export const principles = [
   { title: "Protect customer information", detail: "Use public evidence without exposing customer records." },
   { title: "Build for reliability and speed", detail: "Make the next change testable and understandable." },
 ] as const;
+
+// Reviewed against vietnam-career-agent-kit main 73a77b7 on 2026-10-26.
+export const communityResource = {
+  id: "community",
+  name: "Vietnam Career Agent Kit",
+  eyebrow: "Shared with the community",
+  headline: "A more thoughtful job search.",
+  description: "I share this free, open-source kit to help job seekers in Vietnam organize their search, prepare evidence-backed CV drafts, and review applications with their own AI agent.",
+  license: "Free to use · MIT licensed",
+  tools: "Python · SQLite · Reusable agent skills",
+  stages: [
+    { title: "Bring your evidence", detail: "Import a text CV and job description into a private local workspace." },
+    { title: "Prepare with care", detail: "Confirm your profile, match evidence to a role, and draft a tailored CV." },
+    { title: "Review, then apply", detail: "Track progress and approve supported browser actions before sharing or submitting." },
+  ],
+  setup: "Start with Git, Python 3.11+ and the local demo. Agent and model services may have separate costs.",
+  limits: "A preparation and supervised-application toolkit, not a job-placement service. Automated job-source connectors and unattended applications are not included; job offers are not guaranteed.",
+  href: "https://github.com/DUYTRUYENTHONG/vietnam-career-agent-kit",
+  guideHref: "https://github.com/DUYTRUYENTHONG/vietnam-career-agent-kit#try-the-working-slice",
+  vietnameseHref: "https://github.com/DUYTRUYENTHONG/vietnam-career-agent-kit/blob/main/README.vi.md",
+} as const;
