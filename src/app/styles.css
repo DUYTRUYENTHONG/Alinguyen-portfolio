@@ -263,3 +263,6 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
 .guide-inline-message button { flex: none; min-height: 44px; padding: 10px 15px; border: 1px solid #c7d4e9; border-radius: 999px; background: #fff; color: #204dab; font-size: .85rem; font-weight: 650; }
 .guide-character.has-inline-message .guide-callout { display: none; }
 @media(max-width:767px) { .guide-inline-message { align-items: flex-start; flex-direction: column; gap: 12px; padding: 16px; } .visitor-guide-message { min-height: 180px; } }
+
+/* Shallow portrait depth on fine pointers; text remains stable. */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) { .portrait-photo { transition: transform .65s ease; } .portrait-stage:hover .portrait-photo { transform: translateX(-50%) perspective(1200px) rotateY(-3deg) translateZ(10px); } }

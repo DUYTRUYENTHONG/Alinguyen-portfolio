@@ -21,10 +21,11 @@ export const metadata: Metadata = {
   title: `${identity.name} | ${identity.title}`,
   description: identity.proposition,
   applicationName: `${identity.name} Portfolio`,
-  icons: { icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/duytruyenthong-logo.png`, apple: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/duytruyenthong-logo.png` },
+  icons: { icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/ali-avatar-icon.png`, apple: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/ali-avatar-icon.png` },
+  twitter: { card: "summary_large_image", title: `${identity.name} | ${identity.title}`, description: "I build practical AI, data and commerce workflows." },
   openGraph: {
     title: `${identity.name} | ${identity.title}`,
-    description: identity.proposition,
+    description: "I build practical AI, data and commerce workflows.",
     type: "website",
     siteName: identity.brand,
   },

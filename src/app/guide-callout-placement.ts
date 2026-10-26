@@ -13,6 +13,10 @@ export function placeGuideCallout(actor: GuideBox, bubble: { width: number; heig
     { left: actor.left + (actor.width - bubble.width) / 2, top: actor.top - bubble.height - margin },
     { left: actor.left + (actor.width - bubble.width) / 2, top: actor.top + actor.height + margin },
   ];
+  // Search nearby blank pockets when all four direct positions are occupied.
+  for (let top = minTop; top <= viewport.height - bubble.height - margin; top += 32) {
+    for (const left of [margin, viewport.width - bubble.width - margin]) candidates.push({ left, top });
+  }
   for (const candidate of candidates) {
     const box = { ...bubble, left: Math.max(margin, Math.min(candidate.left, viewport.width - bubble.width - margin)), top: Math.max(minTop, Math.min(candidate.top, viewport.height - bubble.height - margin)) };
     if (!overlaps(box, actor) && !obstacles.some((obstacle) => overlaps(box, obstacle))) return { left: box.left - actor.left, top: box.top - actor.top };

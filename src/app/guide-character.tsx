@@ -91,8 +91,8 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     let scrollFrame = 0;
     let tiltFrame = 0;
     const obstacleSelector = "main article, main [aria-hidden=true], main h1, main h2, main h3, main p, main img, main a, main button, main input, main summary, .proof-ribbon, .role-card, .visitor-stats, .visitor-result, #collaboration-logos, [data-guide-obstacle]";
-    const contentBoxes = () => Array.from(document.querySelectorAll<HTMLElement>(obstacleSelector))
-      .filter((element) => !stage.contains(element))
+    const contentBoxes = (forCallout = false) => Array.from(document.querySelectorAll<HTMLElement>(obstacleSelector))
+      .filter((element) => !stage.contains(element) && (!forCallout || !element.matches("article, [aria-hidden=true]")))
       .map((element) => element.getBoundingClientRect())
       .filter((rect) => rect.width > 2 && rect.height > 2 && rect.bottom > 0 && rect.top < window.innerHeight);
 
@@ -159,11 +159,15 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       const callout = actor.querySelector<HTMLElement>(".guide-callout");
       if (callout) {
         const speaking = !actor.classList.contains("has-inline-message") && (actor.classList.contains("is-speaking") || actor.matches(":hover, :focus-visible"));
-        const obstacles = contentBoxes();
-        const placement = speaking && window.innerWidth >= 768 ? placeGuideCallout(
+        const obstacles = contentBoxes(true);
+        const placement = speaking ? placeGuideCallout(
           { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight },
           { width: callout.offsetWidth, height: callout.offsetHeight },
           { width: window.innerWidth, height: window.innerHeight }, obstacles,
+        ) ?? placeGuideCallout(
+          { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight },
+          { width: callout.offsetWidth, height: callout.offsetHeight },
+          { width: window.innerWidth, height: window.innerHeight }, [],
         ) : null;
         actor.classList.toggle("has-callout-space", Boolean(placement));
         if (placement) { callout.style.left = `${placement.left}px`; callout.style.top = `${placement.top}px`; }
@@ -191,6 +195,8 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     };
     const observer = new ResizeObserver(paint);
     observer.observe(stage);
+    const bubble = actor.querySelector<HTMLElement>(".guide-callout");
+    if (bubble) observer.observe(bubble);
     const grid = document.querySelector(".role-grid");
     if (grid) observer.observe(grid);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -202,6 +208,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     actor.addEventListener("pointerenter", paint);
     actor.addEventListener("pointermove", tilt);
     actor.addEventListener("pointerleave", resetTilt);
+    actor.addEventListener("pointerleave", paint);
     actor.addEventListener("guide-message-change", paint);
     paint();
     return () => {
@@ -217,6 +224,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       actor.removeEventListener("pointerenter", paint);
       actor.removeEventListener("pointermove", tilt);
       actor.removeEventListener("pointerleave", resetTilt);
+      actor.removeEventListener("pointerleave", paint);
       actor.removeEventListener("guide-message-change", paint);
     };
   }, [icon]);
@@ -225,10 +233,11 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     const actor = actorRef.current;
     if (!actor) return;
     actor.classList.add("is-speaking");
-    actor.dispatchEvent(new Event("guide-message-change"));
-    const timer = window.setTimeout(() => actor.classList.remove("is-speaking"), 6500);
-    return () => window.clearTimeout(timer);
-  }, [stop, icon, showIntroduction]);
+    const frame = requestAnimationFrame(() => actor.dispatchEvent(new Event("guide-message-change")));
+    // Briefly show context, then restore the reading area. Hover/focus reopens it.
+    const timer = window.setTimeout(() => { actor.classList.remove("is-speaking"); actor.dispatchEvent(new Event("guide-message-change")); }, 10000);
+    return () => { window.clearTimeout(timer); cancelAnimationFrame(frame); };
+  }, [stop, message, icon, showIntroduction]);
 
   useEffect(() => {
     if (!chosen) return;
@@ -255,10 +264,10 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   return <div className="guide-stage guide-stage-journey" ref={stageRef}>
     <button ref={actorRef} className={`guide-character${stop === "Choose your perspective" ? " has-inline-message" : ""}`} type="button" onClick={() => changePanel(true)} aria-label={`Ask ${persona.name}, Ali's AI guide. Current section: ${stop}. ${message}`} aria-haspopup="dialog" aria-expanded={panelOpen} title={`Ask ${persona.name}, Ali’s AI guide`}>
       <span className="guide-character-model" aria-hidden="true"><img src={`${basePath}/guide-art/${icon}.webp`} alt="" width="68" height="102" draggable="false" /></span>
-      <span className="guide-character-label" aria-hidden="true">Ask {persona.name} <span>↗</span></span>
+      <span className="guide-character-label" aria-hidden="true">Ask {persona.name}</span>
       <span className="guide-callout" aria-hidden="true"><small>{showIntroduction ? `Meet ${persona.name}` : stop}</small><strong>{showIntroduction ? persona.introduction : message}</strong></span>
     </button>
-    {messageSlot && createPortal(<div className="guide-inline-message"><div><small>{showIntroduction ? `Meet ${persona.name}` : "Your portfolio guide"}</small><p>{showIntroduction ? persona.introduction : sceneMessages["Choose your perspective"]}</p></div><button type="button" aria-haspopup="dialog" aria-expanded={panelOpen} onClick={() => changePanel(true)}>Ask {persona.name} <span aria-hidden="true">↗</span></button></div>, messageSlot)}
+    {messageSlot && createPortal(<div className="guide-inline-message"><div><small>{showIntroduction ? `Meet ${persona.name}` : "Your portfolio guide"}</small><p>{showIntroduction ? persona.introduction : sceneMessages["Choose your perspective"]}</p></div><button type="button" aria-haspopup="dialog" aria-expanded={panelOpen} onClick={() => changePanel(true)}>Ask {persona.name}</button></div>, messageSlot)}
     <GuideAssistantPanel open={panelOpen} onClose={() => changePanel(false)} icon={icon} name={persona.name} role={role} section={conversationSection} />
   </div>;
 }

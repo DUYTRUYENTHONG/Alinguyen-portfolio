@@ -26,3 +26,14 @@ test('omits artwork that cannot fit a narrow or short viewport', () => {
   assert.equal(placeGuideCallout(actor, bubble, { width: 100, height: 604 }, []), null);
   assert.equal(placeGuideCallout(actor, bubble, { width: 1224, height: 160 }, []), null);
 });
+
+test('touch portrait and landscape bubbles stay within the viewport', () => {
+  for (const viewport of [{width:390,height:844},{width:956,height:440},{width:320,height:568}]) {
+    const actor = {left:viewport.width-80,top:180,width:68,height:96};
+    const result = placeGuideCallout(actor,{width:200,height:110},viewport,[]);
+    assert.ok(result);
+    assert.ok(actor.left+result.left>=12);
+    assert.ok(actor.left+result.left+200<=viewport.width-12);
+    assert.ok(actor.top+result.top+110<=viewport.height-12);
+  }
+});
