@@ -1,6 +1,20 @@
 // Reviewed public portfolio facts. Keep URLs and status in sync with src/data/portfolio.ts.
 export const knowledge = [
   {
+    id: "traffic-analytics",
+    title: "Traffic analytics: locally verified PostgreSQL warehouse",
+    url: "https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/#analytics",
+    tags: ["warehouse", "postgresql", "upstash", "pipeline", "traffic", "analytics"],
+    text: "A batch pipeline exports daily Upstash aggregates into PostgreSQL tables and daily/weekly SQL views. Ten automated checks cover replay, corrections, rollback, isolation, backfills and persistence. A private seven-day aggregate snapshot loaded and replayed in persistent local PGlite, an embedded PostgreSQL engine. Public examples are synthetic. A hosted PostgreSQL server and scheduled jobs are not yet verified. Browser IDs and chat conversations are not exported; customer impact is not claimed.",
+  },
+  {
+    id: "guide-evaluation",
+    title: "Portfolio guide: live baseline evaluation and limitations",
+    url: "https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/#guide-evaluation",
+    tags: ["guide", "evaluation report", "benchmark", "assistant", "chatbot"],
+    text: "On 26 October 2026, 16 live baseline requests returned 12 HTTP 200 responses and four service errors. Nine passed the original phrase and citation heuristics. This is a small authored development set, not factual accuracy or an independent benchmark. All failures remain in the report. Token usage and cost were unavailable. A later fix shows a labelled approved-source excerpt on generation failure; a full post-release live run is pending. No customer adoption or business uplift is claimed.",
+  },
+  {
     id: "ali-overview",
     title: "Ali Nguyen overview and contact",
     url: "https://duytruyenthong.github.io/Alinguyen-portfolio/about/",
@@ -54,7 +68,7 @@ export const knowledge = [
     title: "Recruiter brief and inspectable work",
     url: "https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/blob/main/docs/RECRUITER_BRIEF.md",
     tags: ["recruiter", "hire", "skills", "resume", "cv", "engineering", "portfolio"],
-    text: "The recruiter brief maps Ali's TypeScript, React, Next.js, Python, data evaluation, and product experience to public evidence. Inspectable sources include the portfolio, Vibecode Product Kit, and KKBox baseline. Live commerce sites are linked as product context; their private code is not presented as public source. No production AI traffic, customer uplift, or future-cohort performance is claimed.",
+    text: "The recruiter brief maps Ali's TypeScript, React, Next.js, Python, data evaluation, and product experience to public evidence. Inspectable sources include the portfolio, Vibecode Product Kit, and KKBox baseline. Live commerce sites are linked as product context; their private code is not presented as public source. The live portfolio guide has a small published evaluation; the PostgreSQL warehouse is locally verified. Customer uplift and future-cohort performance are not claimed.",
   },
   {
     id: "academic-brief",

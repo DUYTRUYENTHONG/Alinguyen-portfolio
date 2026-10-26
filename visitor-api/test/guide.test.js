@@ -128,3 +128,24 @@ test("guide validates origin, body and per-client limit before contacting the mo
   assert.equal(limitedRes.statusCode, 429);
   assert.equal(called, false);
 }));
+
+test("provider failure returns an explicitly labelled approved excerpt without inventing an AI answer", () => withTestEnv(async () => {
+  const handler = createGuideHandler({
+    makeRedis: () => ({ incr: async () => 1, expire: async () => 1 }),
+    modelFetch: async () => ({ ok: false, status: 429 }),
+  });
+  const res = response(); await handler(request(), res);
+  assert.equal(res.statusCode, 200);
+  assert.equal(res.body.responseMode, "source-excerpt");
+  assert.match(res.body.answer, /^The AI response is unavailable/);
+  assert.match(res.body.answer, /0\.217324/);
+  assert.equal(res.body.citations[0].sourceId, "kkbox-results");
+  assert.equal(res.body.motion, "none");
+}));
+
+test("rate-store outages remain unavailable and do not bypass admission controls", () => withTestEnv(async () => {
+  let modelCalled = false;
+  const handler = createGuideHandler({ makeRedis: () => ({ incr: async () => { throw Error('unavailable'); } }), modelFetch: async () => { modelCalled = true; } });
+  const res = response(); await handler(request(), res);
+  assert.equal(res.statusCode, 503); assert.equal(modelCalled, false);
+}));

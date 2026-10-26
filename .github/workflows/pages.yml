@@ -28,6 +28,8 @@ jobs:
       - run: npm ci
       - run: npm --prefix visitor-api ci
       - run: npm --prefix visitor-api test
+      - run: npm --prefix analytics ci
+      - run: npm --prefix analytics test
       - run: npm --prefix visitor-api run smoke:production
       - run: npm run typecheck
       - run: npm run lint

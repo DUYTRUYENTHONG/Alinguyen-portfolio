@@ -73,6 +73,7 @@ export function createGuideHandler({ makeRedis = () => new Redis({ url: process.
     return send(res, 400, { error: "Invalid guide request" }, origin);
   }
 
+  let sources = [];
   try {
     const redis = makeRedis();
     const forwarded = request.headers["x-vercel-forwarded-for"] ?? request.headers["x-forwarded-for"];
@@ -88,7 +89,7 @@ export function createGuideHandler({ makeRedis = () => new Redis({ url: process.
     if (globalCount === 1) await redis.expire(globalKey, 172800);
     if (globalCount > 300) return send(res, 429, { error: "Guide capacity reached today" }, origin);
 
-    const sources = retrieveGuideSources(question, context);
+    sources = retrieveGuideSources(question, context);
     if (!sources.length) return send(res, 200, { answer: fallback, citations: [], suggestions: [], motion: "none" }, origin);
     const evidence = sources.map(({ id, title, text }) => `[${id}] ${title}: ${text}`).join("\n\n");
     const input = JSON.stringify({ selectedRole: context.role, currentSection: context.section,
@@ -111,7 +112,7 @@ export function createGuideHandler({ makeRedis = () => new Redis({ url: process.
     } finally {
       clearTimeout(timeout);
     }
-    if (!response.ok) throw new Error(`Model HTTP ${response.status}`);
+    if (!response.ok) throw Object.assign(new Error("Model request failed"), { providerStatus: response.status });
     const result = await response.json();
     const content = result.choices?.[0]?.message?.content;
     if (!content) throw new Error("Missing model output");
@@ -123,7 +124,16 @@ export function createGuideHandler({ makeRedis = () => new Redis({ url: process.
     const suggestions = Array.isArray(answer.suggestions) ? answer.suggestions.filter((item) => typeof item === "string" && item.length <= 80).slice(0, 2) : [];
     const motion = ["nod", "curious", "point", "none"].includes(answer.motion) ? answer.motion : "none";
     return send(res, 200, { answer: answer.answer, citations: cited.map(({ id, title, url }) => ({ sourceId: id, label: title, url })), suggestions, motion }, origin);
-  } catch {
+  } catch (error) {
+    if (sources.length) {
+      console.warn(JSON.stringify({ event: "guide_generation_unavailable", providerStatus: Number.isInteger(error?.providerStatus) ? error.providerStatus : null }));
+      const source = sources[0];
+      return send(res, 200, {
+        answer: `The AI response is unavailable. Here is the approved source text:\n\n${source.text}`,
+        citations: [{ sourceId: source.id, label: source.title, url: source.url }],
+        suggestions: [], motion: "none", responseMode: "source-excerpt",
+      }, origin);
+    }
     return send(res, 503, { error: "Guide temporarily unavailable" }, origin);
   }
   };
