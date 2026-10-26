@@ -48,3 +48,6 @@
 .actions { gap: 18px; }
 .actions a span { min-width: 0; overflow-wrap: anywhere; }
 .cardCopy { min-width: 0; overflow-wrap: anywhere; }
+
+.promptArtwork { display:block; width:100%; height:auto; aspect-ratio:738 / 414; object-fit:contain; border-radius:18px; margin-bottom:24px; align-self:center; }
+@media(min-width:640px) and (max-width:1099px) { .promptArtwork { grid-row:1 / 3; margin-bottom:0; } }
