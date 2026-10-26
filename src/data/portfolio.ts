@@ -51,10 +51,10 @@ export const customers = [
 export const expertise = [
   {
     number: "01",
-    title: "LLM and retrieval prototypes",
-    detail: "Design a knowledge-assistant flow from source retrieval to a grounded answer, then review responses against representative questions. This work is a prototype, not a deployed support service.",
-    linkLabel: "AI and prompt engineering CV",
-    href: "#cvs",
+    title: "Source-grounded AI guide",
+    detail: "Build a live guide from approved public sources and inspect its answers. A 16-request baseline returned 12 responses and four service errors; nine passed the original heuristic checks. These checks are not an accuracy benchmark.",
+    linkLabel: "Guide evaluation and limitations",
+    href: "/evidence/#guide-evaluation",
   },
   {
     number: "02",
@@ -73,9 +73,9 @@ export const expertise = [
   {
     number: "04",
     title: "From signal to action",
-    detail: "Connect page views, actions and leads to a seller workflow in STOS, while keeping proposed AI suggestions separate from features that are live today.",
-    linkLabel: "Live STOS product",
-    href: "https://stosvn.vercel.app/stos",
+    detail: "Export daily Upstash aggregates into a locally verified PostgreSQL warehouse. Check replay, corrections, missing days and reporting views. The public demonstration is synthetic; a hosted warehouse is the next step.",
+    linkLabel: "Analytics pipeline and checks",
+    href: "/evidence/#analytics",
   },
 ] as const;
 

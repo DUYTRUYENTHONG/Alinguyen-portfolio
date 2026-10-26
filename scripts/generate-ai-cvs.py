@@ -1,9 +1,12 @@
 """Regenerate the two public AI CVs from one evidence-conscious content record."""
 
+import argparse
+import json
 from pathlib import Path
 from xml.sax.saxutils import escape
 
 from docx import Document
+from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
@@ -15,13 +18,16 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, PageBreak, HRFlowab
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
 PORTFOLIO = "https://duytruyenthong.github.io/Alinguyen-portfolio/"
+EVALUATION = json.loads((ROOT / "docs/evidence/guide-evaluation-live.json").read_text(encoding="utf-8"))["summary"]
+EVIDENCE_URL = PORTFOLIO + "evidence/"
+SCOPE = "The portfolio guide is live; its published evaluation is a small authored baseline with failures retained. The PostgreSQL warehouse is verified locally with PGlite; hosted operation is pending. KKBox is a local within-cohort holdout. Customer adoption and commercial uplift are not claimed."
 CONTACT = "Ho Chi Minh City, Vietnam  |  0902577827  |  nquangd1510@gmail.com"
 
 PROFILE = (
-    "Computer Science graduate building applied AI prototypes, customer-data workflows and "
-    "digital products. Work spans retrieval and prompt design, a leakage-checked local churn "
-    "baseline, public developer tooling and live commerce websites. I bring enterprise "
-    "troubleshooting and client discovery to scoping, testing and explaining technical work."
+    "Computer Science graduate building source-grounded AI applications, SQL data pipelines and "
+    "digital products. Public work includes a live portfolio guide with a recorded evaluation, "
+    "a locally verified PostgreSQL warehouse, and a leakage-checked churn baseline. I bring "
+    "enterprise troubleshooting and client discovery to scoping and testing technical work."
 )
 
 KKBOX_RESULT = (
@@ -31,18 +37,25 @@ KKBOX_RESULT = (
 )
 
 SKILLS = [
-    ("Applied AI", "LLM API and prompt workflows; retrieval-augmented generation prototypes; response review and documentation."),
-    ("Data and evaluation", "Python, SQL, PostgreSQL, Pandas, scikit-learn, snapshot-date features and holdout evaluation."),
+    ("Applied AI", "LLM APIs, source retrieval, prompt workflows, citation checks and regression evaluation."),
+    ("Data and evaluation", "Python, SQL, PostgreSQL, Upstash Redis, transactional batch loading, Pandas and scikit-learn."),
     ("Product engineering", "JavaScript, TypeScript, React, Next.js, Node.js, GitHub Actions, debugging and testing."),
     ("Business context", "Requirements discovery, commerce analytics, sales funnels and stakeholder communication."),
 ]
 
 PROJECTS = [
     (
-        "AI Knowledge Assistant | Retrieval and prompt prototype",
+        "Portfolio AI guide | Live application and baseline evaluation",
         [
-            "Designed a retrieval-plus-generation flow for answering questions from internal knowledge sources.",
-            "Prototyped prompt and retrieval steps and reviewed responses to representative knowledge questions. No production deployment or measured accuracy is claimed.",
+            "Built approved-source retrieval and LLM API responses with server-controlled citations, rate limits and a labelled source-excerpt fallback.",
+            f"A 16-request live baseline returned {EVALUATION['responseSuccesses']} HTTP 200 responses and four service errors; {EVALUATION['passed']} passed the original heuristics. This is not factual accuracy; the full post-fix evaluation is pending.",
+        ],
+    ),
+    (
+        "Traffic analytics pipeline | Locally verified PostgreSQL",
+        [
+            "Built daily Upstash aggregate export, validated snapshots, transactional replay protection, corrections and SQL reporting views without exporting visitor identifiers.",
+            "Ten tests cover load behavior and persistence. A real aggregate snapshot loaded and replayed in local PGlite PostgreSQL; public demonstrations are synthetic. Hosted deployment is pending.",
         ],
     ),
     (
@@ -59,13 +72,7 @@ PROJECTS = [
             "Public repository: github.com/DUYTRUYENTHONG/vibecode-product-kit. Adoption metrics are not claimed.",
         ],
     ),
-    (
-        "STOS Sales Traffic Operating System | Live product website",
-        [
-            "Built a public sales-page product with templates, a page studio, inquiry capture and an Insights workflow for views, actions and leads.",
-            "AI suggestions are planned; customer adoption and business impact have not been independently measured.",
-        ],
-    ),
+
 ]
 
 EXPERIENCE = [
@@ -140,7 +147,8 @@ def build_pdf() -> None:
     para("Selected coursework: Linear Algebra, Statistics and Discrete Mathematics.", "body")
     para("English: Professional Working Proficiency | German: A2", "body")
     section("Evidence and scope")
-    para("Live websites and public source can be inspected through the portfolio. The knowledge assistant and KKBox work are prototypes. The KKBox score is from a local within-cohort holdout; no production AI deployment or commercial uplift is claimed.", "body")
+    para(SCOPE, "body")
+    story.append(Paragraph(f'<a href="{EVIDENCE_URL}" color="#125d83">Evidence and reproducible reports: {EVIDENCE_URL}</a>', styles["body"]))
 
     def footer(canvas, doc):
         canvas.saveState()
@@ -157,18 +165,22 @@ def build_pdf() -> None:
 def build_docx() -> None:
     output = PUBLIC / "cv-prompt-engineer.docx"
     document = Document()
+    # Remove inherited template borders and theme font overrides for portable CV rendering.
+    for style in document.styles:
+        for border in list(style.element.iter(qn("w:pBdr"))):
+            border.getparent().remove(border)
     section = document.sections[0]
     section.top_margin = Inches(.65)
     section.bottom_margin = Inches(.62)
     section.left_margin = Inches(.7)
     section.right_margin = Inches(.7)
     normal = document.styles["Normal"]
-    normal.font.name = "Aptos"
+    normal.font.name = "Arial"
     normal.font.size = Pt(9)
     normal.font.color.rgb = RGBColor(23, 33, 45)
     normal.paragraph_format.space_after = Pt(4)
     for style_name in ("Title", "Heading 1", "Heading 2"):
-        document.styles[style_name].font.name = "Aptos Display"
+        document.styles[style_name].font.name = "Arial"
         document.styles[style_name].font.color.rgb = RGBColor(18, 93, 131)
     document.styles["Title"].font.size = Pt(19)
     document.styles["Title"].font.color.rgb = RGBColor(23, 33, 45)
@@ -178,9 +190,13 @@ def build_docx() -> None:
     document.styles["Heading 2"].font.size = Pt(9)
     document.styles["Heading 2"].paragraph_format.space_before = Pt(6)
     document.styles["Heading 2"].paragraph_format.space_after = Pt(2)
+    for style_name in ("Normal", "Title", "Heading 1", "Heading 2", "List Bullet"):
+        fonts = document.styles[style_name].element.get_or_add_rPr().get_or_add_rFonts()
+        for key in ("asciiTheme", "hAnsiTheme", "eastAsiaTheme", "cstheme"):
+            fonts.attrib.pop(qn(f"w:{key}"), None)
 
     document.add_paragraph("NGUYEN QUANG DUY", style="Title")
-    document.add_paragraph("AI AND PROMPT ENGINEER | RAG PROTOTYPES | PYTHON")
+    document.add_paragraph("AI AND PROMPT ENGINEER | RETRIEVAL AND EVALUATION | PYTHON")
     document.add_paragraph(CONTACT)
     document.add_paragraph(f"Portfolio: {PORTFOLIO}")
     document.add_heading("PROFILE", level=1)
@@ -208,7 +224,8 @@ def build_docx() -> None:
     document.add_paragraph("Selected coursework: Linear Algebra, Statistics and Discrete Mathematics.")
     document.add_paragraph("English: Professional Working Proficiency | German: A2")
     document.add_heading("EVIDENCE AND SCOPE", level=1)
-    document.add_paragraph("Live websites and public source can be inspected through the portfolio. The knowledge assistant and KKBox work are prototypes. The KKBox score is from a local within-cohort holdout; no production AI deployment or commercial uplift is claimed.")
+    document.add_paragraph(SCOPE)
+    document.add_paragraph(f"Evidence and reproducible reports: {EVIDENCE_URL}")
     footer = section.footer.paragraphs[0]
     footer.alignment = 2
     footer.add_run("NGUYEN QUANG DUY | AI AND PROMPT ENGINEERING")
@@ -293,6 +310,10 @@ def build_business_pdfs() -> None:
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--ai-only", action="store_true", help="Preserve the two business CVs")
+    args = parser.parse_args()
     build_pdf()
     build_docx()
-    build_business_pdfs()
+    if not args.ai_only:
+        build_business_pdfs()

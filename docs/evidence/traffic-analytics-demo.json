@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-26T02:12:53.475Z",
+  "generatedAt": "2026-10-26T02:23:40.120Z",
   "environment": "Local PGlite embedded PostgreSQL; not an online database deployment",
   "dataset": "Synthetic fixture only; not customer traffic",
   "engine": "PostgreSQL 18.6 (PGlite 0.5.11) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.74 (1092ec30a3fb1d46b1782ff1b4db5094d3d06ae5), 32-bit",
   "sourceHashes": {
-    "warehouse.js": "5214ce09c4c169a44e67241a84022bbb332b59b320581127e590bf713f8d02cb",
+    "warehouse.js": "ca5fbc9ca4b168c3c8bc060e2659248bc77a0c7f163bc071a66f9eafed133a11",
     "sql/001_warehouse.sql": "fd26c93889cdf1c70e5b5324b33b2deaca65d773d0f975d9c548a2414ba39072",
     "fixture.js": "8c97933bab975729988eb12b751c7a4824073967aa1b06914228e2985e4f58e0"
   },

@@ -5,7 +5,7 @@ import { setTimeout as delay } from "node:timers/promises";
 const date = (s) => typeof s === "string" && /^\d{4}-\d{2}-\d{2}$/.test(s) && Number.isFinite(Date.parse(s)) && new Date(s).toISOString().slice(0, 10) === s;
 const exactKeys = (value, keys) => value && typeof value === "object" && !Array.isArray(value) && Object.keys(value).length === keys.length && keys.every((key) => Object.hasOwn(value, key));
 export function validateSnapshot(input) {
-  if (!exactKeys(input, ["version", "projectId", "scope", "observedAt", "start", "end", "days"]) || input.version !== 1 || !/^[a-z0-9-]{1,48}$/.test(input.projectId) || !["production", "staging", "development", "fixture"].includes(input.scope)) throw Error("Invalid snapshot contract");
+  if (!exactKeys(input, ["version", "projectId", "scope", "observedAt", "start", "end", "days"]) || input.version !== 1 || typeof input.projectId !== "string" || !/^[a-z0-9-]{1,48}$/.test(input.projectId) || !["production", "staging", "development", "fixture"].includes(input.scope)) throw Error("Invalid snapshot contract");
   if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(input.observedAt) || !Number.isFinite(Date.parse(input.observedAt)) || new Date(input.observedAt).toISOString() !== input.observedAt) throw Error("Invalid UTC observation time");
   if (!date(input.start) || !date(input.end)) throw Error("Invalid UTC date");
   const count = (Date.parse(input.end) - Date.parse(input.start)) / 86400000;

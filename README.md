@@ -24,7 +24,7 @@ The public portfolio of **Nguyen Quang Duy (Ali Nguyen)**, founder of DUYTRUYENT
 | [Vibecode Product Kit](https://github.com/DUYTRUYENTHONG/vibecode-product-kit) | Public developer-tool source, offline CLI, and CI checks. |
 | [KKBox churn baseline](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction) | Public source and official-data local holdout. The [results](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md) report 0.217324 log loss and 0.819295 ROC AUC on a within-cohort split, with a synthetic future-event leakage check. This is not a leaderboard, out-of-time, production, or business-impact result. |
 
-The knowledge-assistant work is a prototype, not a deployed support service. The portfolio guide is a separate, on-demand assistant for navigating public portfolio evidence; it falls back to static links if the API is unavailable. Neither feature is evidence of customer adoption.
+The knowledge-assistant work is a prototype, not a deployed support service. The portfolio guide is a separate, on-demand assistant for navigating public portfolio evidence; it can return a labelled approved-source excerpt if generation fails, or static links if the API is unavailable. Neither feature is evidence of customer adoption.
 
 ## How this portfolio is made
 
@@ -67,3 +67,13 @@ The guide uses a native modal dialog with visual-viewport sizing, safe-area spac
 The site offers four CV actions: [Applied AI Engineer PDF](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf), [Business & Product PDF](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-business-product.pdf), [Business Development PDF](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-business-development.pdf), and [AI / Prompt Engineer DOCX](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-prompt-engineer.docx). The business PDFs now have distinct role narratives. The AI documents state the qualified KKBox local holdout result and its limits. The owner should review personal details before each public update; the source generator is `scripts/generate-ai-cvs.py`.
 
 Client and collaboration names were confirmed by Ali Nguyen. Individual testimonials and performance claims are not included. Original brand marks remain the property of their respective owners. The [Recruiter brief](docs/RECRUITER_BRIEF.md) and [Academic brief](docs/ACADEMIC_BRIEF.md) give fuller context without presenting prototypes as production systems or the KKBox local split as future-cohort performance.
+
+## Engineering evidence added October 2026
+
+- [Traffic-to-PostgreSQL pipeline and hosted migration runbook](analytics/README.md): locally verified with persistent PGlite PostgreSQL, transactional snapshots, replay protection and daily/weekly SQL views. Upstash remains the operational store. No online warehouse or scheduled job is claimed.
+- [AI guide evaluation](docs/evidence/AI_GUIDE_EVALUATION.md): 16 live baseline requests, 12 HTTP 200 responses, four service errors, nine original heuristic passes. Full failures and rubric limitations are retained; this is not an accuracy benchmark.
+- [Evidence page](https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/): a clearly labelled synthetic analytics demonstration and the guide baseline. Actual traffic records remain private.
+
+Run `npm --prefix analytics ci` and `npm --prefix analytics test` for SQL checks. Use `npm --prefix analytics run demo` to regenerate the synthetic record. Regenerate only the AI CVs with `python scripts/generate-ai-cvs.py --ai-only`; render and inspect both outputs before committing them. Business CVs remain unchanged by that option.
+
+For the next hosted step, follow [Create a new Supabase analytics project](docs/SUPABASE_SETUP.md). It includes private connection setup, migration, replay verification and access checks.

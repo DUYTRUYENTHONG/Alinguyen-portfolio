@@ -13,6 +13,8 @@ async function withDb(run) { const db = new PGlite(); try { await migrate(db); a
 test("snapshot contract rejects private fields, impossible counts, missing days and invalid dates", () => {
   for (const change of [
     (v) => { v.browserId = "private"; },
+    (v) => { v.projectId = null; },
+    (v) => { v.projectId = ["synthetic-demo"]; },
     (v) => { v.days[0].pageViews = 0; },
     (v) => { v.days[1].uniqueBrowsers = 100; },
     (v) => { v.days[1].pageViews = -1; },

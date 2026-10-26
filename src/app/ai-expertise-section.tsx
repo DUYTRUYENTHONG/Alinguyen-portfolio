@@ -72,7 +72,7 @@ export function AIExpertiseSection() {
           <ExpertiseIllustration number={item.number} />
           <h3>{item.title}</h3>
           <p>{item.detail}</p>
-          <a className={styles.evidence} href={item.href}>{item.linkLabel}<span aria-hidden="true">↗</span></a>
+          <a className={styles.evidence} href={item.href.startsWith("/") ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${item.href}` : item.href}>{item.linkLabel}<span aria-hidden="true">↗</span></a>
         </article>)}
       </div>
     </div>
