@@ -1,0 +1,54 @@
+{
+  "kind": "authored-offline-retrieval-regression",
+  "date": "2026-10-26",
+  "limitations": "Synthetic ranking inputs; no model calls, production engagement, independent labels or measured recommendation uplift.",
+  "sourceHashes": {
+    "visitor-api/lib/guide-retrieval.js": "2f1914b1909a6a46817e7ab618e755444ed36250c741ac99f78de9119fa5fbc8",
+    "visitor-api/lib/guide-knowledge.js": "768b47cbe52398671fe52ed3bf66c1362eb799f3e62c734cf855c7703f74e093",
+    "visitor-api/evaluation/cases.json": "46fcd22c32e6ef932bf21e6bf3b76b7ce48b8180e69d3454a489444b70b49c62"
+  },
+  "rows": [
+    {
+      "scenario": "baseline",
+      "cases": 19,
+      "completeExpectedSourceCases": 19,
+      "recallAt4": 1,
+      "mrrAt4": 1
+    },
+    {
+      "scenario": "kkbox-results",
+      "cases": 19,
+      "completeExpectedSourceCases": 19,
+      "recallAt4": 1,
+      "mrrAt4": 1
+    },
+    {
+      "scenario": "vibecode-kit",
+      "cases": 19,
+      "completeExpectedSourceCases": 19,
+      "recallAt4": 1,
+      "mrrAt4": 1
+    },
+    {
+      "scenario": "growth-commerce-os",
+      "cases": 19,
+      "completeExpectedSourceCases": 19,
+      "recallAt4": 1,
+      "mrrAt4": 1
+    },
+    {
+      "scenario": "stos",
+      "cases": 19,
+      "completeExpectedSourceCases": 19,
+      "recallAt4": 1,
+      "mrrAt4": 1
+    },
+    {
+      "scenario": "cho-kenh",
+      "cases": 19,
+      "completeExpectedSourceCases": 19,
+      "recallAt4": 1,
+      "mrrAt4": 1
+    }
+  ]
+}

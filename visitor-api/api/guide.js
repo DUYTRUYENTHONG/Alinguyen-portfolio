@@ -1,6 +1,7 @@
 import { createHmac } from "node:crypto";
 import { Redis } from "@upstash/redis";
 import { retrieveGuideSources } from "../lib/guide-retrieval.js";
+import { readPortfolioSignals } from "../lib/portfolio-signals.js";
 
 const allowedOrigins = new Set([
   "https://duytruyenthong.github.io",
@@ -46,7 +47,9 @@ function validTurns(value) {
     turn && ["user", "assistant"].includes(turn.role) && typeof turn.text === "string" && turn.text.length <= 500);
 }
 
-export function createGuideHandler({ makeRedis = () => new Redis({ url: process.env.KV_REST_API_URL, token: process.env.KV_REST_API_TOKEN }), modelFetch = fetch } = {}) {
+export function createGuideHandler({ makeRedis = () => new Redis({ url: process.env.KV_REST_API_URL, token: process.env.KV_REST_API_TOKEN }), modelFetch = fetch,
+  loadSignals = () => readPortfolioSignals(new Redis({url: process.env.KV_REST_API_URL, token: process.env.KV_REST_API_TOKEN, retry: false, signal: () => AbortSignal.timeout(1000)})),
+} = {}) {
   return async function handler(request, res) {
   const origin = request.headers.origin ?? "";
   if (!allowedOrigins.has(origin)) return send(res, 403, { error: "Forbidden origin" }, origin);
@@ -89,8 +92,20 @@ export function createGuideHandler({ makeRedis = () => new Redis({ url: process.
     if (globalCount === 1) await redis.expire(globalKey, 172800);
     if (globalCount > 300) return send(res, 429, { error: "Guide capacity reached today" }, origin);
 
-    sources = retrieveGuideSources(question, context);
+    let signals = {};
+    // Optional aggregate ranking must never make the guide unavailable or leak counts to the model.
+    if (process.env.PORTFOLIO_SIGNALS_ENABLED === 'true') {
+      try {
+        signals = await loadSignals();
+      } catch { /* Preserve baseline retrieval when signals are unavailable. */ }
+    }
+    sources = retrieveGuideSources(question, context, signals);
     if (!sources.length) return send(res, 200, { answer: fallback, citations: [], suggestions: [], motion: "none" }, origin);
+    // Retention and withdrawal terms must be exact, not a model paraphrase.
+    if (sources[0].id === 'recommendation-signals') {
+      const {id, title, text, url} = sources[0];
+      return send(res, 200, {answer:`Approved recommendation policy:\n\n${text}`, citations:[{sourceId:id,label:title,url}],suggestions:[],motion:'none'},origin);
+    }
     const evidence = sources.map(({ id, title, text }) => `[${id}] ${title}: ${text}`).join("\n\n");
     const input = JSON.stringify({ selectedRole: context.role, currentSection: context.section,
       optedInInterests: remembered, recentConversation: recentTurns, visitorQuestion: question.trim() });

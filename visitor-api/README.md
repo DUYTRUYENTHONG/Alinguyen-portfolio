@@ -21,3 +21,7 @@ The handler accepts a question, allowlisted role and section, up to four recent 
 Run `npm test` in this directory for the retrieval, grounding, privacy, and request-boundary checks. Run `npm run smoke:production` after deploying this Vercel project and before publishing the GitHub Pages client; the Pages workflow repeats that live check. Review and update public facts in `lib/guide-knowledge.js` whenever the portfolio or linked evidence changes. The full user flow, consent policy, prompt, and release checks are in [the design draft](../docs/GUIDE_ASSISTANT_DESIGN.md).
 
 Provider references: [Groq Free Plan limits](https://console.groq.com/docs/rate-limits), [structured JSON](https://console.groq.com/docs/structured-outputs), and [data controls](https://console.groq.com/docs/your-data). Check the limits in your own Groq console before release.
+
+## Optional portfolio recommendation signals
+
+`POST /api/interaction` accepts only consented, allowlisted project-link interactions. Daily hashed deduplication keys and rate limits expire after two days; aggregate counters expire after 30 days. `PORTFOLIO_SIGNALS_ENABLED=true` enables recording and bounded seven-day ranking. The guide never sends counts to the model and falls back to baseline retrieval on signal failure. See [implementation and privacy](../docs/PORTFOLIO_RECOMMENDATIONS.md) for configuration, withdrawal, testing and rollback. This namespace is separate from no-bloom traffic and is not a PostgreSQL warehouse export.

@@ -28,6 +28,36 @@ function withTestEnv(run) {
   });
 }
 
+test("optional recommendation storage failure preserves evidence retrieval and never enters the prompt", () => withTestEnv(async () => {
+  const previous = process.env.PORTFOLIO_SIGNALS_ENABLED;
+  process.env.PORTFOLIO_SIGNALS_ENABLED = 'true';
+  try {
+    let calls = 0;
+    const handler = createGuideHandler({
+      makeRedis: () => ({incr: async () => 1, expire: async () => 1}),
+      loadSignals: async () => { calls++; throw Error('private aggregate store error'); },
+      modelFetch: async (_url, options) => {
+        assert.ok(!options.body.includes('private aggregate'));
+        return {ok:true,json:async()=>({choices:[{message:{content:JSON.stringify({answer:'Inspect the documented KKBox local holdout and its limitations.',citations:['kkbox-results'],suggestions:[],motion:'point'})}}]})};
+      },
+    });
+    const result=response(); await handler(request(),result);
+    assert.equal(calls,1);assert.equal(result.statusCode,200);assert.equal(result.body.citations[0].sourceId,'kkbox-results');
+  } finally {
+    if(previous===undefined) delete process.env.PORTFOLIO_SIGNALS_ENABLED; else process.env.PORTFOLIO_SIGNALS_ENABLED=previous;
+  }
+}));
+
+test('recommendation privacy questions return exact approved policy without model paraphrasing',()=>withTestEnv(async()=>{
+  let generated=false;
+  const handler=createGuideHandler({makeRedis:()=>({incr:async()=>1,expire:async()=>1}),modelFetch:async()=>{generated=true;throw Error('must not generate policy');}});
+  const result=response();await handler(request('How do optional recommendation signals work, and can I stop sharing?'),result);
+  assert.equal(generated,false);assert.equal(result.statusCode,200);
+  assert.match(result.body.answer,/previously aggregated counts cannot be individually removed/i);
+  assert.match(result.body.answer,/aggregate counts expire 30 days/);
+  assert.equal(result.body.citations[0].sourceId,'recommendation-signals');assert.equal(result.body.motion,'none');
+}));
+
 test("retrieval selects matching public evidence and does not return unrelated facts", () => {
   const results = retrieveGuideSources("How was KKBox churn evaluated?", { role: "Recruiter", section: "Selected work" });
   assert.equal(results[0].id, "kkbox-results");

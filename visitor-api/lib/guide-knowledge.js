@@ -1,11 +1,18 @@
 // Reviewed public portfolio facts. Keep URLs and status in sync with src/data/portfolio.ts.
 export const knowledge = [
   {
+    id: "recommendation-signals",
+    title: "Optional recommendation signals",
+    url: "https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/#recommendations",
+    tags: ["recommendations", "consent", "signals", "ranking", "privacy"],
+    text: "Collection starts off. Opt in under Help improve project recommendations in the guide. Uncheck to stop future collection and remove the local ID; previously aggregated counts cannot be individually removed. The local consent lasts 30 days. Daily hashed identifiers expire after two days; aggregate counts expire 30 days after their last increment. Recent counts only break close relevance ties; explicit project questions keep baseline retrieval. Sparse or unavailable signals give no boost. Counts are not sent to the model. Signals stay in Redis, separate from no-bloom PostgreSQL traffic. No individual-interest inference, vector search or measured quality improvement is claimed.",
+  },
+  {
     id: "traffic-analytics",
-    title: "Traffic analytics: locally verified PostgreSQL warehouse",
+    title: "Traffic analytics: restricted hosted PostgreSQL imports",
     url: "https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/#analytics",
     tags: ["warehouse", "postgresql", "upstash", "pipeline", "traffic", "analytics"],
-    text: "A batch pipeline exports daily Upstash aggregates into PostgreSQL tables and daily/weekly SQL views. Ten automated checks cover replay, corrections, rollback, isolation, backfills and persistence. A private seven-day aggregate snapshot loaded and replayed in persistent local PGlite, an embedded PostgreSQL engine. Public examples are synthetic. A hosted PostgreSQL server and scheduled jobs are not yet verified. Browser IDs and chat conversations are not exported; customer impact is not claimed.",
+    text: "A batch pipeline exports no-bloom production daily Upstash aggregates into a private Supabase PostgreSQL schema. Fourteen local analytics tests cover replay, corrections, rollback, isolation and restricted permissions. Live TLS, reconciliation and replay passed; the first manually dispatched GitHub import passed on 26 October 2026. Daily scheduling is enabled, but the first clock-triggered execution has not yet been observed in the published report. Public examples are synthetic. Browser IDs and chat conversations are not exported. These totals are not portfolio recommendation signals, and customer impact is not claimed.",
   },
   {
     id: "guide-evaluation",

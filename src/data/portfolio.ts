@@ -73,7 +73,7 @@ export const expertise = [
   {
     number: "04",
     title: "From signal to action",
-    detail: "Export daily Upstash aggregates into a locally verified PostgreSQL warehouse. Check replay, corrections, missing days and reporting views. The public demonstration is synthetic; a hosted warehouse is the next step.",
+    detail: "Import daily Upstash aggregates into private Supabase PostgreSQL with a restricted loader, verified TLS and replay checks. The first manual production job passed. Public examples remain synthetic; recommendation signals use a separate opt-in collection.",
     linkLabel: "Analytics pipeline and checks",
     href: "/evidence/#analytics",
   },

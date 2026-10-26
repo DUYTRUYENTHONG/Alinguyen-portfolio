@@ -40,7 +40,7 @@ For each update:
 4. Run API, retrieval and UI tests. Compare evaluation outputs against the previous version; preserve failures instead of deleting or retrying them into a better score.
 5. Deploy the Vercel API separately from the Pages frontend when backend code changes. Verify the deployed endpoint and the public evidence links before upgrading CV claims.
 
-The current analytics guide entry and public evidence page still describe the local milestone. Hosted automation is documented in the operational runbooks; synchronizing all public AI/CV claims remains separate work.
+The analytics guide entry and public evidence page now include hosted verification. CV files still describe the earlier milestone. See [recommendation implementation](PORTFOLIO_RECOMMENDATIONS.md) for the separate opt-in interaction collection.
 
 ## 4. Evaluation and reproduction
 
@@ -86,11 +86,11 @@ The production runner currently targets only **`no-bloom / production`**. The pr
 
 See [automated imports](AUTOMATED_TRAFFIC_IMPORTS.md) for private configuration, exact commands, scheduling and recovery. Never run migrations as the restricted loader. Reporting views need a separately reviewed reporting role; do not broaden the importer just to run owner QA queries.
 
-## 6. Recommendation enhancement — approved, not implemented
+## 6. Recommendation enhancement — implemented with bounded Redis signals
 
-The owner approved consent-based portfolio project-link signals. Implementation must include a visitor opt-in and withdrawal path, allowlisted project IDs, bounded/deduplicated collection, aggregate-only exports, retention rules and regression tests. No collection is activated by this document.
+The opt-in collector, daily deduplication, retention, withdrawal and bounded ranking are implemented. Signals are read from their own Redis namespace; no PostgreSQL export of these signals is implemented. The detailed privacy boundaries and rollout controls are in [Portfolio recommendations](PORTFOLIO_RECOMMENDATIONS.md).
 
-The intended flow is:
+The implemented recommendation flow is:
 
 ```mermaid
 flowchart LR
@@ -110,4 +110,4 @@ An explicit project question must take precedence over popularity. Missing, spar
 - The API is a separate Vercel deployment. A Pages build does not publish API code.
 - `.github/workflows/traffic-analytics.yml` is a separately gated import job. Its first manual production run passed; a clock-triggered run is not yet recorded in the current report.
 - Browser layout/Safari keyboard QA is needed for UI changes; command-line tests cannot establish real-device behavior.
-- Full post-change live evaluation, recommendation implementation, stale-import alerts, backup restoration and load testing remain open. Do not present them as completed engineering evidence.
+- Full post-change live evaluation, recommendation-quality measurement, a signal warehouse export, stale-import alerts, backup restoration and load testing remain open. Do not present them as completed engineering evidence.

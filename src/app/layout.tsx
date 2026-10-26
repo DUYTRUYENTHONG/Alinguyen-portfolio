@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { identity } from "@/data/portfolio";
 import { PortfolioExperienceProvider } from "./experience";
+import { PortfolioSignalsProvider } from "./portfolio-signals";
 import "@fontsource-variable/archivo";
 import "@fontsource-variable/inter";
 import "./styles.css";
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} ${archivo.variable}`}>
-      <body><PortfolioExperienceProvider>{children}</PortfolioExperienceProvider></body>
+      <body><PortfolioSignalsProvider><PortfolioExperienceProvider>{children}</PortfolioExperienceProvider></PortfolioSignalsProvider></body>
     </html>
   );
 }

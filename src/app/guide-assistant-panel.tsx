@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
 import { useGuideDialog } from "./use-guide-dialog";
 import { conversationScrollTop } from "./guide-conversation-scroll";
+import { PortfolioSignalConsent } from "./portfolio-signals";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const endpoint = process.env.NEXT_PUBLIC_GUIDE_API_URL;
@@ -217,6 +218,7 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
       {error && <p className="guide-assistant-fallback"><a href={`${basePath}/work/`} onClick={onClose}>Work</a> · <a href={`${basePath}/about/`} onClick={onClose}>About</a> · <a href={`${basePath}/#cvs`} onClick={onClose}>CVs</a> · <a href={`${basePath}/#contact`} onClick={onClose}>Contact</a></p>}
       {!busy && suggestions.length > 0 && <div className="guide-assistant-suggestions">{suggestions.map((item) =>
         <button key={item} type="button" onClick={() => void ask(item)}>{item}</button>)}</div>}
+      <PortfolioSignalConsent />
       <details className="guide-assistant-memory"><summary>Returning visitor preferences</summary>
         <label><input type="checkbox" checked={remember} onChange={(event) => { setRemember(event.target.checked); saveInterests(interests, event.target.checked); }} /> Remember selected interests on this device for 90 days</label>
         {remember && <div className="guide-assistant-interests">{interestOptions.map((item) =>
