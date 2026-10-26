@@ -2,7 +2,7 @@
 
 This guide creates a **new Supabase project for the analytics warehouse**. Your existing Vercel API and Upstash Redis keep collecting traffic. The local loader copies daily aggregates into Supabase PostgreSQL. It does not move the visitor counter, store chat messages, or replace Redis.
 
-Status: local PostgreSQL tests passed. The Supabase project, hosted migration, scheduled import and backup recovery have **not** been verified yet.
+Status (2026-10-26): the hosted schema and one manual aggregate import were verified through Supabase SQL Editor. All nine hosted QA checks passed, including access restrictions and data reconciliation; exact replay left the data unchanged. The automated direct-connection loader, scheduled import and backup recovery remain **unverified**. See [hosted verification](evidence/SUPABASE_WAREHOUSE_QA.md).
 
 ## 1. Create the project
 
@@ -69,7 +69,7 @@ npm --prefix analytics ci
 npm --prefix analytics test
 ```
 
-Expected: ten tests pass. These are local PostgreSQL checks, not confirmation that Supabase is reachable.
+Expected: twelve tests pass. These are local PostgreSQL checks, not confirmation that Supabase is reachable.
 
 ## 6. Create the schema and import a snapshot
 
@@ -87,7 +87,13 @@ Use this file only on your intended new warehouse project:
 node --env-file=artifacts/warehouse-private.env analytics/scripts/sync.mjs artifacts/private-traffic-snapshot.json --migrate
 ```
 
-The command creates the `traffic_analytics` schema, `batches` and `daily_counts` tables, and `daily_mart` and `weekly_mart` views. On a new target, expect `replay: false` and seven applied day records for this snapshot. Missing days remain unavailable. If the command fails, stop and resolve the connection or migration error; do not assume tables were created successfully.
+The command creates the `traffic_analytics` schema, `batches` and `daily_counts` tables, and `daily_mart` and `weekly_mart` views. Before importing to a new Supabase target, apply `analytics/sql/001_warehouse.sql` followed by `analytics/sql/002_supabase_private.sql` together in a transaction as the setup owner. The second file revokes API-role access, enables RLS with no allow policies, and makes both views security-invoker views. The Node `--migrate` flag applies only the portable first file; it does not apply Supabase-specific hardening. On a new target, expect `replay: false` and seven applied day records for this snapshot. Missing days remain unavailable. If the command fails, stop and resolve the connection or migration error; do not assume tables were created successfully.
+
+### SQL Editor fallback
+
+When a direct PostgreSQL connection is unavailable, `analytics/manual-import.js` exports `manualImportSql(snapshot)`. It uses the same strict snapshot validator and canonical batch hash as the Node loader, and emits a transactional, replay-safe SQL block for the authenticated owner to run in Supabase SQL Editor. Save generated SQL only under ignored `artifacts/`: it contains the private source aggregates. It is not a public RPC or an automated ingestion endpoint. A serialization failure requires retrying the complete block; the direct Node loader handles bounded retries automatically.
+
+After importing, run `analytics/sql/003_verify_supabase.sql`. All nine rows must report `passed = true`. Re-run the same import and compare batch count, row count, row fingerprint and original import timestamp. Supabase Security Advisor may show two informational "RLS Enabled No Policy" items: these are expected while the warehouse is owner-only. Do not add browser policies to silence them.
 
 ## 7. Verify replay and inspect the hosted records
 
@@ -130,7 +136,7 @@ Both privileges should be false for both roles. If they are true, stop before lo
 
 ## 8. Prepare regular imports after the first hosted check
 
-The initial database owner is for setup only. Before scheduling, create a separate loader login with `USAGE` on `traffic_analytics` and `SELECT, INSERT, UPDATE` on its two tables; give reporting users `SELECT` on the views only. Do not grant schema creation or table deletion to the scheduled loader. Keep passwords in the runner's secret manager.
+The initial database owner is for setup only. Before scheduling, create a separate loader login with `USAGE` on `traffic_analytics` and `SELECT, INSERT, UPDATE` on its two tables, plus explicit RLS policies scoped to that loader's allowed projects. Do not grant schema creation, table deletion, or `BYPASSRLS` to the scheduled loader. Because the views use `security_invoker`, a reporting role also needs corresponding base-table SELECT grants and matching RLS policies; a view grant alone is insufficient. Keep passwords in the runner's secret manager. This provisioning has not been performed yet.
 
 Schedule one batch after UTC midnight, exporting yesterday and today from Upstash. This updates yesterday's closed-day status and keeps today's partial data explicit. The schedule is not installed by this guide. Verify the first scheduled execution, alert on failed/stale imports, and test backups and restore before calling the warehouse production-ready.
 
