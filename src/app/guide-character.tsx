@@ -176,10 +176,6 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
           { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight },
           { width: callout.offsetWidth, height: callout.offsetHeight },
           { width: window.innerWidth, height: window.innerHeight }, obstacles,
-        ) ?? placeGuideCallout(
-          { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight },
-          { width: callout.offsetWidth, height: callout.offsetHeight },
-          { width: window.innerWidth, height: window.innerHeight }, [],
         ) : null;
         actor.classList.toggle("has-callout-space", Boolean(placement));
         if (placement) { callout.style.left = `${placement.left}px`; callout.style.top = `${placement.top}px`; }
