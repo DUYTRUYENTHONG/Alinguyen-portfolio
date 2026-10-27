@@ -24,7 +24,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
 .desktop-nav a:hover,.desktop-nav a:focus-visible{color:#102c57;text-decoration:none;transform:translateY(-2px)}
 .desktop-nav a:hover::before,.desktop-nav a:focus-visible::before{opacity:1;transform:scale(1)}
 .desktop-nav .nav-active{background:transparent;color:var(--ink);font-weight:650}
-.menu-trigger,.mobile-menu,
+.menu-trigger,.mobile-menu{display:none}
 .hero{overflow:hidden;text-align:center;background:#fff}
 .hero-copy{padding-top:140px}
 .hero h1{font-size:clamp(4rem,6.25vw,5rem);font-weight:700;line-height:1.1;letter-spacing:-.036em;max-width:1120px;margin:0 auto 28px;text-wrap:balance}
