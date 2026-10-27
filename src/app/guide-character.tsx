@@ -11,6 +11,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
 const stops = [
+  ["#top", "Explore the portfolio"],
   ["#visitor", "Choose your perspective"],
   [".statement", "What I do"],
   [".proof-ribbon", "Proof of work"],
@@ -28,6 +29,7 @@ const stops = [
 ] as const;
 
 const sceneMessages: Record<string, string> = {
+  "Explore the portfolio": "I can help you explore Ali’s work, skills and CVs.",
   "Shared with the community": "Explore the free career-agent kit, its setup guide and its current limits.",
   "Choose your perspective": "Pick a role and I’ll keep that look as we explore the page.",
   "What I do": "I connect marketing, commerce, and data so the next step is clearer.",
@@ -72,8 +74,8 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   const actorRef = useRef<HTMLButtonElement>(null);
   const chatTriggerRef = useRef<HTMLButtonElement | null>(null);
   const lastPosition = useRef<{ x: number; y: number } | null>(null);
-  const [stop, setStop] = useState("Choose your perspective");
-  const [message, setMessage] = useState(sceneMessages["Choose your perspective"]);
+  const [stop, setStop] = useState("Explore the portfolio");
+  const [message, setMessage] = useState(sceneMessages["Explore the portfolio"]);
   const [panelOpen, setPanelOpen] = useState(false);
   const [conversationSection, setConversationSection] = useState(stop);
   const [messageSlot, setMessageSlot] = useState<HTMLElement | null>(null);
@@ -103,9 +105,9 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       const readingLine = window.innerWidth < 768
         ? clamp(window.innerHeight * .62, 210, window.innerHeight - actor.offsetHeight - 24)
         : clamp(window.innerHeight * .58, 145, window.innerHeight - actor.offsetHeight - 24);
-      const visitor = document.getElementById("visitor");
       const contact = document.getElementById("contact");
-      const visible = Boolean(visitor && visitor.getBoundingClientRect().top < window.innerHeight * .8 && (!contact || contact.getBoundingClientRect().bottom > window.innerHeight * .15));
+      // The guide is available from the hero, including a fresh visit or reload.
+      const visible = !contact || contact.getBoundingClientRect().bottom > window.innerHeight * .15;
       if (!visible) {
         const viewportMaxX = Math.max(0, window.innerWidth - actor.offsetWidth);
         return { x: lastPosition.current?.x ?? viewportMaxX - 8, y: lastPosition.current?.y ?? readingLine, label: stopRef.current, message: messageRef.current, visible: false, maxX: viewportMaxX };
@@ -278,7 +280,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   };
 
   return <div className="guide-stage guide-stage-journey" ref={stageRef}>
-    <button ref={actorRef} className="guide-character" type="button" onClick={(event) => changePanel(true, event.currentTarget)} aria-label={`Talk with ${persona.name}, Ali's portfolio guide. Current section: ${stop}. ${message}`} aria-haspopup="dialog" aria-expanded={panelOpen} title={`Ask ${persona.name}, Ali’s AI guide`}>
+    <button ref={actorRef} tabIndex={-1} className="guide-character" type="button" onClick={(event) => changePanel(true, event.currentTarget)} aria-label={`Talk with ${persona.name}, Ali's portfolio guide. Current section: ${stop}. ${message}`} aria-haspopup="dialog" aria-expanded={panelOpen} title={`Ask ${persona.name}, Ali’s AI guide`}>
       <span className="guide-character-model" aria-hidden="true"><img src={`${basePath}/guide-art/${icon}.webp`} alt="" width="68" height="102" draggable="false" /></span>
       <span className="guide-character-label" aria-hidden="true">Ask {persona.name}</span>
       <span className="guide-callout" aria-hidden="true"><small>{showIntroduction ? `Meet ${persona.name}` : stop}</small><strong>{showIntroduction ? persona.introduction : message}</strong></span>

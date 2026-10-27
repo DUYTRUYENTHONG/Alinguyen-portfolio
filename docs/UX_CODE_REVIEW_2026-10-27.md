@@ -29,3 +29,9 @@ Reviewed portfolio navigation, the actor/chat interaction, responsive project di
 ## Existing strengths
 
 Native chat dialog and visual-viewport sizing, reduced-motion CSS, explicit source citations, optional interaction consent, and project filters already provide useful foundations. These remain in place.
+
+## Fresh-visit actor correction
+
+The owner reported that refreshing at the header still hid the actor. The visibility rule was waiting for the visitor-role section to enter the viewport. Removed that gate and added a hero context; the actor stays available from the header and still hides while chat is open. Its unpositioned pre-hydration state is hidden to prevent a corner flash.
+
+Browser verification: fresh desktop entry and reload show `data-active=true` at scroll position zero; selecting the actor opens chat. At 440×956 the actor fits inside the viewport without intersecting the heading or primary actions. At 956×440 it fits inside the safe margins; text-line bounds and screenshot confirm it does not cover the heading or rotating text. The removed welcome overlay remains absent.
