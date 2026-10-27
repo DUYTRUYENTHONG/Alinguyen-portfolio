@@ -70,6 +70,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   const persona = personas[role] ?? personas.Recruiter;
   const stageRef = useRef<HTMLDivElement>(null);
   const actorRef = useRef<HTMLButtonElement>(null);
+  const chatTriggerRef = useRef<HTMLButtonElement | null>(null);
   const lastPosition = useRef<{ x: number; y: number } | null>(null);
   const [stop, setStop] = useState("Choose your perspective");
   const [message, setMessage] = useState(sceneMessages["Choose your perspective"]);
@@ -139,6 +140,13 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     };
 
     const paint = () => {
+      if (panelOpenRef.current) {
+        actor.style.opacity = "0";
+        actor.style.pointerEvents = "none";
+        actor.tabIndex = -1;
+        actor.dataset.active = "false";
+        return;
+      }
       const target = route();
       actor.style.opacity = target.visible && !panelOpenRef.current ? "1" : "0";
       actor.dataset.active = String(target.visible && !panelOpenRef.current);
@@ -161,7 +169,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       const callout = actor.querySelector<HTMLElement>(".guide-callout");
       if (callout) {
         const speaking = (actor.classList.contains("is-speaking") || actor.matches(":hover, :focus-visible"));
-        const obstacles = contentBoxes(true);
+        const obstacles = speaking ? contentBoxes(true) : [];
         const placement = speaking ? placeGuideCallout(
           { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight },
           { width: callout.offsetWidth, height: callout.offsetHeight },
@@ -255,21 +263,27 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     };
   }, [chosen, role]);
 
-  const changePanel = (open: boolean) => {
-    if (open) setConversationSection(stopRef.current);
+  const changePanel = (open: boolean, trigger?: HTMLButtonElement) => {
+    if (open) {
+      chatTriggerRef.current = trigger ?? null;
+      setConversationSection(stopRef.current);
+    }
     panelOpenRef.current = open;
     setPanelOpen(open);
     window.dispatchEvent(new Event("guide-panel-change"));
-    if (!open) requestAnimationFrame(() => actorRef.current?.focus({ preventScroll: true }));
+    if (!open) requestAnimationFrame(() => {
+      const trigger = chatTriggerRef.current;
+      if (trigger?.isConnected) trigger.focus({ preventScroll: true });
+    });
   };
 
   return <div className="guide-stage guide-stage-journey" ref={stageRef}>
-    <button ref={actorRef} className="guide-character" type="button" onClick={() => changePanel(true)} aria-label={`Talk with ${persona.name}, Ali's portfolio guide. Current section: ${stop}. ${message}`} aria-haspopup="dialog" aria-expanded={panelOpen} title={`Ask ${persona.name}, Ali’s AI guide`}>
+    <button ref={actorRef} className="guide-character" type="button" onClick={(event) => changePanel(true, event.currentTarget)} aria-label={`Talk with ${persona.name}, Ali's portfolio guide. Current section: ${stop}. ${message}`} aria-haspopup="dialog" aria-expanded={panelOpen} title={`Ask ${persona.name}, Ali’s AI guide`}>
       <span className="guide-character-model" aria-hidden="true"><img src={`${basePath}/guide-art/${icon}.webp`} alt="" width="68" height="102" draggable="false" /></span>
       <span className="guide-character-label" aria-hidden="true">Ask {persona.name}</span>
       <span className="guide-callout" aria-hidden="true"><small>{showIntroduction ? `Meet ${persona.name}` : stop}</small><strong>{showIntroduction ? persona.introduction : message}</strong></span>
     </button>
-    {messageSlot && createPortal(<div className="guide-inline-message"><div><small>{showIntroduction ? `Meet ${persona.name}` : "Your portfolio guide"}</small><p>{showIntroduction ? persona.introduction : sceneMessages["Choose your perspective"]}</p></div><button type="button" aria-haspopup="dialog" aria-expanded={panelOpen} onClick={() => changePanel(true)}>Ask {persona.name}</button></div>, messageSlot)}
+    {messageSlot && createPortal(<div className="guide-inline-message"><div><small>{showIntroduction ? `Meet ${persona.name}` : "Your portfolio guide"}</small><p>{showIntroduction ? persona.introduction : sceneMessages["Choose your perspective"]}</p></div><button type="button" aria-haspopup="dialog" aria-expanded={panelOpen} onClick={(event) => changePanel(true, event.currentTarget)}>Ask {persona.name}</button></div>, messageSlot)}
     <GuideAssistantPanel open={panelOpen} onClose={() => changePanel(false)} icon={icon} name={persona.name} role={role} section={conversationSection} />
   </div>;
 }

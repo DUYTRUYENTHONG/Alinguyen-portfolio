@@ -12,7 +12,8 @@ export function placeGuideActor(size: { width: number; height: number }, viewpor
   if (previous && previous.x >= left && previous.x <= right && previous.y >= top && previous.y <= bottom && area({ ...size, left: previous.x, top: previous.y }) === 0) return { left: previous.x, top: previous.y };
   const ys = [preferred, top, bottom, ...obstacles.flatMap((box) => [box.top - size.height - 12, box.top + box.height + 12])];
   const candidates = [right, left].flatMap((x) => ys.map((y) => ({ ...size, left: x, top: Math.min(bottom, Math.max(top, y)) })));
-  candidates.sort((a, b) => area(a) - area(b) || Math.abs(a.top - preferred) - Math.abs(b.top - preferred) || b.left - a.left);
-  return { left: candidates[0].left, top: candidates[0].top };
+  const scored = candidates.map((candidate) => ({ ...candidate, overlap: area(candidate) }));
+  scored.sort((a, b) => a.overlap - b.overlap || Math.abs(a.top - preferred) - Math.abs(b.top - preferred) || b.left - a.left);
+  return { left: scored[0].left, top: scored[0].top };
 }
 

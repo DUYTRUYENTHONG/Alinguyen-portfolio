@@ -5,13 +5,13 @@ import { createPortal } from "react-dom";
 import { useGuideDialog } from "./use-guide-dialog";
 import { conversationScrollTop } from "./guide-conversation-scroll";
 import { PortfolioSignalConsent } from "./portfolio-signals";
+import { guideRequestSection, parseGuideReply, recentGuideTurns, type GuideTurn, type AnswerMotion } from "./guide-reply";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const endpoint = process.env.NEXT_PUBLIC_GUIDE_API_URL;
 const memoryKey = "ali-guide-preferences-v1";
 const memoryDays = 90;
 const interestOptions = ["AI", "commerce", "data", "admissions"] as const;
-const allowedHosts = new Set(["duytruyenthong.github.io", "github.com", "growth-commerce-os.vercel.app", "stosvn.vercel.app"]);
 const starterQuestions: Record<string, string[]> = {
   Recruiter: ["Which AI projects can I inspect?", "How was KKBox evaluated?", "What should a recruiter read?"],
   Founder: ["Which products are live?", "What does STOS do?", "How does Ali approach a sales funnel?"],
@@ -26,18 +26,7 @@ const starterQuestions: Record<string, string[]> = {
   "Just curious": ["Which AI projects can I inspect?", "Which products are live?", "What does Ali build?"],
 };
 
-type Turn = { role: "user" | "assistant"; text: string; citations?: { sourceId: string; label: string; url: string }[] };
-type AnswerMotion = "nod" | "curious" | "point" | "none";
 type PanelMotion = AnswerMotion | "greet" | "attentive" | "thinking" | "reassure";
-type GuideReply = { answer: string; citations: Turn["citations"]; suggestions: string[]; motion?: AnswerMotion };
-const answerMotions = new Set<AnswerMotion>(["nod", "curious", "point", "none"]);
-
-function safeLink(url: string) {
-  try {
-    const parsed = new URL(url);
-    return parsed.protocol === "https:" && allowedHosts.has(parsed.hostname);
-  } catch { return false; }
-}
 
 export function GuideAssistantPanel({ open, onClose, icon, name, role, section }: {
   open: boolean;
@@ -47,7 +36,7 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
   role: string;
   section: string;
 }) {
-  const [turns, setTurns] = useState<Turn[]>([]);
+  const [turns, setTurns] = useState<GuideTurn[]>([]);
   const [question, setQuestion] = useState("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
@@ -158,7 +147,7 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
     requestPending.current = true;
     setQuestion("");
     setError("");
-    const prior = turns.slice(-4).map(({ role: speaker, text: content }) => ({ role: speaker, text: content }));
+    const prior = recentGuideTurns(turns);
     setTurns((current) => [...current, { role: "user", text: trimmed }]);
     setBusy(true);
     showMotion("thinking");
@@ -166,19 +155,17 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
       if (!endpoint) throw new Error("Guide API is not configured");
       const controller = new AbortController();
       const timeout = window.setTimeout(() => controller.abort(), 20000);
-      let response: Response;
+      let reply: ReturnType<typeof parseGuideReply>;
       try {
-        response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question: trimmed, context: { page: window.location.pathname, section, role }, recentTurns: prior, interests: remember ? interests : [] }),
+        const response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question: trimmed, context: { page: window.location.pathname, section: guideRequestSection(section), role }, recentTurns: prior, interests: remember ? interests : [] }),
           signal: controller.signal });
+        if (!response.ok) throw new Error("Guide unavailable");
+        reply = parseGuideReply(await response.json());
       } finally { window.clearTimeout(timeout); }
-      if (!response.ok) throw new Error("Guide unavailable");
-      const reply = await response.json() as GuideReply;
-      if (typeof reply.answer !== "string") throw new Error("Invalid guide reply");
-      const citations = Array.isArray(reply.citations) ? reply.citations.filter((item) => item && safeLink(item.url)) : [];
-      setTurns((current) => [...current, { role: "assistant", text: reply.answer, citations }]);
-      setSuggestions(Array.isArray(reply.suggestions) ? reply.suggestions.slice(0, 2) : []);
-      showMotion(reply.motion && answerMotions.has(reply.motion) ? reply.motion : "nod", 1600);
+      setTurns((current) => [...current, { role: "assistant", text: reply.answer, citations: reply.citations }]);
+      setSuggestions(reply.suggestions);
+      showMotion(reply.motion, 1600);
     } catch {
       setError("The AI guide is unavailable right now. The portfolio links below still work.");
       setQuestion(trimmed);

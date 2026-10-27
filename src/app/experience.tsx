@@ -82,7 +82,7 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
   const [hidden, setHidden] = useState(false);
   const lastScroll = useRef(0);
   const menuButton = useRef<HTMLButtonElement>(null);
-  const menuPanel = useRef<HTMLDivElement>(null);
+  const menuPanel = useRef<HTMLDialogElement>(null);
 
   useEffect(() => setReady(true), []);
 
@@ -113,21 +113,22 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
 
   useEffect(() => {
     if (!open) return;
+    const panel = menuPanel.current;
+    if (!panel) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    menuPanel.current?.querySelector<HTMLAnchorElement>("a")?.focus();
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-      if (event.key !== "Tab") return;
-      const focusable = Array.from(menuPanel.current?.querySelectorAll<HTMLElement>("a, button:not(:disabled)") ?? []);
-      if (!focusable.length) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    panel.showModal();
+    panel.querySelector<HTMLButtonElement>(".mobile-menu-close")?.focus({ preventScroll: true });
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const onResize = () => { if (desktop.matches) setOpen(false); };
+    desktop.addEventListener("change", onResize);
+    onResize();
+    return () => {
+      desktop.removeEventListener("change", onResize);
+      panel.close();
+      document.body.style.overflow = previousOverflow;
+      if (!desktop.matches) menuButton.current?.focus({ preventScroll: true });
     };
-    window.addEventListener("keydown", onKeyDown);
-    return () => { window.removeEventListener("keydown", onKeyDown); document.body.style.overflow = previousOverflow; menuButton.current?.focus(); };
   }, [open]);
 
   return (
@@ -142,12 +143,16 @@ export function SiteHeader({ inner = false }: { inner?: boolean }) {
           <span className="menu-glyph" aria-hidden="true"><i /><i /><i /></span>
         </button>
       </header>
-      <div className={`menu-backdrop ${open ? "is-open" : ""}`} onClick={() => setOpen(false)} aria-hidden="true" />
-      <div ref={menuPanel} id="mobile-menu" className={`mobile-menu ${open ? "is-open" : ""}`} role="dialog" aria-modal="true" aria-label="Menu" inert={!open}>
+      <dialog ref={menuPanel} id="mobile-menu" className={`mobile-menu ${open ? "is-open" : ""}`} aria-label="Menu" onCancel={(event) => { event.preventDefault(); setOpen(false); }} onPointerDown={(event) => {
+        if (event.target !== event.currentTarget) return;
+        const bounds = event.currentTarget.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) setOpen(false);
+      }}>
+        <button type="button" className="mobile-menu-close" aria-label="Close navigation menu" onClick={() => setOpen(false)}>×</button>
         <nav aria-label="Mobile navigation">{navItems.map((item) => <Link key={item.href} href={navHref(item.href)} onClick={() => setOpen(false)}>{item.label}</Link>)}</nav>
         <WorkingHours variant="menu" />
         <p>ALI NGUYEN · DUYTRUYENTHONG</p>
-      </div>
+      </dialog>
     </>
   );
 }
