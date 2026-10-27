@@ -7,7 +7,9 @@ const bubble = { width: 170, height: 80 };
 const viewport = { width: 1224, height: 604 };
 
 test('uses nearby clear space without covering the actor', () => {
-  assert.deepEqual(placeGuideCallout(actor, bubble, viewport, []), { left: 66, top: 1 });
+  const result = placeGuideCallout(actor, bubble, viewport, []);
+  assert.equal(result.left, 66);
+  assert.ok(Math.abs(result.top + bubble.height / 2 - actor.height * .3) < .01);
 });
 test('moves to the other side when essential content blocks the right', () => {
   const result = placeGuideCallout({ ...actor, left: 400 }, bubble, viewport, [{ left: 460, top: 250, width: 250, height: 200 }]);
@@ -15,6 +17,12 @@ test('moves to the other side when essential content blocks the right', () => {
 });
 test('does not show a bubble over an entirely occupied viewport', () => {
   assert.equal(placeGuideCallout(actor, bubble, viewport, [{ left: 0, top: 0, width: 1224, height: 604 }]), null);
+});
+
+test('does not detach into a distant empty pocket when nearby positions are blocked', () => {
+  const actor = { left: 1100, top: 400, width: 80, height: 120 };
+  const obstacles = [{ left: 820, top: 230, width: 280, height: 374 }, { left: 1100, top: 230, width: 124, height: 160 }];
+  assert.equal(placeGuideCallout(actor, bubble, viewport, obstacles), null);
 });
 test('keeps a right-edge actor bubble inside the viewport', () => {
   const rightActor = { ...actor, left: 1160 };

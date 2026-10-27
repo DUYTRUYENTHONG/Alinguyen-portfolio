@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import type { Project } from "@/data/portfolio";
 import { GuideCharacter } from "./guide-character";
+import { RiggedPortfolioGuide } from "./rigged-portfolio-guide";
 import { VisitorStats } from "./visitor-stats";
 import { PortfolioLink as Link } from "./portfolio-link";
 import { WorkingHours } from "./working-hours";
@@ -202,7 +203,9 @@ export function PortfolioGuide() {
   const { selected, chosen, ready } = usePortfolioRole();
   const role = roles.find((item) => item.label === selected) ?? roles[0];
   if (!ready) return null;
-  return <GuideCharacter icon={role.icon} role={selected} chosen={chosen} />;
+  const fallback = <GuideCharacter icon={role.icon} role={selected} chosen={chosen} />;
+  const modelUrl = process.env.NEXT_PUBLIC_TOUR_GUIDE_MODEL_URL;
+  return modelUrl ? <RiggedPortfolioGuide modelUrl={modelUrl} icon={role.icon} role={selected} fallback={fallback} /> : fallback;
 }
 
 export function VisitorPicker({ projects }: { projects: Project[] }) {

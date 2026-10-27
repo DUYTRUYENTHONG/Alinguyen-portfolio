@@ -28,6 +28,11 @@ The knowledge-assistant work is a prototype, not a deployed support service. The
 
 ## How this portfolio is made
 
+The guide's [viewport interaction and Three.js implementation](docs/THREEJS_TOUR_GUIDE.md)
+documents attached speech bubbles, responsive controls, model requirements and
+the optional rigged character engine. The current avatar remains the production
+fallback; full 3D is enabled only after a real GLB is supplied and verified.
+
 This repository contains three deployable parts: a static portfolio, a separate AI/traffic API, and a private analytics importer. See the [AI engineering implementation guide](docs/AI_ENGINEERING_IMPLEMENTATION.md) for the source map, request lifecycle, evaluation procedure and operational boundaries.
 
 ```mermaid
