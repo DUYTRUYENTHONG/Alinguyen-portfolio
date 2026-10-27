@@ -1,21 +1,15 @@
 /* Motion does not alter the guide's route or the page reading order. */
 .guide-anchor { position: fixed; top: 0; left: 0; width: 80px; height: 120px; visibility: hidden; pointer-events: none; }
 .guide-stage-journey .guide-anchor .guide-character { position: absolute; }
-.guide-stage-journey .guide-anchor .guide-tracking-bubble { display: block; width: 248px; max-width: calc(100vw - 24px); padding: 14px; color: #fff; background: #17243bf2; border: 1px solid #526179; border-radius: 16px; backdrop-filter: blur(16px); transform: none; visibility: hidden; opacity: 0; transition: opacity .15s ease; }
+.guide-stage-journey .guide-anchor .guide-tracking-bubble { display: block; width: 228px; max-width: calc(100vw - 24px); padding: 12px 14px; color: #17202b; background: #fff; border: 1px solid #e3e7ee; border-radius: 16px 16px 4px 16px; backdrop-filter: none; transform: none; visibility: hidden; opacity: 0; transition: opacity .15s ease; }
 .guide-stage-journey .guide-anchor .guide-tracking-bubble[data-visible="true"] { visibility: visible; opacity: 1; pointer-events: auto; }
-.guide-tracking-bubble small { color: #c2d3f0; font-size: .6rem; }
-.guide-tracking-bubble p { margin: 8px 0 12px; font-size: .82rem; line-height: 1.5; font-weight: 500; }
-.guide-bubble-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-.guide-bubble-actions :is(a,button) { display: flex; justify-content: center; align-items: center; min-height: 44px; padding: 6px; border: 1px solid #91a4c266; border-radius: 8px; background: #ffffff14; color: #fff; font-size: .75rem; font-weight: 600; text-decoration: none; cursor: pointer; }
-.guide-bubble-actions :is(a,button):hover { background: #315fc6; }
-.guide-bubble-actions :is(a,button):focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-.guide-bubble-actions :is(a,button):active { transform: scale(.97); }
-@media(min-width:768px) { .guide-stage-journey .guide-anchor .guide-tracking-bubble { width: 300px; padding: 8px; } .guide-bubble-actions { grid-template-columns: repeat(4,minmax(0,1fr)); } .guide-bubble-actions :is(a,button) { padding: 4px; text-align: center; font-size: .72rem; } .guide-tracking-bubble p { margin: 3px 0; } }
-.guide-tracking-bubble::after { content: ""; position: absolute; width: 10px; height: 10px; background: #17243b; transform: rotate(45deg); pointer-events: none; }
-.guide-tracking-bubble[data-tail="left"]::after { left: -6px; top: var(--tail-y); border-left: 1px solid #526179; border-bottom: 1px solid #526179; }
-.guide-tracking-bubble[data-tail="right"]::after { right: -6px; top: var(--tail-y); border-right: 1px solid #526179; border-top: 1px solid #526179; }
-.guide-tracking-bubble[data-tail="top"]::after { top: -6px; left: var(--tail-x); border-left: 1px solid #526179; border-top: 1px solid #526179; }
-.guide-tracking-bubble[data-tail="bottom"]::after { bottom: -6px; left: var(--tail-x); border-right: 1px solid #526179; border-bottom: 1px solid #526179; }
+.guide-tracking-bubble small { color: #68717c; font-size: .6rem; }
+.guide-tracking-bubble p { margin: 5px 0 0; font-size: .8rem; line-height: 1.45; font-weight: 600; }
+.guide-tracking-bubble::after { content: ""; position: absolute; width: 10px; height: 10px; background: #fff; transform: rotate(45deg); pointer-events: none; }
+.guide-tracking-bubble[data-tail="left"]::after { left: -6px; top: var(--tail-y); border-left: 1px solid #e3e7ee; border-bottom: 1px solid #e3e7ee; }
+.guide-tracking-bubble[data-tail="right"]::after { right: -6px; top: var(--tail-y); border-right: 1px solid #e3e7ee; border-top: 1px solid #e3e7ee; }
+.guide-tracking-bubble[data-tail="top"]::after { top: -6px; left: var(--tail-x); border-left: 1px solid #e3e7ee; border-top: 1px solid #e3e7ee; }
+.guide-tracking-bubble[data-tail="bottom"]::after { bottom: -6px; left: var(--tail-x); border-right: 1px solid #e3e7ee; border-bottom: 1px solid #e3e7ee; }
 @media(max-width:767px) { .guide-anchor { width: 68px; height: 96px; } .guide-stage-journey .guide-anchor .guide-tracking-bubble { width: 224px; padding: 12px; } }
 @media(prefers-reduced-motion:reduce) { .guide-stage-journey .guide-anchor .guide-tracking-bubble { transition: none; } }
 .guide-stage-journey .guide-character { width: 80px; height: 120px; padding: 0 8px 24px; opacity: 0; pointer-events: none; }
@@ -106,3 +100,27 @@
 .guide-stage-journey .guide-character.has-callout-space:is(.is-speaking,:hover,:focus-visible) .guide-callout { visibility: visible; transform: none; pointer-events: auto; }
 @media(max-width:767px) { .guide-stage-journey .guide-character .guide-callout { width: 200px; padding: 10px 12px; } .guide-stage-journey .guide-character .guide-callout strong { font-size: .8rem; } }
 @media(prefers-reduced-motion:reduce) { .guide-stage-journey .guide-character .guide-callout { transition: none; } }
+
+/* The owner greets visitors in reserved hero space. Role guides use the right
+   edge only after a deliberate choice; no unsolicited overlay or scroll. */
+.owner-welcome { display:flex; align-items:center; justify-content:center; gap:18px; width:min(calc(100% - 40px),560px); padding-top:112px; margin:0 auto 24px; text-align:left; }
+.owner-welcome + .hero-copy { padding-top:16px; }
+.owner-welcome-avatar { display:block; flex:0 0 110px; height:148px; border-radius:20px; }
+.owner-portrait-intro { width:100%; height:100%; object-fit:contain; transform-origin:50% 100%; animation:owner-arrive .8s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes owner-arrive { 0% { opacity:0; transform:perspective(600px) translateY(24px) scale(.7); } 65% { opacity:1; transform:perspective(600px) translateY(-8px) scale(1.05); } 100% { opacity:1; transform:none; } }
+@media(prefers-reduced-motion:reduce) { .owner-portrait-intro { animation:none; } }
+.owner-avatar { position:relative; width:100%; height:100%; }
+.owner-avatar canvas { position:absolute; inset:0; width:100%; height:100%; }
+.owner-avatar img { width:100%; height:100%; object-fit:contain; }
+.owner-welcome-bubble { position:relative; padding:16px 20px; border:1px solid #e3e7ee; border-radius:18px 18px 18px 4px; box-shadow:0 6px 18px #00000008; background:#fff; }
+.owner-welcome-bubble small { font-size:.78rem; font-weight:700; color:#526176; }
+.owner-welcome-bubble p { margin:6px 0 8px; font-size:.9rem; line-height:1.5; }
+.owner-welcome-bubble a { display:inline-flex; min-height:44px; align-items:center; color:#2248b5; font-size:.82rem; font-weight:650; }
+.owner-welcome a:focus-visible { outline:3px solid #326bff; outline-offset:4px; }
+.avatar-preview { max-width:900px; margin:auto; padding:32px 24px; }
+.avatar-preview h1 { font-size:clamp(1.8rem,4vw,3rem); margin:20px 0 8px; }
+.avatar-preview-stage { height:440px; max-height:60svh; background:radial-gradient(ellipse at 50% 65%,#fff,#e9edf3); border-radius:28px; margin:24px 0; }
+.avatar-preview-controls { display:flex; flex-wrap:wrap; gap:12px; align-items:end; }
+.avatar-preview-controls label { display:grid; gap:6px; }
+.avatar-preview-controls :is(button,select,a) { min-height:44px; padding:10px 14px; border:1px solid #c4cddc; border-radius:10px; background:white; color:#17243b; font:inherit; }
+@media(max-width:767px) { .owner-welcome { gap:8px; margin-bottom:20px; } .owner-welcome-avatar { flex-basis:76px; height:120px; } .owner-welcome-bubble { padding:12px; } .owner-welcome-bubble p { font-size:.8rem; } }

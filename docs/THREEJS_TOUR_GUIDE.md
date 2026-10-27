@@ -2,16 +2,31 @@
 
 ## Release status
 
-The portfolio's existing avatar and speech bubble remain the production default.
-The new Three.js engine is opt-in. **The actual `tour_guide.glb` was not present in
-the workspace or attachments on 2026-10-27.** A synthetic local mesh was used to
-exercise the loader, projection, controls and cleanup. It is not the character
-and is not shipped. Photorealism, rig deformation, foot contact and real-device
-Safari performance still require the real asset.
+The production greeting uses Ali's actual portrait. A new **stylized draft** at
+`public/assets/tour_guide.glb` is an original procedural adaptation of that
+portrait, not a scan or photoreal reconstruction. It has 20 humanoid joints,
+weighted geometry, `Head_Mouth_Node`, seven clips and embedded PBR materials.
+The uncompressed file is 1,641,992 bytes. No image is uploaded to a third party.
+
+Review the model at `/guide-preview/` (excluded from indexing). Use the clip
+selector, rotation and pause controls. `node scripts/build-tour-guide.mjs`
+rebuilds it; `npm run test:guide` validates the actual binary using Khronos's
+validator and exercises its skeleton, hand movement and in-place root.
+The idle lasts 10 seconds with deterministic baked blink timing. Mesh parts
+have rigid joint weights; this is a stylized articulated draft, not polished
+continuous skin deformation. Likeness, cloth joints and stride need artist
+review before a production 3D appearance. Real Safari performance is unmeasured.
+
+`OwnerAvatar` integrates it into the hero with `NEXT_PUBLIC_OWNER_3D=true` in a
+local build. The flag is intentionally absent from the production workflow.
+It caps rendering at 30 fps and DPR 1.5, skips hidden/offscreen rendering, respects
+reduced motion and pause, and cleans up GPU objects on unmount. The portrait is
+the loading/error fallback. After choosing a role, the owner's greeting unmounts
+and that role's existing actor opens the same evidence-based chat on demand.
 
 ## Install the real character
 
-1. Copy the licensed, optimized binary model to `public/assets/tour_guide.glb`.
+1. Replace the draft with an approved, optimized binary at `public/assets/tour_guide.glb`.
 2. Include the exact node `Head_Mouth_Node` and these exact clip names:
    `idle_loop`, `walk_forward`, `sprint_forward`, `gesture_point_left`,
    `gesture_point_right`. `pose_proud` and `pose_bored` are optional.
@@ -25,18 +40,19 @@ Safari performance still require the real asset.
 5. In a **local preview** set:
 
    ```text
-   NEXT_PUBLIC_TOUR_GUIDE_MODEL_URL=/Alinguyen-portfolio/assets/tour_guide.glb
+   NEXT_PUBLIC_OWNER_3D=true
    ```
 
    Restart the dev server. This public setting is an asset path, not a secret.
-6. Test the real asset before adding the same setting to the Pages build
-   environment. Without the setting, no WebGL renderer is instantiated. On load,
-   validation, or WebGL failure, the current accessible avatar remains available.
+6. Test before adding the same setting to the Pages build environment. The
+   standalone `/guide-preview/` always loads the model; the homepage does not
+   load WebGL without the flag. The viewport engine below is a separate opt-in
+   module and is not mounted for visitor-role actors.
 
 The model keeps its own scale at 1. A parent presentation group maps its physical
 height to 120 CSS pixels. `walkStride` and `sprintStride` are meters per animation
 cycle; tune them against the real rig to reduce foot sliding. Defaults are 0.7
-and 1.6 meters, not measured properties of the missing asset.
+and 1.6 meters, not measured properties of the draft asset.
 
 ## JavaScript module
 

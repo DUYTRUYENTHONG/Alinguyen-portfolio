@@ -243,7 +243,6 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
 @media(prefers-reduced-motion:reduce){.working-hours-trigger{transition:none}}
 
 /* Reading resilience: wrap real content rather than clipping the page. */
-.visitor-optional { max-width: 65ch; margin: 16px auto 28px; color: #565e64; text-align: center; }
 .contact-email { max-width: 100%; overflow-wrap: anywhere; }
 .contact-shell, .funnel-journey-card, .funnel-detail { min-width: 0; }
 .funnel-section h2, .funnel-section h3, .funnel-section p { overflow-wrap: anywhere; }
@@ -256,13 +255,6 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
 .portfolio-main :where(h1, h2, h3, p) { overflow-wrap: anywhere; }
 .hero-actions > a { min-width: 0; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
 
-.visitor-guide-message { min-height: 94px; margin: 0 auto 24px; max-width: 760px; }
-.guide-inline-message { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 20px; border: 1px solid #dce3ed; border-radius: 18px; background: #f8faff; }
-.guide-inline-message small { display: block; margin-bottom: 4px; font-size: .7rem; font-weight: 700; letter-spacing: .06em; color: #54627a; }
-.guide-inline-message p { margin: 0; font-size: .9rem; line-height: 1.5; color: #303d50; }
-.guide-inline-message button { flex: none; min-height: 44px; padding: 10px 15px; border: 1px solid #c7d4e9; border-radius: 999px; background: #fff; color: #204dab; font-size: .85rem; font-weight: 650; }
-.guide-character.has-inline-message .guide-callout { display: none; }
-@media(max-width:767px) { .guide-inline-message { align-items: flex-start; flex-direction: column; gap: 12px; padding: 16px; } .visitor-guide-message { min-height: 180px; } }
 
 /* Shallow portrait depth on fine pointers; text remains stable. */
 @media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) { .portrait-photo { transition: transform .65s ease; } .portrait-stage:hover .portrait-photo { transform: translateX(-50%) perspective(1200px) rotateY(-3deg) translateZ(10px); } }

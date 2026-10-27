@@ -31,7 +31,9 @@ The knowledge-assistant work is a prototype, not a deployed support service. The
 The guide's [viewport interaction and Three.js implementation](docs/THREEJS_TOUR_GUIDE.md)
 documents attached speech bubbles, responsive controls, model requirements and
 the optional rigged character engine. The current avatar remains the production
-fallback; full 3D is enabled only after a real GLB is supplied and verified.
+fallback. A reproducible stylized GLB with seven clips is now available at
+`/guide-preview/`; its likeness needs owner review before use as the live greeting.
+Rebuild it with `node scripts/build-tour-guide.mjs` and validate with `npm run test:guide`.
 
 This repository contains three deployable parts: a static portfolio, a separate AI/traffic API, and a private analytics importer. See the [AI engineering implementation guide](docs/AI_ENGINEERING_IMPLEMENTATION.md) for the source map, request lifecycle, evaluation procedure and operational boundaries.
 
@@ -127,7 +129,7 @@ The homepage includes a separate community resource after the applied AI example
 
 ## NPC-style portfolio companion
 
-The actor opens AI chat only when selected. The automatic welcome/tour card was removed at the owner’s request. A saved perspective never opens a panel or navigates the page. Existing character artwork uses lightweight layered motion; it is not a rigged 3D model.
+The actor opens AI chat only when selected. Fresh visitors see Ali’s portrait and a brief greeting in reserved hero space; choosing a perspective hands off to that role’s actor. The old popup, visitor helper blocks and bubble action row are removed. A saved perspective never opens a panel or navigates the page. Role artwork uses lightweight layered motion. The separate GLB preview has a real humanoid skeleton; set `NEXT_PUBLIC_OWNER_3D=true` locally to review it in the hero before enabling that appearance in production.
 
 See [the executed implementation prompt and acceptance criteria](docs/NPC_GUIDE_IMPLEMENTATION_PROMPT.md).
 

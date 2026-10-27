@@ -5,7 +5,7 @@ import { createContext, useContext, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import type { Project } from "@/data/portfolio";
 import { GuideCharacter } from "./guide-character";
-import { RiggedPortfolioGuide } from "./rigged-portfolio-guide";
+import { OwnerAvatar } from "./owner-avatar";
 import { VisitorStats } from "./visitor-stats";
 import { PortfolioLink as Link } from "./portfolio-link";
 import { WorkingHours } from "./working-hours";
@@ -46,6 +46,8 @@ export function PortfolioExperienceProvider({ children }: { children: ReactNode 
     setReady(true);
   }, []);
   const setSelected = (role: string) => {
+    const picker = document.getElementById("visitor");
+    const pickerTop = picker?.getBoundingClientRect().top;
     setSelectedState(role);
     setChosen(true);
     try { window.sessionStorage.setItem("portfolio-visitor-role", role); } catch { /* Keep the in-tab choice. */ }
@@ -54,6 +56,11 @@ export function PortfolioExperienceProvider({ children }: { children: ReactNode 
       url.searchParams.delete("for");
       window.history.replaceState(null, "", url);
     }
+    // Removing the owner greeting above the picker must not move the visitor's
+    // current reading position when the guide changes identity.
+    if (picker && pickerTop !== undefined) requestAnimationFrame(() => {
+      window.scrollBy({ top: picker.getBoundingClientRect().top - pickerTop, behavior: "instant" });
+    });
   };
   return <RoleContext.Provider value={{ selected, chosen, entry, ready, setSelected }}>{children}</RoleContext.Provider>;
 }
@@ -202,10 +209,17 @@ const roles = [
 export function PortfolioGuide() {
   const { selected, chosen, ready } = usePortfolioRole();
   const role = roles.find((item) => item.label === selected) ?? roles[0];
-  if (!ready) return null;
-  const fallback = <GuideCharacter icon={role.icon} role={selected} chosen={chosen} />;
-  const modelUrl = process.env.NEXT_PUBLIC_TOUR_GUIDE_MODEL_URL;
-  return modelUrl ? <RiggedPortfolioGuide modelUrl={modelUrl} icon={role.icon} role={selected} fallback={fallback} /> : fallback;
+  if (!ready || !chosen) return null;
+  return <GuideCharacter icon={role.icon} role={selected} chosen={chosen} />;
+}
+
+export function OwnerWelcome() {
+  const { chosen, ready } = usePortfolioRole();
+  if (!ready || chosen) return null;
+  return <div className="owner-welcome">
+    <a className="owner-welcome-avatar" href="#visitor" aria-label="Choose your visitor role">{process.env.NEXT_PUBLIC_OWNER_3D === "true" ? <OwnerAvatar /> : <img className="owner-portrait-intro" src={`${basePath}/ali-nguyen-portrait-480.webp`} alt="Ali Nguyen" width="110" height="148" />}</a>
+    <div className="owner-welcome-bubble"><small>Hi, I’m Ali.</small><p>Welcome to my portfolio. Choose your perspective and your guide will take it from here.</p><a href="#visitor">Choose your perspective</a></div>
+  </div>;
 }
 
 export function VisitorPicker({ projects }: { projects: Project[] }) {
@@ -216,8 +230,6 @@ export function VisitorPicker({ projects }: { projects: Project[] }) {
   return (
     <section className="visitor section-shell" id="visitor" aria-labelledby="visitor-title">
       <div className="visitor-heading"><h2 id="visitor-title">Hello stranger,<span className="visitor-heading-tail"> who are you?</span></h2></div>
-      <p className="visitor-optional">Optional: choose a perspective to prioritize relevant projects. All work and CVs are available without choosing.</p>
-      <div id="visitor-guide-message" className="visitor-guide-message" />
       <fieldset className="role-grid"><legend className="sr-only">Choose your perspective</legend>
         {roles.map((item) => <RoleTile key={item.label} item={item} selected={chosen ? selected : null} onSelect={setSelected} />)}
       </fieldset>

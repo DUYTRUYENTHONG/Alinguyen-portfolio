@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 import { projects } from "@/data/portfolio";
 import { GuideAssistantPanel } from "./guide-assistant-panel";
 import { placeGuideActor } from "./guide-actor-placement";
@@ -73,15 +72,12 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   const stageRef = useRef<HTMLDivElement>(null);
   const actorRef = useRef<HTMLButtonElement>(null);
   const anchorRef = useRef<HTMLDivElement>(null);
-  const mutedRef = useRef(false);
   const chatTriggerRef = useRef<HTMLButtonElement | null>(null);
   const lastPosition = useRef<{ x: number; y: number } | null>(null);
   const [stop, setStop] = useState("Explore the portfolio");
   const [message, setMessage] = useState(sceneMessages["Explore the portfolio"]);
   const [panelOpen, setPanelOpen] = useState(false);
   const [conversationSection, setConversationSection] = useState(stop);
-  const [messageSlot, setMessageSlot] = useState<HTMLElement | null>(null);
-  useEffect(() => setMessageSlot(document.getElementById("visitor-guide-message")), []);
   const [showIntroduction, setShowIntroduction] = useState(false);
   const panelOpenRef = useRef(false);
   const stopRef = useRef(stop);
@@ -176,7 +172,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       lastPosition.current = { x: currentX, y: currentY };
       anchor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
       if (callout) {
-        const speaking = !mutedRef.current && target.visible && (actor.classList.contains("is-speaking") || anchor.matches(":hover, :focus-within"));
+        const speaking = target.visible && (actor.classList.contains("is-speaking") || anchor.matches(":hover, :focus-within"));
         const obstacles = speaking ? contentBoxes(true) : [];
         const placement = speaking ? placeGuideCallout(
           { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight },
@@ -295,21 +291,10 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       <span className="guide-character-label" aria-hidden="true">Ask {persona.name}</span>
     </button>
     <aside className="guide-callout guide-tracking-bubble" aria-label={`${persona.name}'s suggestion`} inert>
-      <small>{showIntroduction ? `Meet ${persona.name}` : stop}<span aria-hidden="true"> ···</span></small>
+      <small>{showIntroduction ? `Meet ${persona.name}` : stop}</small>
       <p>{showIntroduction ? persona.introduction : message}</p>
-      <div className="guide-bubble-actions">
-        <a href="#work">Explore work</a>
-        <a href={`${basePath}/cv-applied-ai-engineer.pdf`} download>Get AI CV</a>
-        <button type="button" onClick={(event) => changePanel(true, event.currentTarget)}>Ask {persona.name}</button>
-        <button type="button" onClick={() => {
-          mutedRef.current = true;
-          actorRef.current?.focus({ preventScroll: true });
-          actorRef.current?.dispatchEvent(new Event("guide-message-change"));
-        }}>Hide tips</button>
-      </div>
     </aside>
     </div>
-    {messageSlot && createPortal(<div className="guide-inline-message"><div><small>{showIntroduction ? `Meet ${persona.name}` : "Your portfolio guide"}</small><p>{showIntroduction ? persona.introduction : sceneMessages["Choose your perspective"]}</p></div><button type="button" aria-haspopup="dialog" aria-expanded={panelOpen} onClick={(event) => changePanel(true, event.currentTarget)}>Ask {persona.name}</button></div>, messageSlot)}
     <GuideAssistantPanel open={panelOpen} onClose={() => changePanel(false)} icon={icon} name={persona.name} role={role} section={conversationSection} />
   </div>;
 }

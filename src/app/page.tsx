@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { identity, projects } from "@/data/portfolio";
-import { CopyEmail, PortfolioGuide, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
+import { CopyEmail, OwnerWelcome, PortfolioGuide, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
 import { AdaptiveHero } from "./adaptive-hero";
 import { FunnelExperience } from "./funnel-experience";
 import { WorkingHours } from "./working-hours";
@@ -35,6 +35,7 @@ export default function Home() {
       <SectionAnchorAlign />
       <PortfolioGuide />
       <section className="hero" id="top" aria-labelledby="hero-title">
+        <OwnerWelcome />
         <AdaptiveHero />
         <PortraitReveal />
       </section>
