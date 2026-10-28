@@ -13,6 +13,7 @@ import { CustomerCollaborationSection } from "./customer-collaboration-section";
 import { AboutWorkSection } from "./about-work-section";
 import { BuildNotesSection, DecisionMapSection } from "./visual-communication";
 import { SectionAnchorAlign } from "./section-anchor-align";
+import { freshHomeEntryScript } from "./guide-entry-policy";
 import "./funnel.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -29,6 +30,7 @@ export default function Home() {
   };
 
   return <>
+    <script dangerouslySetInnerHTML={{ __html: freshHomeEntryScript }} />
     <a className="skip-link" href="#main">Skip to content</a>
     <SiteHeader />
     <main id="main" className="portfolio-main">

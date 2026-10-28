@@ -29,7 +29,7 @@ export function OwnerCartoon() {
       if (event.target === event.currentTarget && event.animationName === "owner-flight-in") setPhase("complete");
     }}>
       <span className="owner-boost" aria-hidden="true" />
-      <img ref={image} className={`owner-cartoon${phase !== "loading" ? " is-loaded" : ""}`} src={`${basePath}/guide-art/ali-owner.webp`} alt="Cartoon Ali Nguyen waving in a black suit" width="480" height="720" fetchPriority="high" onLoad={reveal} draggable="false" />
+      <img ref={image} className={`owner-cartoon${phase !== "loading" ? " is-loaded" : ""}`} src={`${basePath}/guide-art/ali-owner.webp`} alt="Cartoon Ali Nguyen waving in a black suit" width="480" height="720" fetchPriority="high" onLoad={reveal} onError={() => setPhase("complete")} draggable="false" />
     </span>
   </span>;
 }

@@ -21,8 +21,8 @@ Generation prompt:
 ## Behavior and browser QA
 
 - Entrance begins only after the image loads, including the cache-load path.
-- The entrance is now a 1.45-second flight from the left, with blue foot thrusters,
-  a landing ring and shadow. The bubble fades/slides into place after 0.4 seconds.
+- The entrance is a 0.9-second eased arrival from nearby left, with subdued blue
+  foot thrusters, landing ring and shadow. The bubble begins after 0.12 seconds.
 - `portfolio-owner-arrival-v1` in session storage prevents replay on refresh.
 - Fresh tab: observed `first-visit` lifecycle reaching `complete` through animationend.
 - Same-tab refresh: observed `returning`; entrance does not replay.
@@ -37,6 +37,9 @@ Generation prompt:
 Release checks: Biome lint, all 33 guide tests, and the production static build with TypeScript passed.
 
 ## Powered entrance refinement
+
+This records the first flight treatment; the smoothing correction below supersedes
+its timing, spacing and loading behavior.
 
 The requested powered-flight styling uses CSS transforms and opacity on the
 existing cartoon image. The short-lived light effects are decorative and ignore
@@ -53,6 +56,31 @@ emulation shows both animation names `none`. Keyboard role selection still hands
 off to Kai. No console errors in that flow. Screenshots and frame measurements
 are in ignored `artifacts/owner-cartoon-qa/flight-*` files. Physical Safari and
 native browser 200% zoom were not tested in this pass.
+
+## Smooth welcome correction
+
+Observed roughness: the greeting was added after hydration, shifting the headline;
+the fully visible bubble then faded backward before its entrance; the long flight
+used multiple bounce segments. Fresh #visitor entries also briefly landed below
+the hero before the client corrected their location.
+
+The home document now reserves the greeting's final space before hydration. A
+small initial script normalizes a fresh fragment before its target is parsed,
+without consuming the session marker or changing Back/Forward behavior. The
+image and bubble reveal together after image load. Image failure releases the
+bubble. A single eased 0.9-second arrival replaces the long bounce sequence.
+Copy, mobile spacing and avatar size are tighter, with a visible 44px role CTA.
+
+Browser sequence evidence: all eight captured frames were at #top / scrollY 0;
+the headline stayed at 278.5208 CSS px before hydration, during motion and after
+completion. Bubble opacity progressed from hidden to fully visible. Viewports
+320, 390, 430, 591, 768, 1280, 1440 and 956 × 440 showed no horizontal overflow,
+and the role link remained inside the bubble with a 44px minimum height. Reload
+returned phase `returning`. Keyboard selection handed off to Kai. Reduced-motion
+mode showed both animations `none`, with full bubble opacity. No console errors
+in the tested flow. Evidence: ignored `artifacts/owner-cartoon-qa/smooth-*` files.
+All 35 guide regression tests and lint passed. Physical Safari and native 200%
+browser zoom remain unmeasured.
 
 ## Fresh-entry correction
 
