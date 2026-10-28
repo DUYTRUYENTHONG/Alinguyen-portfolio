@@ -9,11 +9,16 @@ export function SectionAnchorAlign() {
   useEffect(() => {
     const navigation = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
     const sameSiteReferrer = Boolean(document.referrer && new URL(document.referrer).origin === window.location.origin);
-    const resetToHeader = startAtHeader(window.location.hash, navigation?.type ?? "navigate", sameSiteReferrer);
+    let freshVisit = true;
+    try {
+      freshVisit = sessionStorage.getItem("portfolio-home-visited-v1") !== "seen";
+      sessionStorage.setItem("portfolio-home-visited-v1", "seen");
+    } catch { /* A first-load greeting remains available without storage. */ }
+    const resetToHeader = startAtHeader(window.location.hash, navigation?.type ?? "navigate", sameSiteReferrer, freshVisit);
     const previousRestoration = window.history.scrollRestoration;
     if (resetToHeader) {
       window.history.scrollRestoration = "manual";
-      if (window.location.hash === "#work") window.history.replaceState(window.history.state, "", `${window.location.pathname}${window.location.search}#top`);
+      if (window.location.hash !== "#top") window.history.replaceState(window.history.state, "", `${window.location.pathname}${window.location.search}#top`);
       window.scrollTo({ top: 0, behavior: "instant" });
     }
     const hash = window.location.hash;

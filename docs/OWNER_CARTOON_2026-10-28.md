@@ -34,3 +34,7 @@ Generation prompt:
 - These are desktop Chromium viewport checks, not physical iPhone Safari tests.
 
 Release checks: Biome lint, all 33 guide tests, and the production static build with TypeScript passed.
+
+## Fresh-entry correction
+
+An incoming fragment such as #visitor now resets to #top on the first homepage visit in a tab session. The query string is preserved. Later section clicks and browser Back/Forward keep native navigation. Browser QA reproduced entry through #visitor: scrollY was 0, the actor and greeting were visible, and the entrance reached complete. The role link then navigated to #visitor and Engineer selection handed off to Kai. All 34 guide tests and lint passed.

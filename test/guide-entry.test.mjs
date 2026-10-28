@@ -14,3 +14,12 @@ test('preserves deliberate CV, case-study return and browser history navigation'
   assert.equal(startAtHeader('#work', 'back_forward', false), false);
   assert.equal(startAtHeader('', 'back_forward', false), false);
 });
+
+test('a fresh visit starts with the owner introduction even with an incoming section fragment', () => {
+  for (const hash of ['#visitor', '#work', '#cvs', '#contact', '']) {
+    assert.equal(startAtHeader(hash, 'navigate', false, true), true);
+  }
+  assert.equal(startAtHeader('#visitor', 'reload', true, true), true);
+  assert.equal(startAtHeader('#visitor', 'navigate', true, false), false);
+  assert.equal(startAtHeader('#visitor', 'back_forward', true, true), false);
+});
