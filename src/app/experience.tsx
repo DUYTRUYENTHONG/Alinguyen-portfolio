@@ -219,7 +219,7 @@ export function OwnerWelcome() {
   if (chosen) return null;
   return <div className="owner-welcome" data-ready={ready}>
     <a className="owner-welcome-avatar" href="#visitor" aria-label="Choose your visitor role">{ready && (process.env.NEXT_PUBLIC_OWNER_3D === "true" ? <OwnerAvatar /> : <OwnerCartoon />)}</a>
-    <div className="owner-welcome-bubble"><small>Hi, I’m Ali.</small><p>Welcome. Choose a perspective and I’ll guide you through my work.</p><a href="#visitor">Choose your perspective</a></div>
+    <div className="owner-welcome-bubble"><small>Hi, I’m Ali.</small><p>Choose your role—I’ll show you where to start.</p><a href="#visitor">Choose your role</a></div>
   </div>;
 }
 
