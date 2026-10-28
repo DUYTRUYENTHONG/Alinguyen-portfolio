@@ -1,7 +1,7 @@
 "use client";
 
 import { identity } from "@/data/portfolio";
-import { RotatingFocus, usePortfolioRole } from "./experience";
+import { usePortfolioRole } from "./experience";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -9,12 +9,12 @@ const messages = {
   general: {
     description: "I turn customer problems into testable AI prototypes, data workflows, developer tools, and live commerce products. Explore the decisions and evidence behind each build.",
     action: "Explore engineering work",
-    href: "#work",
+    href: "#featured-work",
   },
   recruiter: {
     description: "See the code, product decisions, and limits behind my applied AI and commerce work. Start with the projects most useful for evaluating engineering fit.",
     action: "Explore engineering work",
-    href: "#work",
+    href: "#featured-work",
   },
   engineering: {
     description: "Explore a public developer tool, reproducible checks, and the implementation decisions behind my applied AI and commerce projects.",
@@ -58,9 +58,8 @@ export function AdaptiveHero() {
   const message = messages[audience];
 
   return <div className="hero-copy section-shell">
-    <h1 id="hero-title">Ali Nguyen builds<br /> applied AI &amp; digital<br /> products.</h1>
-    <p className="hero-rotate">I build <RotatingFocus /></p>
-    <p className="hero-meta">{message.description} <span>DUYTRUYENTHONG</span></p>
+    <h1 id="hero-title">Ali Nguyen builds applied AI &amp; digital products.</h1>
+    <p className="hero-meta">{message.description}</p>
     <div className="hero-actions"><a className="hero-action-primary" href={message.href}>{message.action} <span aria-hidden="true">↗</span></a><a className="hero-action-secondary" href={`${basePath}/cv-applied-ai-engineer.pdf`} download>Download AI CV <span aria-hidden="true">↓</span></a></div>
     <p className="hero-experience"><span>{identity.experience.digitalMarketing}</span><span>{identity.experience.aiEngineering}</span></p>
   </div>;

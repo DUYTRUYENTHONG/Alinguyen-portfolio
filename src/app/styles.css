@@ -274,3 +274,19 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
   dialog.mobile-menu{margin:0;width:calc(100% - 20px);max-width:none;border:0;color:var(--ink);bottom:auto}
   .mobile-menu-close{position:absolute;top:6px;right:6px;display:grid;place-items:center;width:56px;height:56px;border:1px solid #eee;border-radius:50%;background:#fff;color:var(--ink);font-size:1.6rem;line-height:1}
 }
+/* Priority UX: evidence first, stable role introductions, compact navigation. */
+.hero { padding-bottom:12px; }
+.role-introduction { display:block; max-width:34ch; padding-top:10px; margin-top:4px; border-top:1px solid #cad6e7; color:#34475f; font-size:.8rem; font-weight:450; line-height:1.5; }
+.role-card.is-selected .role-icon img { animation:role-select-arrive .55s cubic-bezier(.16,1,.3,1) both; }
+.role-card.is-selected .role-introduction { animation:role-intro-arrive .3s .15s ease-out both; }
+@keyframes role-select-arrive { 0% { opacity:.35; transform:translateY(14px) scale(.88) rotate(-4deg); } 65% { opacity:1; transform:translateY(-3px) scale(1.03) rotate(1deg); } 100% { opacity:1; transform:none; } }
+@keyframes role-intro-arrive { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:none; } }
+@media(min-width:901px) { .role-grid { grid-template-rows:repeat(2,minmax(192px,auto)); } .role-card.is-selected { justify-content:center; gap:10px; } .role-card.is-selected .role-icon { height:140px; } .role-card.is-selected .role-card-copy { padding-bottom:0; } }
+@media(min-width:768px) and (max-width:1100px) { .desktop-nav a { padding-inline:12px; font-size:.82rem; } .desktop-nav .working-hours-header { display:none; } }
+@media(max-width:767px) { .role-introduction { font-size:.78rem; } }
+@media(prefers-reduced-motion:reduce) { .role-card.is-selected .role-icon img,.role-card.is-selected .role-introduction { animation:none; } }
+/* Keep the introduction short enough to reach project evidence on the next scroll. */
+.hero h1 { max-width:850px; font-size:clamp(2.15rem,4.5vw,3.8rem); margin-bottom:20px; }
+.hero-experience { margin-bottom:0; gap:6px 18px; }
+.hero-experience span { border:0; padding:3px 0; background:transparent; }
+@media(max-width:767px) { .hero h1 { max-width:100%; } .hero-meta { font-size:.95rem; } .hero-experience { max-width:none; margin-top:12px; } }

@@ -1,6 +1,13 @@
 // Reviewed public portfolio facts. Keep URLs and status in sync with src/data/portfolio.ts.
 export const knowledge = [
   {
+    id: "career-agent-kit",
+    title: "Vietnam Career Agent Kit: free community toolkit",
+    url: "https://github.com/DUYTRUYENTHONG/vietnam-career-agent-kit",
+    tags: ["career", "vietnam", "community", "jobs", "cv", "agent", "toolkit"],
+    text: "Ali shares Vietnam Career Agent Kit as a free community toolkit using Python, SQLite and reusable agent skills. It prepares a private local workspace from a text CV and job description, matches evidence to a role, drafts a tailored CV, and tracks supervised applications. Users review and approve supported browser actions before sharing or submitting. Automated job-source connectors and unattended applications are not included; job offers are not guaranteed. Model services may have separate costs.",
+  },
+  {
     id: "recommendation-signals",
     title: "Optional recommendation signals",
     url: "https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/#recommendations",
@@ -26,7 +33,7 @@ export const knowledge = [
     title: "Ali Nguyen overview and contact",
     url: "https://duytruyenthong.github.io/Alinguyen-portfolio/about/",
     tags: ["ali", "about", "contact", "experience", "founder", "marketing", "degree"],
-    text: "Ali Nguyen is Nguyen Quang Duy, an applied AI and product engineer and founder of DUYTRUYENTHONG. He describes 4+ years in digital marketing and 2+ years in AI engineering and product building. His Bachelor of Computer Science degree from Vietnamese-German University was confirmed by him. For direct inquiries, use the portfolio contact section or nquangd1510@gmail.com.",
+    text: "Ali Nguyen is Nguyen Quang Duy, an applied AI and product engineer and founder of DUYTRUYENTHONG. He describes 4+ years in digital marketing and 3+ years in AI engineering and product building. His Bachelor of Computer Science degree from Vietnamese-German University was confirmed by him. For direct inquiries, use the portfolio contact section or nquangd1510@gmail.com.",
   },
   {
     id: "kkbox-results",

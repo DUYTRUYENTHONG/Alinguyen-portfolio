@@ -25,3 +25,19 @@ Provider references: [Groq Free Plan limits](https://console.groq.com/docs/rate-
 ## Optional portfolio recommendation signals
 
 `POST /api/interaction` accepts only consented, allowlisted project-link interactions. Daily hashed deduplication keys and rate limits expire after two days; aggregate counters expire after 30 days. `PORTFOLIO_SIGNALS_ENABLED=true` enables recording and bounded seven-day ranking. The guide never sends counts to the model and falls back to baseline retrieval on signal failure. See [implementation and privacy](../docs/PORTFOLIO_RECOMMENDATIONS.md) for configuration, withdrawal, testing and rollback. This namespace is separate from no-bloom traffic and is not a PostgreSQL warehouse export.
+
+### Answer coverage
+
+Broad supported questions such as “Which products are live?” return a curated
+three-website inventory (Growth Commerce OS, STOS, Chợ Kênh), with numbered
+source links and explicit planned-feature limits. This answer uses reviewed
+public facts rather than model generation or popularity ranking. Specific
+feature questions still use retrieval and generation.
+
+Generated answers must cite an approved source for each recognized project they
+name. Missing project citations return the verification fallback; the server does
+not attach citations to unchecked claims after generation. This is a bounded
+name/coverage safeguard, not semantic entailment or a factual-accuracy guarantee.
+The existing rate limits, CORS, privacy policy, and provider-failure excerpt stay
+in force. `npm run smoke:production` checks both a grounded KKBox answer and the
+complete live inventory on the separately deployed Vercel API.

@@ -4,7 +4,7 @@ import { CopyEmail, OwnerWelcome, PortfolioGuide, ScrollStatement, SiteHeader, V
 import { AdaptiveHero } from "./adaptive-hero";
 import { FunnelExperience } from "./funnel-experience";
 import { WorkingHours } from "./working-hours";
-import { PortraitReveal } from "./portrait-reveal";
+import { FeaturedProjects } from "./featured-projects";
 import { CvDownloadSection } from "./cv-download-section";
 import { HighlightsSection } from "./highlights-section";
 import { CommunityResourceSection } from "./community-resource-section";
@@ -39,8 +39,9 @@ export default function Home() {
       <section className="hero" id="top" aria-labelledby="hero-title">
         <OwnerWelcome />
         <AdaptiveHero />
-        <PortraitReveal />
       </section>
+
+      <FeaturedProjects />
 
       <section className="identity-strip" aria-label="Featured work"><div className="identity-track"><span>GROWTH COMMERCE OS</span><span>STOS</span><span>CHỢ KÊNH</span><span>VIBECODE PRODUCT KIT</span><span>KKBOX CHURN BASELINE</span><span>DUYTRUYENTHONG</span><span aria-hidden="true">GROWTH COMMERCE OS</span><span aria-hidden="true">STOS</span></div></section>
       <VisitorPicker projects={projects} />
