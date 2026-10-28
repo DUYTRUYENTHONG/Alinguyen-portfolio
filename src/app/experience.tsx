@@ -3,8 +3,6 @@
 import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
-import { identity } from "@/data/portfolio";
-import { guidePersonas } from "./guide-personas";
 import type { Project } from "@/data/portfolio";
 import { GuideCharacter } from "./guide-character";
 import { OwnerAvatar } from "./owner-avatar";
@@ -81,7 +79,6 @@ const navItems = [
   { label: "About", href: "/about" },
   { label: "Download CVs", href: "#cvs" },
   { label: "Get in touch", href: "#contact" },
-  { label: "GitHub", href: identity.github },
 ];
 
 export function SiteHeader({ inner = false }: { inner?: boolean }) {
@@ -249,9 +246,9 @@ function RoleTile({ item, selected, onSelect }: { item: (typeof roles)[number]; 
   const active = selected === item.label;
   return <div className={`role-cell ${active ? "is-selected" : ""}`}>
     <label className={`role-card role-${item.tone} ${active ? "is-selected" : ""}`}>
-      <input type="radio" name="visitor-role" aria-label={item.label} aria-describedby={active ? `role-intro-${item.icon}` : undefined} value={item.label} checked={active} onChange={() => onSelect(item.label)} />
+      <input type="radio" name="visitor-role" value={item.label} checked={active} onChange={() => onSelect(item.label)} />
       <span className="role-icon" aria-hidden="true"><img src={`${basePath}/role-art/${item.icon}.webp`} alt="" width="362" height="362" loading="lazy" /></span>
-      <span className="role-card-copy">{active && <small>THAT&apos;S YOU</small>}<strong>{item.label}</strong>{active && <em>{item.description}</em>}{active && <span id={`role-intro-${item.icon}`} className="role-introduction">{guidePersonas[item.label].introduction}</span>}</span>
+      <span className="role-card-copy">{active && <small>THAT&apos;S YOU</small>}<strong>{item.label}</strong>{active && <em>{item.description}</em>}</span>
     </label>
   </div>;
 }

@@ -197,8 +197,8 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
       </div>}
       {turns.map((turn, index) => <div className={`guide-assistant-turn guide-assistant-turn-${turn.role}`} data-guide-current={index === turns.length - 1 && !busy && !error ? "true" : undefined} key={`${index}-${turn.role}`}>
         <span>{turn.role === "assistant" && <img src={`${basePath}/guide-art/${icon}.webp`} width="20" height="28" alt="" />}{turn.role === "user" ? "You" : name}</span><p>{turn.text}</p>
-        {turn.citations?.length ? <div className="guide-assistant-citations">{turn.citations.map((citation, citationIndex) =>
-          <a key={citation.sourceId} href={citation.url} target="_blank" rel="noopener noreferrer">[{citationIndex + 1}] {citation.label} ↗</a>)}</div> : null}
+        {turn.citations?.length ? <div className="guide-assistant-citations">{turn.citations.map((citation) =>
+          <a key={citation.sourceId} href={citation.url} target="_blank" rel="noopener noreferrer">{citation.label} ↗</a>)}</div> : null}
       </div>)}
       {busy && <div className="guide-assistant-status" data-guide-current="true" role="status"><span className="guide-thinking-dots" aria-hidden="true"><i /><i /><i /></span><span>{name} is checking public sources…</span></div>}
       {error && <p className="guide-assistant-error" data-guide-current="true" role="status">{error}</p>}

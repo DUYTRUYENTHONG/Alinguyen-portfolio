@@ -19,7 +19,7 @@ export const identity = {
   title: "Applied AI and Product Engineer",
   experience: {
     digitalMarketing: "4+ years in digital marketing",
-    aiEngineering: "3+ years in AI engineering and product building",
+    aiEngineering: "2+ years in AI engineering and product building",
   },
   proposition:
     "Applied AI prototypes, developer tools, and live commerce products, built with a background in digital marketing and sales workflows.",
