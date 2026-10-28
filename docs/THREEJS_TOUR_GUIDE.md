@@ -2,7 +2,10 @@
 
 ## Release status
 
-The production greeting uses Ali's actual portrait. A new **stylized draft** at
+The production greeting uses an AI-generated cartoon likeness of Ali with a
+once-per-session CSS jump-out entrance; it is a transparent image, not a rigged
+3D model. See [cartoon asset and QA notes](OWNER_CARTOON_2026-10-28.md).
+A separate **stylized draft** at
 `public/assets/tour_guide.glb` is an original procedural adaptation of that
 portrait, not a scan or photoreal reconstruction. It has 20 humanoid joints,
 weighted geometry, `Head_Mouth_Node`, seven clips and embedded PBR materials.

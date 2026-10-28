@@ -129,7 +129,7 @@ The homepage includes a separate community resource after the applied AI example
 
 ## NPC-style portfolio companion
 
-The actor opens AI chat only when selected. Fresh visitors see Ali’s portrait and a brief greeting in reserved hero space; choosing a perspective hands off to that role’s actor. The old popup, visitor helper blocks and bubble action row are removed. A saved perspective never opens a panel or navigates the page. Role artwork uses lightweight layered motion. The separate GLB preview has a real humanoid skeleton; set `NEXT_PUBLIC_OWNER_3D=true` locally to review it in the hero before enabling that appearance in production.
+The actor opens AI chat only when selected. Fresh visitors see Ali’s cartoon likeness and a brief greeting in reserved hero space. A short jump-out entrance plays once per tab session, after the image loads, and is disabled for reduced motion. Choosing a perspective hands off to that role’s actor. The old popup, visitor helper blocks and bubble action row are removed. A saved perspective never opens a panel or navigates the page. Role artwork uses lightweight layered motion. The separate GLB preview has a real humanoid skeleton; set `NEXT_PUBLIC_OWNER_3D=true` locally to review it in the hero before enabling that appearance in production.
 
 See [the executed implementation prompt and acceptance criteria](docs/NPC_GUIDE_IMPLEMENTATION_PROMPT.md).
 

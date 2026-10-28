@@ -105,10 +105,23 @@
    edge only after a deliberate choice; no unsolicited overlay or scroll. */
 .owner-welcome { display:flex; align-items:center; justify-content:center; gap:18px; width:min(calc(100% - 40px),560px); padding-top:112px; margin:0 auto 24px; text-align:left; }
 .owner-welcome + .hero-copy { padding-top:16px; }
-.owner-welcome-avatar { display:block; flex:0 0 110px; height:148px; border-radius:20px; }
-.owner-portrait-intro { width:100%; height:100%; object-fit:contain; transform-origin:50% 100%; animation:owner-arrive .8s cubic-bezier(.2,.8,.2,1) both; }
-@keyframes owner-arrive { 0% { opacity:0; transform:perspective(600px) translateY(24px) scale(.7); } 65% { opacity:1; transform:perspective(600px) translateY(-8px) scale(1.05); } 100% { opacity:1; transform:none; } }
-@media(prefers-reduced-motion:reduce) { .owner-portrait-intro { animation:none; } }
+.owner-welcome-avatar { display:block; flex:0 0 128px; height:180px; border-radius:20px; }
+.owner-cartoon-stage { position:relative; display:block; width:100%; height:100%; isolation:isolate; }
+.owner-cartoon-stage::before { content:""; position:absolute; z-index:-1; left:23%; right:17%; bottom:4px; height:9px; border-radius:50%; background:#23324a24; filter:blur(4px); pointer-events:none; }
+.owner-cartoon { display:block; width:100%; height:100%; object-fit:contain; transform-origin:50% 95%; filter:drop-shadow(0 3px 3px #17243b16); }
+.owner-cartoon:not(.is-loaded) { visibility:hidden; }
+.owner-cartoon-stage.is-arriving .owner-cartoon { animation:owner-jump-out 1.05s cubic-bezier(.2,.75,.25,1) both; }
+.owner-cartoon-stage.is-arriving::before { animation:owner-landing-shadow 1.05s ease-out both; }
+@keyframes owner-jump-out {
+  0% { opacity:0; transform:perspective(650px) translateY(42px) translateZ(-100px) rotateY(-14deg) scale(.55); }
+  22% { opacity:1; }
+  52% { opacity:1; transform:perspective(650px) translateY(-18px) translateZ(24px) rotateY(4deg) scale(1.08); }
+  76% { transform:perspective(650px) translateY(2px) scaleX(1.04) scaleY(.94); }
+  89% { transform:perspective(650px) translateY(-4px) scale(.99,1.02); }
+  100% { opacity:1; transform:none; }
+}
+@keyframes owner-landing-shadow { 0% { opacity:0; transform:scale(.4); } 52% { opacity:.35; transform:scale(.7); } 76% { opacity:1; transform:scale(1.12); } 100% { opacity:1; transform:scale(1); } }
+@media(prefers-reduced-motion:reduce) { .owner-cartoon-stage.is-arriving .owner-cartoon,.owner-cartoon-stage.is-arriving::before { animation:none; } }
 .owner-avatar { position:relative; width:100%; height:100%; }
 .owner-avatar canvas { position:absolute; inset:0; width:100%; height:100%; }
 .owner-avatar img { width:100%; height:100%; object-fit:contain; }
@@ -123,4 +136,4 @@
 .avatar-preview-controls { display:flex; flex-wrap:wrap; gap:12px; align-items:end; }
 .avatar-preview-controls label { display:grid; gap:6px; }
 .avatar-preview-controls :is(button,select,a) { min-height:44px; padding:10px 14px; border:1px solid #c4cddc; border-radius:10px; background:white; color:#17243b; font:inherit; }
-@media(max-width:767px) { .owner-welcome { gap:8px; margin-bottom:20px; } .owner-welcome-avatar { flex-basis:76px; height:120px; } .owner-welcome-bubble { padding:12px; } .owner-welcome-bubble p { font-size:.8rem; } }
+@media(max-width:767px) { .owner-welcome { gap:8px; margin-bottom:20px; } .owner-welcome-avatar { flex-basis:88px; height:136px; } .owner-welcome-bubble { padding:12px; } .owner-welcome-bubble p { font-size:.8rem; } }

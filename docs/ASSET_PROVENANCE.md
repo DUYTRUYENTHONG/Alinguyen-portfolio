@@ -5,6 +5,7 @@ This record distinguishes original portfolio work from brand marks and other thi
 | Asset group | Source and treatment | Rights boundary |
 | --- | --- | --- |
 | Ali portrait, DUYTRUYENTHONG mark, and Chợ Kênh mark | Supplied by the portfolio owner. | Included as owner-provided identity and product artwork. |
+| `guide-art/ali-owner.webp` | Generated with built-in imagegen on 2026-10-28, using Ali's owner-supplied portrait for likeness and the existing engineer avatar for style. | Transparent cartoon sprite, resized and encoded with Sharp. [Prompt and QA](OWNER_CARTOON_2026-10-28.md). |
 | Cô Ba, Bà Chi, Đại An, 4U Home, Dê Cúc Phương City, and Bản Tôi marks | Supplied in owner files or owner-approved project material. | Names and marks remain associated with their respective businesses. |
 | Toàn Thắng, Hưng Phú Thịnh, Biên Lan, and Bách Việt marks | Obtained from what appeared to be their official sites for identification in the portfolio. | Their respective owners retain rights; this portfolio does not claim ownership or endorsement. |
 | Zalo Official Account, Vantage, Dupoin, and DBG Markets marks | Prepared from owner-supplied visual references; backgrounds were removed for display. Ali Nguyen confirmed these as collaborations. | Their respective brand owners retain rights. |

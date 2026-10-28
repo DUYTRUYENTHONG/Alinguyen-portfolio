@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import type { Project } from "@/data/portfolio";
 import { GuideCharacter } from "./guide-character";
 import { OwnerAvatar } from "./owner-avatar";
+import { OwnerCartoon } from "./owner-cartoon";
 import { VisitorStats } from "./visitor-stats";
 import { PortfolioLink as Link } from "./portfolio-link";
 import { WorkingHours } from "./working-hours";
@@ -217,7 +218,7 @@ export function OwnerWelcome() {
   const { chosen, ready } = usePortfolioRole();
   if (!ready || chosen) return null;
   return <div className="owner-welcome">
-    <a className="owner-welcome-avatar" href="#visitor" aria-label="Choose your visitor role">{process.env.NEXT_PUBLIC_OWNER_3D === "true" ? <OwnerAvatar /> : <img className="owner-portrait-intro" src={`${basePath}/ali-nguyen-portrait-480.webp`} alt="Ali Nguyen" width="110" height="148" />}</a>
+    <a className="owner-welcome-avatar" href="#visitor" aria-label="Choose your visitor role">{process.env.NEXT_PUBLIC_OWNER_3D === "true" ? <OwnerAvatar /> : <OwnerCartoon />}</a>
     <div className="owner-welcome-bubble"><small>Hi, I’m Ali.</small><p>Welcome to my portfolio. Choose your perspective and your guide will take it from here.</p><a href="#visitor">Choose your perspective</a></div>
   </div>;
 }
