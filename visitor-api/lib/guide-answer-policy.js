@@ -25,6 +25,24 @@ export function liveProductInventory(question) {
   return { answer, citations: sources.map(({ id, title, url }) => ({ sourceId: id, label: title, url })), suggestions: [], motion: "point", responseMode: "approved-inventory" };
 }
 
+// Direct comparisons quote approved summaries so valid citations cannot mask
+// invented commercial claims. More specific questions retain normal retrieval.
+export function approvedProjectComparison(question) {
+  let remainder = normalize(question).trim();
+  if (!remainder.startsWith("compare ")) return null;
+  remainder = remainder.slice(8);
+  const matches = projects.filter(({ name }) => name.test(remainder));
+  if (matches.length < 2) return null;
+  for (const { name } of matches) remainder = remainder.replace(name, "");
+  if (remainder.replace(/\b(?:and|with|versus|vs)\b/g, "").replace(/[\s,.;?!]/g, "")) return null;
+  const sources = matches.map(({ id }) => knowledge.find((source) => source.id === id));
+  return {
+    answer: "From the approved project summaries:\n\n" + sources.map((source, index) => `[${index + 1}] ${source.title}\n${source.text}`).join("\n\n"),
+    citations: sources.map(({ id, title, url }) => ({ sourceId: id, label: title, url })),
+    suggestions: [], motion: "point", responseMode: "approved-comparison",
+  };
+}
+
 // Do not attach a citation after the fact to an unchecked generated claim.
 export function hasProjectCitationCoverage(answer, cited) {
   const text = normalize(answer);

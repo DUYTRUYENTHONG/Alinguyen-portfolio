@@ -41,3 +41,9 @@ name/coverage safeguard, not semantic entailment or a factual-accuracy guarantee
 The existing rate limits, CORS, privacy policy, and provider-failure excerpt stay
 in force. `npm run smoke:production` checks both a grounded KKBox answer and the
 complete live inventory on the separately deployed Vercel API.
+
+Direct `Compare <project> and <project>` questions also return labelled approved
+source summaries. A live smoke review on 28 October found unsupported commercial
+wording despite two correct citations; using the exact summaries removes that
+paraphrase failure for this bounded path. Specific feature questions continue
+through retrieval and generation, with the limitations above.

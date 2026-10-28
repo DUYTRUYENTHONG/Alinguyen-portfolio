@@ -201,13 +201,20 @@ test("inventory cannot bypass rate limiting", () => withTestEnv(async () => {
 
 test("cross-project answer with only one project's citation is rejected", () => withTestEnv(async () => {
   const handler = createGuideHandler({ makeRedis: () => ({ incr: async () => 1, expire: async () => 1 }), modelFetch: async () => ({ ok: true, json: async () => ({ choices: [{message: {content: JSON.stringify({answer: "STOS and Chợ Kênh are live products.", citations: ["stos"], suggestions: [], motion: "point"})}}] }) }) });
-  const res = response(); await handler(request("Compare STOS and Chợ Kênh"), res);
+  const res = response(); await handler(request("How do STOS and Chợ Kênh differ?"), res);
   assert.match(res.body.answer, /can't verify/); assert.deepEqual(res.body.citations, []);
 }));
 
 test("fully cited cross-project answer is retained", () => withTestEnv(async () => {
   const answer = "STOS is a sales-page website. Chợ Kênh is a TikTok-channel catalog with manual inquiries.";
   const handler = createGuideHandler({ makeRedis: () => ({ incr: async () => 1, expire: async () => 1 }), modelFetch: async () => ({ ok: true, json: async () => ({ choices: [{message: {content: JSON.stringify({answer, citations: ["stos", "cho-kenh"], suggestions: [], motion: "point"})}}] }) }) });
-  const res = response(); await handler(request("Compare STOS and Chợ Kênh"), res);
+  const res = response(); await handler(request("How do STOS and Chợ Kênh differ?"), res);
   assert.equal(res.body.answer, answer); assert.equal(res.body.citations.length, 2);
+}));
+
+test("direct comparisons use approved sources without model embellishment", () => withTestEnv(async () => {
+  const handler = createGuideHandler({ makeRedis: () => ({ incr: async () => 1, expire: async () => 1 }), modelFetch: async () => { throw Error("Comparison must not call the model"); } });
+  const res=response(); await handler(request("Compare STOS and Chợ Kênh."),res);
+  assert.equal(res.body.responseMode,"approved-comparison");assert.equal(res.body.citations.length,2);
+  assert.match(res.body.answer,/business results are not claimed/);
 }));

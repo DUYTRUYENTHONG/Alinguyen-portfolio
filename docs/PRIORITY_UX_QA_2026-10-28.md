@@ -39,3 +39,13 @@ from its source. The earlier 16-request baseline remains historical evidence.
 A physical iPhone/Safari keyboard, real-user performance, and native 200% zoom
 were not tested. Release completion also requires a production build, the Pages
 workflow, the separate Vercel API deployment, and production smoke checks.
+
+## Live-review follow-up
+
+The first live comparison returned the two expected citations but added
+unsupported commercial wording. Manual review caught the issue that the
+citation-only smoke check missed. Direct project comparisons now return exact,
+labelled approved-source summaries, with a separate source for each project.
+Two further regression tests cover this route and the retained generation guard;
+the API suite now contains 35 tests (84 across the three suites). This does not
+establish semantic correctness for every generated answer.

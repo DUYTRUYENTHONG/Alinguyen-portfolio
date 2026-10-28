@@ -46,3 +46,15 @@ if (inventory.responseMode !== "approved-inventory" || inventory.citations?.leng
   throw new Error("Production inventory is incomplete, has incorrect sources, or loses feature limitations");
 }
 console.log("Production live inventory: all three products, exact source URLs, and planned-feature limits passed.");
+
+const comparisonResponse = await fetch(endpoint, {
+  method: "POST", headers: { Origin: origin, "Content-Type": "application/json" },
+  body: JSON.stringify({ question: "Compare STOS and Cho Kenh.", context: { page: "/Alinguyen-portfolio/", section: "Selected work", role: "Founder" }, recentTurns: [], interests: [] }),
+  signal: AbortSignal.timeout(20000),
+});
+const comparison = await comparisonResponse.json();
+if (comparisonResponse.status !== 200 || comparison.responseMode !== "approved-comparison" || comparison.citations?.length !== 2 ||
+    !comparison.answer.includes("Automated checkout, escrow, completed transactions, and business results are not claimed")) {
+  throw new Error("Production comparison did not preserve the approved project limitations");
+}
+console.log("Production comparison: approved summaries preserve product limitations without model paraphrasing.");

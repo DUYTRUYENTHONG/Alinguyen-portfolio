@@ -1,7 +1,7 @@
 import { createHmac } from "node:crypto";
 import { Redis } from "@upstash/redis";
 import { retrieveGuideSources } from "../lib/guide-retrieval.js";
-import { liveProductInventory, hasProjectCitationCoverage } from "../lib/guide-answer-policy.js";
+import { liveProductInventory, approvedProjectComparison, hasProjectCitationCoverage } from "../lib/guide-answer-policy.js";
 import { readPortfolioSignals } from "../lib/portfolio-signals.js";
 
 const allowedOrigins = new Set([
@@ -93,7 +93,7 @@ export function createGuideHandler({ makeRedis = () => new Redis({ url: process.
     if (globalCount === 1) await redis.expire(globalKey, 172800);
     if (globalCount > 300) return send(res, 429, { error: "Guide capacity reached today" }, origin);
 
-    const inventory = liveProductInventory(question);
+    const inventory = liveProductInventory(question) ?? approvedProjectComparison(question);
     if (inventory) return send(res, 200, inventory, origin);
 
     let signals = {};
