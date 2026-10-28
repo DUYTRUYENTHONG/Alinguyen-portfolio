@@ -25,6 +25,11 @@ export function OwnerCartoon() {
   useEffect(() => { if (image.current?.complete && image.current.naturalWidth > 0) reveal(); }, []);
 
   return <span className={`owner-cartoon-stage${phase === "first-visit" ? " is-arriving" : ""}`} data-arrival={phase}>
-    <img ref={image} className={`owner-cartoon${phase !== "loading" ? " is-loaded" : ""}`} src={`${basePath}/guide-art/ali-owner.webp`} alt="Cartoon Ali Nguyen waving in a black suit" width="480" height="720" fetchPriority="high" onLoad={reveal} onAnimationEnd={() => setPhase("complete")} draggable="false" />
+    <span className="owner-flight" onAnimationEnd={(event) => {
+      if (event.target === event.currentTarget && event.animationName === "owner-flight-in") setPhase("complete");
+    }}>
+      <span className="owner-boost" aria-hidden="true" />
+      <img ref={image} className={`owner-cartoon${phase !== "loading" ? " is-loaded" : ""}`} src={`${basePath}/guide-art/ali-owner.webp`} alt="Cartoon Ali Nguyen waving in a black suit" width="480" height="720" fetchPriority="high" onLoad={reveal} draggable="false" />
+    </span>
   </span>;
 }

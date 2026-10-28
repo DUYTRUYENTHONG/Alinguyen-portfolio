@@ -21,7 +21,8 @@ Generation prompt:
 ## Behavior and browser QA
 
 - Entrance begins only after the image loads, including the cache-load path.
-- The 1.05-second animation moves forward, rises, lands and settles with a shadow.
+- The entrance is now a 1.45-second flight from the left, with blue foot thrusters,
+  a landing ring and shadow. The bubble fades/slides into place after 0.4 seconds.
 - `portfolio-owner-arrival-v1` in session storage prevents replay on refresh.
 - Fresh tab: observed `first-visit` lifecycle reaching `complete` through animationend.
 - Same-tab refresh: observed `returning`; entrance does not replay.
@@ -34,6 +35,24 @@ Generation prompt:
 - These are desktop Chromium viewport checks, not physical iPhone Safari tests.
 
 Release checks: Biome lint, all 33 guide tests, and the production static build with TypeScript passed.
+
+## Powered entrance refinement
+
+The requested powered-flight styling uses CSS transforms and opacity on the
+existing cartoon image. The short-lived light effects are decorative and ignore
+pointer events. No new image, WebGL scene, timer loop or dependency was added.
+The bubble settles before the actor animation ends; focusing its link immediately
+removes the bubble movement. Reduced motion removes both animations and glow.
+
+Chromium browser checks at 320, 390, 430, 503, 768, 1280 and 1440px widths, plus
+956 × 440 landscape: actor, bubble and 44px role link fit without horizontal
+overflow. Captured live animation frames show changing flight transforms, thrust
+opacity and bubble opacity, followed by phase `complete`, transform `none` and
+thrust opacity zero. Repeated refresh does not replay the entrance. Reduced-motion
+emulation shows both animation names `none`. Keyboard role selection still hands
+off to Kai. No console errors in that flow. Screenshots and frame measurements
+are in ignored `artifacts/owner-cartoon-qa/flight-*` files. Physical Safari and
+native browser 200% zoom were not tested in this pass.
 
 ## Fresh-entry correction
 

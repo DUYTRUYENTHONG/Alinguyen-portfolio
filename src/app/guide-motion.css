@@ -110,18 +110,33 @@
 .owner-cartoon-stage::before { content:""; position:absolute; z-index:-1; left:23%; right:17%; bottom:4px; height:9px; border-radius:50%; background:#23324a24; filter:blur(4px); pointer-events:none; }
 .owner-cartoon { display:block; width:100%; height:100%; object-fit:contain; transform-origin:50% 95%; filter:drop-shadow(0 3px 3px #17243b16); }
 .owner-cartoon:not(.is-loaded) { visibility:hidden; }
-.owner-cartoon-stage.is-arriving .owner-cartoon { animation:owner-jump-out 1.05s cubic-bezier(.2,.75,.25,1) both; }
-.owner-cartoon-stage.is-arriving::before { animation:owner-landing-shadow 1.05s ease-out both; }
-@keyframes owner-jump-out {
-  0% { opacity:0; transform:perspective(650px) translateY(42px) translateZ(-100px) rotateY(-14deg) scale(.55); }
-  22% { opacity:1; }
-  52% { opacity:1; transform:perspective(650px) translateY(-18px) translateZ(24px) rotateY(4deg) scale(1.08); }
-  76% { transform:perspective(650px) translateY(2px) scaleX(1.04) scaleY(.94); }
-  89% { transform:perspective(650px) translateY(-4px) scale(.99,1.02); }
+.owner-flight { position:relative; display:block; width:100%; height:100%; transform-origin:50% 95%; }
+.owner-boost { position:absolute; inset:0; opacity:0; pointer-events:none; }
+.owner-boost::before,.owner-boost::after { content:""; position:absolute; top:89%; width:9%; height:30%; border-radius:50% 50% 70% 70%; background:linear-gradient(#fff 0%,#b8eeff 18%,#4fafff99 48%,#376aff00 100%); filter:blur(2px); transform-origin:50% 0; }
+.owner-boost::before { left:34%; transform:rotate(12deg); }
+.owner-boost::after { left:54%; transform:rotate(-12deg); }
+.owner-cartoon-stage::after { content:""; position:absolute; pointer-events:none; left:8%; bottom:0; width:84%; height:20px; border:1px solid #65baff; border-radius:50%; box-shadow:0 0 12px #61bbff66; opacity:0; }
+.owner-cartoon-stage.is-arriving .owner-flight { animation:owner-flight-in 1.45s cubic-bezier(.2,.7,.25,1) both; }
+.owner-cartoon-stage.is-arriving .owner-boost { animation:owner-thrust 1.45s ease-out both; }
+.owner-cartoon-stage.is-arriving::before { animation:owner-landing-shadow 1.45s ease-out both; }
+.owner-cartoon-stage.is-arriving::after { animation:owner-landing-ring 1.45s ease-out both; }
+.owner-welcome:has(.is-arriving) .owner-welcome-bubble { animation:owner-bubble-arrive .8s .4s cubic-bezier(.2,.75,.25,1) both; }
+.owner-welcome:has(.is-arriving) .owner-welcome-bubble:focus-within { animation:none; }
+@keyframes owner-flight-in {
+  0% { opacity:0; transform:translate3d(calc(-50vw - 140px),24px,0) rotate(-14deg) scale(.65); }
+  18% { opacity:1; }
+  52% { opacity:1; transform:translate3d(-18px,-28px,0) rotate(5deg) scale(1.04); }
+  72% { transform:translate3d(0,3px,0) scale(1.04,.95); }
+  86% { transform:translate3d(0,-4px,0) scale(.99,1.02); }
   100% { opacity:1; transform:none; }
 }
-@keyframes owner-landing-shadow { 0% { opacity:0; transform:scale(.4); } 52% { opacity:.35; transform:scale(.7); } 76% { opacity:1; transform:scale(1.12); } 100% { opacity:1; transform:scale(1); } }
-@media(prefers-reduced-motion:reduce) { .owner-cartoon-stage.is-arriving .owner-cartoon,.owner-cartoon-stage.is-arriving::before { animation:none; } }
+@keyframes owner-thrust { 0%,12% { opacity:0; } 25%,52% { opacity:.85; transform:scaleY(1); } 65% { opacity:.35; transform:scaleY(.6); } 73%,100% { opacity:0; transform:scaleY(.2); } }
+@keyframes owner-landing-ring { 0%,62% { opacity:0; transform:scale(.3); } 73% { opacity:.65; transform:scale(.7); } 100% { opacity:0; transform:scale(1.25); } }
+@keyframes owner-landing-shadow { 0% { opacity:0; transform:scale(.4); } 52% { opacity:.35; transform:scale(.7); } 72% { opacity:1; transform:scale(1.12); } 100% { opacity:1; transform:scale(1); } }
+@keyframes owner-bubble-arrive { 0% { opacity:.35; transform:translate3d(-8px,8px,0) scale(.97); } 70% { opacity:1; transform:translate3d(0,-2px,0); } 100% { opacity:1; transform:none; } }
+@media(prefers-reduced-motion:reduce) {
+  .owner-cartoon-stage.is-arriving .owner-flight,.owner-cartoon-stage.is-arriving .owner-boost,.owner-cartoon-stage.is-arriving::before,.owner-cartoon-stage.is-arriving::after,.owner-welcome:has(.is-arriving) .owner-welcome-bubble { animation:none; }
+}
 .owner-avatar { position:relative; width:100%; height:100%; }
 .owner-avatar canvas { position:absolute; inset:0; width:100%; height:100%; }
 .owner-avatar img { width:100%; height:100%; object-fit:contain; }
