@@ -31,3 +31,8 @@ Approved exception on 2026-10-28: the owner requested a first-visit entrance
 from the left with a brief jump and concise bubble directing visitors to choose
 a role. Only the owner welcome motion and bubble copy may change for this task;
 the rest of the layout freeze remains in effect.
+
+Approved exception on 2026-10-31: repair the role guide's abrupt movement and
+unreliable interaction. Scope: smooth settled repositioning, a stable tap/focus
+target, readable dismissible introductions and responsive bubble behavior.
+The surrounding portfolio layout and the owner welcome remain frozen.

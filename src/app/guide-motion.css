@@ -5,6 +5,12 @@
 .guide-stage-journey .guide-anchor .guide-tracking-bubble[data-visible="true"] { visibility: visible; opacity: 1; pointer-events: auto; }
 .guide-tracking-bubble small { color: #68717c; font-size: .6rem; }
 .guide-tracking-bubble p { margin: 5px 0 0; font-size: .8rem; line-height: 1.45; font-weight: 600; }
+.guide-tracking-bubble small { padding-right: 28px; }
+.guide-bubble-dismiss { position: absolute; top: 0; right: 0; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 12px; background: transparent; color: #68717c; font-size: 1.15rem; cursor: pointer; touch-action: manipulation; }
+.guide-bubble-dismiss:hover { color: #17202b; background: #f1f4f9; }
+.guide-bubble-dismiss:focus-visible { outline: 2px solid var(--blue); outline-offset: -4px; }
+.guide-bubble-hint { display: block; margin-top: 8px; color: #68717c; font-size: .7rem; line-height: 1.4; }
+.guide-stage-journey .guide-character.is-moving img { animation: none; }
 .guide-tracking-bubble::after { content: ""; position: absolute; width: 10px; height: 10px; background: #fff; transform: rotate(45deg); pointer-events: none; }
 .guide-tracking-bubble[data-tail="left"]::after { left: -6px; top: var(--tail-y); border-left: 1px solid #e3e7ee; border-bottom: 1px solid #e3e7ee; }
 .guide-tracking-bubble[data-tail="right"]::after { right: -6px; top: var(--tail-y); border-right: 1px solid #e3e7ee; border-top: 1px solid #e3e7ee; }

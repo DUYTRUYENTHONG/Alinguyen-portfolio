@@ -5,6 +5,7 @@ import { projects } from "@/data/portfolio";
 import { GuideAssistantPanel } from "./guide-assistant-panel";
 import { placeGuideActor } from "./guide-actor-placement";
 import { placeGuideCallout } from "./guide-callout-placement";
+import { guideMotionStep } from "./guide-motion-step";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
@@ -79,6 +80,8 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   const [panelOpen, setPanelOpen] = useState(false);
   const [conversationSection, setConversationSection] = useState(stop);
   const [showIntroduction, setShowIntroduction] = useState(false);
+  const introductionRef = useRef(false);
+  const dismissedRef = useRef(false);
   const panelOpenRef = useRef(false);
   const stopRef = useRef(stop);
   const messageRef = useRef(message);
@@ -95,6 +98,26 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     let currentY = lastPosition.current?.y ?? 0;
     let scrollFrame = 0;
     let tiltFrame = 0;
+    let motionFrame = 0;
+    let settleTimer = 0;
+    let leaveTimer = 0;
+    let scrolling = false;
+    let pointerHeld = false;
+    let hovered = false;
+    let bubbleViewport = "";
+    const freeze = () => {
+      cancelAnimationFrame(motionFrame);
+      motionFrame = 0;
+      actor.classList.remove("is-moving");
+    };
+    const hideBubble = () => {
+      callout.inert = true;
+      callout.dataset.visible = "false";
+    };
+    const draw = () => {
+      lastPosition.current = { x: currentX, y: currentY };
+      anchor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+    };
     const obstacleSelector = "main article, main [aria-hidden=true], main h1, main h2, main h3, main p, main img, main a, main button, main input, main summary, .proof-ribbon, .role-card, .visitor-stats, .visitor-result, #collaboration-logos, [data-guide-obstacle]";
     const contentBoxes = (forCallout = false) => Array.from(document.querySelectorAll<HTMLElement>(obstacleSelector))
       .filter((element) => !stage.contains(element) && (!forCallout || !element.matches("article, [aria-hidden=true]")))
@@ -143,6 +166,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
 
     const paint = () => {
       if (panelOpenRef.current) {
+        freeze();
         anchor.style.visibility = "hidden";
         callout.inert = true;
         callout.dataset.visible = "false";
@@ -157,7 +181,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       actor.dataset.active = String(target.visible && !panelOpenRef.current);
       actor.style.pointerEvents = target.visible && !panelOpenRef.current ? "auto" : "none";
       actor.tabIndex = target.visible && !panelOpenRef.current ? 0 : -1;
-      const engaged = anchor.matches(":hover, :focus-within") && lastPosition.current;
+      const engaged = (hovered || pointerHeld || anchor.matches(":focus-within")) && lastPosition.current;
       if (!engaged && stopRef.current !== target.label) {
         stopRef.current = target.label;
         setStop(target.label);
@@ -168,20 +192,49 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       }
       // Keep the target still while it is being hovered or keyboard focused.
       const inside = currentX + actor.offsetWidth <= document.documentElement.clientWidth - 16 && currentY + actor.offsetHeight <= window.innerHeight - 24;
-      if (!engaged || !inside) { currentX = target.x; currentY = target.y; }
-      lastPosition.current = { x: currentX, y: currentY };
-      anchor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+      if ((!engaged && !scrolling) || !inside) {
+        const distance = Math.hypot(target.x - currentX, target.y - currentY);
+        if (!lastPosition.current || reducedMotion.matches || !inside || !target.visible) {
+          freeze(); currentX = target.x; currentY = target.y; draw();
+        } else if (distance > 1 && !motionFrame) {
+          hideBubble();
+          actor.classList.add("is-moving");
+          let previousTime = performance.now();
+          const move = (time: number) => {
+            currentX = guideMotionStep(currentX, target.x, time - previousTime);
+            currentY = guideMotionStep(currentY, target.y, time - previousTime);
+            previousTime = time;
+            draw();
+            if (currentX === target.x && currentY === target.y) {
+              motionFrame = 0;
+              actor.classList.remove("is-moving");
+              paint();
+            } else motionFrame = requestAnimationFrame(move);
+          };
+          motionFrame = requestAnimationFrame(move);
+        }
+      }
       if (callout) {
-        const speaking = target.visible && (actor.classList.contains("is-speaking") || anchor.matches(":hover, :focus-within"));
+        const speaking = target.visible && !dismissedRef.current && !motionFrame && (!scrolling || engaged) &&
+          (introductionRef.current || actor.classList.contains("is-speaking") || engaged);
+        // Freeze the complete bubble too, including its tail, while reading or
+        // using the dismiss button. Re-clamp after an orientation change.
+        const viewportKey = `${document.documentElement.clientWidth}:${window.innerHeight}`;
+        if (engaged && speaking && callout.dataset.visible === "true" && bubbleViewport === viewportKey) return;
         const obstacles = speaking ? contentBoxes(true) : [];
         const placement = speaking ? placeGuideCallout(
           { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight },
           { width: callout.offsetWidth, height: callout.offsetHeight },
           { width: document.documentElement.clientWidth, height: window.innerHeight }, obstacles,
-        ) : null;
+        ) ?? ((introductionRef.current || engaged) ? placeGuideCallout(
+          { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight },
+          { width: callout.offsetWidth, height: callout.offsetHeight },
+          { width: document.documentElement.clientWidth, height: window.innerHeight }, [],
+        ) : null) : null;
         callout.dataset.visible = String(Boolean(placement));
         callout.inert = !placement;
         if (placement) {
+          bubbleViewport = viewportKey;
           callout.style.left = `${placement.left}px`;
           callout.style.top = `${placement.top}px`;
           callout.dataset.tail = placement.left >= actor.offsetWidth ? "left" : placement.left + callout.offsetWidth <= 0 ? "right" : placement.top < 0 ? "bottom" : "top";
@@ -207,40 +260,85 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       actor.style.setProperty("--guide-tilt-x", "0deg");
       actor.style.setProperty("--guide-tilt-y", "0deg");
     };
-    const onScroll = () => {
+    const schedulePaint = () => {
       if (!scrollFrame) scrollFrame = window.requestAnimationFrame(() => { scrollFrame = 0; paint(); });
     };
+    const onScroll = () => {
+      // Do not chase every scroll event or read the entire DOM each frame.
+      // Reposition once the visitor pauses; the tap target stays predictable.
+      freeze(); scrolling = true;
+      if (!hovered && !pointerHeld && !anchor.matches(":focus-within")) hideBubble();
+      window.clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(() => { scrolling = false; paint(); }, 140);
+    };
+    const engage = () => { freeze(); paint(); };
+    const enter = (event: PointerEvent) => {
+      if (event.pointerType !== "mouse") return;
+      window.clearTimeout(leaveTimer); hovered = true; engage();
+    };
+    const leave = () => {
+      // Allow crossing the small gap between the avatar and its bubble.
+      window.clearTimeout(leaveTimer);
+      leaveTimer = window.setTimeout(() => { hovered = anchor.matches(":hover"); paint(); }, 180);
+    };
+    const hold = () => { pointerHeld = true; engage(); };
+    const release = () => { pointerHeld = false; schedulePaint(); };
+    const dismiss = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && callout.dataset.visible === "true") {
+        dismissedRef.current = true; introductionRef.current = false;
+        setShowIntroduction(false); hideBubble();
+        if (callout.contains(document.activeElement)) actor.focus({ preventScroll: true });
+      }
+    };
+    const resize = () => { freeze(); scrolling = false; schedulePaint(); };
     const observer = new ResizeObserver(paint);
     observer.observe(stage);
     observer.observe(callout);
     const grid = document.querySelector(".role-grid");
     if (grid) observer.observe(grid);
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", resize);
+    reducedMotion.addEventListener("change", resize);
+    window.addEventListener("pointerup", release);
+    window.addEventListener("pointercancel", release);
+    window.addEventListener("keydown", dismiss);
     window.addEventListener("load", paint);
     window.addEventListener("guide-panel-change", paint);
-    anchor.addEventListener("focusin", paint);
-    anchor.addEventListener("focusout", onScroll);
-    anchor.addEventListener("pointerenter", paint);
+    anchor.addEventListener("focusin", engage);
+    anchor.addEventListener("focusout", schedulePaint);
+    anchor.addEventListener("pointerenter", enter);
+    callout.addEventListener("pointerenter", enter);
+    anchor.addEventListener("pointerdown", hold);
     actor.addEventListener("pointermove", tilt);
     actor.addEventListener("pointerleave", resetTilt);
-    anchor.addEventListener("pointerleave", paint);
+    anchor.addEventListener("pointerleave", leave);
+    callout.addEventListener("pointerleave", leave);
     actor.addEventListener("guide-message-change", paint);
     paint();
     return () => {
       cancelAnimationFrame(scrollFrame);
       cancelAnimationFrame(tiltFrame);
+      freeze();
+      window.clearTimeout(settleTimer);
+      window.clearTimeout(leaveTimer);
       observer.disconnect();
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", resize);
+      reducedMotion.removeEventListener("change", resize);
+      window.removeEventListener("pointerup", release);
+      window.removeEventListener("pointercancel", release);
+      window.removeEventListener("keydown", dismiss);
       window.removeEventListener("load", paint);
       window.removeEventListener("guide-panel-change", paint);
-      anchor.removeEventListener("focusin", paint);
-      anchor.removeEventListener("focusout", onScroll);
-      anchor.removeEventListener("pointerenter", paint);
+      anchor.removeEventListener("focusin", engage);
+      anchor.removeEventListener("focusout", schedulePaint);
+      anchor.removeEventListener("pointerenter", enter);
+      callout.removeEventListener("pointerenter", enter);
+      anchor.removeEventListener("pointerdown", hold);
       actor.removeEventListener("pointermove", tilt);
       actor.removeEventListener("pointerleave", resetTilt);
-      anchor.removeEventListener("pointerleave", paint);
+      anchor.removeEventListener("pointerleave", leave);
+      callout.removeEventListener("pointerleave", leave);
       actor.removeEventListener("guide-message-change", paint);
     };
   }, [icon]);
@@ -257,13 +355,13 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
 
   useEffect(() => {
     if (!chosen) return;
+    dismissedRef.current = false;
+    introductionRef.current = true;
     setShowIntroduction(true);
     const actor = actorRef.current;
     actor?.classList.add("is-greeting");
-    const timer = window.setTimeout(() => setShowIntroduction(false), 5000);
     const motionTimer = window.setTimeout(() => actor?.classList.remove("is-greeting"), 1300);
     return () => {
-      window.clearTimeout(timer);
       window.clearTimeout(motionTimer);
       actor?.classList.remove("is-greeting");
     };
@@ -271,6 +369,9 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
 
   const changePanel = (open: boolean, trigger?: HTMLButtonElement) => {
     if (open) {
+      introductionRef.current = false;
+      dismissedRef.current = true;
+      setShowIntroduction(false);
       chatTriggerRef.current = trigger ?? null;
       setConversationSection(stopRef.current);
     }
@@ -291,8 +392,14 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       <span className="guide-character-label" aria-hidden="true">Ask {persona.name}</span>
     </button>
     <aside className="guide-callout guide-tracking-bubble" aria-label={`${persona.name}'s suggestion`} inert>
+      <button type="button" className="guide-bubble-dismiss" aria-label="Dismiss guide tip" onClick={() => {
+        dismissedRef.current = true; introductionRef.current = false; setShowIntroduction(false);
+        actorRef.current?.focus({ preventScroll: true });
+        actorRef.current?.dispatchEvent(new Event("guide-message-change"));
+      }}>×</button>
       <small>{showIntroduction ? `Meet ${persona.name}` : stop}</small>
       <p>{showIntroduction ? persona.introduction : message}</p>
+      {showIntroduction && <span className="guide-bubble-hint">Tap my avatar to chat.</span>}
     </aside>
     </div>
     <GuideAssistantPanel open={panelOpen} onClose={() => changePanel(false)} icon={icon} name={persona.name} role={role} section={conversationSection} />
