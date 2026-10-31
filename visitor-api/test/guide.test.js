@@ -3,6 +3,8 @@ import test from "node:test";
 import { createGuideHandler } from "../api/guide.js";
 import { retrieveGuideSources } from "../lib/guide-retrieval.js";
 import { isLiveProjectInventoryQuestion } from '../lib/guide-live-projects.js';
+import { knowledge } from '../lib/guide-knowledge.js';
+import { readFileSync } from 'node:fs';
 
 function response() {
   return { headers: {}, statusCode: 200, body: null,
@@ -12,7 +14,7 @@ function response() {
   };
 }
 
-function request(question = "How was KKBox evaluated?") {
+function request(question = "What is the local holdout log loss?") {
   return { method: "POST", headers: { origin: "https://duytruyenthong.github.io", "content-type": "application/json", "x-vercel-forwarded-for": "192.0.2.1" },
     body: { question, context: { page: "/", section: "Selected work", role: "Recruiter" }, recentTurns: [], interests: [] } };
 }
@@ -28,6 +30,34 @@ function withTestEnv(run) {
     }
   });
 }
+
+test('all authored evaluation cases retain citation provenance and reviewed factual wording',()=>withTestEnv(async()=>{
+ const cases=JSON.parse(readFileSync(new URL('../evaluation/cases.json',import.meta.url),'utf8'));
+ for(const item of cases){
+  const handler=createGuideHandler({makeRedis:()=>({incr:async()=>1,expire:async()=>1}),modelFetch:async()=>({ok:true,json:async()=>({choices:[{message:{content:JSON.stringify({answer:'FABRICATED: guaranteed offers and deployed AI with 99.9% accuracy',citations:item.sources,suggestions:[],motion:'nod'})}}]})})});
+  const req=request(item.question);req.body.recentTurns=item.recentTurns??[];const res=response();await handler(req,res);
+  assert.equal(res.statusCode,200,item.id);assert.ok(!res.body.answer.includes('FABRICATED'),item.id);
+  for(const id of item.sources) assert.ok(res.body.citations.some(c=>c.sourceId===id),item.id+': '+id);
+  for(const c of res.body.citations) assert.equal(c.url,knowledge.find(s=>s.id===c.sourceId)?.url,item.id);
+ }
+}));
+
+test('comparisons, plans, community and follow-ups include complete project evidence',()=>withTestEnv(async()=>{
+ const handler=createGuideHandler({makeRedis:()=>({incr:async()=>1,expire:async()=>1}),modelFetch:async()=>{throw Error('project facts must not need generation');}});
+ for(const [q,ids] of [
+  ['Compare STOS and Chợ Kênh',['stos','cho-kenh']],
+  ['Which projects can I inspect?',['growth-commerce-os','stos','cho-kenh','vibecode-kit','kkbox-results','career-agent-kit']],
+  ['Which features are planned?',['stos','cho-kenh','career-agent-kit']],
+  ['Does Vietnam Career Agent Kit guarantee job offers?',['career-agent-kit']],
+  ['Are STOS AI suggestions live?',['stos']],
+  ['Can I inspect the private STOS source code?',['stos','recruiter-brief']],
+ ]){
+  const res=response();await handler(request(q),res);assert.deepEqual(res.body.citations.map(c=>c.sourceId).sort(),[...ids].sort(),q);
+  assert.ok(res.body.answer.length<=6000,q);
+  ids.forEach((id,i)=>assert.ok(res.body.answer.includes(`[${i+1}]`),id));
+ }
+ const req=request('What about its AI suggestions?');req.body.recentTurns=[{role:'user',text:'What does STOS do?'}];const res=response();await handler(req,res);assert.match(res.body.answer,/planned, not live/);
+}));
 
 test('live inventories are complete across roles, sections, languages and model outages', () => withTestEnv(async () => {
   const handler = createGuideHandler({makeRedis:()=>({incr:async()=>1,expire:async()=>1}),modelFetch:async()=>{throw Error('inventory must not depend on generation');}});
@@ -120,7 +150,7 @@ test("guide returns only server-approved citation URLs", () => withTestEnv(async
   assert.match(modelRequest.messages[0].content, /guide name is Ari/);
   assert.equal(modelRequest.messages.some(({ content }) => content.includes("192.0.2.1")), false);
   assert.match(modelRequest.messages[1].content, /\[kkbox-results\]/);
-  assert.equal(JSON.parse(modelRequest.messages[2].content).visitorQuestion, "How was KKBox evaluated?");
+  assert.equal(JSON.parse(modelRequest.messages[2].content).visitorQuestion, "What is the local holdout log loss?");
 }));
 
 test("the selected character name is supplied by the server role mapping", () => withTestEnv(async () => {
@@ -167,7 +197,8 @@ test("a model cannot inject an arbitrary animation name", () => withTestEnv(asyn
   const res = response();
   await handler(request(), res);
   assert.equal(res.statusCode, 200);
-  assert.equal(res.body.motion, "none");
+  assert.equal(res.body.motion, "point");
+  assert.equal(res.body.responseMode, 'reviewed-evidence');
 }));
 
 test("guide validates origin, body and per-client limit before contacting the model", () => withTestEnv(async () => {

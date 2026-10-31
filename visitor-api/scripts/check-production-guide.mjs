@@ -41,3 +41,14 @@ for (const question of ['Which products are live?', 'Những dự án nào đang
       !['Growth Commerce OS','STOS','Chợ Kênh','[1]','[2]','[3]'].every(s=>inventory.answer.includes(s))) throw new Error('Incomplete live-project inventory or incorrect citation');
 }
 console.log('Production guide: complete English and Vietnamese inventories with three exact approved citations passed.');
+
+for(const [question,id,required] of [
+ ['Are STOS AI suggestions live today?','stos',['planned, not live']],
+ ['Does Chợ Kênh provide automated checkout and escrow?','cho-kenh',['manual','not claimed','planned']],
+ ['Does Vietnam Career Agent Kit guarantee job offers?','career-agent-kit',['does not guarantee','acceptance gates']],
+]) {
+ const r=await fetch(endpoint,{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify({question,context:{section:'Highlights',role:'Recruiter'},recentTurns:[],interests:[]}),signal:AbortSignal.timeout(20000)});
+ const body=await r.json();
+ if(r.status!==200||body.responseMode!=='reviewed-evidence'||!body.citations?.some(c=>c.sourceId===id)||!required.every(t=>body.answer.includes(t))) throw Error(`Project evidence smoke failed: ${id}`);
+}
+console.log('Production guide: planned features, manual marketplace limits and community-kit boundaries passed.');

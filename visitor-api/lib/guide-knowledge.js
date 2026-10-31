@@ -25,11 +25,13 @@ export const knowledge = [
     id: "ali-overview",
     title: "Ali Nguyen overview and contact",
     url: "https://duytruyenthong.github.io/Alinguyen-portfolio/about/",
-    tags: ["ali", "about", "contact", "experience", "founder", "marketing", "degree"],
-    text: "Ali Nguyen is Nguyen Quang Duy, an applied AI and product engineer and founder of DUYTRUYENTHONG. He describes 4+ years in digital marketing and 2+ years in AI engineering and product building. His Bachelor of Computer Science degree from Vietnamese-German University was confirmed by him. For direct inquiries, use the portfolio contact section or nquangd1510@gmail.com.",
+    tags: ["ali", "about", "contact", "experience", "founder", "marketing"],
+    text: "Ali Nguyen is Nguyen Quang Duy, an applied AI and product engineer and founder of DUYTRUYENTHONG. He describes 4+ years in digital marketing and 2+ years in AI engineering and product building. For direct inquiries, use the portfolio contact section or nquangd1510@gmail.com.",
   },
   {
     id: "kkbox-results",
+    projectRecord: true,
+    textVi: "KKBox có mã nguồn công khai và đánh giá cục bộ trên dữ liệu chính thức: 970.960 nhãn, log loss 0.217324 và ROC AUC 0.819295 trên tập holdout 25% phân tầng trong cùng cohort tháng 3. Đặc trưng chỉ dùng sự kiện đến 2017-02-28. Đây không phải điểm leaderboard Kaggle, kiểm định cohort tương lai, mô hình production hay bằng chứng cải thiện giữ chân khách hàng.",
     title: "KKBox customer churn baseline: verified local results",
     url: "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md",
     tags: ["kkbox", "churn", "data", "python", "ai", "projects", "machine learning", "evaluation", "log loss", "auc", "leakage"],
@@ -37,6 +39,7 @@ export const knowledge = [
   },
   {
     id: "vibecode-kit",
+    projectRecord: true,
     title: "Vibecode Product Kit: public developer tooling",
     url: "https://github.com/DUYTRUYENTHONG/vibecode-product-kit",
     tags: ["vibecode", "cli", "developer", "open source", "ci", "testing", "agent", "ai", "projects"],
@@ -44,6 +47,7 @@ export const knowledge = [
   },
   {
     id: "growth-commerce-os",
+    projectRecord: true,
     liveProject: { en: "live service website", vi: "website dịch vụ đang hoạt động" },
     title: "DUYTRUYENTHONG Growth Commerce OS",
     url: "https://growth-commerce-os.vercel.app/en",
@@ -52,6 +56,8 @@ export const knowledge = [
   },
   {
     id: "stos",
+    projectRecord: true,
+    textVi: "STOS là website sản phẩm trang bán hàng cho người bán độc lập và doanh nghiệp nhỏ; Ali là người sáng lập và xây dựng. Website và trang mẫu đang hoạt động; trang công khai mô tả thống kê lượt xem, hành động và khách hàng tiềm năng. Tính năng AI gợi ý mới ở kế hoạch, chưa hoạt động. Chưa có xác nhận độc lập về mức độ sử dụng hay kết quả kinh doanh.",
     liveProject: { en: "live sales-page product website", vi: "website sản phẩm trang bán hàng đang hoạt động" },
     title: "STOS Sales Traffic Operating System",
     url: "https://stosvn.vercel.app/stos",
@@ -60,6 +66,8 @@ export const knowledge = [
   },
   {
     id: "cho-kenh",
+    projectRecord: true,
+    textVi: "Chợ Kênh là danh mục kênh TikTok đang hoạt động với bộ lọc, trang chi tiết, chỉ báo rủi ro, liên hệ Zalo và thông tin trung gian thủ công. Ali là chủ dự án và người xây dựng. Chưa xác nhận thanh toán tự động, escrow hay kết quả giao dịch thực tế. Công cụ AI và khóa học là các phần bổ sung theo kế hoạch.",
     liveProject: { en: "live TikTok-channel catalog with manual inquiries", vi: "danh mục kênh TikTok đang hoạt động, tiếp nhận yêu cầu thủ công" },
     title: "Chợ Kênh marketplace",
     url: "https://growth-commerce-os.vercel.app/cho-kenh",
@@ -78,7 +86,7 @@ export const knowledge = [
     title: "Recruiter brief and inspectable work",
     url: "https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/blob/main/docs/RECRUITER_BRIEF.md",
     tags: ["recruiter", "hire", "skills", "resume", "cv", "engineering", "portfolio"],
-    text: "The recruiter brief maps Ali's TypeScript, React, Next.js, Python, data evaluation, and product experience to public evidence. Inspectable sources include the portfolio, Vibecode Product Kit, and KKBox baseline. Live commerce sites are linked as product context; their private code is not presented as public source. The live portfolio guide has a small published evaluation; the PostgreSQL warehouse is locally verified. Customer uplift and future-cohort performance are not claimed.",
+    text: "The recruiter brief maps Ali's TypeScript, React, Next.js, Python, data evaluation, and product experience to public evidence. Inspectable sources include the portfolio, Vibecode Product Kit, and KKBox baseline. Live commerce sites are linked as product context; their private code is not presented as public source. Customer uplift and future-cohort performance are not claimed. For the hosted warehouse and guide evaluation status, consult the separately cited portfolio evidence report.",
   },
   {
     id: "academic-brief",
@@ -86,5 +94,12 @@ export const knowledge = [
     url: "https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/blob/main/docs/ACADEMIC_BRIEF.md",
     tags: ["master", "admission", "student", "degree", "research", "university", "academic"],
     text: "Ali's academic interests include reliable applied AI for customer-facing systems, retrieval-grounded answers, and time-aware evaluation of customer models. He has a Bachelor of Computer Science from Vietnamese-German University, confirmed by Ali. The public brief is not an official transcript, grade verification, research publication, or admission guarantee; request official documents directly from him.",
+  },
+  {
+    id: 'career-agent-kit', projectRecord: true,
+    title: 'Vietnam Career Agent Kit: free community toolkit',
+    url: 'https://github.com/DUYTRUYENTHONG/vietnam-career-agent-kit',
+    tags: ['vietnam career', 'career agent', 'community', 'jobs', 'cv', 'python', 'sqlite', 'open source', 'rag', 'projects'],
+    text: 'Ali shares this MIT-licensed Python/SQLite toolkit for evidence-backed CV preparation, private job tracking and reviewed application workflows. Its public README documents a local preparation CLI, optional document rendering, source-bound career memory/RAG, and host-assisted execution with exact authorization and receipts. Experimental public research readers and optional browser/email bridges require setup; provider and employer acceptance are separate gates. Production unattended operation and built-in PDF/DOCX extraction remain acceptance gates. External AI/browser services may charge fees. It does not guarantee job offers or verified 100-applications/hour throughput.',
   },
 ];

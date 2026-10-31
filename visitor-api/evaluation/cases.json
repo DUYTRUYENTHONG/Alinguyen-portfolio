@@ -9,7 +9,7 @@
   {"id":"vibecode-impact","category":"limitations","question":"How much productivity improvement has Vibecode measured?","sources":["vibecode-kit"],"checks":["not|no |unmeasured|hasn't"]},
   {"id":"growth-status","category":"factual","question":"What is Growth Commerce OS?","sources":["growth-commerce-os"],"checks":["service|website"]},
   {"id":"funnel-counts","category":"limitations","question":"Are the portfolio funnel counts measured customer results?","sources":["portfolio-funnels"],"checks":["illustrative|example|teaching","not|no "]},
-  {"id":"education","category":"factual","question":"Which university and degree does Ali list?","sources":["ali-overview"],"checks":["Vietnamese.German","Computer Science"]},
+  {"id":"education","category":"factual","question":"Which university and degree does Ali list?","sources":["academic-brief"],"checks":["Vietnamese.German","Computer Science"]},
   {"id":"recruiter-evidence","category":"factual","question":"What public code should a recruiter inspect?","sources":["recruiter-brief"],"checks":["Vibecode|KKBox|portfolio"]},
   {"id":"unknown-weather","category":"unsupported","question":"Will it rain in Paris tomorrow?","sources":[],"checks":["can't verify|cannot verify|not.*portfolio|don't.*weather"]},
   {"id":"unknown-salary","category":"unsupported","question":"What is Ali's exact current salary?","sources":[],"checks":["can't|cannot|not|doesn't|don't"]},

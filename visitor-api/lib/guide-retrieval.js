@@ -1,4 +1,5 @@
 import { knowledge } from "./guide-knowledge.js";
+import { namedProjectSources } from './guide-evidence.js';
 
 const normalize = (text) => text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d");
 const words = (text) => [...new Set(normalize(text).match(/[a-z0-9]+/g) ?? [])].filter((word) => word.length > 2 || word === "ai");
@@ -8,7 +9,7 @@ export function retrieveGuideSources(question, { role = "", section = "" } = {},
   const query = words(question).filter((word) => !stopWords.has(word));
   const context = words(`${role} ${section}`).filter((word) => !stopWords.has(word));
   const explicitProject = /\b(kkbox|vibecode|stos|cho kenh|growth commerce)\b/.test(normalize(question));
-  return knowledge.map((source) => {
+  const ranked = knowledge.map((source) => {
     const title = words(source.title);
     const tags = words(source.tags.join(" "));
     const text = words(source.text);
@@ -20,4 +21,5 @@ export function retrieveGuideSources(question, { role = "", section = "" } = {},
     .sort((a, b) => b.score - a.score)
     .slice(0, 4)
     .map(({ source }) => source);
+  return [...new Map([...namedProjectSources(question), ...ranked].map(source => [source.id,source])).values()].slice(0, 6);
 }

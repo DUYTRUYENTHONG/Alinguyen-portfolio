@@ -9,7 +9,7 @@ export function scoreReply(item, status, reply, retrieved) {
     expectedRetrieval: item.sources.every((id) => retrieved.includes(id)),
     expectedCitation: item.sources.every((id) => citations.some((c) => c.sourceId === id)),
     requiredPhrases: item.checks.every((pattern) => new RegExp(pattern, "iu").test(answer)),
-    boundedAnswer: answer.length <= 1000,
+    boundedAnswer: answer.length <= (reply?.responseMode === 'reviewed-evidence' ? 6000 : 1000),
   };
   return { checks, passed: Object.values(checks).every(Boolean) };
 }

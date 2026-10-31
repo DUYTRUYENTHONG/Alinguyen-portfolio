@@ -26,7 +26,7 @@ export function guideRequestSection(section: string) {
 export function parseGuideReply(value: unknown) {
   if (!value || typeof value !== "object" || !("answer" in value) || typeof value.answer !== "string" || !value.answer.trim()) throw new Error("Invalid guide reply");
   const citations = "citations" in value && Array.isArray(value.citations)
-    ? value.citations.filter((item): item is GuideCitation => Boolean(item) && typeof item === "object" && typeof item.sourceId === "string" && typeof item.label === "string" && safeLink(item.url)).slice(0, 4) : [];
+    ? value.citations.filter((item): item is GuideCitation => Boolean(item) && typeof item === "object" && typeof item.sourceId === "string" && typeof item.label === "string" && safeLink(item.url)).slice(0, 8) : [];
   const suggestions = "suggestions" in value && Array.isArray(value.suggestions)
     ? [...new Set(value.suggestions.filter((item): item is string => typeof item === "string" && Boolean(item.trim()) && item.length <= 80))].slice(0, 2) : [];
   const motion: AnswerMotion = "motion" in value && (value.motion === "nod" || value.motion === "curious" || value.motion === "point" || value.motion === "none") ? value.motion : "none";

@@ -1,6 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { guideRequestSection, parseGuideReply, recentGuideTurns } from '../src/app/guide-reply.ts';
+import { evidenceReply, projectEvidenceRequest } from '../visitor-api/lib/guide-evidence.js';
+
+test('complete project evidence keeps all six citations through the chat parser',()=>{
+ const reply=evidenceReply(projectEvidenceRequest('List all projects'));
+ const parsed=parseGuideReply(reply);
+ assert.equal(parsed.citations.length,6);
+ assert.equal(parsed.answer,reply.answer);
+ assert.ok(parsed.citations.some(c=>c.sourceId==='career-agent-kit'));
+});
 
 test('community chat uses a supported API context without changing project contexts', () => {
   assert.equal(guideRequestSection('Shared with the community'), 'Explore the portfolio');
