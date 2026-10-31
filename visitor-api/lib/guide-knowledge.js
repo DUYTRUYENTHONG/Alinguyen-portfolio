@@ -44,6 +44,7 @@ export const knowledge = [
   },
   {
     id: "growth-commerce-os",
+    liveProject: { en: "live service website", vi: "website dịch vụ đang hoạt động" },
     title: "DUYTRUYENTHONG Growth Commerce OS",
     url: "https://growth-commerce-os.vercel.app/en",
     tags: ["commerce", "marketing", "growth", "service", "website", "cms"],
@@ -51,6 +52,7 @@ export const knowledge = [
   },
   {
     id: "stos",
+    liveProject: { en: "live sales-page product website", vi: "website sản phẩm trang bán hàng đang hoạt động" },
     title: "STOS Sales Traffic Operating System",
     url: "https://stosvn.vercel.app/stos",
     tags: ["stos", "sales", "commerce", "product", "seller", "leads", "ai"],
@@ -58,6 +60,7 @@ export const knowledge = [
   },
   {
     id: "cho-kenh",
+    liveProject: { en: "live TikTok-channel catalog with manual inquiries", vi: "danh mục kênh TikTok đang hoạt động, tiếp nhận yêu cầu thủ công" },
     title: "Chợ Kênh marketplace",
     url: "https://growth-commerce-os.vercel.app/cho-kenh",
     tags: ["cho kenh", "chợ kênh", "tiktok", "marketplace", "commerce", "channel"],

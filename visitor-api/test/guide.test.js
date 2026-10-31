@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { createGuideHandler } from "../api/guide.js";
 import { retrieveGuideSources } from "../lib/guide-retrieval.js";
+import { isLiveProjectInventoryQuestion } from '../lib/guide-live-projects.js';
 
 function response() {
   return { headers: {}, statusCode: 200, body: null,
@@ -27,6 +28,35 @@ function withTestEnv(run) {
     }
   });
 }
+
+test('live inventories are complete across roles, sections, languages and model outages', () => withTestEnv(async () => {
+  const handler = createGuideHandler({makeRedis:()=>({incr:async()=>1,expire:async()=>1}),modelFetch:async()=>{throw Error('inventory must not depend on generation');}});
+  for (const role of ['Recruiter','Founder','Engineer','Data','Just curious']) {
+    for (const question of ['Which products are live?', 'List all live projects including STOS', 'What is live?', 'Những dự án nào đang hoạt động?', 'Liệt kê tất cả sản phẩm đã triển khai']) {
+      const req=request(question); req.body.context={role,section:'Download a CV'};
+      const res=response(); await handler(req,res);
+      assert.equal(res.statusCode,200);
+      assert.equal(res.body.responseMode,'verified-inventory');
+      assert.deepEqual(res.body.citations.map(c=>c.sourceId),['growth-commerce-os','stos','cho-kenh']);
+      for(const name of ['Growth Commerce OS','STOS','Chợ Kênh']) assert.ok(res.body.answer.includes(name));
+      assert.match(res.body.answer,/\[1\]/); assert.match(res.body.answer,/\[2\]/); assert.match(res.body.answer,/\[3\]/);
+      assert.ok(res.body.answer.length<=1000);
+    }
+  }
+  const req=request('Any others?');req.body.recentTurns=[{role:'user',text:'Which projects are live?'},{role:'assistant',text:'Only Growth Commerce OS.'}];
+  const res=response();await handler(req,res);assert.equal(res.body.citations.length,3);
+}));
+
+test('inventory intent preserves specific-project, privacy, planned-feature and unrelated questions', () => {
+  for(const q of ['Is STOS live?', 'How was KKBox evaluated?', 'Which projects are not live?', 'What is planned for STOS?', 'How do recommendation signals work?']) assert.equal(isLiveProjectInventoryQuestion(q),false,q);
+  assert.equal(isLiveProjectInventoryQuestion('Any others?',[{role:'user',text:'How was KKBox evaluated?'}]),false);
+});
+
+test('inventory answers still enforce rate and origin controls',()=>withTestEnv(async()=>{
+ const handler=createGuideHandler({makeRedis:()=>({incr:async()=>21,expire:async()=>1})});
+ const res=response();await handler(request('Which products are live?'),res);assert.equal(res.statusCode,429);
+ const req=request('Which products are live?');req.headers.origin='https://example.com';const forbidden=response();await handler(req,forbidden);assert.equal(forbidden.statusCode,403);
+}));
 
 test("optional recommendation storage failure preserves evidence retrieval and never enters the prompt", () => withTestEnv(async () => {
   const previous = process.env.PORTFOLIO_SIGNALS_ENABLED;

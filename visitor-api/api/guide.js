@@ -2,6 +2,7 @@ import { createHmac } from "node:crypto";
 import { Redis } from "@upstash/redis";
 import { retrieveGuideSources } from "../lib/guide-retrieval.js";
 import { readPortfolioSignals } from "../lib/portfolio-signals.js";
+import { isLiveProjectInventoryQuestion, liveProjectInventoryReply } from "../lib/guide-live-projects.js";
 
 const allowedOrigins = new Set([
   "https://duytruyenthong.github.io",
@@ -91,6 +92,13 @@ export function createGuideHandler({ makeRedis = () => new Redis({ url: process.
     const globalCount = await redis.incr(globalKey);
     if (globalCount === 1) await redis.expire(globalKey, 172800);
     if (globalCount > 300) return send(res, 429, { error: "Guide capacity reached today" }, origin);
+
+    // Inventory completeness is a data constraint, not a relevance-ranking task.
+    // Keep admission controls, but do not let context, popularity or generation
+    // omit a reviewed live website or introduce a planned feature.
+    if (isLiveProjectInventoryQuestion(question, recentTurns)) {
+      return send(res, 200, liveProjectInventoryReply(question, recentTurns), origin);
+    }
 
     let signals = {};
     // Optional aggregate ranking must never make the guide unavailable or leak counts to the model.
