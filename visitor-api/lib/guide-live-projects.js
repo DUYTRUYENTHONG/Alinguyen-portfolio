@@ -24,7 +24,7 @@ export function liveProjectInventoryReply(question, recentTurns = []) {
   const vi = vietnamese || (/^(any|what else|all of them)/i.test(question) && recentTurns.some((t) => t.role === 'user' && /[ăâđêôơư]/i.test(t.text)));
   const sources = knowledge.filter((source) => source.liveProject);
   if (!sources.length) throw new Error('Missing reviewed live project inventory');
-  const heading = vi ? 'Các website dự án đang hoạt động được ghi nhận trong portfolio:' : 'The portfolio lists these live project websites:';
+  const heading = vi ? 'Bạn có thể xem ba website đang hoạt động này:' : 'You can explore these three live websites:';
   const items = sources.map((source, index) => `${index + 1}. ${source.title} — ${source.liveProject[vi ? 'vi' : 'en']} [${index + 1}]`);
   const limits = vi ? 'Đây là trạng thái website công khai; không phải xác nhận mức độ sử dụng hay kết quả kinh doanh. AI gợi ý của STOS và thanh toán/escrow tự động của Chợ Kênh chưa được xác nhận là tính năng đang hoạt động.' : 'These are public website statuses, not verified adoption or business results. STOS AI suggestions are planned; automated checkout and escrow are not claimed for Chợ Kênh.';
   return { answer: [heading, ...items, limits].join('\n\n'), citations: sources.map(({ id, title, url }) => ({ sourceId: id, label: title, url })), suggestions: [], motion: 'point', responseMode: 'verified-inventory' };

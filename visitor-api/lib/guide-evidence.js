@@ -1,4 +1,5 @@
 import { knowledge } from './guide-knowledge.js';
+import { summaries } from './guide-summaries.js';
 
 export const normalizeQuestion = text => text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
 const aliases = {
@@ -20,8 +21,12 @@ export function namedProjectSources(question) {
 export function evidenceReply(sources, question = '') {
   const vi = /[ăâđêôơư]|\b(du an|san pham|tinh nang|ket qua|chua)\b/i.test(normalizeQuestion(question));
   return {
-    answer: [vi ? 'Thông tin từ nguồn portfolio đã duyệt:' : 'Reviewed portfolio evidence:',
-      ...sources.map((source, index) => `${source.title} [${index + 1}]\n${vi && source.textVi ? source.textVi : source.text}`)].join('\n\n'),
+    answer: sources.map((source, index) => {
+      const details = /\b(detail|details|cutoff|snapshot|split|reproduc\w*|privacy|retention|expiry|technical|limitations|email|contact|date|labels|transactions|tokens|cost)\b/i.test(question);
+      const summary = summaries[source.id]?.[vi ? 'vi' : 'en'];
+      const text = !details && summary ? summary : vi && source.textVi ? source.textVi : source.text;
+      return `${text} [${index + 1}]`;
+    }).join('\n\n'),
     citations: sources.map(({ id, title, url }) => ({ sourceId: id, label: title, url })),
     suggestions: [], motion: 'point', responseMode: 'reviewed-evidence',
   };
