@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { identity, projects } from "@/data/portfolio";
+import { introDescription, socialImage } from "@/data/social-preview";
 import { CopyEmail, OwnerWelcome, PortfolioGuide, ScrollStatement, SiteHeader, VisitorPicker, WorkSection } from "./experience";
 import { AdaptiveHero } from "./adaptive-hero";
 import { FunnelExperience } from "./funnel-experience";
@@ -19,7 +20,10 @@ import "./funnel.css";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
-export const metadata: Metadata = { alternates: { canonical: siteUrl } };
+export const metadata: Metadata = {
+  alternates: { canonical: siteUrl },
+  openGraph: { title: `${identity.name} | ${identity.title}`, description: introDescription, type: "website", siteName: identity.brand, url: siteUrl, images: [socialImage] },
+};
 
 export default function Home() {
   const structuredData = {

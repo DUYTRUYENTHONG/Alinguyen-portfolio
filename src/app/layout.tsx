@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { identity } from "@/data/portfolio";
+import { introDescription, socialImage } from "@/data/social-preview";
 import { PortfolioExperienceProvider } from "./experience";
 import { PortfolioSignalsProvider } from "./portfolio-signals";
 import "@fontsource-variable/archivo";
@@ -22,10 +23,11 @@ export const metadata: Metadata = {
   description: identity.proposition,
   applicationName: `${identity.name} Portfolio`,
   icons: { icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/ali-avatar-icon.png`, apple: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/ali-avatar-icon.png` },
-  twitter: { card: "summary_large_image", title: `${identity.name} | ${identity.title}`, description: "I build practical AI, data and commerce workflows." },
+  twitter: { card: "summary_large_image", title: `${identity.name} | ${identity.title}`, description: introDescription, images: [socialImage] },
   openGraph: {
     title: `${identity.name} | ${identity.title}`,
-    description: "I build practical AI, data and commerce workflows.",
+    description: introDescription,
+    images: [socialImage],
     type: "website",
     siteName: identity.brand,
   },
