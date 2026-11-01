@@ -6,9 +6,14 @@ import { GuideAssistantPanel } from "./guide-assistant-panel";
 import { placeGuideActor } from "./guide-actor-placement";
 import { placeGuideCallout } from "./guide-callout-placement";
 import { guideMotionStep } from "./guide-motion-step";
+import { guideCardAnchor } from "./guide-card-anchor";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+const focusGuide = (actor: HTMLButtonElement | null) => {
+  const target = actor?.dataset.active === "true" ? actor : document.querySelector<HTMLInputElement>(".role-card.is-selected input");
+  target?.focus({ preventScroll: true });
+};
 
 const stops = [
   ["#top", "Explore the portfolio"],
@@ -85,6 +90,15 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
   const panelOpenRef = useRef(false);
   const stopRef = useRef(stop);
   const messageRef = useRef(message);
+  const entrancePending = useRef(true);
+
+  useEffect(() => {
+    if (!chosen) return;
+    entrancePending.current = true;
+    dismissedRef.current = false;
+    introductionRef.current = true;
+    setShowIntroduction(true);
+  }, [chosen, role]);
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -101,6 +115,8 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     let motionFrame = 0;
     let settleTimer = 0;
     let leaveTimer = 0;
+    let entranceTimer = 0;
+    let cardDocked = false;
     let scrolling = false;
     let pointerHeld = false;
     let hovered = false;
@@ -133,7 +149,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       const visible = !contact || contact.getBoundingClientRect().bottom > window.innerHeight * .15;
       if (!visible) {
         const viewportMaxX = Math.max(0, window.innerWidth - actor.offsetWidth);
-        return { x: lastPosition.current?.x ?? viewportMaxX - 8, y: lastPosition.current?.y ?? readingLine, label: stopRef.current, message: messageRef.current, visible: false, maxX: viewportMaxX };
+        return { x: lastPosition.current?.x ?? viewportMaxX - 8, y: lastPosition.current?.y ?? readingLine, label: stopRef.current, message: messageRef.current, visible: false, maxX: viewportMaxX, dock: null };
       }
 
       let label = "Explore the portfolio";
@@ -161,7 +177,9 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       );
       const message = (projectId ? projectMessages[projectId] : null) ?? sceneMessages[label] ?? "Follow along for the work and the decisions behind it.";
       const viewportMaxX = Math.max(0, window.innerWidth - actor.offsetWidth);
-      return { x: position.left, y: position.top, label, message, visible, maxX: viewportMaxX };
+      const portrait = document.querySelector(".role-card.is-selected .role-icon")?.getBoundingClientRect();
+      const dock = guideCardAnchor(portrait ?? null, { width: document.documentElement.clientWidth, height: window.innerHeight });
+      return { x: dock?.left ?? position.left, y: dock?.top ?? position.top, label, message, visible, maxX: viewportMaxX, dock };
     };
 
     const paint = () => {
@@ -176,13 +194,23 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
         return;
       }
       const target = route();
+      const image = actor.querySelector("img");
+      const actorVisible = target.visible && !target.dock && Boolean(image?.complete && image.naturalWidth);
       anchor.style.visibility = target.visible ? "visible" : "hidden";
-      actor.style.opacity = target.visible && !panelOpenRef.current ? "1" : "0";
-      actor.dataset.active = String(target.visible && !panelOpenRef.current);
-      actor.style.pointerEvents = target.visible && !panelOpenRef.current ? "auto" : "none";
-      actor.tabIndex = target.visible && !panelOpenRef.current ? 0 : -1;
+      actor.style.opacity = actorVisible ? "1" : "0";
+      actor.style.visibility = actorVisible ? "visible" : "hidden";
+      actor.dataset.active = String(actorVisible);
+      actor.style.pointerEvents = actorVisible ? "auto" : "none";
+      actor.tabIndex = actorVisible ? 0 : -1;
       const engaged = (hovered || pointerHeld || anchor.matches(":focus-within")) && lastPosition.current;
       if (!engaged && stopRef.current !== target.label) {
+        // A role greeting and a dismissed tip belong to their current section.
+        // Neither should suppress introductions in later sections.
+        if (stopRef.current !== "Explore the portfolio" || !introductionRef.current) {
+          introductionRef.current = false;
+          setShowIntroduction(false);
+        }
+        dismissedRef.current = false;
         stopRef.current = target.label;
         setStop(target.label);
       }
@@ -192,7 +220,9 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       }
       // Keep the target still while it is being hovered or keyboard focused.
       const inside = currentX + actor.offsetWidth <= document.documentElement.clientWidth - 16 && currentY + actor.offsetHeight <= window.innerHeight - 24;
-      if ((!engaged && !scrolling) || !inside) {
+      if (target.dock || cardDocked !== Boolean(target.dock)) {
+        freeze(); currentX = target.x; currentY = target.y; draw();
+      } else if ((!engaged && !scrolling) || !inside) {
         const distance = Math.hypot(target.x - currentX, target.y - currentY);
         if (!lastPosition.current || reducedMotion.matches || !inside || !target.visible) {
           freeze(); currentX = target.x; currentY = target.y; draw();
@@ -214,6 +244,15 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
           motionFrame = requestAnimationFrame(move);
         }
       }
+      cardDocked = Boolean(target.dock);
+      // The selected card has already played this role's entrance. Its handoff
+      // to the floating guide is a fade, not a second greeting animation.
+      if (cardDocked) entrancePending.current = false;
+      if (actorVisible && entrancePending.current) {
+        entrancePending.current = false;
+        actor.classList.add("is-greeting");
+        entranceTimer = window.setTimeout(() => actor.classList.remove("is-greeting"), 1000);
+      }
       if (callout) {
         const speaking = target.visible && !dismissedRef.current && !motionFrame && (!scrolling || engaged) &&
           (introductionRef.current || actor.classList.contains("is-speaking") || engaged);
@@ -222,12 +261,13 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
         const viewportKey = `${document.documentElement.clientWidth}:${window.innerHeight}`;
         if (engaged && speaking && callout.dataset.visible === "true" && bubbleViewport === viewportKey) return;
         const obstacles = speaking ? contentBoxes(true) : [];
+        const speechAnchor = target.dock ?? { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight };
         const placement = speaking ? placeGuideCallout(
-          { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight },
+          speechAnchor,
           { width: callout.offsetWidth, height: callout.offsetHeight },
           { width: document.documentElement.clientWidth, height: window.innerHeight }, obstacles,
-        ) ?? ((introductionRef.current || engaged) ? placeGuideCallout(
-          { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight },
+        ) ?? ((introductionRef.current || actor.classList.contains("is-speaking") || engaged) ? placeGuideCallout(
+          speechAnchor,
           { width: callout.offsetWidth, height: callout.offsetHeight },
           { width: document.documentElement.clientWidth, height: window.innerHeight }, [],
         ) : null) : null;
@@ -237,9 +277,9 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
           bubbleViewport = viewportKey;
           callout.style.left = `${placement.left}px`;
           callout.style.top = `${placement.top}px`;
-          callout.dataset.tail = placement.left >= actor.offsetWidth ? "left" : placement.left + callout.offsetWidth <= 0 ? "right" : placement.top < 0 ? "bottom" : "top";
-          callout.style.setProperty("--tail-x", `${clamp(actor.offsetWidth / 2 - placement.left, 18, callout.offsetWidth - 18)}px`);
-          callout.style.setProperty("--tail-y", `${clamp(actor.offsetHeight * .3 - placement.top, 18, callout.offsetHeight - 18)}px`);
+          callout.dataset.tail = placement.left >= speechAnchor.width ? "left" : placement.left + callout.offsetWidth <= 0 ? "right" : placement.top < 0 ? "bottom" : "top";
+          callout.style.setProperty("--tail-x", `${clamp(speechAnchor.width / 2 - placement.left, 18, callout.offsetWidth - 18)}px`);
+          callout.style.setProperty("--tail-y", `${clamp(speechAnchor.height * .3 - placement.top, 18, callout.offsetHeight - 18)}px`);
         }
       }
     };
@@ -287,7 +327,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       if (event.key === "Escape" && callout.dataset.visible === "true") {
         dismissedRef.current = true; introductionRef.current = false;
         setShowIntroduction(false); hideBubble();
-        if (callout.contains(document.activeElement)) actor.focus({ preventScroll: true });
+        if (callout.contains(document.activeElement)) focusGuide(actor);
       }
     };
     const resize = () => { freeze(); scrolling = false; schedulePaint(); };
@@ -321,6 +361,8 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       freeze();
       window.clearTimeout(settleTimer);
       window.clearTimeout(leaveTimer);
+      window.clearTimeout(entranceTimer);
+      actor.classList.remove("is-greeting");
       observer.disconnect();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", resize);
@@ -353,20 +395,6 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     return () => { window.clearTimeout(timer); cancelAnimationFrame(frame); };
   }, [stop, message, icon, showIntroduction]);
 
-  useEffect(() => {
-    if (!chosen) return;
-    dismissedRef.current = false;
-    introductionRef.current = true;
-    setShowIntroduction(true);
-    const actor = actorRef.current;
-    actor?.classList.add("is-greeting");
-    const motionTimer = window.setTimeout(() => actor?.classList.remove("is-greeting"), 1300);
-    return () => {
-      window.clearTimeout(motionTimer);
-      actor?.classList.remove("is-greeting");
-    };
-  }, [chosen, role]);
-
   const changePanel = (open: boolean, trigger?: HTMLButtonElement) => {
     if (open) {
       introductionRef.current = false;
@@ -381,25 +409,25 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     if (!open) requestAnimationFrame(() => {
       const trigger = chatTriggerRef.current;
       if (trigger?.isConnected && !trigger.closest("[inert]")) trigger.focus({ preventScroll: true });
-      else actorRef.current?.focus({ preventScroll: true });
+      else focusGuide(actorRef.current);
     });
   };
 
   return <div className="guide-stage guide-stage-journey" ref={stageRef}>
     <div ref={anchorRef} className="guide-anchor">
-    <button ref={actorRef} tabIndex={-1} className="guide-character" type="button" onClick={(event) => changePanel(true, event.currentTarget)} aria-label={`Talk with ${persona.name}, Ali's portfolio guide. Current section: ${stop}. ${message}`} aria-haspopup="dialog" aria-expanded={panelOpen} title={`Ask ${persona.name}, Ali’s AI guide`}>
-      <span className="guide-character-model" aria-hidden="true"><img src={`${basePath}/guide-art/${icon}.webp`} alt="" width="68" height="102" draggable="false" /></span>
+    <button ref={actorRef} tabIndex={-1} className="guide-character" data-guide-role={role} type="button" onClick={(event) => changePanel(true, event.currentTarget)} aria-label={`Talk with ${persona.name}, Ali's portfolio guide. Current section: ${stop}. ${message}`} aria-haspopup="dialog" aria-expanded={panelOpen} title={`Ask ${persona.name}, Ali’s AI guide`}>
+      <span className="guide-character-model" aria-hidden="true"><img key={icon} src={`${basePath}/guide-art/${icon}.webp`} onLoad={() => actorRef.current?.dispatchEvent(new Event("guide-message-change"))} alt="" width="68" height="102" draggable="false" /></span>
       <span className="guide-character-label" aria-hidden="true">Ask {persona.name}</span>
     </button>
     <aside className="guide-callout guide-tracking-bubble" aria-label={`${persona.name}'s suggestion`} inert>
       <button type="button" className="guide-bubble-dismiss" aria-label="Dismiss guide tip" onClick={() => {
         dismissedRef.current = true; introductionRef.current = false; setShowIntroduction(false);
-        actorRef.current?.focus({ preventScroll: true });
+        focusGuide(actorRef.current);
         actorRef.current?.dispatchEvent(new Event("guide-message-change"));
       }}>×</button>
       <small>{showIntroduction ? `Meet ${persona.name}` : stop}</small>
       <p>{showIntroduction ? persona.introduction : message}</p>
-      {showIntroduction && <span className="guide-bubble-hint">Tap my avatar to chat.</span>}
+      {showIntroduction && <span className="guide-bubble-hint">I’ll guide you as you explore.</span>}
     </aside>
     </div>
     <GuideAssistantPanel open={panelOpen} onClose={() => changePanel(false)} icon={icon} name={persona.name} role={role} section={conversationSection} />

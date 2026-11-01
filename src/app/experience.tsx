@@ -245,7 +245,7 @@ export function VisitorPicker({ projects }: { projects: Project[] }) {
 function RoleTile({ item, selected, onSelect }: { item: (typeof roles)[number]; selected: string | null; onSelect: (role: string) => void }) {
   const active = selected === item.label;
   return <div className={`role-cell ${active ? "is-selected" : ""}`}>
-    <label className={`role-card role-${item.tone} ${active ? "is-selected" : ""}`}>
+    <label className={`role-card role-${item.tone} ${active ? "is-selected" : ""}`} data-guide-role={item.label}>
       <input type="radio" name="visitor-role" value={item.label} checked={active} onChange={() => onSelect(item.label)} />
       <span className="role-icon" aria-hidden="true"><img src={`${basePath}/role-art/${item.icon}.webp`} alt="" width="362" height="362" loading="lazy" /></span>
       <span className="role-card-copy">{active && <small>THAT&apos;S YOU</small>}<strong>{item.label}</strong>{active && <em>{item.description}</em>}</span>

@@ -34,7 +34,7 @@
 .guide-stage-journey .guide-character.is-scrolling:not(.is-walking)[data-scroll-direction="down"] img { animation: guide-scroll-down .28s ease-in-out infinite alternate; }
 .guide-stage-journey .guide-character.is-jumping img { animation: guide-jump .4s ease-out; }
 .guide-stage-journey .guide-character.is-speaking:not(.is-scrolling, .is-walking, .is-jumping, .is-greeting) img { animation: guide-acknowledge .75s cubic-bezier(.2,.8,.2,1) both; }
-.guide-stage-journey .guide-character.is-greeting:not(.is-scrolling, .is-walking) img { animation: guide-greet 1.2s cubic-bezier(.2,.8,.2,1) both; }
+.guide-stage-journey .guide-character.is-greeting:not(.is-scrolling, .is-walking) img { animation: var(--guide-role-entrance, guide-greet) .9s cubic-bezier(.2,.8,.2,1) both; }
 .guide-stage-journey .guide-character:is(:hover, :focus-visible):not(.is-scrolling, .is-walking, .is-jumping, .is-greeting) img { animation: guide-attend .55s cubic-bezier(.2,.8,.2,1) both; }
 
 .guide-assistant-avatar { flex: none; transform-origin: 50% 85%; animation: guide-alive-idle 5.4s ease-in-out infinite; }
@@ -161,4 +161,32 @@
 .avatar-preview-controls { display:flex; flex-wrap:wrap; gap:12px; align-items:end; }
 .avatar-preview-controls label { display:grid; gap:6px; }
 .avatar-preview-controls :is(button,select,a) { min-height:44px; padding:10px 14px; border:1px solid #c4cddc; border-radius:10px; background:white; color:#17243b; font:inherit; }
+[data-guide-role="Recruiter"] { --guide-role-entrance:guide-role-welcome; }
+[data-guide-role="Founder"] { --guide-role-entrance:guide-role-rise; }
+[data-guide-role="Engineer"] { --guide-role-entrance:guide-role-slide; }
+[data-guide-role="Product designer"] { --guide-role-entrance:guide-role-arc; }
+[data-guide-role="Marketer"] { --guide-role-entrance:guide-role-wave; }
+[data-guide-role="Growth"] { --guide-role-entrance:guide-role-boost; }
+[data-guide-role="Data"] { --guide-role-entrance:guide-role-scan; }
+[data-guide-role="Investor"] { --guide-role-entrance:guide-role-poise; }
+[data-guide-role="Student"] { --guide-role-entrance:guide-role-hop; }
+[data-guide-role="Fellow builder"] { --guide-role-entrance:guide-role-settle; }
+[data-guide-role="Just curious"] { --guide-role-entrance:guide-role-peek; }
+/* One entrance per deliberate selection; do not repeatedly replay a greeting. */
+.role-card.is-selected[data-guide-role] .role-icon img { animation:var(--guide-role-entrance) .9s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes guide-role-welcome { from { opacity:0; transform:translate(-10px,6px) rotate(-3deg); } 65% { opacity:1; transform:translateY(-2px) rotate(2deg); } to { opacity:1; transform:none; } }
+@keyframes guide-role-rise { from { opacity:0; transform:translateY(20px) scale(.93); } 72% { opacity:1; transform:translateY(-3px); } to { opacity:1; transform:none; } }
+@keyframes guide-role-slide { from { opacity:0; transform:translateX(-18px); } 70% { opacity:1; transform:translateX(2px); } to { opacity:1; transform:none; } }
+@keyframes guide-role-arc { from { opacity:0; transform:translate(-14px,8px) rotate(-6deg); } 65% { opacity:1; transform:rotate(2deg); } to { opacity:1; transform:none; } }
+@keyframes guide-role-wave { from { opacity:0; transform:rotate(-8deg) scale(.96); } 35% { opacity:1; transform:rotate(7deg); } 65% { transform:rotate(-3deg); } to { opacity:1; transform:none; } }
+@keyframes guide-role-boost { from { opacity:0; transform:translate(-8px,18px); } 65% { opacity:1; transform:translateY(-6px) scale(1.02); } to { opacity:1; transform:none; } }
+@keyframes guide-role-scan { from { opacity:0; transform:scale(.88); } 60% { opacity:1; transform:scale(1.03) rotate(2deg); } to { opacity:1; transform:none; } }
+@keyframes guide-role-poise { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+@keyframes guide-role-hop { from { opacity:0; transform:translateY(24px) rotate(-4deg); } 55% { opacity:1; transform:translateY(-10px) rotate(4deg); } to { opacity:1; transform:none; } }
+@keyframes guide-role-settle { from { opacity:0; transform:translateY(10px) scale(.92,1.04); } 70% { opacity:1; transform:scale(1.03,.97); } to { opacity:1; transform:none; } }
+@keyframes guide-role-peek { from { opacity:0; transform:translateX(-16px) rotate(-10deg); } 65% { opacity:1; transform:rotate(4deg); } to { opacity:1; transform:none; } }
+@media(prefers-reduced-motion:reduce) {
+  .role-card.is-selected[data-guide-role] .role-icon img,
+  .guide-stage-journey .guide-character.is-greeting:not(.is-scrolling, .is-walking) img { animation:none; }
+}
 @media(max-width:767px) { .owner-welcome { gap:10px; padding-top:96px; margin-bottom:16px; } .owner-welcome-avatar { flex-basis:76px; height:114px; } .owner-welcome-bubble { padding:12px; } .owner-welcome-bubble p { font-size:.8rem; } }

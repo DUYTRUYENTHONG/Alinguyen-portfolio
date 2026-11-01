@@ -26,7 +26,7 @@ export const knowledge = [
     title: "Ali Nguyen overview and contact",
     url: "https://duytruyenthong.github.io/Alinguyen-portfolio/about/",
     tags: ["ali", "about", "contact", "experience", "founder", "marketing"],
-    text: "Ali Nguyen is Nguyen Quang Duy, an applied AI and product engineer and founder of DUYTRUYENTHONG. He describes 4+ years in digital marketing and 2+ years in AI engineering and product building. For direct inquiries, use the portfolio contact section or nquangd1510@gmail.com.",
+    text: "Ali Nguyen is Nguyen Quang Duy, an applied AI and product engineer and founder of DUYTRUYENTHONG. He describes 4+ years in digital marketing and 3+ years in AI engineering and product building. For direct inquiries, use the portfolio contact section or nquangd1510@gmail.com.",
   },
   {
     id: "kkbox-results",
