@@ -55,7 +55,7 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
     : section.includes("Chợ Kênh") ? "What does Chợ Kênh do?"
     : section.includes("Vibecode") ? "What does Vibecode Product Kit include?"
     : section === "Download a CV" ? "Which CV should I read?" : null;
-  const prompts = Array.from(new Set([...(contextQuestion ? [contextQuestion] : []), ...(starterQuestions[role] ?? starterQuestions.Recruiter)])).slice(0, 3);
+  const prompts = Array.from(new Set(['Give me a quick tour of Ali’s work', ...(contextQuestion ? [contextQuestion] : []), ...(starterQuestions[role] ?? starterQuestions.Recruiter)])).slice(0, 3);
 
   const showMotion = (next: PanelMotion, duration = 0) => {
     if (motionTimerRef.current !== null) window.clearTimeout(motionTimerRef.current);
@@ -189,7 +189,7 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
       <small id="guide-assistant-privacy">Questions are sent to an AI provider when you send a message or select a suggested question. Avoid sharing sensitive information. Chat history lasts only in this tab.</small>
       {turns.length === 0 && <div className="guide-assistant-intro">
         <div className="guide-assistant-context"><span>EXPLORING NOW</span><strong>{section}</strong></div>
-        <div className="guide-assistant-welcome"><strong>Hi, I&apos;m {name}.</strong><p>I can point you to Ali&apos;s work, explain the evidence, and say what remains unverified. What would you like to explore?</p></div>
+        <div className="guide-assistant-welcome"><strong>Hi, I&apos;m {name}, your portfolio guide.</strong><p>Ali builds applied AI and digital products. I can introduce his work, walk you through a product, or help you find the right evidence. Where shall we start?</p></div>
         <div className="guide-assistant-suggestions">
           {prompts.map((item) =>
             <button key={item} type="button" disabled={busy} onClick={() => void ask(item)}>{item}<span aria-hidden="true">↗</span></button>)}

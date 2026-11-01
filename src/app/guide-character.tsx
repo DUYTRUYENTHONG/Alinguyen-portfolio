@@ -29,18 +29,18 @@ const stops = [
 ] as const;
 
 const sceneMessages: Record<string, string> = {
-  "Explore the portfolio": "I can help you explore Ali’s work, skills and CVs.",
+  "Explore the portfolio": "I’m your guide to Ali’s work and products. Tap me for a quick tour.",
   "Shared with the community": "Explore the free career-agent kit, its setup guide and its current limits.",
   "Choose your perspective": "Pick a role and I’ll keep that look as we explore the page.",
-  "What I do": "I connect marketing, commerce, and data so the next step is clearer.",
+  "What I do": "Ali connects applied AI, data and commerce. Ask me how that shows up in his products.",
   "Proof of work": "These labels separate live sites, public code, and local prototypes.",
   Highlights: "Here’s the short version. Open a card when something catches your eye.",
-  "Applied AI expertise": "These examples show what I built, what I checked, and where the evidence ends.",
+  "Applied AI expertise": "Explore what Ali built, how he checked it, and what remains unverified.",
   "From signal to decision": "The common thread: collect a signal, build a useful workflow, then decide.",
-  "Selected work": "Browse the projects for the problem, my role, and the evidence.",
+  "Selected work": "Pick a product and I’ll explain its purpose, Ali’s role and the evidence.",
   "Sales journey": "Try either funnel: each stage explains the job it does and the signal to watch.",
   Customers: "These are customer names from the work behind the portfolio.",
-  "About Ali": "This is how I scope work and keep claims tied to evidence.",
+  "About Ali": "Here’s how Ali approaches his work. Ask me about his role or experience.",
   "Download a CV": "Choose the version that fits the role you’re discussing.",
   "Build notes": "A few decisions show how I test and explain the work.",
   "Let's talk": "Tell me the offer, the audience, and where people get stuck.",
