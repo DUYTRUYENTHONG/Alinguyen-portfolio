@@ -1,5 +1,6 @@
 import { identity } from "@/data/portfolio";
 import styles from "./highlights-section.module.css";
+import { HighlightFeatureArt } from "./highlight-feature-art";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -11,15 +12,6 @@ const cards = [
   { id: "chokenh", title: "Chợ Kênh", description: "A live TikTok channel catalog with manual intermediary inquiries.", href: identity.choKenh, action: "Visit marketplace", logo: "cho-kenh-logo-transparent.webp" },
   { id: "process", title: "Open process", description: "Reproducible baselines, readable code, and explicit limits.", href: "#about", action: "Read approach", logo: null },
 ] as const;
-
-function FeatureArtwork() {
-  return <div className={styles.featureArt} aria-hidden="true">
-    <span className={`${styles.goldPlate} ${styles.goldPlateBack}`}><span className={styles.routeGlyph}>↗</span></span>
-    <span className={`${styles.goldPlate} ${styles.goldPlateMiddle}`}><span className={styles.bagGlyph}>▢</span></span>
-    <span className={`${styles.goldPlate} ${styles.goldPlateFront}`}><span className={styles.barGlyph}><i /><i /><i /></span></span>
-    <span className={styles.goldFloor} />
-  </div>;
-}
 
 function CardArtwork({ id }: { id: typeof cards[number]["id"] }) {
   if (id === "growth") return <div className={`${styles.art} ${styles.growthArt}`} aria-hidden="true">
@@ -43,8 +35,8 @@ export function HighlightsSection() {
       <h2 id="highlights-title" className={styles.srOnly}>Highlights</h2>
       <div className={styles.grid}>
         <div className={styles.feature} data-guide-obstacle>
-          <span className={styles.sparkle} aria-hidden="true">✦</span>
-          <FeatureArtwork />
+          <span className={styles.featureTag}>AI / MARKETING</span>
+          <HighlightFeatureArt />
           <div className={styles.featureCopy}><strong>5</strong><p>featured builds across commerce products, open-source tooling, and customer analytics.</p><div className={styles.featureFooter}><span>PUBLIC BUILDS.<br />EVIDENCE IN VIEW.</span><a href="#work" aria-label="Explore selected work">→</a></div></div>
         </div>
         {cards.map((card) => <article className={`${styles.card} ${styles[card.id]}`} key={card.id}>

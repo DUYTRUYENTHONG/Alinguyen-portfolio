@@ -30,8 +30,8 @@
 @media(max-width:767px) { .guide-stage-journey .guide-character { width: 68px; height: 96px; padding: 0 10px 22px; } .guide-character-label { font-size: .6rem; gap: 4px; padding-inline: 6px; } }
 .guide-stage-journey .guide-character img { animation: guide-alive-idle 5.4s ease-in-out infinite; }
 .guide-stage-journey .guide-character.is-walking img { animation: guide-walk .2s ease-in-out infinite alternate; }
-.guide-stage-journey .guide-character.is-scrolling:not(.is-walking)[data-scroll-direction="up"] img { animation: guide-scroll-up .28s ease-in-out infinite alternate; }
-.guide-stage-journey .guide-character.is-scrolling:not(.is-walking)[data-scroll-direction="down"] img { animation: guide-scroll-down .28s ease-in-out infinite alternate; }
+.guide-stage-journey .guide-character.is-scrolling:not(.is-walking)[data-scroll-direction="up"] img { animation: var(--guide-role-scroll, guide-scroll-curious) .85s ease-in-out infinite alternate; }
+.guide-stage-journey .guide-character.is-scrolling:not(.is-walking)[data-scroll-direction="down"] img { animation: var(--guide-role-scroll, guide-scroll-curious) .85s ease-in-out infinite alternate; }
 .guide-stage-journey .guide-character.is-jumping img { animation: guide-jump .4s ease-out; }
 .guide-stage-journey .guide-character.is-speaking:not(.is-scrolling, .is-walking, .is-jumping, .is-greeting) img { animation: guide-acknowledge .75s cubic-bezier(.2,.8,.2,1) both; }
 .guide-stage-journey .guide-character.is-greeting:not(.is-scrolling, .is-walking) img { animation: var(--guide-role-entrance, guide-greet) .9s cubic-bezier(.2,.8,.2,1) both; }
@@ -190,3 +190,28 @@
   .guide-stage-journey .guide-character.is-greeting:not(.is-scrolling, .is-walking) img { animation:none; }
 }
 @media(max-width:767px) { .owner-welcome { gap:10px; padding-top:96px; margin-bottom:16px; } .owner-welcome-avatar { flex-basis:76px; height:114px; } .owner-welcome-bubble { padding:12px; } .owner-welcome-bubble p { font-size:.8rem; } }
+
+.guide-stage-journey{--guide-safe-right:env(safe-area-inset-right,0px);--guide-safe-bottom:env(safe-area-inset-bottom,0px)}
+[data-guide-role="Recruiter"]{--guide-role-scroll:guide-scroll-recruiter}
+@keyframes guide-scroll-recruiter{from{transform:perspective(500px) rotateX(0) rotateY(0) translateY(0)}to{transform:perspective(500px) rotateX(2deg) rotateY(-5deg) translateY(-2px)}}
+[data-guide-role="Founder"]{--guide-role-scroll:guide-scroll-founder}
+@keyframes guide-scroll-founder{from{transform:perspective(500px) rotateX(0) rotateY(0) translateY(0)}to{transform:perspective(500px) rotateX(-3deg) rotateY(4deg) scale(1.02)}}
+[data-guide-role="Engineer"]{--guide-role-scroll:guide-scroll-engineer}
+@keyframes guide-scroll-engineer{from{transform:perspective(500px) rotateX(0) rotateY(0) translateY(0)}to{transform:perspective(500px) rotateY(6deg) rotateZ(-1deg)}}
+[data-guide-role="Product designer"]{--guide-role-scroll:guide-scroll-designer}
+@keyframes guide-scroll-designer{from{transform:perspective(500px) rotateX(0) rotateY(0) translateY(0)}to{transform:perspective(500px) rotateZ(-3deg) rotateY(-4deg)}}
+[data-guide-role="Marketer"]{--guide-role-scroll:guide-scroll-marketer}
+@keyframes guide-scroll-marketer{from{transform:perspective(500px) rotateX(0) rotateY(0) translateY(0)}to{transform:perspective(500px) rotateZ(3deg) rotateX(2deg)}}
+[data-guide-role="Growth"]{--guide-role-scroll:guide-scroll-growth}
+@keyframes guide-scroll-growth{from{transform:perspective(500px) rotateX(0) rotateY(0) translateY(0)}to{transform:perspective(500px) rotateY(-4deg) translateY(-3px)}}
+[data-guide-role="Data"]{--guide-role-scroll:guide-scroll-data}
+@keyframes guide-scroll-data{from{transform:perspective(500px) rotateX(0) rotateY(0) translateY(0)}to{transform:perspective(500px) rotateX(3deg) rotateY(-6deg)}}
+[data-guide-role="Investor"]{--guide-role-scroll:guide-scroll-investor}
+@keyframes guide-scroll-investor{from{transform:perspective(500px) rotateX(0) rotateY(0) translateY(0)}to{transform:perspective(500px) rotateY(3deg) rotateX(-1deg)}}
+[data-guide-role="Student"]{--guide-role-scroll:guide-scroll-student}
+@keyframes guide-scroll-student{from{transform:perspective(500px) rotateX(0) rotateY(0) translateY(0)}to{transform:perspective(500px) rotateZ(-2deg) translateY(-3px)}}
+[data-guide-role="Fellow builder"]{--guide-role-scroll:guide-scroll-builder}
+@keyframes guide-scroll-builder{from{transform:perspective(500px) rotateX(0) rotateY(0) translateY(0)}to{transform:perspective(500px) rotateX(-4deg) rotateY(4deg)}}
+[data-guide-role="Just curious"]{--guide-role-scroll:guide-scroll-curious}
+@keyframes guide-scroll-curious{from{transform:perspective(500px) rotateX(0) rotateY(0) translateY(0)}to{transform:perspective(500px) rotateY(-8deg) rotateZ(2deg)}}
+@media(prefers-reduced-motion:reduce){.guide-stage-journey .guide-character.is-scrolling:not(.is-walking)[data-scroll-direction] img{animation:none}}

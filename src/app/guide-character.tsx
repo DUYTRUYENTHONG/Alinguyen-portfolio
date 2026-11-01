@@ -118,6 +118,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
     let entranceTimer = 0;
     let cardDocked = false;
     let scrolling = false;
+    let previousScrollY = window.scrollY;
     let pointerHeld = false;
     let hovered = false;
     let bubbleViewport = "";
@@ -170,10 +171,13 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
         }
       }
 
-      // Measure the entire button, including its label, against actual content.
+      // Keep the floating target in its fixed corner, including its label and
+      // device safe areas. Only the selected-card handoff uses another anchor.
+      const safeStyle = getComputedStyle(stage);
       const position = placeGuideActor(
         { width: actor.offsetWidth, height: actor.offsetHeight },
-        { width: document.documentElement.clientWidth, height: window.innerHeight }, contentBoxes(), lastPosition.current,
+        { width: document.documentElement.clientWidth, height: window.innerHeight },
+        { right: Number.parseFloat(safeStyle.getPropertyValue("--guide-safe-right")) || 0, bottom: Number.parseFloat(safeStyle.getPropertyValue("--guide-safe-bottom")) || 0 },
       );
       const message = (projectId ? projectMessages[projectId] : null) ?? sceneMessages[label] ?? "Follow along for the work and the decisions behind it.";
       const viewportMaxX = Math.max(0, window.innerWidth - actor.offsetWidth);
@@ -304,12 +308,17 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       if (!scrollFrame) scrollFrame = window.requestAnimationFrame(() => { scrollFrame = 0; paint(); });
     };
     const onScroll = () => {
-      // Do not chase every scroll event or read the entire DOM each frame.
-      // Reposition once the visitor pauses; the tap target stays predictable.
+      // Keep the corner tap target still. Only animate its artwork while the
+      // visitor scrolls; refresh the section introduction once scrolling settles.
       freeze(); scrolling = true;
+      window.clearTimeout(entranceTimer);
+      actor.classList.remove("is-greeting");
+      actor.dataset.scrollDirection = window.scrollY < previousScrollY ? "up" : "down";
+      previousScrollY = window.scrollY;
+      actor.classList.toggle("is-scrolling", !hovered && !pointerHeld && !anchor.matches(":focus-within"));
       if (!hovered && !pointerHeld && !anchor.matches(":focus-within")) hideBubble();
       window.clearTimeout(settleTimer);
-      settleTimer = window.setTimeout(() => { scrolling = false; paint(); }, 140);
+      settleTimer = window.setTimeout(() => { scrolling = false; actor.classList.remove("is-scrolling"); paint(); }, 140);
     };
     const engage = () => { freeze(); paint(); };
     const enter = (event: PointerEvent) => {
@@ -330,7 +339,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
         if (callout.contains(document.activeElement)) focusGuide(actor);
       }
     };
-    const resize = () => { freeze(); scrolling = false; schedulePaint(); };
+    const resize = () => { freeze(); scrolling = false; lastPosition.current = null; actor.classList.remove("is-scrolling"); schedulePaint(); };
     const observer = new ResizeObserver(paint);
     observer.observe(stage);
     observer.observe(callout);
@@ -362,7 +371,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       window.clearTimeout(settleTimer);
       window.clearTimeout(leaveTimer);
       window.clearTimeout(entranceTimer);
-      actor.classList.remove("is-greeting");
+      actor.classList.remove("is-greeting", "is-scrolling");
       observer.disconnect();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", resize);
