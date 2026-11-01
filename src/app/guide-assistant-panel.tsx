@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
 import { useGuideDialog } from "./use-guide-dialog";
+import { requestGuide } from './guide-request';
 import { conversationScrollTop } from "./guide-conversation-scroll";
 import { PortfolioSignalConsent } from "./portfolio-signals";
 import { guideRequestSection, parseGuideReply, recentGuideTurns, type GuideTurn, type AnswerMotion } from "./guide-reply";
@@ -147,22 +148,14 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
     requestPending.current = true;
     setQuestion("");
     setError("");
-    const prior = recentGuideTurns(turns);
-    setTurns((current) => [...current, { role: "user", text: trimmed }]);
+    const retrying = turns.at(-1)?.role === 'user' && turns.at(-1)?.text === trimmed;
+    const prior = recentGuideTurns(retrying ? turns.slice(0,-1) : turns);
+    setTurns((current) => current.at(-1)?.role === 'user' && current.at(-1)?.text === trimmed ? current : [...current, { role: "user", text: trimmed }]);
     setBusy(true);
     showMotion("thinking");
     try {
       if (!endpoint) throw new Error("Guide API is not configured");
-      const controller = new AbortController();
-      const timeout = window.setTimeout(() => controller.abort(), 20000);
-      let reply: ReturnType<typeof parseGuideReply>;
-      try {
-        const response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question: trimmed, context: { page: window.location.pathname, section: guideRequestSection(section), role }, recentTurns: prior, interests: remember ? interests : [] }),
-          signal: controller.signal });
-        if (!response.ok) throw new Error("Guide unavailable");
-        reply = parseGuideReply(await response.json());
-      } finally { window.clearTimeout(timeout); }
+      const reply = await requestGuide(endpoint, { question: trimmed, context: { page: window.location.pathname, section: guideRequestSection(section), role }, recentTurns: prior, interests: remember ? interests : [] }, parseGuideReply);
       setTurns((current) => [...current, { role: "assistant", text: reply.answer, citations: reply.citations }]);
       setSuggestions(reply.suggestions);
       showMotion(reply.motion, 1600);

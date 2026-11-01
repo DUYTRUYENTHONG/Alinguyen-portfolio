@@ -52,3 +52,14 @@ for(const [question,id,required] of [
  if(r.status!==200||body.responseMode!=='reviewed-evidence'||!body.citations?.some(c=>c.sourceId===id)||!required.every(t=>body.answer.includes(t))) throw Error(`Project evidence smoke failed: ${id}`);
 }
 console.log('Production guide: planned features, manual marketplace limits and community-kit boundaries passed.');
+
+const tourRequest=async(question,recentTurns=[])=>{
+ const r=await fetch(endpoint,{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify({question,context:{section:'Explore the portfolio',role:'Founder'},recentTurns,interests:[]}),signal:AbortSignal.timeout(16000)});
+ if(r.status!==200)throw Error(`Tour flow HTTP ${r.status}`);
+ return r.json();
+};
+const tour=await tourRequest('Give me a quick tour of Ali’s work');
+if(tour.responseMode!=='guided-tour'||tour.citations?.length!==4||!tour.suggestions?.includes('What does STOS do?'))throw Error('Tour response incomplete');
+const followup=await tourRequest('What does STOS do?',[{role:'user',text:'Give me a quick tour of Ali’s work'},{role:'assistant',text:tour.answer.slice(0,500)}]);
+if(!followup.answer?.includes('planned, not live')||!followup.citations?.some(c=>c.sourceId==='stos'))throw Error('Tour follow-up failed');
+console.log('Production guide: tour and cited product follow-up completed within request deadlines.');

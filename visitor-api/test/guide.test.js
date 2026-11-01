@@ -31,6 +31,15 @@ function withTestEnv(run) {
   });
 }
 
+test('hung admission fails closed within its budget without calling the model',()=>withTestEnv(async()=>{
+ let called=false;const h=createGuideHandler({admissionTimeoutMs:10,makeRedis:()=>({incr:()=>new Promise(()=>{})}),modelFetch:async()=>{called=true;}});
+ const r=response();await h(request('Give me a quick tour'),r);assert.equal(r.statusCode,503);assert.equal(called,false);
+}));
+test('a hung provider body returns cited source fallback within its budget',()=>withTestEnv(async()=>{
+ let signal;const h=createGuideHandler({modelTimeoutMs:10,makeRedis:()=>({incr:async()=>1,expire:async()=>1}),modelFetch:async(_u,o)=>{signal=o.signal;return {ok:true,json:()=>new Promise(()=>{})};}});
+ const r=response();await h(request(),r);assert.equal(r.statusCode,200);assert.equal(r.body.responseMode,'source-excerpt');assert.equal(signal.aborted,true);assert.ok(r.body.citations.length);
+}));
+
 test('all authored evaluation cases retain citation provenance and reviewed factual wording',()=>withTestEnv(async()=>{
  const cases=JSON.parse(readFileSync(new URL('../evaluation/cases.json',import.meta.url),'utf8'));
  for(const item of cases){

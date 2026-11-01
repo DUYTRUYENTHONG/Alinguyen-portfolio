@@ -5,6 +5,7 @@ import { readPortfolioSignals } from "../lib/portfolio-signals.js";
 import { isLiveProjectInventoryQuestion, liveProjectInventoryReply } from "../lib/guide-live-projects.js";
 import { projectEvidenceRequest, evidenceReply } from '../lib/guide-evidence.js';
 import { isTourQuestion, tourReply } from '../lib/guide-tour.js';
+import { withDeadline } from '../lib/guide-deadline.js';
 
 const allowedOrigins = new Set([
   "https://duytruyenthong.github.io",
@@ -52,7 +53,8 @@ function validTurns(value) {
     turn && ["user", "assistant"].includes(turn.role) && typeof turn.text === "string" && turn.text.length <= 500);
 }
 
-export function createGuideHandler({ makeRedis = () => new Redis({ url: process.env.KV_REST_API_URL, token: process.env.KV_REST_API_TOKEN }), modelFetch = fetch,
+export function createGuideHandler({ makeRedis = () => new Redis({ url: process.env.KV_REST_API_URL, token: process.env.KV_REST_API_TOKEN, retry: false, signal: () => AbortSignal.timeout(2500) }), modelFetch = fetch,
+  admissionTimeoutMs = 2500, modelTimeoutMs = 10000,
   loadSignals = () => readPortfolioSignals(new Redis({url: process.env.KV_REST_API_URL, token: process.env.KV_REST_API_TOKEN, retry: false, signal: () => AbortSignal.timeout(1000)})),
 } = {}) {
   return async function handler(request, res) {
@@ -89,13 +91,17 @@ export function createGuideHandler({ makeRedis = () => new Redis({ url: process.
     const day = new Date().toISOString().slice(0, 10);
     const clientHash = createHmac("sha256", process.env.GUIDE_RATE_SALT).update(`${day}:${ip}`).digest("hex");
     const limitKey = `portfolio:guide:daily:${day}:${clientHash}`;
+    const admitted = await withDeadline(async () => {
     const count = await redis.incr(limitKey);
     if (count === 1) await redis.expire(limitKey, 172800);
-    if (count > 20) return send(res, 429, { error: "Daily guide limit reached" }, origin);
+    if (count > 20) return 'Daily guide limit reached';
     const globalKey = `portfolio:guide:global:${day}`;
     const globalCount = await redis.incr(globalKey);
     if (globalCount === 1) await redis.expire(globalKey, 172800);
-    if (globalCount > 300) return send(res, 429, { error: "Guide capacity reached today" }, origin);
+    if (globalCount > 300) return 'Guide capacity reached today';
+    return null;
+    }, admissionTimeoutMs);
+    if (admitted) return send(res, 429, {error:admitted}, origin);
     if (isTourQuestion(question)) return send(res, 200, tourReply(personaNames[context.role], question), origin);
 
     // Inventory completeness is a data constraint, not a relevance-ranking task.
@@ -118,7 +124,7 @@ export function createGuideHandler({ makeRedis = () => new Redis({ url: process.
     // Optional aggregate ranking must never make the guide unavailable or leak counts to the model.
     if (process.env.PORTFOLIO_SIGNALS_ENABLED === 'true') {
       try {
-        signals = await loadSignals();
+        signals = await withDeadline(() => loadSignals(), 1000);
       } catch { /* Preserve baseline retrieval when signals are unavailable. */ }
     }
     sources = retrieveGuideSources(question, context, signals);
@@ -131,11 +137,8 @@ export function createGuideHandler({ makeRedis = () => new Redis({ url: process.
     const evidence = sources.map(({ id, title, text }) => `[${id}] ${title}: ${text}`).join("\n\n");
     const input = JSON.stringify({ selectedRole: context.role, currentSection: context.section,
       optedInInterests: remembered, recentConversation: recentTurns, visitorQuestion: question.trim() });
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
-    let response;
-    try {
-      response = await modelFetch("https://api.groq.com/openai/v1/chat/completions", {
+    const result = await withDeadline(async (signal) => {
+      const response = await modelFetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: { Authorization: `Bearer ${process.env.GROQ_API_KEY}`, "Content-Type": "application/json" },
         body: JSON.stringify({ model: "openai/gpt-oss-20b", messages: [
@@ -144,13 +147,11 @@ export function createGuideHandler({ makeRedis = () => new Redis({ url: process.
           { role: "user", content: input },
         ], max_completion_tokens: 800, reasoning_effort: "low",
         response_format: { type: "json_schema", json_schema: { name: "portfolio_guide", strict: true, schema } } }),
-        signal: controller.signal,
+        signal,
       });
-    } finally {
-      clearTimeout(timeout);
-    }
     if (!response.ok) throw Object.assign(new Error("Model request failed"), { providerStatus: response.status });
-    const result = await response.json();
+    return await response.json();
+    }, modelTimeoutMs);
     const content = result.choices?.[0]?.message?.content;
     if (!content) throw new Error("Missing model output");
     const answer = JSON.parse(content);
