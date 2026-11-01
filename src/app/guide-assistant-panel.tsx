@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
 import { useGuideDialog } from "./use-guide-dialog";
-import { requestGuide } from './guide-request';
+import { GuideRequestError, requestGuide } from './guide-request';
 import { conversationScrollTop } from "./guide-conversation-scroll";
 import { PortfolioSignalConsent } from "./portfolio-signals";
 import { guideRequestSection, parseGuideReply, recentGuideTurns, type GuideTurn, type AnswerMotion } from "./guide-reply";
@@ -159,8 +159,10 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
       setTurns((current) => [...current, { role: "assistant", text: reply.answer, citations: reply.citations }]);
       setSuggestions(reply.suggestions);
       showMotion(reply.motion, 1600);
-    } catch {
-      setError("The AI guide is unavailable right now. The portfolio links below still work.");
+    } catch (failure) {
+      setError(failure instanceof GuideRequestError && failure.status === 429
+        ? "The guide’s daily request limit has been reached. Please return after it resets. The portfolio links below still work."
+        : "The AI guide is unavailable right now. The portfolio links below still work.");
       setQuestion(trimmed);
       showMotion("reassure", 1500);
     } finally { requestPending.current = false; setBusy(false); }

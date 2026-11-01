@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { requestGuide } from '../src/app/guide-request.ts';
+import { GuideRequestError, requestGuide } from '../src/app/guide-request.ts';
 import { parseGuideReply } from '../src/app/guide-reply.ts';
 const reply={answer:'STOS AI suggestions are planned, not live.',citations:[],suggestions:[],motion:'point'};
 test('one transient network failure retries the same payload and preserves reply',async()=>{
@@ -17,6 +17,10 @@ test('hung fetch and response bodies have deadlines and only one retry',async()=
 test('rate limits, validation and malformed replies never retry',async()=>{
  for(const status of [400,403,415,429]){let calls=0;await assert.rejects(requestGuide('https://example.test',{},parseGuideReply,async()=>{calls++;return new Response('',{status});}));assert.equal(calls,1);}
  for(const response of [()=>Response.json({}),()=>new Response('bad json',{status:200})]){let calls=0;await assert.rejects(requestGuide('https://example.test',{},parseGuideReply,async()=>{calls++;return response();}));assert.equal(calls,1);}
+});
+
+test('rate limiting retains its status for an accurate user-facing message',async()=>{
+ await assert.rejects(requestGuide('https://example.test',{},parseGuideReply,async()=>new Response('',{status:429})),error=>error instanceof GuideRequestError&&error.status===429);
 });
 test('temporary 503 recovers once but persistent failures stay bounded',async()=>{
  let calls=0;await requestGuide('https://example.test',{},parseGuideReply,async()=>++calls===1?new Response('',{status:503}):Response.json(reply));assert.equal(calls,2);
