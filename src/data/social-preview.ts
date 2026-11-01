@@ -2,9 +2,9 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").re
 
 export const introDescription = "I build practical AI, data and commerce workflows.";
 export const socialImage = {
-  url: `${siteUrl}/opengraph-image.png?avatar=real-v2`,
-  width: 1733,
-  height: 907,
+  url: `${siteUrl}/preview-ai-marketing-v3.png`,
+  width: 1200,
+  height: 630,
   type: "image/png",
-  alt: "Ali Nguyen’s real portrait in a black suit beside his name, Applied AI and Product Engineer title, and a short introduction.",
+  alt: "Ali Nguyen’s real portrait with a large introduction over an illustrative AI neural network, analytics charts and digital marketing background.",
 };

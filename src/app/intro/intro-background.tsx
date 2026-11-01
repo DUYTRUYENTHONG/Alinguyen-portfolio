@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./intro.module.css";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const symbols = [
   { label: "AI", path: "M9 3a3 3 0 0 0-3 3 4 4 0 0 0-2 7 4 4 0 0 0 5 6h2V5a2 2 0 0 0-2-2Zm6 0a3 3 0 0 1 3 3 4 4 0 0 1 2 7 4 4 0 0 1-5 6h-2V5a2 2 0 0 1 2-2ZM7 9h4m2 5h4" },
@@ -25,6 +26,7 @@ export function IntroBackground() {
 
   return <>
     <div className={styles.background} data-paused={paused || reduced} aria-hidden="true">
+      <img className={styles.backdrop} src={`${basePath}/preview-ai-marketing-bg.png`} alt="" width="1733" height="907" />
       <div className={styles.grid} />
       <div className={styles.network} />
       {symbols.map(symbol => <div className={styles.node} key={symbol.label}>
