@@ -2,7 +2,7 @@
 
 import { PortfolioLink as Link } from "../portfolio-link";
 import { useEffect, useState } from "react";
-import { communityResource, projects } from "@/data/portfolio";
+import { communityResource, contentResource, projects } from "@/data/portfolio";
 import { ProjectVisual } from "../experience";
 
 const categories = ["All", "Commerce", "AI & data", "Developer tool"] as const;
@@ -12,9 +12,10 @@ const projectCategory: Record<string, (typeof categories)[number]> = {
   "cho-kenh": "Commerce",
   "kkbox-baseline": "AI & data",
   community: "AI & data",
+  "vn-ai-content-kit": "AI & data",
   "vibecode-kit": "Developer tool",
 };
-const featuredOrder = ["vibecode-kit", "community", "kkbox-baseline", "growth-commerce-os", "stos", "cho-kenh"];
+const featuredOrder = ["vibecode-kit", "community", "vn-ai-content-kit", "kkbox-baseline", "growth-commerce-os", "stos", "cho-kenh"];
 
 const directoryProjects = [...projects.map((project) => ({ ...project, href: `/work/${project.id}`, cta: "Explore case study ↗" })), {
   id: communityResource.id,
@@ -25,6 +26,10 @@ const directoryProjects = [...projects.map((project) => ({ ...project, href: `/w
   technologies: communityResource.tools.split(" · "),
   href: communityResource.href,
   cta: "Explore the free kit on GitHub ↗",
+}, {
+  ...contentResource,
+  status: contentResource.license,
+  cta: "Explore the content kit on GitHub ↗",
 }];
 
 export function WorkDirectory() {
@@ -43,7 +48,7 @@ export function WorkDirectory() {
     <div className="directory-grid">
       {visible.map((project) => <Link className={`directory-card directory-${project.id}`} href={project.href} key={project.id}>
         <div className="directory-card-copy"><p>{project.status}</p><h2>{project.name.replace("DUYTRUYENTHONG ", "").replace("Codex ", "")}</h2><span>{project.headline}</span><div className="directory-card-meta"><span><b>Role</b> {project.role}</span><span><b>Built with</b> {project.technologies.slice(0, 3).join(" · ")}</span></div></div>
-        {project.id === communityResource.id ? <div className="directory-career-workflow"><p>{communityResource.description}</p><ol>{communityResource.stages.map((stage) => <li key={stage.title}>{stage.title}</li>)}</ol><small>{communityResource.limits}</small></div> : <ProjectVisual id={project.id} />}
+        {project.id === contentResource.id ? <div className="directory-career-workflow"><p>{contentResource.description}</p><ol>{contentResource.stages.map((stage) => <li key={stage}>{stage}</li>)}</ol><small>{contentResource.limits}</small></div> : project.id === communityResource.id ? <div className="directory-career-workflow"><p>{communityResource.description}</p><ol>{communityResource.stages.map((stage) => <li key={stage.title}>{stage.title}</li>)}</ol><small>{communityResource.limits}</small></div> : <ProjectVisual id={project.id} />}
         <span className="directory-card-link">{project.cta}</span>
       </Link>)}
     </div>

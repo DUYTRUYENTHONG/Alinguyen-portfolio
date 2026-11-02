@@ -1,6 +1,10 @@
 // Authored summaries of the reviewed knowledge records, not model paraphrases.
 // Keep status qualifiers and planned-feature limits when editing this copy.
 export const summaries = {
+  'vn-ai-content-kit': {
+    en: 'VN AI Content Kit helps prepare Vietnamese commerce copy, retrieve verified facts and preview local narration through Node.js and MCP. RAG supplies evidence context, not generated answers. Voice assets need separate setup. Fine-tuning preparation is included; trained models, automatic publishing and campaign uplift are not claimed.',
+    vi: 'VN AI Content Kit hỗ trợ nội dung thương mại tiếng Việt, truy xuất thông tin có nguồn và nghe thử giọng đọc cục bộ qua Node.js/MCP. RAG cung cấp ngữ cảnh, chưa sinh câu trả lời. Cần cài riêng tài nguyên giọng đọc; chưa công bố mô hình đã huấn luyện hay hiệu quả chiến dịch.',
+  },
   'growth-commerce-os': {
     en: 'Growth Commerce OS is Ali’s live service website for CMS, landing-page and channel workflows. You can explore its public pages and demos; adoption and business impact aren’t independently measured.',
     vi: 'Growth Commerce OS là website dịch vụ đang hoạt động của Ali, giới thiệu quy trình CMS, landing page và kênh bán hàng. Bạn có thể xem trang công khai và demo; mức độ sử dụng và hiệu quả kinh doanh chưa được xác minh độc lập.',

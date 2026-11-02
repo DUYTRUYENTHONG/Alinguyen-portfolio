@@ -136,3 +136,5 @@ See [the executed implementation prompt and acceptance criteria](docs/NPC_GUIDE_
 ### Work directory community listing
 
 `/work/` includes Vietnam Career Agent Kit alongside the five featured builds (six total; two in AI & data). It reuses `communityResource` from `src/data/portfolio.ts` and links directly to the public repository. The homepage still has five featured case studies plus its separate community section. Browser QA checked All/AI & data counts, the GitHub destination, 44px filter targets, and overflow at 320, 390, 768 and 1280px.
+
+The Work directory also includes [VN AI Content Kit](https://github.com/DUYTRUYENTHONG/vn-ai-content-kit): Vietnamese commerce copy, evidence-context retrieval, correction memory and local voice previews. It does not ship a trained model or an answer-generation LLM. See [the November public-project review](docs/PROJECT_REVIEW_2026-11-02.md) for pinned sources and publication limits.

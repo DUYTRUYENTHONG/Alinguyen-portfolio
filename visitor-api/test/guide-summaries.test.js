@@ -23,6 +23,8 @@ test('short replies keep planned-feature, evidence and community limits',()=>{
  assert.match(body('kkbox-results'),/not a Kaggle.*future-cohort.*production/);
  assert.match(body('career-agent-kit'),/does not guarantee job offers/);
  assert.match(body('career-agent-kit'),/acceptance gates/);
+ assert.match(body('vn-ai-content-kit'),/not generated answers/);
+ assert.match(body('vn-ai-content-kit'),/trained models, automatic publishing and campaign uplift are not claimed/);
 });
 
 test('specific detail requests and exact privacy policy are not shortened away',()=>{

@@ -55,7 +55,8 @@ test('comparisons, plans, community and follow-ups include complete project evid
  const handler=createGuideHandler({makeRedis:()=>({incr:async()=>1,expire:async()=>1}),modelFetch:async()=>{throw Error('project facts must not need generation');}});
  for(const [q,ids] of [
   ['Compare STOS and Chợ Kênh',['stos','cho-kenh']],
-  ['Which projects can I inspect?',['growth-commerce-os','stos','cho-kenh','vibecode-kit','kkbox-results','career-agent-kit']],
+  ['Which projects can I inspect?',['growth-commerce-os','stos','cho-kenh','vibecode-kit','kkbox-results','career-agent-kit','vn-ai-content-kit']],
+  ['Is VN AI Content Kit a trained model?',['vn-ai-content-kit']],
   ['Which features are planned?',['stos','cho-kenh','career-agent-kit']],
   ['Does Vietnam Career Agent Kit guarantee job offers?',['career-agent-kit']],
   ['Are STOS AI suggestions live?',['stos']],

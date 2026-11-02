@@ -172,7 +172,7 @@ export const principles = [
   { title: "Build for reliability and speed", detail: "Make the next change testable and understandable." },
 ] as const;
 
-// Reviewed against vietnam-career-agent-kit main 73a77b7 on 2026-10-26.
+// Reviewed against vietnam-career-agent-kit ca21436 on 2026-11-02.
 export const communityResource = {
   id: "community",
   name: "Vietnam Career Agent Kit",
@@ -184,11 +184,26 @@ export const communityResource = {
   stages: [
     { title: "Bring your evidence", detail: "Import a text CV and job description into a private local workspace." },
     { title: "Prepare with care", detail: "Confirm your profile, match evidence to a role, and draft a tailored CV." },
-    { title: "Review, then apply", detail: "Track progress and approve supported browser actions before sharing or submitting." },
+    { title: "Review, then apply", detail: "Review optional DOCX/PDF exports, authorize bounded application actions, and track receipts." },
   ],
   setup: "Start with Git, Python 3.11+ and the local demo. Agent and model services may have separate costs.",
-  limits: "A preparation and supervised-application toolkit, not a job-placement service. Automated job-source connectors and unattended applications are not included; job offers are not guaranteed.",
+  limits: "A preparation and supervised-application toolkit, not a job-placement service. Experimental public readers and optional browser execution require setup; employer-specific acceptance and unattended production operation remain unverified. Job offers are not guaranteed.",
   href: "https://github.com/DUYTRUYENTHONG/vietnam-career-agent-kit",
   guideHref: "https://github.com/DUYTRUYENTHONG/vietnam-career-agent-kit#try-the-working-slice",
   vietnameseHref: "https://github.com/DUYTRUYENTHONG/vietnam-career-agent-kit/blob/main/README.vi.md",
+} as const;
+
+// Reviewed against vn-ai-content-kit 7feb78d on 2026-11-02.
+// Directory-only resource: keep the five featured homepage builds unchanged.
+export const contentResource = {
+  id: "vn-ai-content-kit",
+  name: "VN AI Content Kit",
+  headline: "Vietnamese commerce copy with traceable facts and voice previews.",
+  license: "Public open-source tool · MIT licensed",
+  role: "Creator and maintainer of the public toolkit.",
+  technologies: ["Node.js", "MCP", "Source-grounded retrieval"],
+  description: "A local toolkit for Vietnamese product-ad scripts, evidence-context retrieval, voice correction memory and offline narration previews.",
+  stages: ["Prepare verified product facts", "Retrieve evidence and review copy", "Render and listen to local voice previews"],
+  limits: "RAG builds evidence context without an attached answer-generation LLM. Voice assets are installed separately. Fine-tuning preparation is included; trained models, automatic publishing and measured campaign uplift are not claimed.",
+  href: "https://github.com/DUYTRUYENTHONG/vn-ai-content-kit",
 } as const;

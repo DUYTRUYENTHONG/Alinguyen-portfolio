@@ -3,6 +3,7 @@ import { summaries } from './guide-summaries.js';
 
 export const normalizeQuestion = text => text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
 const aliases = {
+  'vn-ai-content-kit': /\b(vn ai content|vietnamese content kit|content kit)\b/,
   'growth-commerce-os': /\b(growth commerce|growth operations)\b/,
   stos: /\bstos\b/,
   'cho-kenh': /\bcho kenh\b/,

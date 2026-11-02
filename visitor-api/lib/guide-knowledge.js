@@ -1,6 +1,13 @@
 // Reviewed public portfolio facts. Keep URLs and status in sync with src/data/portfolio.ts.
 export const knowledge = [
   {
+    id: 'vn-ai-content-kit', projectRecord: true,
+    title: 'VN AI Content Kit: Vietnamese commerce content and local voice previews',
+    url: 'https://github.com/DUYTRUYENTHONG/vn-ai-content-kit',
+    tags: ['content kit', 'vietnamese content', 'copywriting', 'marketing', 'voice', 'tts', 'rag', 'mcp', 'projects'],
+    text: 'Ali maintains this public MIT-licensed Node.js toolkit for Vietnamese product-ad copy, source-grounded evidence context, voice correction memory and offline narration previews. It provides a local MCP plugin and content/voice fine-tuning preparation. RAG retrieves evidence context without an attached answer-generation LLM. Local voice assets require separate installation and license review; each narration needs listening review. No trained weights, private campaign data, automatic publishing or measured campaign uplift are included or claimed. Reviewed at commit 7feb78d on 2 November 2026.',
+  },
+  {
     id: "recommendation-signals",
     title: "Optional recommendation signals",
     url: "https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/#recommendations",
