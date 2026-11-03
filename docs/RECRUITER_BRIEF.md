@@ -14,6 +14,12 @@
 
 ## Skills in context
 
+The [three-page professional CV](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf), reviewed on 3 November 2026, distinguishes employment from AI-assisted personal projects. It lists Amazing Tech junior front-end work (Sep 2022–Jan 2023), NINA web development (Jun–Dec 2023), NINA solution consulting (Dec 2023–Dec 2024), DUYTRUYENTHONG founder/operator (Feb 2024–present), and iTechWX Microsoft support (Apr 2025–Feb 2026). Overlapping roles are not additive tenure. Paid advertising is described since 2023; software years and AI-tool hours do not establish continuous professional AI employment.
+
+The CV also describes NINA Databricks transformation and reporting checks, and paid professor-project Python/SQL work beginning March 2022 involving approximately one billion records **in total**, not daily throughput. These are owner-reviewed CV statements rather than independently audited employer results.
+
+Applied AI examples retain their boundaries: Career Agent Kit uses SQLite FTS5/BM25 **lexical** retrieval and optional LangChain Core/LCEL orchestration; its retrieval tools do not grant account or application authority. The local LoRA entry is a **one-step CPU Qwen3-0.6B smoke experiment** on fictional fixtures, not successful Qwen3-8B training or demonstrated quality improvement. Personal prototypes were developed with AI coding assistance.
+
 - **Software delivery:** JavaScript, TypeScript, React, Next.js, Node.js, API integration, GitHub Actions, testing, and release documentation. Public code is available in the portfolio and Vibecode repositories.
 - **Data and AI:** Python, SQL, PostgreSQL, Pandas, scikit-learn, snapshot-date feature design, holdout evaluation, LLM API and prompt workflows, and retrieval-augmented generation prototypes. The linked CV and case study describe work that is not all available as public source.
 - **Product and commerce:** customer discovery, sales funnels, content and lead workflows, Google Business Profile, TikTok Shop, Power BI, and DAX. These skills come from owner-supplied experience and the public product context; public dashboards and business impact measurements are not provided.

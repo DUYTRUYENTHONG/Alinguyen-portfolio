@@ -18,8 +18,8 @@ export const identity = {
   brand: "DUYTRUYENTHONG",
   title: "Applied AI and Product Engineer",
   experience: {
-    digitalMarketing: "4+ years in digital marketing",
-    aiEngineering: "3+ years in AI engineering and product building",
+    digitalMarketing: "Paid advertising since 2023",
+    aiEngineering: "AI-assisted prototypes and product building",
   },
   proposition:
     "Applied AI prototypes, developer tools, and live commerce products, built with a background in digital marketing and sales workflows.",
@@ -160,7 +160,7 @@ export const capabilities = [
 ] as const;
 
 export const cvTracks = [
-  { title: "Applied AI engineering", detail: "LLM applications, retrieval workflows, Python, and customer analytics prototypes.", downloads: [{ label: "Download PDF", path: "cv-applied-ai-engineer.pdf", format: "PDF" }] },
+  { title: "Applied AI engineering", detail: "Professional CV: applied AI, automation, data and MarTech.", downloads: [{ label: "Download PDF", path: "cv-applied-ai-engineer.pdf", format: "PDF" }] },
   { title: "Business and product", detail: "Digital marketing services, sales funnels, solution consulting, and commerce products.", downloads: [{ label: "Business & Product PDF", path: "cv-business-product.pdf", format: "PDF", focus: "Client needs, product scoping, and reviewable commerce builds." }, { label: "Business Development PDF", path: "cv-business-development.pdf", format: "PDF", focus: "Client discovery, offer positioning, and solution consulting." }], note: "Choose product delivery or client-facing business development." },
   { title: "AI and prompt engineering", detail: "Prompt workflows, RAG concepts, enterprise troubleshooting, and AI-assisted delivery.", downloads: [{ label: "Download DOCX", path: "cv-prompt-engineer.docx", format: "DOCX" }] },
 ] as const;

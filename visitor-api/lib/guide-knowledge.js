@@ -33,7 +33,7 @@ export const knowledge = [
     title: "Ali Nguyen overview and contact",
     url: "https://duytruyenthong.github.io/Alinguyen-portfolio/about/",
     tags: ["ali", "about", "contact", "experience", "founder", "marketing"],
-    text: "Ali Nguyen is Nguyen Quang Duy, an applied AI and product engineer and founder of DUYTRUYENTHONG. He describes 4+ years in digital marketing and 3+ years in AI engineering and product building. For direct inquiries, use the portfolio contact section or nquangd1510@gmail.com.",
+    text: "Ali Nguyen is Nguyen Quang Duy, an applied AI and product engineer and founder of DUYTRUYENTHONG since February 2024. His reviewed CV describes paid advertising since 2023 and AI-assisted personal projects. It does not establish three years of continuous professional AI employment; software tenure and AI-tool hours are not AI employment tenure. For direct inquiries, use the portfolio contact section or nquangd1510@gmail.com.",
   },
   {
     id: "kkbox-results",
@@ -107,6 +107,22 @@ export const knowledge = [
     title: 'Vietnam Career Agent Kit: free community toolkit',
     url: 'https://github.com/DUYTRUYENTHONG/vietnam-career-agent-kit',
     tags: ['vietnam career', 'career agent', 'community', 'jobs', 'cv', 'python', 'sqlite', 'open source', 'rag', 'projects'],
-    text: 'Ali shares this MIT-licensed Python/SQLite toolkit for evidence-backed CV preparation, private job tracking and reviewed application workflows. Its public README documents a local preparation CLI, optional document rendering, source-bound career memory/RAG, and host-assisted execution with exact authorization and receipts. Experimental public research readers and optional browser/email bridges require setup; provider and employer acceptance are separate gates. Production unattended operation and built-in PDF/DOCX extraction remain acceptance gates. External AI/browser services may charge fees. It does not guarantee job offers or verified 100-applications/hour throughput.',
+    text: 'Ali shares this MIT-licensed Python/SQLite toolkit for evidence-backed CV preparation, private job tracking and reviewed application workflows. Its public README documents a local preparation CLI, optional document rendering, source-bound career memory/RAG, and host-assisted execution with exact authorization and receipts. Its SQLite FTS5/BM25 retrieval is lexical, not a vector database. Optional LangChain Core/LCEL runs retrieval, an explicit host drafting callback and revalidation; retrieval does not grant account or execution authority. Experimental public research readers and optional browser/email bridges require setup; provider and employer acceptance are separate gates. Production unattended operation and built-in PDF/DOCX extraction remain acceptance gates. External AI/browser services may charge fees. It does not guarantee job offers or verified 100-applications/hour throughput.',
+  },
+  {
+    id: 'cv-professional-experience',
+    title: 'Reviewed professional CV: employment and data work',
+    url: 'https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf',
+    tags: ['employment', 'tenure', 'professional experience', 'itechwx', 'nina', 'databricks'],
+    text: 'The owner-reviewed professional CV dated 3 November 2026 lists Amazing Tech junior front-end work (September 2022–January 2023), NINA web development (June–December 2023), NINA solution consulting (December 2023–December 2024), DUYTRUYENTHONG founder/operator (February 2024–present), and iTechWX Microsoft support (April 2025–February 2026). Overlapping roles are not summed as tenure. It describes a NINA Databricks pipeline with row-count, duplicate, missing-value, sample-record and rerun checks. A paid professor database project beginning March 2022 processed approximately one billion records in total, not daily throughput. These are reviewed CV statements, not independently audited employer outcomes. AI-assisted personal prototypes do not establish continuous professional AI employment.',
+    textVi: 'CV đã được chủ sở hữu duyệt ghi nhận Amazing Tech (09/2022–01/2023), phát triển web NINA (06–12/2023), tư vấn giải pháp NINA (12/2023–12/2024), sáng lập DUYTRUYENTHONG (từ 02/2024) và hỗ trợ Microsoft tại iTechWX (04/2025–02/2026). Không cộng chồng thời gian các vai trò. Dự án cơ sở dữ liệu cho giáo sư từ 03/2022 xử lý khoảng một tỷ bản ghi tổng cộng, không phải mỗi ngày. Công việc Databricks có đối soát và kiểm tra dữ liệu. Đây là nội dung CV đã duyệt, không phải kiểm toán độc lập; dự án AI cá nhân không tương đương thâm niên làm việc AI liên tục.',
+  },
+  {
+    id: 'cv-lora-experiment',
+    title: 'Reviewed CV: bounded Qwen3 LoRA smoke experiment',
+    url: 'https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf',
+    tags: ['lora', 'qwen3', 'smoke experiment', 'peft'],
+    text: 'The owner-reviewed CV describes an AI-assisted one-step CPU Qwen3-0.6B LoRA smoke trial on fictional fixtures using PEFT, rank 8, alpha 16, dropout 0.05 and q_proj/v_proj targets. Held-out assistant-token loss was considered separately from paired base/adapter generations, with raw outputs and model/adapter identities recorded. Strict JSON/source-link failures kept experimental wording outside approved CVs; no model wording was automatically promoted. This is not successful Qwen3-8B training, a production model or demonstrated quality improvement.',
+    textVi: 'CV đã duyệt mô tả thử nghiệm LoRA Qwen3-0.6B một bước trên CPU bằng dữ liệu giả lập, có AI hỗ trợ: PEFT rank 8, alpha 16, dropout 0.05, q_proj/v_proj. Loss trên phần assistant được xem riêng với đầu ra base/adapter. Nội dung không vượt qua kiểm tra JSON/liên kết nguồn không được đưa vào CV đã duyệt. Đây không phải huấn luyện Qwen3-8B thành công, mô hình production hay bằng chứng chất lượng tăng.',
   },
 ];

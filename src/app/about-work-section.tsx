@@ -1,6 +1,6 @@
 "use client";
 
-import { capabilities, identity, principles } from "@/data/portfolio";
+import { capabilities, principles } from "@/data/portfolio";
 import { useOnceVisible } from "./use-once-visible";
 import styles from "./about-work-section.module.css";
 
@@ -45,7 +45,7 @@ export function AboutWorkSection() {
     <div className="section-shell">
       <div className={styles.intro}>
         <div><p className="eyebrow">About the work</p><h2 id="about-title">Build with the evidence in view.</h2><div className={styles.introGraphic} aria-hidden="true"><span>Scope</span><i /><span>Test</span><i /><span>Explain</span></div></div>
-        <p>I bring {identity.experience.digitalMarketing} and {identity.experience.aiEngineering}. I founded and operate DUYTRUYENTHONG agency, combining client discovery with websites, local search, content, TikTok Shop operations, and analytics. Solution consulting and technical support experience shape how I scope, test, and explain each system.</p>
+        <p>I combine paid advertising since 2023 with AI-assisted prototypes and product building. I founded DUYTRUYENTHONG in February 2024. Earlier front-end work, NINA web development and solution consulting, and iTechWX Microsoft 365 support shape how I scope, test and explain each system. The detailed CV distinguishes employment, personal projects and experiments.</p>
       </div>
       <div className={styles.principles}>
         {principles.map((item, index) => <article className={styles.card} key={item.title}>
