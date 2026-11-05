@@ -239,7 +239,7 @@ test("provider failure returns an explicitly labelled approved excerpt without i
   assert.equal(res.statusCode, 200);
   assert.equal(res.body.responseMode, "source-excerpt");
   assert.match(res.body.answer, /^The AI response is unavailable/);
-  assert.match(res.body.answer, /0\.217324/);
+  assert.match(res.body.answer, /scores are disputed and omitted/);
   assert.equal(res.body.citations[0].sourceId, "kkbox-results");
   assert.equal(res.body.motion, "none");
 }));

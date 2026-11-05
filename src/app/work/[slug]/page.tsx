@@ -13,7 +13,7 @@ const details: Record<string, CaseDetail> = {
     context: "Independent sellers and small businesses need a shareable page that introduces their offer and gives visitors a way to make contact.",
     decision: "Bring the seller's story, products, inquiry path, and basic funnel visibility into one product journey.",
     implementation: "The public STOS site presents templates, a Studio for page personalization, inquiry capture, and an Insights dashboard for page views, CTA actions, and leads.",
-    evidence: "The product site, template pages, and feature descriptions are publicly accessible. Ali Nguyen identifies his role as founder and builder.",
+    evidence: "The product site, template pages, and feature descriptions are publicly accessible. Ali Nguyen contributed product building.",
     limits: "The site's displayed analytics figures are labeled illustrative. Customer adoption and business outcomes are not claimed. AI recommendations are described as planned, not live.",
     next: "Add documented usage or outcome measures when their period, source, and method are available.",
   },
@@ -46,7 +46,7 @@ const details: Record<string, CaseDetail> = {
     decision: "Start with a snapshot-date baseline before comparing more complex models.",
     implementation: "The public Python and DuckDB baseline aggregates transactions and listening events through 2017-02-28, audits source coverage, and trains logistic regression on a fixed stratified split.",
     evidence: "The public repository contains source, synthetic future-event exclusion tests, input hashes, aggregate audit counts, and official-data local holdout metrics. The third-party academic reference is credited separately.",
-    limits: "The 0.217324 log loss and 0.819295 ROC AUC are within-cohort holdout metrics, not an out-of-time or Kaggle leaderboard score. No retention impact is claimed; raw competition data is not redistributed.",
+    limits: "Disputed performance scores are omitted. A local within-cohort holdout is not future-cohort validation or a Kaggle leaderboard result. No retention impact is claimed; raw competition data is not redistributed.",
     next: "Validate on an untouched later cohort, review calibration and late-arriving data, then test any outreach policy separately.",
   },
 };

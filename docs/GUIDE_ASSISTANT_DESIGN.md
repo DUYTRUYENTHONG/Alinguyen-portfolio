@@ -54,7 +54,7 @@ The server validates lengths and enums, ignores client-supplied source text or a
 
 ```json
 {
-  "answer": "The KKBox baseline uses a fixed stratified holdout from the March-label cohort. Its reported log loss is 0.217324; an out-of-time result is not available.",
+  "answer": "The KKBox prototype uses snapshot-date features and a local within-cohort holdout. Disputed scores are omitted; future-cohort performance is not established.",
   "citations": [{ "sourceId": "kkbox-results", "label": "Verified KKBox results", "url": "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md" }],
   "suggestions": ["Show the evaluation limits"]
 }

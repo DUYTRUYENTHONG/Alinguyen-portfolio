@@ -15,7 +15,7 @@ export function CvDownloadSection() {
       <div className={styles.grid}>{cvTracks.map((track, index) => <article className={styles.card} key={track.title}>
         {index === 2 ? <img className={styles.promptArtwork} src={`${basePath}/cv-prompt-engineering.png`} alt="Prompt engineering artwork with a futuristic robot" width="738" height="414" loading="lazy" decoding="async" /> : <CvIllustration kind={index + 1} />}
         <div className={styles.cardCopy}><span className={styles.format}>{track.downloads[0].format}</span><h3>{track.title}</h3><p>{track.detail}</p></div>
-        <div className={styles.actions}>{track.downloads.map((file) => <div className={styles.fileChoice} key={file.path}>{"focus" in file && <p id={`focus-${file.path}`}>{file.focus}</p>}<a aria-describedby={"focus" in file ? `focus-${file.path}` : undefined} href={`${basePath}/${file.path}`} download aria-label={`${file.label} — ${track.title} CV`}><span>{file.label}</span><DownloadIcon /></a></div>)}</div>
+        <div className={styles.actions}>{track.downloads.map((file) => <div className={styles.fileChoice} key={file.path}><a href={`${basePath}/${file.path}`} download aria-label={`${file.label} — ${track.title} CV`}><span>{file.label}</span><DownloadIcon /></a></div>)}</div>
       </article>)}</div>
     </div>
   </section>;

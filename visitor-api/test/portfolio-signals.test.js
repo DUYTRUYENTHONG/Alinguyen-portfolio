@@ -46,9 +46,9 @@ test('ranking reads only the recent seven-day window and requires minimum volume
 
 test('bounded ranking changes relevant ties but never adds irrelevant evidence or changes explicit-project retrieval',()=>{
   const context={role:'Recruiter',section:'Highlights'};
-  const baseline=retrieveGuideSources('Which AI projects can I inspect?',context);
+  const baseline=retrieveGuideSources('Which projects can I inspect?',context);
   const second=baseline[1].id;
-  const ranked=retrieveGuideSources('Which AI projects can I inspect?',context,{[second]:0.2});
+  const ranked=retrieveGuideSources('Which projects can I inspect?',context,{[second]:0.2});
   assert.equal(ranked[0].id,second);
   for(const question of ['How was KKBox evaluated?','What is STOS?','Tell me about Chợ Kênh','Growth Commerce OS details']) {
     assert.deepEqual(retrieveGuideSources(question,context,{stos:999,'vibecode-kit':999}),retrieveGuideSources(question,context));

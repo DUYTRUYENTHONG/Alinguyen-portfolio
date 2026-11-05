@@ -35,6 +35,8 @@ export function evidenceReply(sources, question = '') {
 
 export function projectEvidenceRequest(question) {
   const q = normalizeQuestion(question);
+  if (/\b(kitemetric|mlops|gpu infrastructure)\b/.test(q)) return knowledge.filter(s => s.id === 'kitemetric-mlops');
+  if (/\b(education|degree|university|daad|scholarship|ielts|hsk|frankfurt)\b/.test(q)) return knowledge.filter(s => s.id === 'academic-brief');
   if (/\b(lora|qwen3|fine.tuning experiment)\b/.test(q)) return knowledge.filter(s => s.id === 'cv-lora-experiment');
   if (/\b(work history|professional experience|employment|tenure|years.*ai|databricks|itechwx|nina|billion records)\b/.test(q)) return knowledge.filter(s => s.id === 'cv-professional-experience');
   const named = namedProjectSources(question);
@@ -42,6 +44,7 @@ export function projectEvidenceRequest(question) {
     if (/\b(private|source code)\b/.test(normalizeQuestion(question))) named.push(knowledge.find(s => s.id === 'recruiter-brief'));
     return named;
   }
+  if (/\b(skills|capabilities|systems thinking|problem framing|martech|advertising budgets)\b/.test(q)) return knowledge.filter(s => s.id === 'cv-supported-skills');
   if (/\b(planned|roadmap|future features|ke hoach|du kien)\b/.test(q)) return knowledge.filter(s => ['stos','cho-kenh','career-agent-kit'].includes(s.id));
   if (/\b(all projects|which.*projects|list.*projects|all.*builds|tat ca.*du an)\b/.test(q)) return knowledge.filter(s => s.projectRecord);
   return [];

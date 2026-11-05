@@ -1,6 +1,6 @@
 # Ali Nguyen · Applied AI and Product Engineer
 
-The public portfolio of **Nguyen Quang Duy (Ali Nguyen)**, founder of DUYTRUYENTHONG. It presents applied AI prototypes, evaluated customer-data work, developer tooling, and live digital commerce products with their evidence and limits visible.
+The public portfolio of **Nguyen Quang Duy (Ali Nguyen)**, AI engineer with cloud automation and ML platform experience. It presents applied AI prototypes, evaluated customer-data work, developer tooling, and live digital commerce products with their evidence and limits visible.
 
 [Live portfolio](https://duytruyenthong.github.io/Alinguyen-portfolio/) · [Selected work](https://duytruyenthong.github.io/Alinguyen-portfolio/work/) · [About Ali](https://duytruyenthong.github.io/Alinguyen-portfolio/about/) · [GitHub profile](https://github.com/DUYTRUYENTHONG)
 
@@ -22,7 +22,7 @@ The public portfolio of **Nguyen Quang Duy (Ali Nguyen)**, founder of DUYTRUYENT
 | [STOS](https://stosvn.vercel.app/stos) | Live sales-page product. AI suggestions are planned, not a live capability. |
 | [Chợ Kênh](https://growth-commerce-os.vercel.app/cho-kenh) | Live catalog and manual inquiry flow; no automated checkout or escrow. |
 | [Vibecode Product Kit](https://github.com/DUYTRUYENTHONG/vibecode-product-kit) | Public developer-tool source, offline CLI, and CI checks. |
-| [KKBox churn baseline](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction) | Public source and official-data local holdout. The [results](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md) report 0.217324 log loss and 0.819295 ROC AUC on a within-cohort split, with a synthetic future-event leakage check. This is not a leaderboard, out-of-time, production, or business-impact result. |
+| [KKBox churn baseline](https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction) | Public source and official-data local holdout. The prototype includes a synthetic future-event leakage check. Disputed performance scores are omitted. This is not a leaderboard, out-of-time, production, or business-impact result. |
 
 The knowledge-assistant work is a prototype, not a deployed support service. The portfolio guide is a separate, on-demand assistant for navigating public portfolio evidence; it can return a labelled approved-source excerpt if generation fails, or static links if the API is unavailable. Neither feature is evidence of customer adoption.
 
@@ -91,7 +91,7 @@ The guide uses a native modal dialog with visual-viewport sizing, safe-area spac
 
 ## Downloads and source notes
 
-The site offers four CV actions: [Applied AI Engineer PDF](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf), [Business & Product PDF](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-business-product.pdf), [Business Development PDF](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-business-development.pdf), and [AI / Prompt Engineer DOCX](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-prompt-engineer.docx). The business PDFs now have distinct role narratives. The AI documents state the qualified KKBox local holdout result and its limits. The owner should review personal details before each public update; the source generator is `scripts/generate-ai-cvs.py`.
+All three CV cards link to the [finalized AI Engineer master PDF](https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf), approved on 5 November 2026. The cards identify different areas covered by the same master, rather than separate approved variants. Legacy business PDF URLs serve that same approved file. Unfinalized Data Science and DOCX drafts are excluded; the old prompt DOCX is retired. Disputed KKBox scores and the agency employment entry are removed. Preserve the finalized file's bytes and verify its SHA256 before replacing it; the historical CV generator is not the source for this version.
 
 Client and collaboration names were confirmed by Ali Nguyen. Individual testimonials and performance claims are not included. Original brand marks remain the property of their respective owners. The [Recruiter brief](docs/RECRUITER_BRIEF.md) and [Academic brief](docs/ACADEMIC_BRIEF.md) give fuller context without presenting prototypes as production systems or the KKBox local split as future-cohort performance.
 

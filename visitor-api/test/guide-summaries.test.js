@@ -19,8 +19,9 @@ test('short replies keep planned-feature, evidence and community limits',()=>{
  assert.match(body('stos'),/planned, not live/);
  assert.match(body('cho-kenh'),/Automated checkout, escrow and completed transactions are not claimed/);
  assert.match(body('cho-kenh'),/AI tools and courses are planned/);
- assert.match(body('kkbox-results'),/0\.217324.*0\.819295/);
- assert.match(body('kkbox-results'),/not a Kaggle.*future-cohort.*production/);
+ assert.match(body('kkbox-results'),/Disputed performance scores are omitted/);
+ assert.doesNotMatch(body('kkbox-results'),/\d+\.\d{4,}/);
+ assert.match(body('kkbox-results'),/not future-cohort.*Kaggle.*production/);
  assert.match(body('career-agent-kit'),/does not guarantee job offers/);
  assert.match(body('career-agent-kit'),/acceptance gates/);
  assert.match(body('vn-ai-content-kit'),/not generated answers/);

@@ -19,7 +19,7 @@ export const identity = {
   title: "Applied AI and Product Engineer",
   experience: {
     digitalMarketing: "Paid advertising since 2023",
-    aiEngineering: "AI-assisted prototypes and product building",
+    aiEngineering: "AI Engineer · KiteMetric (2025–2026)",
   },
   proposition:
     "Applied AI prototypes, developer tools, and live commerce products, built with a background in digital marketing and sales workflows.",
@@ -59,7 +59,7 @@ export const expertise = [
   {
     number: "02",
     title: "Evaluation before prediction",
-    detail: "Build customer features through a chosen snapshot date, test that later events stay out, and audit the real-data holdout. The KKBox baseline reached 0.217324 log loss on an official-data local split.",
+    detail: "Build customer features through a chosen snapshot date and test that later events stay out. The public KKBox prototype illustrates leakage checks; disputed performance scores are omitted.",
     linkLabel: "KKBox results",
     href: "#project-kkbox-baseline",
   },
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     status: "Live service website",
     problem: "Commerce teams need a clearer path from content and channels to leads.",
     users: "Businesses exploring digital growth services.",
-    role: "Founder and product operator.",
+    role: "Product builder and operator.",
     approach: "A public service site presents CMS, landing, portfolio and channel workflows with working demo links.",
     outcome: "Live service pages and demo links are available. Adoption and business impact are not independently measured here.",
     proof: "Public service site and demo links",
@@ -101,7 +101,7 @@ export const projects: Project[] = [
     status: "Live product website",
     problem: "Independent sellers and small businesses need a shareable place to present their work, products, and contact options.",
     users: "Independent sellers and small businesses.",
-    role: "Founder and builder.",
+    role: "Product builder.",
     approach: "STOS presents templates, a page studio, inquiry capture, and an Insights workflow for page views, actions, and leads.",
     outcome: "The public product website and template pages are live. Customer adoption and business impact are not independently measured here; AI suggestions are planned, not live.",
     proof: "Live product site and public template pages",
@@ -145,8 +145,8 @@ export const projects: Project[] = [
     users: "Analysts exploring retention models.",
     role: "Project owner; baseline developed with Codex assistance. The academic reference is credited separately.",
     approach: "Snapshot-date features from transactions and listening history, a source-coverage audit, and a fixed logistic-regression holdout.",
-    outcome: "On 970,960 official-data labels, the within-cohort holdout reached 0.217324 log loss and 0.819295 ROC AUC. This is not an out-of-time or business-impact result.",
-    proof: "Public source, leakage tests, input hashes, and measured local holdout",
+    outcome: "A public churn prototype with snapshot-date features and leakage checks. Disputed performance scores are omitted; no production or business-impact result is claimed.",
+    proof: "Public prototype source and leakage checks; scores omitted",
     technologies: ["Python", "DuckDB", "Pandas", "scikit-learn"],
     link: { label: "View source and verified results", href: "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md" },
   },
@@ -160,9 +160,9 @@ export const capabilities = [
 ] as const;
 
 export const cvTracks = [
-  { title: "Applied AI engineering", detail: "Professional CV: applied AI, automation, data and MarTech.", downloads: [{ label: "Download PDF", path: "cv-applied-ai-engineer.pdf", format: "PDF" }] },
-  { title: "Business and product", detail: "Digital marketing services, sales funnels, solution consulting, and commerce products.", downloads: [{ label: "Business & Product PDF", path: "cv-business-product.pdf", format: "PDF", focus: "Client needs, product scoping, and reviewable commerce builds." }, { label: "Business Development PDF", path: "cv-business-development.pdf", format: "PDF", focus: "Client discovery, offer positioning, and solution consulting." }], note: "Choose product delivery or client-facing business development." },
-  { title: "AI and prompt engineering", detail: "Prompt workflows, RAG concepts, enterprise troubleshooting, and AI-assisted delivery.", downloads: [{ label: "Download DOCX", path: "cv-prompt-engineer.docx", format: "DOCX" }] },
+  { title: "Applied AI engineering", detail: "Master CV: AI applications, ML platforms, automation and MarTech.", downloads: [{ label: "Download master PDF", path: "cv-applied-ai-engineer.pdf", format: "PDF" }] },
+  { title: "Data science and ML engineering", detail: "The master CV includes Python/SQL, reporting validation and ML platform duties.", downloads: [{ label: "Download master PDF", path: "cv-applied-ai-engineer.pdf", format: "PDF" }] },
+  { title: "AI and prompt engineering", detail: "The master CV includes LLM workflows, lexical retrieval and AI-assisted personal projects.", downloads: [{ label: "Download master PDF", path: "cv-applied-ai-engineer.pdf", format: "PDF" }] },
 ] as const;
 
 export const principles = [

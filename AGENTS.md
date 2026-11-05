@@ -36,3 +36,12 @@ Approved exception on 2026-10-31: repair the role guide's abrupt movement and
 unreliable interaction. Scope: smooth settled repositioning, a stable tap/focus
 target, readable dismissible introductions and responsive bubble behavior.
 The surrounding portfolio layout and the owner welcome remain frozen.
+
+## Owner profile correction — 2026-11-05
+
+Use the finalized master CV and current typed content as the active profile.
+Do not regenerate downloads from historical CV templates. The agency employment
+entry, disputed KKBox scores and unconfirmed reference-keyword skills are removed.
+KiteMetric's title is AI Engineer; MLOps is additional responsibility. Only the
+master PDF is finalized; draft Data Science/DOCX variants are not publication
+artifacts. See `docs/CV_RELEASE_2026-11-05.md` for the approved hash and scope.
