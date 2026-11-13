@@ -1,2 +1,5 @@
 *.pdf binary
 *.docx binary
+
+# Preserve byte-pinned experiment snapshots across checkout/archive platforms.
+/docs/evidence/action-data-v1-*.json -text
