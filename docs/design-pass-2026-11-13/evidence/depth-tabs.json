@@ -1,0 +1,15 @@
+{
+  "tabEndState": {
+    "focus": "depth-tab-Deep-dive",
+    "selected": "Deep dive"
+  },
+  "tabHomeState": {
+    "decision": false,
+    "focus": "depth-tab-Skim",
+    "selected": "Skim"
+  },
+  "tabLeftState": {
+    "focus": "depth-tab-Read",
+    "selected": "Read"
+  }
+}

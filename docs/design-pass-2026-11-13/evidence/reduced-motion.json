@@ -1,0 +1,25 @@
+{
+  "hash": "#project-kkbox-baseline",
+  "heading": 238.1041717529297,
+  "marker": "none",
+  "past": [
+    {
+      "animation": "none",
+      "opacity": "1"
+    },
+    {
+      "animation": "none",
+      "opacity": "1"
+    },
+    {
+      "animation": "none",
+      "opacity": "1"
+    }
+  ],
+  "shots": [
+    "none",
+    "none",
+    "none"
+  ],
+  "targetOutline": "2px"
+}

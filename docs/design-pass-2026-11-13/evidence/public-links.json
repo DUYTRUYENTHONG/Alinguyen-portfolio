@@ -1,0 +1,37 @@
+[
+  {
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/",
+    "status": 200,
+    "final": "https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/"
+  },
+  {
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+    "status": 200,
+    "final": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf"
+  },
+  {
+    "url": "https://github.com/DUYTRUYENTHONG/vibecode-product-kit",
+    "status": 200,
+    "final": "https://github.com/DUYTRUYENTHONG/vibecode-product-kit"
+  },
+  {
+    "url": "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md",
+    "status": 200,
+    "final": "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md"
+  },
+  {
+    "url": "https://stosvn.vercel.app/stos",
+    "status": 200,
+    "final": "https://stosvn.vercel.app/stos"
+  },
+  {
+    "url": "https://growth-commerce-os.vercel.app/cho-kenh",
+    "status": 200,
+    "final": "https://growth-commerce-os.vercel.app/cho-kenh"
+  },
+  {
+    "url": "https://growth-commerce-os.vercel.app/en",
+    "status": 200,
+    "final": "https://growth-commerce-os.vercel.app/en"
+  }
+]

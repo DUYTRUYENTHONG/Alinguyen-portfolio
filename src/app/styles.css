@@ -319,3 +319,48 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
 
 /* Owner-requested badge capitalization; composition unchanged. */
 .hero-experience span{text-transform:uppercase}
+
+/* Scoped proof, destination and gallery pass; native DOM and navigation unchanged. */
+#work .project-proof { gap: 16px; }
+#work .project-proof > div { min-width: 0; flex: 1; align-items: baseline; }
+#work .project-proof > div > strong { flex: none; color: #53616a; }
+#work .project-proof > div > span { min-width: 0; font-size: 1rem; line-height: 1.5; overflow-wrap: anywhere; }
+#work .project-proof > a { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; max-width: 100%; white-space: normal; text-align: center; font-size: .95rem; line-height: 1.4; text-decoration: underline; text-underline-offset: 4px; }
+#work .project-proof > a:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; box-shadow: inset 0 0 0 2px #fff; }
+#work .work-card:target { outline: 2px solid var(--blue); outline-offset: 5px; }
+.case-facts > div { min-width: 0; }
+.case-facts span { font-size: .75rem; line-height: 1.5; }
+.case-facts strong { display: block; font-size: 1.03rem; line-height: 1.55; overflow-wrap: anywhere; }
+.case-facts > div:is(:nth-child(2), :nth-child(4)) { border-top-color: #326bff; }
+.case-links > a:first-child[href^="https://"] { min-height: 48px; max-width: 100%; font-size: 1rem; line-height: 1.5; white-space: normal; overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: 4px; }
+.case-links > a:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+.case-links > a[href$="/#work"] { background: #f2f2f2; color: #111; }
+.case-page:has(.case-hero-stos, .case-hero-cho-kenh) .case-media figure { border: 1px solid #e3e4e8; border-radius: 16px; background: #f6f7fa; }
+.case-page:has(.case-hero-stos, .case-hero-cho-kenh) .case-media a { height: auto; overflow: visible; border: 0; border-radius: 15px 15px 0 0; }
+.case-page:has(.case-hero-stos, .case-hero-cho-kenh) .case-media img { width: 100%; height: auto; aspect-ratio: auto 5 / 4; border-radius: inherit; }
+.case-page .case-media img[src$="stos-login-2026-preview.webp"] { aspect-ratio: auto 1100 / 764; }
+.case-page .case-media img[src$="cho-kenh-home-2026-preview.webp"] { aspect-ratio: auto 1100 / 543; }
+.case-page .case-media img[src$="cho-kenh-catalog-2026-preview.webp"] { aspect-ratio: auto 1100 / 584; }
+.case-page .case-media img[src$="cho-kenh-buying-flow-2026-preview.webp"] { aspect-ratio: auto 1100 / 450; }
+.case-page .case-media img[src$="cho-kenh-some-process-2026-preview.webp"] { aspect-ratio: auto 1100 / 483; }
+.case-page .case-media img[src$="cho-kenh-trust-layer-2026-preview.webp"] { aspect-ratio: auto 1100 / 580; }
+.case-page:has(.case-hero-stos, .case-hero-cho-kenh) .case-media figcaption { border-top: 1px solid #e3e4e8; padding: 12px 14px; font-size: .9rem; line-height: 1.5; color: #303a48; overflow-wrap: anywhere; }
+.case-page:has(.case-hero-stos, .case-hero-cho-kenh) .case-media figure:focus-within { border-color: var(--blue); }
+.case-page:has(.case-hero-stos, .case-hero-cho-kenh) .case-media a:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
+@media (max-width: 767px) {
+  #work .project-proof > div { justify-content: flex-start; text-align: left; }
+  #work .project-proof > a { display: flex; width: 100%; }
+  .case-links > a { max-width: 100%; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  #work-title { --home-heading-travel: 8px; }
+  #work-title[data-home-motion="waiting"] { transform: translateY(8px); }
+  #work-title[data-home-motion="running"] { animation-duration: 320ms; }
+}
+/* Product captures stay still; only the existing schematic explains timing. */
+#work .project-screenshot[data-home-motion="running"] img { animation: none; }
+#work .mock-churn[data-home-motion="running"] .mock-cutoff { animation: none; }
+@keyframes home-past-event {
+  0%, 100% { opacity: 1; transform: none; background: #fff; box-shadow: none; }
+  50% { opacity: 1; transform: none; background: #326bff; box-shadow: 0 0 0 4px #326bff26; }
+}

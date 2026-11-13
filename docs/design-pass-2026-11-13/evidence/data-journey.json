@@ -1,0 +1,8 @@
+{
+  "url": "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md",
+  "sourceLink": "View source and verified results ↗",
+  "roleChoices": 0,
+  "clicksFromDirectCase": 1,
+  "caseSafeguard": "Aggregates transactions and listening events through 2017-02-28",
+  "caseLimitation": "A local within-cohort holdout is not future-cohort validation or a Kaggle leaderboard result."
+}

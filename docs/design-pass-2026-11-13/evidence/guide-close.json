@@ -1,0 +1,10 @@
+{
+  "escapeResult": {
+    "focus": "guide-character",
+    "focusLabel": "Talk with Nova, Ali's portfolio guide. Current section: Growth Commerce OS. A live service site connecting content, channels, and lead paths."
+  },
+  "closeResult": {
+    "focus": "guide-character",
+    "openDialogs": 0
+  }
+}

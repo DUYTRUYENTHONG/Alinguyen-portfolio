@@ -1,0 +1,32 @@
+[
+  {
+    "width": 1440,
+    "elapsedMs": 8741,
+    "defaultChoice": {
+      "chosen": false
+    },
+    "sourceURL": "https://github.com/DUYTRUYENTHONG/vibecode-product-kit",
+    "clicks": 3,
+    "roleChoices": 0,
+    "manualScrollCommands": 0,
+    "scrolling": "Browser locator scrolled target links into view; not a manual-scroll count.",
+    "role": true,
+    "decision": true,
+    "limitation": true
+  },
+  {
+    "width": 390,
+    "elapsedMs": 6396,
+    "defaultChoice": {
+      "chosen": false
+    },
+    "sourceURL": "https://github.com/DUYTRUYENTHONG/vibecode-product-kit",
+    "clicks": 3,
+    "roleChoices": 0,
+    "manualScrollCommands": 0,
+    "scrolling": "Browser locator scrolled target links into view; not a manual-scroll count.",
+    "role": true,
+    "decision": true,
+    "limitation": true
+  }
+]

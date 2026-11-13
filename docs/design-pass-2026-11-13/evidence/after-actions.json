@@ -1,0 +1,2189 @@
+[
+  {
+    "actions": [
+      {
+        "href": "#work",
+        "name": "Explore engineering work\n↗",
+        "rect": {
+          "bottom": -5863.5419921875,
+          "height": 48,
+          "left": 20,
+          "right": 258.0208435058594,
+          "top": -5911.5419921875,
+          "width": 238.02084350585935,
+          "x": 20,
+          "y": -5911.5419921875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+        "name": "Download AI CV\n↓",
+        "rect": {
+          "bottom": -5805.5419921875,
+          "height": 48,
+          "left": 20,
+          "right": 197.1354217529297,
+          "top": -5853.5419921875,
+          "width": 177.1354217529297,
+          "x": 20,
+          "y": -5853.5419921875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/vibecode-kit/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 776.5104370117188,
+          "height": 48,
+          "left": 35,
+          "right": 339.66668701171875,
+          "top": 728.5104370117188,
+          "width": 304.66668701171875,
+          "x": 35,
+          "y": 728.5104370117188
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/growth-commerce-os/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 1523.666748046875,
+          "height": 48,
+          "left": 35,
+          "right": 339.66668701171875,
+          "top": 1475.666748046875,
+          "width": 304.66668701171875,
+          "x": 35,
+          "y": 1475.666748046875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/stos/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 2279.229248046875,
+          "height": 48,
+          "left": 35,
+          "right": 339.66668701171875,
+          "top": 2231.229248046875,
+          "width": 304.66668701171875,
+          "x": 35,
+          "y": 2231.229248046875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/cho-kenh/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 3091.17724609375,
+          "height": 48,
+          "left": 35,
+          "right": 339.66668701171875,
+          "top": 3043.17724609375,
+          "width": 304.66668701171875,
+          "x": 35,
+          "y": 3043.17724609375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/kkbox-baseline/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 3840.33349609375,
+          "height": 48,
+          "left": 35,
+          "right": 339.66668701171875,
+          "top": 3792.33349609375,
+          "width": 304.66668701171875,
+          "x": 35,
+          "y": 3792.33349609375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/credits/",
+        "name": "Credits",
+        "rect": {
+          "bottom": 20478.59375,
+          "height": 18,
+          "left": 310.1875,
+          "right": 350.6666679382324,
+          "top": 20460.59375,
+          "width": 40.47916793823242,
+          "x": 310.1875,
+          "y": 20460.59375
+        }
+      },
+      {
+        "href": "#top",
+        "name": "Back to top ↑",
+        "rect": {
+          "bottom": 20516.59375,
+          "height": 18,
+          "left": 24,
+          "right": 101.52083587646484,
+          "top": 20498.59375,
+          "width": 77.52083587646484,
+          "x": 24,
+          "y": 20498.59375
+        }
+      }
+    ],
+    "gallery": [],
+    "height": 844,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Public v0.2.0 repository with passing CI"
+      },
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Public service site and demo links"
+      },
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Live product site and public template pages"
+      },
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Live channel catalog and manual intermediary service page"
+      },
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Public prototype source and leakage checks; scores omitted"
+      }
+    ],
+    "target": {
+      "outline": "2px"
+    },
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/#project-vibecode-kit",
+    "width": 390
+  },
+  {
+    "actions": [
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "← Back to selected work",
+        "rect": {
+          "bottom": 142.5312538146973,
+          "height": 19.197917938232425,
+          "left": 110.19792175292967,
+          "right": 264.46876525878906,
+          "top": 123.33333587646484,
+          "width": 154.27084350585938,
+          "x": 110.19792175292967,
+          "y": 123.33333587646484
+        }
+      },
+      {
+        "href": "https://github.com/DUYTRUYENTHONG/vibecode-product-kit",
+        "name": "View repository ↗",
+        "rect": {
+          "bottom": 2805.02099609375,
+          "height": 50,
+          "left": 24,
+          "right": 203.25,
+          "top": 2755.02099609375,
+          "width": 179.25,
+          "x": 24,
+          "y": 2755.02099609375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "Back to all work ↑",
+        "rect": {
+          "bottom": 2862.70849609375,
+          "height": 45.6875,
+          "left": 24,
+          "right": 179.5729217529297,
+          "top": 2817.02099609375,
+          "width": 155.5729217529297,
+          "x": 24,
+          "y": 2817.02099609375
+        }
+      },
+      {
+        "href": "mailto:nquangd1510@gmail.com",
+        "name": "Get in touch ↗",
+        "rect": {
+          "bottom": 2956.375,
+          "height": 18,
+          "left": 269.82293701171875,
+          "right": 350.66668701171875,
+          "top": 2938.375,
+          "width": 80.84375,
+          "x": 269.82293701171875,
+          "y": 2938.375
+        }
+      }
+    ],
+    "gallery": [],
+    "height": 844,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Codex Vibecode Pro Max Kit"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Maintainer of the public DUYTRUYENTHONG repository."
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Public open-source tool"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Public v0.2.0 repository with passing CI"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "JavaScript · Node.js · GitHub Actions · Codex"
+      }
+    ],
+    "target": null,
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/work/vibecode-kit/",
+    "width": 390
+  },
+  {
+    "actions": [
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "← Back to selected work",
+        "rect": {
+          "bottom": 142.5312538146973,
+          "height": 19.197917938232425,
+          "left": 110.19792175292967,
+          "right": 264.46876525878906,
+          "top": 123.33333587646484,
+          "width": 154.27084350585938,
+          "x": 110.19792175292967,
+          "y": 123.33333587646484
+        }
+      },
+      {
+        "href": "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md",
+        "name": "View source and verified results ↗",
+        "rect": {
+          "bottom": 4368.6669921875,
+          "height": 50,
+          "left": 24,
+          "right": 331.0625,
+          "top": 4318.6669921875,
+          "width": 307.0625,
+          "x": 24,
+          "y": 4318.6669921875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "Back to all work ↑",
+        "rect": {
+          "bottom": 4426.3544921875,
+          "height": 45.6875,
+          "left": 24,
+          "right": 179.5729217529297,
+          "top": 4380.6669921875,
+          "width": 155.5729217529297,
+          "x": 24,
+          "y": 4380.6669921875
+        }
+      },
+      {
+        "href": "mailto:nquangd1510@gmail.com",
+        "name": "Get in touch ↗",
+        "rect": {
+          "bottom": 4520.02099609375,
+          "height": 18,
+          "left": 269.82293701171875,
+          "right": 350.66668701171875,
+          "top": 4502.02099609375,
+          "width": 80.84375,
+          "x": 269.82293701171875,
+          "y": 4502.02099609375
+        }
+      }
+    ],
+    "gallery": [],
+    "height": 844,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "KKBox customer churn baseline"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Project owner; baseline developed with Codex assistance. The academic reference is credited separately."
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Public source · official-data local holdout"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Public prototype source and leakage checks; scores omitted"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Python · DuckDB · Pandas · scikit-learn"
+      }
+    ],
+    "target": null,
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/work/kkbox-baseline/",
+    "width": 390
+  },
+  {
+    "actions": [
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "← Back to selected work",
+        "rect": {
+          "bottom": -2856.8020820617676,
+          "height": 19.197917938232425,
+          "left": 110.19792175292967,
+          "right": 264.46876525878906,
+          "top": -2876,
+          "width": 154.27084350585938,
+          "x": 110.19792175292967,
+          "y": -2876
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-home-desktop-2026.png",
+        "name": "Open full screenshot: STOS landing page on desktop",
+        "rect": {
+          "bottom": 543.3333740234375,
+          "height": 260.26043701171875,
+          "left": 24.666667938232425,
+          "right": 350.0000114440918,
+          "top": 283.07293701171875,
+          "width": 325.3333435058594,
+          "x": 24.666667938232425,
+          "y": 283.07293701171875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-home-mobile-2026.png",
+        "name": "Open full screenshot: STOS landing page on mobile",
+        "rect": {
+          "bottom": 871.1875610351562,
+          "height": 260.26043701171875,
+          "left": 24.666667938232425,
+          "right": 350.0000114440918,
+          "top": 610.9271240234375,
+          "width": 325.3333435058594,
+          "x": 24.666667938232425,
+          "y": 610.9271240234375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-templates-desktop-2026.png",
+        "name": "Open full screenshot: STOS template gallery on desktop",
+        "rect": {
+          "bottom": 1199.0416870117188,
+          "height": 260.26043701171875,
+          "left": 24.666667938232425,
+          "right": 350.0000114440918,
+          "top": 938.78125,
+          "width": 325.3333435058594,
+          "x": 24.666667938232425,
+          "y": 938.78125
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-login-2026.png",
+        "name": "Open full screenshot: STOS sign-in screen",
+        "rect": {
+          "bottom": 1492.5938415527344,
+          "height": 225.95834350585935,
+          "left": 24.666667938232425,
+          "right": 350.0000114440918,
+          "top": 1266.635498046875,
+          "width": 325.3333435058594,
+          "x": 24.666667938232425,
+          "y": 1266.635498046875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-signup-2026.png",
+        "name": "Open full screenshot: STOS registration screen",
+        "rect": {
+          "bottom": 1820.4479370117188,
+          "height": 260.26043701171875,
+          "left": 24.666667938232425,
+          "right": 350.0000114440918,
+          "top": 1560.1875,
+          "width": 325.3333435058594,
+          "x": 24.666667938232425,
+          "y": 1560.1875
+        }
+      },
+      {
+        "href": "https://stosvn.vercel.app/stos",
+        "name": "Visit STOS ↗",
+        "rect": {
+          "bottom": 1992.375,
+          "height": 50,
+          "left": 24,
+          "right": 162.0625,
+          "top": 1942.375,
+          "width": 138.0625,
+          "x": 24,
+          "y": 1942.375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "Back to all work ↑",
+        "rect": {
+          "bottom": 1992.375,
+          "height": 50,
+          "left": 174.0625,
+          "right": 329.6354217529297,
+          "top": 1942.375,
+          "width": 155.5729217529297,
+          "x": 174.0625,
+          "y": 1942.375
+        }
+      },
+      {
+        "href": "mailto:nquangd1510@gmail.com",
+        "name": "Get in touch ↗",
+        "rect": {
+          "bottom": 2086.041748046875,
+          "height": 18,
+          "left": 269.82293701171875,
+          "right": 350.66668701171875,
+          "top": 2068.041748046875,
+          "width": 80.84375,
+          "x": 269.82293701171875,
+          "y": 2068.041748046875
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "caption": "STOS landing page on desktop ↗",
+        "frameHeight": 260.26043701171875,
+        "imageHeight": 260.26043701171875
+      },
+      {
+        "caption": "STOS landing page on mobile ↗",
+        "frameHeight": 260.26043701171875,
+        "imageHeight": 260.26043701171875
+      },
+      {
+        "caption": "STOS template gallery on desktop ↗",
+        "frameHeight": 260.26043701171875,
+        "imageHeight": 260.26043701171875
+      },
+      {
+        "caption": "STOS sign-in screen ↗",
+        "frameHeight": 225.95834350585935,
+        "imageHeight": 225.95834350585935
+      },
+      {
+        "caption": "STOS registration screen ↗",
+        "frameHeight": 260.26043701171875,
+        "imageHeight": 260.26043701171875
+      }
+    ],
+    "height": 844,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "STOS Sales Traffic Operating System"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Product builder."
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Live product website"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Live product site and public template pages"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Web product · Page builder · Lead workflow · Analytics"
+      }
+    ],
+    "target": null,
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/work/stos/#case-media-title",
+    "width": 390
+  },
+  {
+    "actions": [
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "← Back to selected work",
+        "rect": {
+          "bottom": -3244.8020820617676,
+          "height": 19.197917938232425,
+          "left": 110.19792175292967,
+          "right": 264.46876525878906,
+          "top": -3264,
+          "width": 154.27084350585938,
+          "x": 110.19792175292967,
+          "y": -3264
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-home-2026.png",
+        "name": "Open full screenshot: Chợ Kênh homepage and featured channels",
+        "rect": {
+          "bottom": 364.3645935058594,
+          "height": 160.59375,
+          "left": 24.666667938232425,
+          "right": 350.0000114440918,
+          "top": 203.77084350585935,
+          "width": 325.3333435058594,
+          "x": 24.666667938232425,
+          "y": 203.77084350585935
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-catalog-2026.png",
+        "name": "Open full screenshot: Chợ Kênh channel catalog and filters",
+        "rect": {
+          "bottom": 626.2708435058594,
+          "height": 172.71875,
+          "left": 24.666667938232425,
+          "right": 350.0000114440918,
+          "top": 453.5520935058594,
+          "width": 325.3333435058594,
+          "x": 24.666667938232425,
+          "y": 453.5520935058594
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-buying-flow-2026.png",
+        "name": "Open full screenshot: Chợ Kênh buying steps",
+        "rect": {
+          "bottom": 826.9479675292969,
+          "height": 133.08334350585938,
+          "left": 24.666667938232425,
+          "right": 350.0000114440918,
+          "top": 693.8646240234375,
+          "width": 325.3333435058594,
+          "x": 24.666667938232425,
+          "y": 693.8646240234375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-some-process-2026.png",
+        "name": "Open full screenshot: Chợ Kênh intermediary review process",
+        "rect": {
+          "bottom": 1037.3854370117188,
+          "height": 142.84375,
+          "left": 24.666667938232425,
+          "right": 350.0000114440918,
+          "top": 894.5416870117188,
+          "width": 325.3333435058594,
+          "x": 24.666667938232425,
+          "y": 894.5416870117188
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-trust-layer-2026.png",
+        "name": "Open full screenshot: Chợ Kênh transaction safeguards",
+        "rect": {
+          "bottom": 1276.510498046875,
+          "height": 171.53125,
+          "left": 24.666667938232425,
+          "right": 350.0000114440918,
+          "top": 1104.979248046875,
+          "width": 325.3333435058594,
+          "x": 24.666667938232425,
+          "y": 1104.979248046875
+        }
+      },
+      {
+        "href": "https://growth-commerce-os.vercel.app/cho-kenh",
+        "name": "Visit Chợ Kênh ↗",
+        "rect": {
+          "bottom": 1448.4375,
+          "height": 50,
+          "left": 24,
+          "right": 195.96875,
+          "top": 1398.4375,
+          "width": 171.96875,
+          "x": 24,
+          "y": 1398.4375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "Back to all work ↑",
+        "rect": {
+          "bottom": 1506.125,
+          "height": 45.6875,
+          "left": 24,
+          "right": 179.5729217529297,
+          "top": 1460.4375,
+          "width": 155.5729217529297,
+          "x": 24,
+          "y": 1460.4375
+        }
+      },
+      {
+        "href": "mailto:nquangd1510@gmail.com",
+        "name": "Get in touch ↗",
+        "rect": {
+          "bottom": 1599.791748046875,
+          "height": 18,
+          "left": 269.82293701171875,
+          "right": 350.66668701171875,
+          "top": 1581.791748046875,
+          "width": 80.84375,
+          "x": 269.82293701171875,
+          "y": 1581.791748046875
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "caption": "Chợ Kênh homepage and featured channels ↗",
+        "frameHeight": 160.59375,
+        "imageHeight": 160.59375
+      },
+      {
+        "caption": "Chợ Kênh channel catalog and filters ↗",
+        "frameHeight": 172.71875,
+        "imageHeight": 172.71875
+      },
+      {
+        "caption": "Chợ Kênh buying steps ↗",
+        "frameHeight": 133.08334350585938,
+        "imageHeight": 133.08334350585938
+      },
+      {
+        "caption": "Chợ Kênh intermediary review process ↗",
+        "frameHeight": 142.84375,
+        "imageHeight": 142.84375
+      },
+      {
+        "caption": "Chợ Kênh transaction safeguards ↗",
+        "frameHeight": 171.53125,
+        "imageHeight": 171.53125
+      }
+    ],
+    "height": 844,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Chợ Kênh"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Owner and product builder."
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Live marketplace website"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Live channel catalog and manual intermediary service page"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Web marketplace · Search and filtering · Lead workflow"
+      }
+    ],
+    "target": null,
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/work/cho-kenh/#case-media-title",
+    "width": 390
+  },
+  {
+    "actions": [
+      {
+        "href": "#work",
+        "name": "Explore engineering work\n↗",
+        "rect": {
+          "bottom": -3302.479248046875,
+          "height": 48,
+          "left": 499.75,
+          "right": 737.7708435058594,
+          "top": -3350.479248046875,
+          "width": 238.02084350585935,
+          "x": 499.75,
+          "y": -3350.479248046875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+        "name": "Download AI CV\n↓",
+        "rect": {
+          "bottom": -3302.479248046875,
+          "height": 48,
+          "left": 747.7708740234375,
+          "right": 924.9062957763672,
+          "top": -3350.479248046875,
+          "width": 177.1354217529297,
+          "x": 747.7708740234375,
+          "y": -3350.479248046875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/vibecode-kit/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 889.3646240234375,
+          "height": 48,
+          "left": 1106.96875,
+          "right": 1250.8333435058594,
+          "top": 841.3646240234375,
+          "width": 143.86459350585938,
+          "x": 1106.96875,
+          "y": 841.3646240234375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/growth-commerce-os/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 1758.5521240234375,
+          "height": 48,
+          "left": 1106.96875,
+          "right": 1250.8333435058594,
+          "top": 1710.5521240234375,
+          "width": 143.86459350585938,
+          "x": 1106.96875,
+          "y": 1710.5521240234375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/stos/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 2655.90625,
+          "height": 48,
+          "left": 1106.96875,
+          "right": 1250.8333435058594,
+          "top": 2607.90625,
+          "width": 143.86459350585938,
+          "x": 1106.96875,
+          "y": 2607.90625
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/cho-kenh/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 3581.42724609375,
+          "height": 48,
+          "left": 1106.96875,
+          "right": 1250.8333435058594,
+          "top": 3533.42724609375,
+          "width": 143.86459350585938,
+          "x": 1106.96875,
+          "y": 3533.42724609375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/kkbox-baseline/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 4468.78125,
+          "height": 48,
+          "left": 1106.96875,
+          "right": 1250.8333435058594,
+          "top": 4420.78125,
+          "width": 143.86459350585938,
+          "x": 1106.96875,
+          "y": 4420.78125
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/credits/",
+        "name": "Credits",
+        "rect": {
+          "bottom": 15575.865234375,
+          "height": 18,
+          "left": 902.5729370117188,
+          "right": 943.0521049499512,
+          "top": 15557.865234375,
+          "width": 40.47916793823242,
+          "x": 902.5729370117188,
+          "y": 15557.865234375
+        }
+      },
+      {
+        "href": "#top",
+        "name": "Back to top ↑",
+        "rect": {
+          "bottom": 15575.865234375,
+          "height": 18,
+          "left": 1207.1458740234375,
+          "right": 1284.6667098999023,
+          "top": 15557.865234375,
+          "width": 77.52083587646484,
+          "x": 1207.1458740234375,
+          "y": 15557.865234375
+        }
+      }
+    ],
+    "gallery": [],
+    "height": 900,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Public v0.2.0 repository with passing CI"
+      },
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Public service site and demo links"
+      },
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Live product site and public template pages"
+      },
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Live channel catalog and manual intermediary service page"
+      },
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Public prototype source and leakage checks; scores omitted"
+      }
+    ],
+    "target": {
+      "outline": "2px"
+    },
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/#project-vibecode-kit",
+    "width": 1440
+  },
+  {
+    "actions": [
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "← Back to selected work",
+        "rect": {
+          "bottom": 172.5312614440918,
+          "height": 19.197917938232425,
+          "left": 635.1979370117188,
+          "right": 789.4687805175781,
+          "top": 153.33334350585938,
+          "width": 154.27084350585938,
+          "x": 635.1979370117188,
+          "y": 153.33334350585938
+        }
+      },
+      {
+        "href": "https://github.com/DUYTRUYENTHONG/vibecode-product-kit",
+        "name": "View repository ↗",
+        "rect": {
+          "bottom": 2895.73974609375,
+          "height": 50,
+          "left": 287.3333435058594,
+          "right": 466.5833435058594,
+          "top": 2845.73974609375,
+          "width": 179.25,
+          "x": 287.3333435058594,
+          "y": 2845.73974609375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "Back to all work ↑",
+        "rect": {
+          "bottom": 2895.73974609375,
+          "height": 50,
+          "left": 478.5833435058594,
+          "right": 634.1562652587891,
+          "top": 2845.73974609375,
+          "width": 155.5729217529297,
+          "x": 478.5833435058594,
+          "y": 2845.73974609375
+        }
+      },
+      {
+        "href": "mailto:nquangd1510@gmail.com",
+        "name": "Get in touch ↗",
+        "rect": {
+          "bottom": 3044.40625,
+          "height": 18,
+          "left": 1203.822998046875,
+          "right": 1284.666748046875,
+          "top": 3026.40625,
+          "width": 80.84375,
+          "x": 1203.822998046875,
+          "y": 3026.40625
+        }
+      }
+    ],
+    "gallery": [],
+    "height": 900,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Codex Vibecode Pro Max Kit"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Maintainer of the public DUYTRUYENTHONG repository."
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Public open-source tool"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Public v0.2.0 repository with passing CI"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "JavaScript · Node.js · GitHub Actions · Codex"
+      }
+    ],
+    "target": null,
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/work/vibecode-kit/",
+    "width": 1440
+  },
+  {
+    "actions": [
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "← Back to selected work",
+        "rect": {
+          "bottom": 172.5312614440918,
+          "height": 19.197917938232425,
+          "left": 635.1979370117188,
+          "right": 789.4687805175781,
+          "top": 153.33334350585938,
+          "width": 154.27084350585938,
+          "x": 635.1979370117188,
+          "y": 153.33334350585938
+        }
+      },
+      {
+        "href": "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md",
+        "name": "View source and verified results ↗",
+        "rect": {
+          "bottom": 3977.21875,
+          "height": 50,
+          "left": 287.3333435058594,
+          "right": 594.3958435058594,
+          "top": 3927.21875,
+          "width": 307.0625,
+          "x": 287.3333435058594,
+          "y": 3927.21875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "Back to all work ↑",
+        "rect": {
+          "bottom": 3977.21875,
+          "height": 50,
+          "left": 606.3958740234375,
+          "right": 761.9687957763672,
+          "top": 3927.21875,
+          "width": 155.5729217529297,
+          "x": 606.3958740234375,
+          "y": 3927.21875
+        }
+      },
+      {
+        "href": "mailto:nquangd1510@gmail.com",
+        "name": "Get in touch ↗",
+        "rect": {
+          "bottom": 4125.8857421875,
+          "height": 18,
+          "left": 1203.822998046875,
+          "right": 1284.666748046875,
+          "top": 4107.8857421875,
+          "width": 80.84375,
+          "x": 1203.822998046875,
+          "y": 4107.8857421875
+        }
+      }
+    ],
+    "gallery": [],
+    "height": 900,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "KKBox customer churn baseline"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Project owner; baseline developed with Codex assistance. The academic reference is credited separately."
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Public source · official-data local holdout"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Public prototype source and leakage checks; scores omitted"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Python · DuckDB · Pandas · scikit-learn"
+      }
+    ],
+    "target": null,
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/work/kkbox-baseline/",
+    "width": 1440
+  },
+  {
+    "actions": [
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "← Back to selected work",
+        "rect": {
+          "bottom": -2884.1355781555176,
+          "height": 19.197917938232425,
+          "left": 635.1979370117188,
+          "right": 789.4687805175781,
+          "top": -2903.33349609375,
+          "width": 154.27084350585938,
+          "x": 635.1979370117188,
+          "y": -2903.33349609375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-home-desktop-2026.png",
+        "name": "Open full screenshot: STOS landing page on desktop",
+        "rect": {
+          "bottom": 483.8020935058594,
+          "height": 330.9270935058594,
+          "left": 288,
+          "right": 701.6666870117188,
+          "top": 152.875,
+          "width": 413.6666870117187,
+          "x": 288,
+          "y": 152.875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-home-mobile-2026.png",
+        "name": "Open full screenshot: STOS landing page on mobile",
+        "rect": {
+          "bottom": 483.8020935058594,
+          "height": 330.9270935058594,
+          "left": 723,
+          "right": 1136.6666870117188,
+          "top": 152.875,
+          "width": 413.6666870117187,
+          "x": 723,
+          "y": 152.875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-templates-desktop-2026.png",
+        "name": "Open full screenshot: STOS template gallery on desktop",
+        "rect": {
+          "bottom": 882.3229675292969,
+          "height": 330.9270935058594,
+          "left": 288,
+          "right": 701.6666870117188,
+          "top": 551.3958740234375,
+          "width": 413.6666870117187,
+          "x": 288,
+          "y": 551.3958740234375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-login-2026.png",
+        "name": "Open full screenshot: STOS sign-in screen",
+        "rect": {
+          "bottom": 838.6979675292969,
+          "height": 287.3020935058594,
+          "left": 723,
+          "right": 1136.6666870117188,
+          "top": 551.3958740234375,
+          "width": 413.6666870117187,
+          "x": 723,
+          "y": 551.3958740234375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-signup-2026.png",
+        "name": "Open full screenshot: STOS registration screen",
+        "rect": {
+          "bottom": 1280.843780517578,
+          "height": 330.9270935058594,
+          "left": 288,
+          "right": 701.6666870117188,
+          "top": 949.9166870117188,
+          "width": 413.6666870117187,
+          "x": 288,
+          "y": 949.9166870117188
+        }
+      },
+      {
+        "href": "https://stosvn.vercel.app/stos",
+        "name": "Visit STOS ↗",
+        "rect": {
+          "bottom": 1482.7708740234375,
+          "height": 50,
+          "left": 287.3333435058594,
+          "right": 425.3958435058594,
+          "top": 1432.7708740234375,
+          "width": 138.0625,
+          "x": 287.3333435058594,
+          "y": 1432.7708740234375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "Back to all work ↑",
+        "rect": {
+          "bottom": 1482.7708740234375,
+          "height": 50,
+          "left": 437.3958435058594,
+          "right": 592.9687652587891,
+          "top": 1432.7708740234375,
+          "width": 155.5729217529297,
+          "x": 437.3958435058594,
+          "y": 1432.7708740234375
+        }
+      },
+      {
+        "href": "mailto:nquangd1510@gmail.com",
+        "name": "Get in touch ↗",
+        "rect": {
+          "bottom": 1631.4375,
+          "height": 18,
+          "left": 1203.822998046875,
+          "right": 1284.666748046875,
+          "top": 1613.4375,
+          "width": 80.84375,
+          "x": 1203.822998046875,
+          "y": 1613.4375
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "caption": "STOS landing page on desktop ↗",
+        "frameHeight": 330.9270935058594,
+        "imageHeight": 330.9270935058594
+      },
+      {
+        "caption": "STOS landing page on mobile ↗",
+        "frameHeight": 330.9270935058594,
+        "imageHeight": 330.9270935058594
+      },
+      {
+        "caption": "STOS template gallery on desktop ↗",
+        "frameHeight": 330.9270935058594,
+        "imageHeight": 330.9270935058594
+      },
+      {
+        "caption": "STOS sign-in screen ↗",
+        "frameHeight": 287.3020935058594,
+        "imageHeight": 287.3020935058594
+      },
+      {
+        "caption": "STOS registration screen ↗",
+        "frameHeight": 330.9270935058594,
+        "imageHeight": 330.9270935058594
+      }
+    ],
+    "height": 900,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "STOS Sales Traffic Operating System"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Product builder."
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Live product website"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Live product site and public template pages"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Web product · Page builder · Lead workflow · Analytics"
+      }
+    ],
+    "target": null,
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/work/stos/#case-media-title",
+    "width": 1440
+  },
+  {
+    "actions": [
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "← Back to selected work",
+        "rect": {
+          "bottom": -2792.8020820617676,
+          "height": 19.197917938232425,
+          "left": 635.1979370117188,
+          "right": 789.4687805175781,
+          "top": -2812,
+          "width": 154.27084350585938,
+          "x": 635.1979370117188,
+          "y": -2812
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-home-2026.png",
+        "name": "Open full screenshot: Chợ Kênh homepage and featured channels",
+        "rect": {
+          "bottom": 588.4271087646484,
+          "height": 204.1979217529297,
+          "left": 288,
+          "right": 701.6666870117188,
+          "top": 384.2291870117187,
+          "width": 413.6666870117187,
+          "x": 288,
+          "y": 384.2291870117187
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-catalog-2026.png",
+        "name": "Open full screenshot: Chợ Kênh channel catalog and filters",
+        "rect": {
+          "bottom": 603.8437805175781,
+          "height": 219.61459350585935,
+          "left": 723,
+          "right": 1136.6666870117188,
+          "top": 384.2291870117187,
+          "width": 413.6666870117187,
+          "x": 723,
+          "y": 384.2291870117187
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-buying-flow-2026.png",
+        "name": "Open full screenshot: Chợ Kênh buying steps",
+        "rect": {
+          "bottom": 840.65625,
+          "height": 169.21875,
+          "left": 288,
+          "right": 701.6666870117188,
+          "top": 671.4375,
+          "width": 413.6666870117187,
+          "x": 288,
+          "y": 671.4375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-some-process-2026.png",
+        "name": "Open full screenshot: Chợ Kênh intermediary review process",
+        "rect": {
+          "bottom": 853.0729217529297,
+          "height": 181.6354217529297,
+          "left": 723,
+          "right": 1136.6666870117188,
+          "top": 671.4375,
+          "width": 413.6666870117187,
+          "x": 723,
+          "y": 671.4375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-trust-layer-2026.png",
+        "name": "Open full screenshot: Chợ Kênh transaction safeguards",
+        "rect": {
+          "bottom": 1138.781280517578,
+          "height": 218.11459350585935,
+          "left": 288,
+          "right": 701.6666870117188,
+          "top": 920.6666870117188,
+          "width": 413.6666870117187,
+          "x": 288,
+          "y": 920.6666870117188
+        }
+      },
+      {
+        "href": "https://growth-commerce-os.vercel.app/cho-kenh",
+        "name": "Visit Chợ Kênh ↗",
+        "rect": {
+          "bottom": 1340.7083740234375,
+          "height": 50,
+          "left": 287.3333435058594,
+          "right": 459.3020935058594,
+          "top": 1290.7083740234375,
+          "width": 171.96875,
+          "x": 287.3333435058594,
+          "y": 1290.7083740234375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "Back to all work ↑",
+        "rect": {
+          "bottom": 1340.7083740234375,
+          "height": 50,
+          "left": 471.3020935058594,
+          "right": 626.8750152587891,
+          "top": 1290.7083740234375,
+          "width": 155.5729217529297,
+          "x": 471.3020935058594,
+          "y": 1290.7083740234375
+        }
+      },
+      {
+        "href": "mailto:nquangd1510@gmail.com",
+        "name": "Get in touch ↗",
+        "rect": {
+          "bottom": 1489.375,
+          "height": 18,
+          "left": 1203.822998046875,
+          "right": 1284.666748046875,
+          "top": 1471.375,
+          "width": 80.84375,
+          "x": 1203.822998046875,
+          "y": 1471.375
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "caption": "Chợ Kênh homepage and featured channels ↗",
+        "frameHeight": 204.1979217529297,
+        "imageHeight": 204.1979217529297
+      },
+      {
+        "caption": "Chợ Kênh channel catalog and filters ↗",
+        "frameHeight": 219.61459350585935,
+        "imageHeight": 219.61459350585935
+      },
+      {
+        "caption": "Chợ Kênh buying steps ↗",
+        "frameHeight": 169.21875,
+        "imageHeight": 169.21875
+      },
+      {
+        "caption": "Chợ Kênh intermediary review process ↗",
+        "frameHeight": 181.6354217529297,
+        "imageHeight": 181.6354217529297
+      },
+      {
+        "caption": "Chợ Kênh transaction safeguards ↗",
+        "frameHeight": 218.11459350585935,
+        "imageHeight": 218.11459350585935
+      }
+    ],
+    "height": 900,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Chợ Kênh"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Owner and product builder."
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Live marketplace website"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Live channel catalog and manual intermediary service page"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Web marketplace · Search and filtering · Lead workflow"
+      }
+    ],
+    "target": null,
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/work/cho-kenh/#case-media-title",
+    "width": 1440
+  },
+  {
+    "actions": [
+      {
+        "href": "#work",
+        "name": "Explore engineering work\n↗",
+        "rect": {
+          "bottom": -6085.5107421875,
+          "height": 48,
+          "left": 20,
+          "right": 258.0208435058594,
+          "top": -6133.5107421875,
+          "width": 238.02084350585935,
+          "x": 20,
+          "y": -6133.5107421875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+        "name": "Download AI CV\n↓",
+        "rect": {
+          "bottom": -6027.5107421875,
+          "height": 48,
+          "left": 20,
+          "right": 197.1354217529297,
+          "top": -6075.5107421875,
+          "width": 177.1354217529297,
+          "x": 20,
+          "y": -6075.5107421875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/vibecode-kit/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 810.4271240234375,
+          "height": 48,
+          "left": 35,
+          "right": 269.6666717529297,
+          "top": 762.4271240234375,
+          "width": 234.6666717529297,
+          "x": 35,
+          "y": 762.4271240234375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/growth-commerce-os/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 1617.8125,
+          "height": 48,
+          "left": 35,
+          "right": 269.6666717529297,
+          "top": 1569.8125,
+          "width": 234.6666717529297,
+          "x": 35,
+          "y": 1569.8125
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/stos/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 2429.760498046875,
+          "height": 48,
+          "left": 35,
+          "right": 269.6666717529297,
+          "top": 2381.760498046875,
+          "width": 234.6666717529297,
+          "x": 35,
+          "y": 2381.760498046875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/cho-kenh/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 3322.09375,
+          "height": 48,
+          "left": 35,
+          "right": 269.6666717529297,
+          "top": 3274.09375,
+          "width": 234.6666717529297,
+          "x": 35,
+          "y": 3274.09375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/work/kkbox-baseline/",
+        "name": "Case study\n↗",
+        "rect": {
+          "bottom": 4095.25,
+          "height": 48,
+          "left": 35,
+          "right": 269.6666717529297,
+          "top": 4047.25,
+          "width": 234.6666717529297,
+          "x": 35,
+          "y": 4047.25
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/credits/",
+        "name": "Credits",
+        "rect": {
+          "bottom": 22118.115234375,
+          "height": 18,
+          "left": 24,
+          "right": 64.47916793823242,
+          "top": 22100.115234375,
+          "width": 40.47916793823242,
+          "x": 24,
+          "y": 22100.115234375
+        }
+      },
+      {
+        "href": "#top",
+        "name": "Back to top ↑",
+        "rect": {
+          "bottom": 22118.115234375,
+          "height": 18,
+          "left": 203.14584350585935,
+          "right": 280.6666793823242,
+          "top": 22100.115234375,
+          "width": 77.52083587646484,
+          "x": 203.14584350585935,
+          "y": 22100.115234375
+        }
+      }
+    ],
+    "gallery": [],
+    "height": 844,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Public v0.2.0 repository with passing CI"
+      },
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Public service site and demo links"
+      },
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Live product site and public template pages"
+      },
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Live channel catalog and manual intermediary service page"
+      },
+      {
+        "overflow": false,
+        "size": "16px",
+        "text": "Public prototype source and leakage checks; scores omitted"
+      }
+    ],
+    "target": {
+      "outline": "2px"
+    },
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/#project-vibecode-kit",
+    "width": 320
+  },
+  {
+    "actions": [
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "← Back to selected work",
+        "rect": {
+          "bottom": 142.5312538146973,
+          "height": 19.197917938232425,
+          "left": 75.19792175292969,
+          "right": 229.46876525878903,
+          "top": 123.33333587646484,
+          "width": 154.27084350585938,
+          "x": 75.19792175292969,
+          "y": 123.33333587646484
+        }
+      },
+      {
+        "href": "https://github.com/DUYTRUYENTHONG/vibecode-product-kit",
+        "name": "View repository ↗",
+        "rect": {
+          "bottom": 3006.291748046875,
+          "height": 50,
+          "left": 24,
+          "right": 203.25,
+          "top": 2956.291748046875,
+          "width": 179.25,
+          "x": 24,
+          "y": 2956.291748046875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "Back to all work ↑",
+        "rect": {
+          "bottom": 3063.979248046875,
+          "height": 45.6875,
+          "left": 24,
+          "right": 179.5729217529297,
+          "top": 3018.291748046875,
+          "width": 155.5729217529297,
+          "x": 24,
+          "y": 3018.291748046875
+        }
+      },
+      {
+        "href": "mailto:nquangd1510@gmail.com",
+        "name": "Get in touch ↗",
+        "rect": {
+          "bottom": 3195.64599609375,
+          "height": 18,
+          "left": 24,
+          "right": 104.84375,
+          "top": 3177.64599609375,
+          "width": 80.84375,
+          "x": 24,
+          "y": 3177.64599609375
+        }
+      }
+    ],
+    "gallery": [],
+    "height": 844,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Codex Vibecode Pro Max Kit"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Maintainer of the public DUYTRUYENTHONG repository."
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Public open-source tool"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Public v0.2.0 repository with passing CI"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "JavaScript · Node.js · GitHub Actions · Codex"
+      }
+    ],
+    "target": null,
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/work/vibecode-kit/",
+    "width": 320
+  },
+  {
+    "actions": [
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "← Back to selected work",
+        "rect": {
+          "bottom": 142.5312538146973,
+          "height": 19.197917938232425,
+          "left": 75.19792175292969,
+          "right": 229.46876525878903,
+          "top": 123.33333587646484,
+          "width": 154.27084350585938,
+          "x": 75.19792175292969,
+          "y": 123.33333587646484
+        }
+      },
+      {
+        "href": "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md",
+        "name": "View source and verified results ↗",
+        "rect": {
+          "bottom": 4874.14599609375,
+          "height": 74,
+          "left": 24,
+          "right": 280.66668701171875,
+          "top": 4800.14599609375,
+          "width": 256.66668701171875,
+          "x": 24,
+          "y": 4800.14599609375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "Back to all work ↑",
+        "rect": {
+          "bottom": 4931.83349609375,
+          "height": 45.6875,
+          "left": 24,
+          "right": 179.5729217529297,
+          "top": 4886.14599609375,
+          "width": 155.5729217529297,
+          "x": 24,
+          "y": 4886.14599609375
+        }
+      },
+      {
+        "href": "mailto:nquangd1510@gmail.com",
+        "name": "Get in touch ↗",
+        "rect": {
+          "bottom": 5063.5,
+          "height": 18,
+          "left": 24,
+          "right": 104.84375,
+          "top": 5045.5,
+          "width": 80.84375,
+          "x": 24,
+          "y": 5045.5
+        }
+      }
+    ],
+    "gallery": [],
+    "height": 844,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "KKBox customer churn baseline"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Project owner; baseline developed with Codex assistance. The academic reference is credited separately."
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Public source · official-data local holdout"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Public prototype source and leakage checks; scores omitted"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Python · DuckDB · Pandas · scikit-learn"
+      }
+    ],
+    "target": null,
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/work/kkbox-baseline/",
+    "width": 320
+  },
+  {
+    "actions": [
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "← Back to selected work",
+        "rect": {
+          "bottom": -3132.8020820617676,
+          "height": 19.197917938232425,
+          "left": 75.19792175292969,
+          "right": 229.46876525878903,
+          "top": -3152,
+          "width": 154.27084350585938,
+          "x": 75.19792175292969,
+          "y": -3152
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-home-desktop-2026.png",
+        "name": "Open full screenshot: STOS landing page on desktop",
+        "rect": {
+          "bottom": 462.8021087646485,
+          "height": 204.2604217529297,
+          "left": 24.666667938232425,
+          "right": 280.0000114440918,
+          "top": 258.54168701171875,
+          "width": 255.33334350585935,
+          "x": 24.666667938232425,
+          "y": 258.54168701171875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-home-mobile-2026.png",
+        "name": "Open full screenshot: STOS landing page on mobile",
+        "rect": {
+          "bottom": 734.6562957763672,
+          "height": 204.2604217529297,
+          "left": 24.666667938232425,
+          "right": 280.0000114440918,
+          "top": 530.3958740234375,
+          "width": 255.33334350585935,
+          "x": 24.666667938232425,
+          "y": 530.3958740234375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-templates-desktop-2026.png",
+        "name": "Open full screenshot: STOS template gallery on desktop",
+        "rect": {
+          "bottom": 1006.5104217529296,
+          "height": 204.2604217529297,
+          "left": 24.666667938232425,
+          "right": 280.0000114440918,
+          "top": 802.25,
+          "width": 255.33334350585935,
+          "x": 24.666667938232425,
+          "y": 802.25
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-login-2026.png",
+        "name": "Open full screenshot: STOS sign-in screen",
+        "rect": {
+          "bottom": 1273.0313415527344,
+          "height": 177.33334350585938,
+          "left": 24.666667938232425,
+          "right": 280.0000114440918,
+          "top": 1095.697998046875,
+          "width": 255.33334350585935,
+          "x": 24.666667938232425,
+          "y": 1095.697998046875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-signup-2026.png",
+        "name": "Open full screenshot: STOS registration screen",
+        "rect": {
+          "bottom": 1544.8854217529297,
+          "height": 204.2604217529297,
+          "left": 24.666667938232425,
+          "right": 280.0000114440918,
+          "top": 1340.625,
+          "width": 255.33334350585935,
+          "x": 24.666667938232425,
+          "y": 1340.625
+        }
+      },
+      {
+        "href": "https://stosvn.vercel.app/stos",
+        "name": "Visit STOS ↗",
+        "rect": {
+          "bottom": 1716.8125,
+          "height": 50,
+          "left": 24,
+          "right": 162.0625,
+          "top": 1666.8125,
+          "width": 138.0625,
+          "x": 24,
+          "y": 1666.8125
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "Back to all work ↑",
+        "rect": {
+          "bottom": 1774.5,
+          "height": 45.6875,
+          "left": 24,
+          "right": 179.5729217529297,
+          "top": 1728.8125,
+          "width": 155.5729217529297,
+          "x": 24,
+          "y": 1728.8125
+        }
+      },
+      {
+        "href": "mailto:nquangd1510@gmail.com",
+        "name": "Get in touch ↗",
+        "rect": {
+          "bottom": 1906.166748046875,
+          "height": 18,
+          "left": 24,
+          "right": 104.84375,
+          "top": 1888.166748046875,
+          "width": 80.84375,
+          "x": 24,
+          "y": 1888.166748046875
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "caption": "STOS landing page on desktop ↗",
+        "frameHeight": 204.2604217529297,
+        "imageHeight": 204.2604217529297
+      },
+      {
+        "caption": "STOS landing page on mobile ↗",
+        "frameHeight": 204.2604217529297,
+        "imageHeight": 204.2604217529297
+      },
+      {
+        "caption": "STOS template gallery on desktop ↗",
+        "frameHeight": 204.2604217529297,
+        "imageHeight": 204.2604217529297
+      },
+      {
+        "caption": "STOS sign-in screen ↗",
+        "frameHeight": 177.33334350585938,
+        "imageHeight": 177.33334350585938
+      },
+      {
+        "caption": "STOS registration screen ↗",
+        "frameHeight": 204.2604217529297,
+        "imageHeight": 204.2604217529297
+      }
+    ],
+    "height": 844,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "STOS Sales Traffic Operating System"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Product builder."
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Live product website"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Live product site and public template pages"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Web product · Page builder · Lead workflow · Analytics"
+      }
+    ],
+    "target": null,
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/work/stos/#case-media-title",
+    "width": 320
+  },
+  {
+    "actions": [
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "← Back to selected work",
+        "rect": {
+          "bottom": -3569.4688301086426,
+          "height": 19.197917938232425,
+          "left": 75.19792175292969,
+          "right": 229.46876525878903,
+          "top": -3588.666748046875,
+          "width": 154.27084350585938,
+          "x": 75.19792175292969,
+          "y": -3588.666748046875
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-home-2026.png",
+        "name": "Open full screenshot: Chợ Kênh homepage and featured channels",
+        "rect": {
+          "bottom": 384.15626525878906,
+          "height": 126.04167175292967,
+          "left": 24.666667938232425,
+          "right": 280.0000114440918,
+          "top": 258.1145935058594,
+          "width": 255.33334350585935,
+          "x": 24.666667938232425,
+          "y": 258.1145935058594
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-catalog-2026.png",
+        "name": "Open full screenshot: Chợ Kênh channel catalog and filters",
+        "rect": {
+          "bottom": 608.8958435058594,
+          "height": 135.55209350585938,
+          "left": 24.666667938232425,
+          "right": 280.0000114440918,
+          "top": 473.34375,
+          "width": 255.33334350585935,
+          "x": 24.666667938232425,
+          "y": 473.34375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-buying-flow-2026.png",
+        "name": "Open full screenshot: Chợ Kênh buying steps",
+        "rect": {
+          "bottom": 802.5312957763672,
+          "height": 104.44792175292967,
+          "left": 24.666667938232425,
+          "right": 280.0000114440918,
+          "top": 698.0833740234375,
+          "width": 255.33334350585935,
+          "x": 24.666667938232425,
+          "y": 698.0833740234375
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-some-process-2026.png",
+        "name": "Open full screenshot: Chợ Kênh intermediary review process",
+        "rect": {
+          "bottom": 982.2291717529296,
+          "height": 112.10417175292967,
+          "left": 24.666667938232425,
+          "right": 280.0000114440918,
+          "top": 870.125,
+          "width": 255.33334350585935,
+          "x": 24.666667938232425,
+          "y": 870.125
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/cho-kenh-trust-layer-2026.png",
+        "name": "Open full screenshot: Chợ Kênh transaction safeguards",
+        "rect": {
+          "bottom": 1206.041748046875,
+          "height": 134.625,
+          "left": 24.666667938232425,
+          "right": 280.0000114440918,
+          "top": 1071.416748046875,
+          "width": 255.33334350585935,
+          "x": 24.666667938232425,
+          "y": 1071.416748046875
+        }
+      },
+      {
+        "href": "https://growth-commerce-os.vercel.app/cho-kenh",
+        "name": "Visit Chợ Kênh ↗",
+        "rect": {
+          "bottom": 1399.5625,
+          "height": 50,
+          "left": 24,
+          "right": 195.96875,
+          "top": 1349.5625,
+          "width": 171.96875,
+          "x": 24,
+          "y": 1349.5625
+        }
+      },
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "Back to all work ↑",
+        "rect": {
+          "bottom": 1457.25,
+          "height": 45.6875,
+          "left": 24,
+          "right": 179.5729217529297,
+          "top": 1411.5625,
+          "width": 155.5729217529297,
+          "x": 24,
+          "y": 1411.5625
+        }
+      },
+      {
+        "href": "mailto:nquangd1510@gmail.com",
+        "name": "Get in touch ↗",
+        "rect": {
+          "bottom": 1588.916748046875,
+          "height": 18,
+          "left": 24,
+          "right": 104.84375,
+          "top": 1570.916748046875,
+          "width": 80.84375,
+          "x": 24,
+          "y": 1570.916748046875
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "caption": "Chợ Kênh homepage and featured channels ↗",
+        "frameHeight": 126.04167175292967,
+        "imageHeight": 126.04167175292967
+      },
+      {
+        "caption": "Chợ Kênh channel catalog and filters ↗",
+        "frameHeight": 135.55209350585938,
+        "imageHeight": 135.55209350585938
+      },
+      {
+        "caption": "Chợ Kênh buying steps ↗",
+        "frameHeight": 104.44792175292967,
+        "imageHeight": 104.44792175292967
+      },
+      {
+        "caption": "Chợ Kênh intermediary review process ↗",
+        "frameHeight": 112.10417175292967,
+        "imageHeight": 112.10417175292967
+      },
+      {
+        "caption": "Chợ Kênh transaction safeguards ↗",
+        "frameHeight": 134.625,
+        "imageHeight": 134.625
+      }
+    ],
+    "height": 844,
+    "overflow": false,
+    "proof": [
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Chợ Kênh"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Owner and product builder."
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Live marketplace website"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Live channel catalog and manual intermediary service page"
+      },
+      {
+        "overflow": false,
+        "size": "16.48px",
+        "text": "Web marketplace · Search and filtering · Lead workflow"
+      }
+    ],
+    "target": null,
+    "url": "http://127.0.0.1:3037/Alinguyen-portfolio/work/cho-kenh/#case-media-title",
+    "width": 320
+  }
+]

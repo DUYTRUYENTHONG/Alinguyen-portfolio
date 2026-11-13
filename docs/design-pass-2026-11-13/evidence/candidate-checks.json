@@ -1,0 +1,36 @@
+{
+  "startingRevision": "5dca188af23a352816191f9724326be644a38ea9",
+  "branch": "codex/proof-motion-gallery",
+  "runtimeFiles": [
+    "src/app/styles.css"
+  ],
+  "cssSha256": "cf1667f4c6bc4cf09bcb90d85b3f59aa3864262e1734ec5115ff656a3b494aed",
+  "preview": "http://127.0.0.1:3037/Alinguyen-portfolio/",
+  "tests": {
+    "frontend": {
+      "passed": 49,
+      "total": 49
+    },
+    "visitorApi": {
+      "passed": 67,
+      "total": 67
+    },
+    "analytics": {
+      "passed": 14,
+      "total": 14
+    }
+  },
+  "typecheck": "pass",
+  "lint": "pass",
+  "basePathExport": "pass",
+  "cleanInstall": "failed ENOSPC; no clean-install acceptance",
+  "release": "local only; production unchanged",
+  "baselineWalkthrough": {
+    "viewport": "1440x900",
+    "elapsedMs": 12946,
+    "clicks": 3,
+    "roleChoices": 0,
+    "sourceURL": "https://github.com/DUYTRUYENTHONG/vibecode-product-kit",
+    "scope": "operator with locator auto-scroll, not independent recruiter study"
+  }
+}

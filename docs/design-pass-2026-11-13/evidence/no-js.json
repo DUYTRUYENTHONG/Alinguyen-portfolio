@@ -1,0 +1,49 @@
+{
+  "noJsCase": {
+    "links": [
+      {
+        "href": "/Alinguyen-portfolio/stos-home-desktop-2026.png",
+        "name": "Open full screenshot: STOS landing page on desktop"
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-home-mobile-2026.png",
+        "name": "Open full screenshot: STOS landing page on mobile"
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-templates-desktop-2026.png",
+        "name": "Open full screenshot: STOS template gallery on desktop"
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-login-2026.png",
+        "name": "Open full screenshot: STOS sign-in screen"
+      },
+      {
+        "href": "/Alinguyen-portfolio/stos-signup-2026.png",
+        "name": "Open full screenshot: STOS registration screen"
+      },
+      {
+        "href": "https://stosvn.vercel.app/stos",
+        "name": "Visit STOS ↗"
+      },
+      {
+        "href": "/Alinguyen-portfolio/#work",
+        "name": "Back to all work ↑"
+      },
+      {
+        "href": "mailto:nquangd1510@gmail.com",
+        "name": "Get in touch ↗"
+      }
+    ],
+    "overflow": false,
+    "width": 390
+  },
+  "noJsHome": {
+    "cv": "/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+    "hash": "#project-kkbox-baseline",
+    "headingOpacity": "1",
+    "overflow": false,
+    "targetOutline": "2px",
+    "terminal": "vibecode-product-kit\n\n$ vibecode init\n\n✓ plan created\n\n✓ evidence recorded\n\n✓ quality gates ready\n\nBUILD → VERIFY → RELEASE",
+    "timeline": "kkbox / local baseline\nEVENTS OVER TIME\nSnapshot\nPast events only\n\nFeature construction → holdout evaluation\n\nConceptual diagram · measured results in case study"
+  }
+}

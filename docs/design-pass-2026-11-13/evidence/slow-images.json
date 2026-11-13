@@ -1,0 +1,52 @@
+{
+  "network": {
+    "latencyMs": 800,
+    "downloadBytesPerSecond": 128000
+  },
+  "result": {
+    "links": [
+      {
+        "caption": "STOS landing page on desktop ↗",
+        "height": 260.26043701171875,
+        "imageLoaded": true,
+        "name": "Open full screenshot: STOS landing page on desktop",
+        "naturalHeight": 880,
+        "width": 1100
+      },
+      {
+        "caption": "STOS landing page on mobile ↗",
+        "height": 260.26043701171875,
+        "imageLoaded": true,
+        "name": "Open full screenshot: STOS landing page on mobile",
+        "naturalHeight": 312,
+        "width": 390
+      },
+      {
+        "caption": "STOS template gallery on desktop ↗",
+        "height": 260.26043701171875,
+        "imageLoaded": true,
+        "name": "Open full screenshot: STOS template gallery on desktop",
+        "naturalHeight": 880,
+        "width": 1100
+      },
+      {
+        "caption": "STOS sign-in screen ↗",
+        "height": 225.95834350585935,
+        "imageLoaded": true,
+        "name": "Open full screenshot: STOS sign-in screen",
+        "naturalHeight": 764,
+        "width": 1100
+      },
+      {
+        "caption": "STOS registration screen ↗",
+        "height": 260.26043701171875,
+        "imageLoaded": true,
+        "name": "Open full screenshot: STOS registration screen",
+        "naturalHeight": 880,
+        "width": 1100
+      }
+    ],
+    "width": 390
+  },
+  "limit": "Final loaded state inspected; initial-frame layout shift was not measured."
+}

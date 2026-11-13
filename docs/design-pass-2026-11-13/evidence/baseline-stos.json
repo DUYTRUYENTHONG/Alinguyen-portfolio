@@ -1,0 +1,131 @@
+{
+  "gallery": [
+    {
+      "caption": "STOS landing page on desktop ↗",
+      "frameHeight": 350,
+      "href": "http://127.0.0.1:3037/Alinguyen-portfolio/stos-home-desktop-2026.png",
+      "imageHeight": 330.9270935058594,
+      "position": {
+        "bottom": 494.5104217529297,
+        "height": 350,
+        "left": 207.33334350585935,
+        "right": 622.3333435058594,
+        "top": 144.5104217529297,
+        "width": 415,
+        "x": 207.33334350585935,
+        "y": 144.5104217529297
+      }
+    },
+    {
+      "caption": "STOS landing page on mobile ↗",
+      "frameHeight": 350,
+      "href": "http://127.0.0.1:3037/Alinguyen-portfolio/stos-home-mobile-2026.png",
+      "imageHeight": 330.9270935058594,
+      "position": {
+        "bottom": 494.5104217529297,
+        "height": 350,
+        "left": 642.3333740234375,
+        "right": 1057.3333740234375,
+        "top": 144.5104217529297,
+        "width": 415,
+        "x": 642.3333740234375,
+        "y": 144.5104217529297
+      }
+    },
+    {
+      "caption": "STOS template gallery on desktop ↗",
+      "frameHeight": 350,
+      "href": "http://127.0.0.1:3037/Alinguyen-portfolio/stos-templates-desktop-2026.png",
+      "imageHeight": 330.9270935058594,
+      "position": {
+        "bottom": 908.1979370117188,
+        "height": 350,
+        "left": 207.33334350585935,
+        "right": 622.3333435058594,
+        "top": 558.1979370117188,
+        "width": 415,
+        "x": 207.33334350585935,
+        "y": 558.1979370117188
+      }
+    },
+    {
+      "caption": "STOS sign-in screen ↗",
+      "frameHeight": 350,
+      "href": "http://127.0.0.1:3037/Alinguyen-portfolio/stos-login-2026.png",
+      "imageHeight": 287.3020935058594,
+      "position": {
+        "bottom": 908.1979370117188,
+        "height": 350,
+        "left": 642.3333740234375,
+        "right": 1057.3333740234375,
+        "top": 558.1979370117188,
+        "width": 415,
+        "x": 642.3333740234375,
+        "y": 558.1979370117188
+      }
+    },
+    {
+      "caption": "STOS registration screen ↗",
+      "frameHeight": 350,
+      "href": "http://127.0.0.1:3037/Alinguyen-portfolio/stos-signup-2026.png",
+      "imageHeight": 330.9270935058594,
+      "position": {
+        "bottom": 1321.8854370117188,
+        "height": 350,
+        "left": 207.33334350585935,
+        "right": 622.3333435058594,
+        "top": 971.8854370117188,
+        "width": 415,
+        "x": 207.33334350585935,
+        "y": 971.8854370117188
+      }
+    }
+  ],
+  "links": [
+    {
+      "href": "https://stosvn.vercel.app/stos",
+      "name": "Visit STOS ↗",
+      "position": {
+        "bottom": 1516.260498046875,
+        "height": 45.6875,
+        "left": 207.33334350585935,
+        "right": 327.75001525878906,
+        "top": 1470.572998046875,
+        "width": 120.41667175292967,
+        "x": 207.33334350585935,
+        "y": 1470.572998046875
+      }
+    },
+    {
+      "href": "http://127.0.0.1:3037/Alinguyen-portfolio/#work",
+      "name": "Back to all work ↑",
+      "position": {
+        "bottom": 1516.260498046875,
+        "height": 45.6875,
+        "left": 339.75,
+        "right": 495.3229217529297,
+        "top": 1470.572998046875,
+        "width": 155.5729217529297,
+        "x": 339.75,
+        "y": 1470.572998046875
+      }
+    },
+    {
+      "href": "mailto:nquangd1510@gmail.com",
+      "name": "Get in touch ↗",
+      "position": {
+        "bottom": 1664.9271240234375,
+        "height": 18,
+        "left": 1123.822998046875,
+        "right": 1204.666748046875,
+        "top": 1646.9271240234375,
+        "width": 80.84375,
+        "x": 1123.822998046875,
+        "y": 1646.9271240234375
+      }
+    }
+  ],
+  "overflow": false,
+  "route": "http://127.0.0.1:3037/Alinguyen-portfolio/work/stos/#case-media-title",
+  "width": 1280
+}

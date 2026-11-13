@@ -1,0 +1,43 @@
+{
+  "headingTrace": {
+    "animation": "home-heading-enter",
+    "duration": "0.32s",
+    "opacity": "0.650049",
+    "state": "running",
+    "travel": "8px"
+  },
+  "diagramTrace": {
+    "future": [
+      {
+        "animation": "none",
+        "border": "rgb(174, 184, 200)"
+      },
+      {
+        "animation": "none",
+        "border": "rgb(174, 184, 200)"
+      }
+    ],
+    "marker": {
+      "animation": "none",
+      "transform": "none"
+    },
+    "past": [
+      {
+        "animation": "home-past-event",
+        "opacity": "1",
+        "transform": "none"
+      },
+      {
+        "animation": "home-past-event",
+        "opacity": "1",
+        "transform": "none"
+      },
+      {
+        "animation": "home-past-event",
+        "opacity": "1",
+        "transform": "none"
+      }
+    ],
+    "state": "running"
+  }
+}

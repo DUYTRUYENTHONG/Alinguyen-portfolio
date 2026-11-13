@@ -1,0 +1,75 @@
+{
+  "figures": [
+    {
+      "caption": "STOS landing page on desktop ↗",
+      "href": "http://127.0.0.1:3037/Alinguyen-portfolio/stos-home-desktop-2026.png",
+      "rect": {
+        "bottom": 651.8541870117188,
+        "height": 333.6875,
+        "left": 24,
+        "right": 350.66668701171875,
+        "top": 318.16668701171875,
+        "width": 326.66668701171875,
+        "x": 24,
+        "y": 318.16668701171875
+      }
+    },
+    {
+      "caption": "STOS landing page on mobile ↗",
+      "href": "http://127.0.0.1:3037/Alinguyen-portfolio/stos-home-mobile-2026.png",
+      "rect": {
+        "bottom": 1005.5416870117188,
+        "height": 333.6875,
+        "left": 24,
+        "right": 350.66668701171875,
+        "top": 671.8541870117188,
+        "width": 326.66668701171875,
+        "x": 24,
+        "y": 671.8541870117188
+      }
+    },
+    {
+      "caption": "STOS template gallery on desktop ↗",
+      "href": "http://127.0.0.1:3037/Alinguyen-portfolio/stos-templates-desktop-2026.png",
+      "rect": {
+        "bottom": 1359.229248046875,
+        "height": 333.6875,
+        "left": 24,
+        "right": 350.66668701171875,
+        "top": 1025.541748046875,
+        "width": 326.66668701171875,
+        "x": 24,
+        "y": 1025.541748046875
+      }
+    },
+    {
+      "caption": "STOS sign-in screen ↗",
+      "href": "http://127.0.0.1:3037/Alinguyen-portfolio/stos-login-2026.png",
+      "rect": {
+        "bottom": 1712.916748046875,
+        "height": 333.6875,
+        "left": 24,
+        "right": 350.66668701171875,
+        "top": 1379.229248046875,
+        "width": 326.66668701171875,
+        "x": 24,
+        "y": 1379.229248046875
+      }
+    },
+    {
+      "caption": "STOS registration screen ↗",
+      "href": "http://127.0.0.1:3037/Alinguyen-portfolio/stos-signup-2026.png",
+      "rect": {
+        "bottom": 2066.604248046875,
+        "height": 333.6875,
+        "left": 24,
+        "right": 350.66668701171875,
+        "top": 1732.916748046875,
+        "width": 326.66668701171875,
+        "x": 24,
+        "y": 1732.916748046875
+      }
+    }
+  ],
+  "width": 390
+}
