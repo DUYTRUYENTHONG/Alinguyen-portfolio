@@ -9,7 +9,7 @@ Baseline: `8da9f0fe99de5eb65840ffdab791f46c8db2a08f`. Candidate branch: `codex/d
 - Dependency installs: `npm ci`, `npm --prefix visitor-api ci`, `npm --prefix analytics ci`.
 - `npm run typecheck` and `npm run lint`: pass.
 - `npm run test`: 51 passing in the current working tree, including four pre-existing project-finder tests outside this change. The migration does not include that finder work.
-- `npm --prefix visitor-api test`: 54 passing, fake transport only; not a provider quality score.
+- `npm --prefix visitor-api test`: 57 passing, fake transport only; not a provider quality score.
 - `npm --prefix analytics test`: 14 passing, including local PostgreSQL persistence.
 - `npm run build`: pass, 17 generated pages, including `/evidence/retrieval/`, using the four public variables from the Pages workflow.
 - Offline prefix probe: four constructed fixtures, stable fixed system prefix, identical repeat, zero provider calls. Sanitized output: `docs/evidence/deepseek-prefix-offline.json`.
@@ -43,3 +43,7 @@ The probe additionally requires `DEEPSEEK_PROBE_MAX_CALLS=4`. Do not run a paid 
 Source links on the local candidate page target the unpublished feature branch and cannot be verified publicly until branch publication. The local preview is `http://127.0.0.1:3032/Alinguyen-portfolio/evidence/retrieval/`. No deployment or live migration claim is made.
 
 The original retrieval candidate patch and 18-question replay were not found. Current 18 public records are fingerprinted, but they are not substitutes for the missing questions and labels. Reported handoff figures remain explicitly unverified. Independent labels and the sealed holdout must not be authored or scored by the implementation assistant as proof of answer quality.
+
+## Release-gate hardening
+
+The deployment gate now compares the complete visitor-visible provider answer and citation mapping with reviewed evidence. A valid citation plus a limitation keyword cannot pass an altered answer. Three additional synthetic tests reject altered facts, fallback mode, wrong revision and a forged URL. This is a contract check, not independent answer-quality measurement.

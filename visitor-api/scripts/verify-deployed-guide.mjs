@@ -1,3 +1,4 @@
+import { verifyGuideReceipt } from "../lib/guide-deployment-verification.js";
 const [endpoint, revision, environment] = process.argv.slice(2);
 if (
 	!endpoint ||
@@ -43,19 +44,13 @@ for (const f of fixtures) {
 	});
 	const result = await response.json();
 	const r = result.receipt;
-	const passed =
-		response.status === 200 &&
-		r?.environment === environment &&
-		r?.revision === revision &&
-		r?.providerAttempted === f.provider &&
-		result.citations?.some((c) => c.sourceId === f.source) &&
-		(!f.provider ||
-			(r.providerStatus === 200 &&
-				typeof r.returnedModel === "string" &&
-				r.returnedModel.startsWith("deepseek") &&
-				r.selectedIds?.includes(f.source) &&
-				result.responseMode === "reviewed-evidence" &&
-				/omitted|disputed/i.test(result.answer)));
+	const passed = verifyGuideReceipt({
+		status: response.status,
+		result,
+		fixture: f,
+		revision,
+		environment,
+	});
 	console.log(
 		JSON.stringify({
 			fixture: f.id,
