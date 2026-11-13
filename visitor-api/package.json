@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "scripts": { "test": "node --test test/*.test.js", "test:redis": "node scripts/test-traffic-redis.mjs", "smoke:production": "node scripts/check-production-guide.mjs" },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "test:redis": "node scripts/test-traffic-redis.mjs",
+    "smoke:production": "node scripts/check-production-guide.mjs",
+    "eval:offline": "node scripts/evaluate-offline-release.mjs"
+  },
   "dependencies": {
     "@upstash/redis": "^1.35.6"
   }

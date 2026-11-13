@@ -35,176 +35,68 @@
   "base": {
     "en": {
       "examples": 4,
-      "evaluated": true,
-      "acceptable": 0,
+      "evaluated": false,
+      "acceptable": null,
       "noActionCases": 2,
-      "correctNoAction": 0,
-      "wrongProject": 0,
-      "repeatedCTA": 0,
-      "plannedFeatureCritical": 0
+      "correctNoAction": null,
+      "wrongProject": null,
+      "repeatedCTA": null,
+      "plannedFeatureCritical": null
     },
     "vi": {
       "examples": 4,
-      "evaluated": true,
-      "acceptable": 0,
+      "evaluated": false,
+      "acceptable": null,
       "noActionCases": 2,
-      "correctNoAction": 0,
-      "wrongProject": 0,
-      "repeatedCTA": 0,
-      "plannedFeatureCritical": 0
+      "correctNoAction": null,
+      "wrongProject": null,
+      "repeatedCTA": null,
+      "plannedFeatureCritical": null
     },
     "all": {
       "examples": 8,
-      "evaluated": true,
-      "acceptable": 0,
+      "evaluated": false,
+      "acceptable": null,
       "noActionCases": 4,
-      "correctNoAction": 0,
-      "wrongProject": 0,
-      "repeatedCTA": 0,
-      "plannedFeatureCritical": 0
+      "correctNoAction": null,
+      "wrongProject": null,
+      "repeatedCTA": null,
+      "plannedFeatureCritical": null
     }
   },
   "adapter": {
     "en": {
       "examples": 4,
-      "evaluated": true,
-      "acceptable": 2,
+      "evaluated": false,
+      "acceptable": null,
       "noActionCases": 2,
-      "correctNoAction": 2,
-      "wrongProject": 1,
-      "repeatedCTA": 0,
-      "plannedFeatureCritical": 0
+      "correctNoAction": null,
+      "wrongProject": null,
+      "repeatedCTA": null,
+      "plannedFeatureCritical": null
     },
     "vi": {
       "examples": 4,
-      "evaluated": true,
-      "acceptable": 2,
+      "evaluated": false,
+      "acceptable": null,
       "noActionCases": 2,
-      "correctNoAction": 2,
-      "wrongProject": 1,
-      "repeatedCTA": 0,
-      "plannedFeatureCritical": 0
+      "correctNoAction": null,
+      "wrongProject": null,
+      "repeatedCTA": null,
+      "plannedFeatureCritical": null
     },
     "all": {
       "examples": 8,
-      "evaluated": true,
-      "acceptable": 4,
+      "evaluated": false,
+      "acceptable": null,
       "noActionCases": 4,
-      "correctNoAction": 4,
-      "wrongProject": 2,
-      "repeatedCTA": 0,
-      "plannedFeatureCritical": 0
+      "correctNoAction": null,
+      "wrongProject": null,
+      "repeatedCTA": null,
+      "plannedFeatureCritical": null
     }
   },
-  "trainingStatus": {
-    "protocolLimit": "Recorded v1 CV paraphrase crosses train/dev; corrected runnable v2 split has not been trained.",
-    "updates": 18,
-    "complete": false,
-    "selectedStep": 18,
-    "adapterSha256": "7f2e124dce228573444be5760db8a07bf16874bbbdd65851cf3d283fb824e235",
-    "learningCurve": [
-      {
-        "step": 1,
-        "loss": 0.18547773361206055,
-        "elapsedSeconds": 6.45
-      },
-      {
-        "step": 2,
-        "loss": 0.03273974359035492,
-        "elapsedSeconds": 11.42
-      },
-      {
-        "step": 3,
-        "loss": 0.006249474361538887,
-        "elapsedSeconds": 16.69
-      },
-      {
-        "step": 4,
-        "loss": 0.0017317697638645768,
-        "elapsedSeconds": 24.02
-      },
-      {
-        "step": 5,
-        "loss": 0.04647284001111984,
-        "elapsedSeconds": 44.58
-      },
-      {
-        "step": 6,
-        "loss": 0.0032903116662055254,
-        "elapsedSeconds": 60.61
-      },
-      {
-        "step": 7,
-        "loss": 0.0008423992549069226,
-        "elapsedSeconds": 78.02
-      },
-      {
-        "step": 8,
-        "loss": 0.00009012909140437841,
-        "elapsedSeconds": 94
-      },
-      {
-        "step": 9,
-        "loss": 0.44136086106300354,
-        "elapsedSeconds": 109.92
-      },
-      {
-        "step": 10,
-        "loss": 0.4964349567890167,
-        "elapsedSeconds": 142.34
-      },
-      {
-        "step": 11,
-        "loss": 0.7791038751602173,
-        "elapsedSeconds": 155.75
-      },
-      {
-        "step": 12,
-        "loss": 1.0384858846664429,
-        "elapsedSeconds": 170.19
-      },
-      {
-        "step": 13,
-        "loss": 2.2822492122650146,
-        "elapsedSeconds": 185.75
-      },
-      {
-        "step": 14,
-        "loss": 1.8698182106018066,
-        "elapsedSeconds": 209.92
-      },
-      {
-        "step": 15,
-        "loss": 1.4580166339874268,
-        "elapsedSeconds": 223.67
-      },
-      {
-        "step": 16,
-        "loss": 0.9518707394599915,
-        "elapsedSeconds": 238.17
-      },
-      {
-        "step": 17,
-        "loss": 0.0006122500635683537,
-        "elapsedSeconds": 290.34
-      },
-      {
-        "step": 18,
-        "loss": 0.0005458047380670905,
-        "elapsedSeconds": 302.14
-      }
-    ],
-    "devCurve": [
-      {
-        "step": 16,
-        "loss": 0.07400338684965391
-      },
-      {
-        "step": 18,
-        "loss": 0.07126315854839049
-      }
-    ]
-  },
+  "trainingStatus": null,
   "paired": [
     {
       "id": "topic-switch-en",
@@ -238,8 +130,8 @@
       "actionState": {},
       "explanation": "Authored public/synthetic intent; kkbox-case follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions.",
       "rules": "kkbox-case",
-      "base": "ask_clarification",
-      "adapter": "stos-demo"
+      "base": null,
+      "adapter": null
     },
     {
       "id": "topic-switch-vi",
@@ -273,8 +165,8 @@
       "actionState": {},
       "explanation": "Authored public/synthetic intent; kkbox-case follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions.",
       "rules": "kkbox-case",
-      "base": "ask_clarification",
-      "adapter": "stos-demo"
+      "base": null,
+      "adapter": null
     },
     {
       "id": "planned-only-en",
@@ -301,8 +193,8 @@
       "actionState": {},
       "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions.",
       "rules": "no_action",
-      "base": "ask_clarification",
-      "adapter": "no_action"
+      "base": null,
+      "adapter": null
     },
     {
       "id": "planned-only-vi",
@@ -329,8 +221,8 @@
       "actionState": {},
       "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions.",
       "rules": "no_action",
-      "base": "ask_clarification",
-      "adapter": "no_action"
+      "base": null,
+      "adapter": null
     },
     {
       "id": "explicit-decline-en",
@@ -359,8 +251,8 @@
       "actionState": {},
       "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions.",
       "rules": "no_action",
-      "base": "ask_clarification",
-      "adapter": "no_action"
+      "base": null,
+      "adapter": null
     },
     {
       "id": "explicit-decline-vi",
@@ -389,8 +281,8 @@
       "actionState": {},
       "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions.",
       "rules": "no_action",
-      "base": "ask_clarification",
-      "adapter": "no_action"
+      "base": null,
+      "adapter": null
     },
     {
       "id": "service-demo-en",
@@ -419,8 +311,8 @@
       "actionState": {},
       "explanation": "Authored public/synthetic intent; growth-demo follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions.",
       "rules": "growth-demo",
-      "base": "ask_clarification",
-      "adapter": "public-contact"
+      "base": null,
+      "adapter": null
     },
     {
       "id": "service-demo-vi",
@@ -449,8 +341,8 @@
       "actionState": {},
       "explanation": "Authored public/synthetic intent; growth-demo follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions.",
       "rules": "growth-demo",
-      "base": "ask_clarification",
-      "adapter": "public-contact"
+      "base": null,
+      "adapter": null
     }
   ],
   "decision": "Rules chosen provisionally; no learned action table deployed. Independent evaluation pending.",
@@ -461,5 +353,17 @@
     "eventCounts": null,
     "reason": "Existing consent covers project-link aggregates only, not eligible chat sessions, CV or contact outcomes. No expanded collection or measured rollout comparison."
   },
-  "providerCalls": 0
+  "providerCalls": 0,
+  "fineTuningGate": {
+    "eligible": false,
+    "reasons": [
+      "train data fingerprint mismatch",
+      "dev data fingerprint mismatch",
+      "Training budget incomplete"
+    ]
+  },
+  "recordedTraining": {
+    "updates": 18,
+    "usableForCurrentData": false
+  }
 }
