@@ -199,14 +199,14 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       }
       const target = route();
       const image = actor.querySelector("img");
-      const actorVisible = target.visible && !target.dock && Boolean(image?.complete && image.naturalWidth);
+      const engaged = Boolean((hovered || pointerHeld || anchor.matches(":focus-within")) && lastPosition.current);
+      const actorVisible = target.visible && (!target.dock || engaged) && Boolean(image?.complete && image.naturalWidth);
       anchor.style.visibility = target.visible ? "visible" : "hidden";
       actor.style.opacity = actorVisible ? "1" : "0";
       actor.style.visibility = actorVisible ? "visible" : "hidden";
       actor.dataset.active = String(actorVisible);
       actor.style.pointerEvents = actorVisible ? "auto" : "none";
       actor.tabIndex = actorVisible ? 0 : -1;
-      const engaged = (hovered || pointerHeld || anchor.matches(":focus-within")) && lastPosition.current;
       if (!engaged && stopRef.current !== target.label) {
         // A role greeting and a dismissed tip belong to their current section.
         // Neither should suppress introductions in later sections.
@@ -224,7 +224,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
       }
       // Keep the target still while it is being hovered or keyboard focused.
       const inside = currentX + actor.offsetWidth <= document.documentElement.clientWidth - 16 && currentY + actor.offsetHeight <= window.innerHeight - 24;
-      if (target.dock || cardDocked !== Boolean(target.dock)) {
+      if (!engaged && (target.dock || cardDocked !== Boolean(target.dock))) {
         freeze(); currentX = target.x; currentY = target.y; draw();
       } else if ((!engaged && !scrolling) || !inside) {
         const distance = Math.hypot(target.x - currentX, target.y - currentY);
@@ -248,7 +248,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
           motionFrame = requestAnimationFrame(move);
         }
       }
-      cardDocked = Boolean(target.dock);
+      if (!engaged) cardDocked = Boolean(target.dock);
       // The selected card has already played this role's entrance. Its handoff
       // to the floating guide is a fade, not a second greeting animation.
       if (cardDocked) entrancePending.current = false;
@@ -265,7 +265,7 @@ export function GuideCharacter({ icon, role, chosen }: { icon: string; role: str
         const viewportKey = `${document.documentElement.clientWidth}:${window.innerHeight}`;
         if (engaged && speaking && callout.dataset.visible === "true" && bubbleViewport === viewportKey) return;
         const obstacles = speaking ? contentBoxes(true) : [];
-        const speechAnchor = target.dock ?? { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight };
+        const speechAnchor = (!engaged && target.dock) || { left: currentX, top: currentY, width: actor.offsetWidth, height: actor.offsetHeight };
         const placement = speaking ? placeGuideCallout(
           speechAnchor,
           { width: callout.offsetWidth, height: callout.offsetHeight },
