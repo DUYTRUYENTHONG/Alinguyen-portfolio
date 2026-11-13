@@ -283,3 +283,28 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
   .hero-experience span:nth-child(4){animation-delay:.3s}
 }
 @keyframes experience-enter{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Homepage motion pass: no section, frame, navigation or portrait transforms. */
+@media (prefers-reduced-motion: no-preference) {
+  main.portfolio-main [data-home-motion-kind="heading"][data-home-motion="waiting"] { opacity: 0; transform: translateY(16px); }
+  main.portfolio-main [data-home-motion-kind="heading"][data-home-motion="running"] { animation: home-heading-enter 440ms cubic-bezier(.16,1,.3,1) var(--home-delay,0ms) both; }
+  #work .project-screenshot[data-home-motion="running"] img { animation: home-screenshot-peek 680ms cubic-bezier(.22,.7,.3,1) var(--home-delay,0ms) both; }
+  #work .mock-terminal[data-home-motion="running"] .mock-terminal-body p { animation: home-check-enter 240ms ease-out both; }
+  #work .mock-terminal[data-home-motion="running"] .mock-terminal-body p:nth-child(2) { animation-delay: 120ms; }
+  #work .mock-terminal[data-home-motion="running"] .mock-terminal-body p:nth-child(3) { animation-delay: 270ms; }
+  #work .mock-terminal[data-home-motion="running"] .mock-terminal-body p:nth-child(4) { animation-delay: 420ms; }
+  #work .mock-churn[data-home-motion="running"] .mock-past-events i { animation: home-past-event 220ms ease-out both; }
+  #work .mock-churn[data-home-motion="running"] .mock-past-events i:nth-child(2) { animation-delay: 120ms; }
+  #work .mock-churn[data-home-motion="running"] .mock-past-events i:nth-child(3) { animation-delay: 240ms; }
+  #work .mock-churn[data-home-motion="running"] .mock-cutoff { animation: home-snapshot 300ms ease-out 370ms both; }
+}
+@keyframes home-heading-enter { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes home-screenshot-peek { 0%,100% { transform:translateY(0); } 55% { transform:translateY(calc(-1 * var(--home-image-travel,0px))); } }
+@keyframes home-check-enter { from { opacity:.15; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
+@keyframes home-past-event { from { opacity:.3; transform:scale(.7); } to { opacity:1; transform:scale(1); } }
+@keyframes home-snapshot { 50% { box-shadow:-5px 0 12px #326bff40; color:#1744a0; } }
+@media (prefers-reduced-motion: reduce) {
+  main.portfolio-main [data-home-motion-kind="heading"] { opacity:1; transform:none; animation:none; }
+  #work [data-home-motion] img, #work [data-home-motion] .mock-terminal-body p,
+  #work [data-home-motion] .mock-past-events i, #work [data-home-motion] .mock-cutoff { animation:none; }
+}
