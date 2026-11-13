@@ -1,0 +1,87 @@
+{
+  "status": "pending-reproduction",
+  "corpusRecords": 18,
+  "corpusSha256": "ccad1e85f078101857bc899275c053318552db3bda357d175dce23eb235b5faa",
+  "sources": [
+    {
+      "id": "vn-ai-content-kit",
+      "url": "https://github.com/DUYTRUYENTHONG/vn-ai-content-kit"
+    },
+    {
+      "id": "recommendation-signals",
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/#recommendations"
+    },
+    {
+      "id": "traffic-analytics",
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/#analytics"
+    },
+    {
+      "id": "guide-evaluation",
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/#guide-evaluation"
+    },
+    {
+      "id": "ali-overview",
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/about/"
+    },
+    {
+      "id": "kkbox-results",
+      "url": "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md"
+    },
+    {
+      "id": "vibecode-kit",
+      "url": "https://github.com/DUYTRUYENTHONG/vibecode-product-kit"
+    },
+    {
+      "id": "growth-commerce-os",
+      "url": "https://growth-commerce-os.vercel.app/en"
+    },
+    {
+      "id": "stos",
+      "url": "https://stosvn.vercel.app/stos"
+    },
+    {
+      "id": "cho-kenh",
+      "url": "https://growth-commerce-os.vercel.app/cho-kenh"
+    },
+    {
+      "id": "portfolio-funnels",
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/#funnel"
+    },
+    {
+      "id": "recruiter-brief",
+      "url": "https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/blob/main/docs/RECRUITER_BRIEF.md"
+    },
+    {
+      "id": "academic-brief",
+      "url": "https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/blob/main/docs/ACADEMIC_BRIEF.md"
+    },
+    {
+      "id": "career-agent-kit",
+      "url": "https://github.com/DUYTRUYENTHONG/vietnam-career-agent-kit"
+    },
+    {
+      "id": "cv-professional-experience",
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf"
+    },
+    {
+      "id": "cv-lora-experiment",
+      "url": "https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/blob/main/docs/RECRUITER_BRIEF.md"
+    },
+    {
+      "id": "kitemetric-mlops",
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf"
+    },
+    {
+      "id": "cv-supported-skills",
+      "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf"
+    }
+  ],
+  "approvedReplayQuestionsAvailable": false,
+  "keyword": null,
+  "e5": null,
+  "rrf": null,
+  "independentHoldout": "pending",
+  "providerCallsMeasured": 0,
+  "productionRevisionVerified": null,
+  "reason": "Original bilingual replay labels, pinned E5 configuration and rankings are unavailable; no numerical retrieval results are fabricated."
+}

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "typecheck": "tsc --noEmit",
+    "test": "npm run test:guide",
     "test:guide": "node --experimental-strip-types --test test/guide-*.test.mjs",
     "lint": "biome lint src",
     "build": "next build"

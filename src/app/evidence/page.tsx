@@ -23,7 +23,7 @@ export default function EvidencePage() {
         <p className="eyebrow">Engineering evidence · 26 October 2026</p>
         <h1>Built. Tested.<br />Open to inspection.</h1>
         <p>Inspectable code and recorded checks: a restricted hosted warehouse, an AI guide baseline that keeps the failures, and optional project recommendation signals.</p>
-        <nav className={styles.links} aria-label="Evidence sections"><a href="#analytics">Traffic analytics ↓</a><a href="#guide-evaluation">AI guide evaluation ↓</a><a href="#recommendations">Recommendation signals ↓</a></nav>
+        <nav className={styles.links} aria-label="Evidence sections"><Link href="/evidence/retrieval/">Retrieval case study →</Link><a href="#analytics">Traffic analytics ↓</a><a href="#guide-evaluation">AI guide evaluation ↓</a><a href="#recommendations">Recommendation signals ↓</a></nav>
       </header>
       <section id="analytics" className={styles.section} aria-labelledby="analytics-title">
         <div className={styles.intro}><div><p className="eyebrow">01 / Data engineering</p><h2 id="analytics-title">Traffic into an auditable report.</h2></div><p>Upstash remains the operational store. A batch exporter reads daily aggregates into PostgreSQL tables and SQL reporting views. Browser identifiers and chat conversations stay out of the warehouse.</p></div>

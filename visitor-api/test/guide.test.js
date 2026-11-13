@@ -20,7 +20,7 @@ function request(question = "What is the local holdout log loss?") {
 }
 
 function withTestEnv(run) {
-  const names = ["GROQ_API_KEY", "KV_REST_API_URL", "KV_REST_API_TOKEN", "GUIDE_RATE_SALT"];
+  const names = ["DEEPSEEK_API_KEY", "KV_REST_API_URL", "KV_REST_API_TOKEN", "GUIDE_RATE_SALT"];
   const previous = Object.fromEntries(names.map((name) => [name, process.env[name]]));
   for (const name of names) process.env[name] = `test-${name}`;
   return Promise.resolve().then(run).finally(() => {
@@ -43,7 +43,7 @@ test('a hung provider body returns cited source fallback within its budget',()=>
 test('all authored evaluation cases retain citation provenance and reviewed factual wording',()=>withTestEnv(async()=>{
  const cases=JSON.parse(readFileSync(new URL('../evaluation/cases.json',import.meta.url),'utf8'));
  for(const item of cases){
-  const handler=createGuideHandler({makeRedis:()=>({incr:async()=>1,expire:async()=>1}),modelFetch:async()=>({ok:true,json:async()=>({choices:[{message:{content:JSON.stringify({answer:'FABRICATED: guaranteed offers and deployed AI with 99.9% accuracy',citations:item.sources,suggestions:[],motion:'nod'})}}]})})});
+  const handler=createGuideHandler({makeRedis:()=>({incr:async()=>1,expire:async()=>1}),modelFetch:async()=>({ok:true,json:async()=>({choices:[{message:{content:JSON.stringify({citations: item.sources})}}]})})});
   const req=request(item.question);req.body.recentTurns=item.recentTurns??[];const res=response();await handler(req,res);
   assert.equal(res.statusCode,200,item.id);assert.ok(!res.body.answer.includes('FABRICATED'),item.id);
   for(const id of item.sources) assert.ok(res.body.citations.some(c=>c.sourceId===id),item.id+': '+id);
@@ -108,7 +108,7 @@ test("optional recommendation storage failure preserves evidence retrieval and n
       loadSignals: async () => { calls++; throw Error('private aggregate store error'); },
       modelFetch: async (_url, options) => {
         assert.ok(!options.body.includes('private aggregate'));
-        return {ok:true,json:async()=>({choices:[{message:{content:JSON.stringify({answer:'Inspect the documented KKBox local holdout and its limitations.',citations:['kkbox-results'],suggestions:[],motion:'point'})}}]})};
+        return {ok:true,json:async()=>({choices:[{message:{content:JSON.stringify({citations: ['kkbox-results']})}}]})};
       },
     });
     const result=response(); await handler(request(),result);
@@ -142,10 +142,7 @@ test("guide returns only server-approved citation URLs", () => withTestEnv(async
     makeRedis: () => ({ incr: async () => 1, expire: async () => 1 }),
     modelFetch: async (_url, options) => {
       modelRequest = JSON.parse(options.body);
-      return { ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({
-        answer: "The local within-cohort holdout reached 0.217324 log loss.",
-        citations: ["kkbox-results", "invented-source"], suggestions: ["Show the limitations"], motion: "point",
-      }) } }] }) };
+      return { ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({citations: ["kkbox-results"]}) } }] }) };
     },
   });
   const res = response();
@@ -154,12 +151,11 @@ test("guide returns only server-approved citation URLs", () => withTestEnv(async
   assert.equal(res.body.motion, "point");
   assert.deepEqual(res.body.citations.map(({ sourceId }) => sourceId), ["kkbox-results"]);
   assert.match(res.body.citations[0].url, /^https:\/\/github\.com\/DUYTRUYENTHONG\//);
-  assert.equal(modelRequest.model, "openai/gpt-oss-20b");
-  assert.equal(modelRequest.response_format.type, "json_schema");
-  assert.deepEqual(modelRequest.response_format.json_schema.schema.properties.motion.enum, ["nod", "curious", "point", "none"]);
-  assert.match(modelRequest.messages[0].content, /guide name is Ari/);
+  assert.equal(modelRequest.model, "deepseek-flash");
+  assert.equal(modelRequest.response_format.type, "json_object");
+  assert.equal(JSON.parse(modelRequest.messages[1].content).serverSelectedRole.guideName, "Ari");
   assert.equal(modelRequest.messages.some(({ content }) => content.includes("192.0.2.1")), false);
-  assert.match(modelRequest.messages[1].content, /\[kkbox-results\]/);
+  assert.match(modelRequest.messages[1].content, /kkbox-results/);
   assert.equal(JSON.parse(modelRequest.messages[2].content).visitorQuestion, "What is the local holdout log loss?");
 }));
 
@@ -168,10 +164,8 @@ test("the selected character name is supplied by the server role mapping", () =>
   const handler = createGuideHandler({
     makeRedis: () => ({ incr: async () => 1, expire: async () => 1 }),
     modelFetch: async (_url, options) => {
-      systemMessage = JSON.parse(options.body).messages[0].content;
-      return { ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({
-        answer: "The local holdout reached 0.217324 log loss.", citations: ["kkbox-results"], suggestions: [], motion: "nod",
-      }) } }] }) };
+      systemMessage = JSON.parse(options.body).messages[1].content;
+      return { ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({citations: ["kkbox-results"]}) } }] }) };
     },
   });
   const req = request();
@@ -179,36 +173,33 @@ test("the selected character name is supplied by the server role mapping", () =>
   const res = response();
   await handler(req, res);
   assert.equal(res.statusCode, 200);
-  assert.match(systemMessage, /guide name is Ada/);
+  assert.match(systemMessage, /Ada/);
 }));
 
 test("guide rejects invented-only citations rather than showing an unsupported answer", () => withTestEnv(async () => {
   const handler = createGuideHandler({
     makeRedis: () => ({ incr: async () => 1, expire: async () => 1 }),
-    modelFetch: async () => ({ ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({
-      answer: "Invented claim", citations: ["invented-source"], suggestions: [], motion: "point",
-    }) } }] }) }),
+    modelFetch: async () => ({ ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({citations: ["invented-source"]}) } }] }) }),
   });
   const res = response();
   await handler(request(), res);
   assert.equal(res.statusCode, 200);
-  assert.deepEqual(res.body.citations, []);
+  assert.equal(res.body.citations[0].sourceId, "kkbox-results");
   assert.equal(res.body.motion, "none");
-  assert.match(res.body.answer, /can't verify/);
+  assert.equal(res.body.responseMode, "source-excerpt");
+  assert.doesNotMatch(res.body.answer, /Invented claim/);
 }));
 
 test("a model cannot inject an arbitrary animation name", () => withTestEnv(async () => {
   const handler = createGuideHandler({
     makeRedis: () => ({ incr: async () => 1, expire: async () => 1 }),
-    modelFetch: async () => ({ ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({
-      answer: "The local holdout reached 0.217324 log loss.", citations: ["kkbox-results"], suggestions: [], motion: "spin-forever",
-    }) } }] }) }),
+    modelFetch: async () => ({ ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({citations: ["kkbox-results"], motion: "spin-forever"}) } }] }) }),
   });
   const res = response();
   await handler(request(), res);
   assert.equal(res.statusCode, 200);
-  assert.equal(res.body.motion, "point");
-  assert.equal(res.body.responseMode, 'reviewed-evidence');
+  assert.equal(res.body.motion, "none");
+  assert.equal(res.body.responseMode, 'source-excerpt');
 }));
 
 test("guide validates origin, body and per-client limit before contacting the model", () => withTestEnv(async () => {

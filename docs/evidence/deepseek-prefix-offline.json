@@ -1,0 +1,57 @@
+{
+  "mode": "offline-construction",
+  "fixedPrefixStable": true,
+  "identicalRepeat": true,
+  "providerCalls": 0,
+  "records": [
+    {
+      "fixture": "first",
+      "requestHash": "49065a8509ce584ee0239f224333970d16d01e481dd8b6e5ffc015d10dd60b3d",
+      "fixedPrefixHash": "05e43465fe4ccd80e30ece025337007ee60909c5373c3bc6581c6e34d04d1475",
+      "evidenceIds": [
+        "kkbox-results",
+        "vn-ai-content-kit",
+        "cv-lora-experiment",
+        "recommendation-signals"
+      ],
+      "providerCalled": false
+    },
+    {
+      "fixture": "repeat",
+      "requestHash": "49065a8509ce584ee0239f224333970d16d01e481dd8b6e5ffc015d10dd60b3d",
+      "fixedPrefixHash": "05e43465fe4ccd80e30ece025337007ee60909c5373c3bc6581c6e34d04d1475",
+      "evidenceIds": [
+        "kkbox-results",
+        "vn-ai-content-kit",
+        "cv-lora-experiment",
+        "recommendation-signals"
+      ],
+      "providerCalled": false
+    },
+    {
+      "fixture": "role-change",
+      "requestHash": "88a70d5d9ef67d6dc21674c1c40aa8a01f495503668f1e0be6842801818f82f7",
+      "fixedPrefixHash": "05e43465fe4ccd80e30ece025337007ee60909c5373c3bc6581c6e34d04d1475",
+      "evidenceIds": [
+        "kkbox-results",
+        "vn-ai-content-kit",
+        "cv-lora-experiment",
+        "recommendation-signals"
+      ],
+      "providerCalled": false
+    },
+    {
+      "fixture": "history-change",
+      "requestHash": "a0f899a3242c253618cf4efcb614e9ce535d1660738706108dccc91596f4442f",
+      "fixedPrefixHash": "05e43465fe4ccd80e30ece025337007ee60909c5373c3bc6581c6e34d04d1475",
+      "evidenceIds": [
+        "guide-evaluation",
+        "kkbox-results",
+        "recruiter-brief",
+        "portfolio-funnels"
+      ],
+      "providerCalled": false
+    }
+  ],
+  "cost": "Not calculated: requires observed usage and dated rates for the returned model."
+}

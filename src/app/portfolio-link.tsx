@@ -12,5 +12,8 @@ function portfolioHref(href: string) {
 }
 
 export function PortfolioLink({ href, ...props }: Omit<ComponentProps<"a">, "href"> & { href: string }) {
-  return <a {...props} href={portfolioHref(href)} />;
+  const target = props.download && href.startsWith("/")
+    ? `${basePath}${href}`
+    : portfolioHref(href);
+  return <a {...props} href={target} />;
 }
