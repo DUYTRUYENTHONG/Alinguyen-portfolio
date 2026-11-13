@@ -393,8 +393,8 @@ body { --journey-press:100ms; --journey-select:160ms; --journey-panel:220ms; --j
 #work-title { position:relative; }
 #work-title::after { content:""; position:absolute; bottom:-10px; left:0; width:44px; height:2px; background:var(--blue); transform-origin:left; pointer-events:none; }
 #work-title[data-home-motion] { opacity:1; transform:none; animation:none; }
-#work-title[data-home-motion="running"]::after { animation:journey-divider var(--journey-enter) var(--journey-ease) both; }
-#work :is(.mock-terminal,.mock-churn)[data-home-motion="running"] { animation:journey-art var(--journey-enter) var(--journey-ease) var(--home-delay,40ms) both; }
+#work-title[data-home-motion="running"]::after { animation:journey-divider 160ms var(--journey-ease) both; }
+#work :is(.mock-terminal,.mock-churn)[data-home-motion="running"] { animation:journey-art 280ms var(--journey-ease) var(--home-delay,0ms) both; }
 #work .project-screenshot[data-home-motion="running"] { animation:journey-accent var(--journey-enter) ease-out var(--home-delay,40ms) both; }
 #work .mock-terminal .mock-terminal-body p { opacity:1; transform:none; animation:none; }
 #work .mock-terminal[data-home-motion="running"] .mock-terminal-body p:first-child,
@@ -434,7 +434,7 @@ body { --journey-press:100ms; --journey-select:160ms; --journey-panel:220ms; --j
 @keyframes journey-backdrop { from { opacity:0; } to { opacity:1; } }
 @keyframes journey-role-select { from { transform:translateY(4px) rotate(-2deg); } to { transform:none; } }
 @keyframes journey-divider { from { opacity:.5; transform:scaleX(.45); } to { opacity:1; transform:scaleX(1); } }
-@keyframes journey-art { from { transform:translateY(6px); } to { transform:none; } }
+@keyframes journey-art { from { transform:translateY(8px); } to { transform:none; } }
 @keyframes journey-case-art { from { transform:translateY(var(--journey-art-travel,6px)); box-shadow:0 0 0 2px #326bff33; } to { transform:none; } }
 @keyframes journey-edge { from { outline-color:#173db5; box-shadow:0 0 0 4px #326bff20; } to { outline-color:var(--blue); } }
 @keyframes journey-accent { 50% { box-shadow:inset 0 -2px 0 #326bff88; } }
@@ -457,3 +457,6 @@ body { --journey-press:100ms; --journey-select:160ms; --journey-panel:220ms; --j
   :is(#project-kkbox-baseline,.case-hero-kkbox-baseline) .mock-churn:is([data-home-motion="running"],[data-journey-art="running"]) .mock-past-events i,
   :is(#project-kkbox-baseline,.case-hero-kkbox-baseline) .mock-churn:is([data-home-motion="running"],[data-journey-art="running"]) .mock-past-events i:last-child { animation:none; transform:none; }
 }
+
+/* Work entry decorates artwork only; real project text is readable immediately. */
+main.portfolio-main #work [data-home-motion-kind='copy'][data-home-motion] { opacity:1; transform:none; animation:none; }

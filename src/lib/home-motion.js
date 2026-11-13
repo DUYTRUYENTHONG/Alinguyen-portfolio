@@ -20,6 +20,7 @@ export function startHomeMotion(home, played = new Set()) {
 	let burstDistance = 0;
 	let frame = 0;
 	let stopped = false;
+	let workRuleUntil = 0;
 	const visible = (node) => {
 		const rect = node.getBoundingClientRect();
 		return rect.bottom > 0 && rect.top < window.innerHeight && rect.width > 0;
@@ -72,6 +73,9 @@ export function startHomeMotion(home, played = new Set()) {
 			if (distance === null) return;
 		}
 		state.running = true;
+		if (node.id === "work-title") workRuleUntil = performance.now() + 160;
+		if (node.closest("#work") && ["screenshot", "terminal", "timeline"].includes(state.kind))
+			delay = Math.max(0, Math.ceil(workRuleUntil - performance.now()));
 		played.add(state.key);
 		observer.unobserve(node);
 		node.style.setProperty("--home-delay", `${delay}ms`);
@@ -85,10 +89,10 @@ export function startHomeMotion(home, played = new Set()) {
 					entry.isIntersecting && states.has(entry.target) &&
 					entranceVisible(entry.target, states.get(entry.target).kind),
 			);
-			entering.forEach((entry) => {
-				const kind = states.get(entry.target).kind;
-				play(entry.target, ["heading", "copy"].includes(kind) ? 0 : 40);
-			});
+			// Establish the rule's cue before scheduling artwork in the same batch.
+			entering.sort((a, b) => Number(b.target.id === "work-title") - Number(a.target.id === "work-title"));
+			for (const entry of entering)
+				play(entry.target, states.get(entry.target).kind === "portrait-accent" ? 40 : 0);
 		},
 		{ threshold: [0, 0.3], rootMargin: "-16px 0px -16px 0px" },
 	);
