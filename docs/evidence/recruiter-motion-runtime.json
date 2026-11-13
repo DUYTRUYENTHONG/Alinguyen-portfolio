@@ -1,0 +1,103 @@
+{
+  "checkedAt": "2026-11-13T09:01:58.277Z",
+  "preview": "http://127.0.0.1:3037/Alinguyen-portfolio/",
+  "scope": "Operator acceptance, not independent user research or Safari hardware testing",
+  "walkthroughs": [
+    {
+      "viewport": "390x844",
+      "publicEvidenceConfirmedWithinMs": 25846,
+      "clicks": 3
+    },
+    {
+      "viewport": "1280x900",
+      "publicEvidenceConfirmedWithinMs": 37634,
+      "clicks": 3
+    }
+  ],
+  "found": {
+    "builds": "Applied AI prototypes, data workflows, developer tools and live commerce products",
+    "contribution": "Maintainer of public DUYTRUYENTHONG Vibecode repository",
+    "decision": "Offline CLI and inspectable plans/evidence/checks",
+    "limit": "Adoption and productivity effects not measured",
+    "source": "https://github.com/DUYTRUYENTHONG/vibecode-product-kit"
+  },
+  "hesitation": "Public source action below narrative; scrolling required. Explicit project index and Read sections kept the route findable.",
+  "terminalEdge": {
+    "state": "waiting",
+    "top": 832.5416870117188
+  },
+  "terminalReveal": {
+    "rows": [
+      {
+        "animation": "home-check-enter",
+        "opacity": "0.246436",
+        "text": "$ vibecode init"
+      },
+      {
+        "animation": "home-check-enter",
+        "opacity": "0.15",
+        "text": "✓ plan created"
+      },
+      {
+        "animation": "home-check-enter",
+        "opacity": "0.15",
+        "text": "✓ evidence recorded"
+      },
+      {
+        "animation": "home-check-enter",
+        "opacity": "0.15",
+        "text": "✓ quality gates ready"
+      }
+    ],
+    "state": "running",
+    "top": 732.5416870117188
+  },
+  "cutoffReveal": {
+    "parts": [
+      {
+        "animation": "home-past-event",
+        "opacity": "0.3"
+      },
+      {
+        "animation": "home-past-event",
+        "opacity": "0.3"
+      },
+      {
+        "animation": "home-past-event",
+        "opacity": "0.3"
+      },
+      {
+        "animation": "home-snapshot",
+        "opacity": "1"
+      }
+    ],
+    "state": "running",
+    "text": "kkbox / local baseline\nEVENTS OVER TIME\nSnapshot\nPast events only\n\nFeature construction → holdout evaluation\n\nConceptual diagram · measured results in case study",
+    "top": 699.8333740234375
+  },
+  "sectionReveal": {
+    "animation": "home-heading-enter",
+    "opacity": "0.757266",
+    "state": "running"
+  },
+  "cv": {
+    "homepageHref": "/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+    "downloadAttribute": true,
+    "clicks": 1,
+    "priorObservedDownload": "cv-applied-ai-engineer (8).pdf"
+  },
+  "keyboard": {
+    "EnterProjectAnchor": "#project-kkbox-baseline",
+    "headingOpacity": "1",
+    "state": "complete"
+  },
+  "returnFromCase": {
+    "hash": "#work",
+    "headingTop": 124.35417175292967,
+    "headingOpacity": "1"
+  },
+  "reducedMotion": {
+    "terminalRows": "all opacity 1, animation none",
+    "cutoffParts": "all opacity 1, animation none"
+  }
+}

@@ -24,6 +24,16 @@ export function startHomeMotion(home, played = new Set()) {
 		const rect = node.getBoundingClientRect();
 		return rect.bottom > 0 && rect.top < window.innerHeight && rect.width > 0;
 	};
+	const entranceVisible = (node, kind) => {
+		if (kind === "heading" || kind === "copy") return visible(node);
+		// Let the explanation enter the viewport before spending its one reveal.
+		const rect = node.getBoundingClientRect();
+		const shown = Math.max(
+			0,
+			Math.min(rect.bottom, window.innerHeight - 16) - Math.max(rect.top, 16),
+		);
+		return rect.height > 0 && shown / rect.height >= 0.3;
+	};
 	function settle(node) {
 		const state = states.get(node);
 		if (!state) return;
@@ -72,13 +82,15 @@ export function startHomeMotion(home, played = new Set()) {
 	const observer = new IntersectionObserver(
 		(entries) => {
 			const entering = entries.filter(
-				(entry) => entry.isIntersecting && states.has(entry.target),
+				(entry) =>
+					entry.isIntersecting && states.has(entry.target) &&
+					entranceVisible(entry.target, states.get(entry.target).kind),
 			);
 			entering.forEach((entry, index) => {
 				play(entry.target, Math.min(index * 50, 120));
 			});
 		},
-		{ threshold: 0, rootMargin: "-16px 0px -16px 0px" },
+		{ threshold: [0, 0.3], rootMargin: "-16px 0px -16px 0px" },
 	);
 
 	function register(node) {
@@ -106,7 +118,7 @@ export function startHomeMotion(home, played = new Set()) {
 		node.dataset.homeMotion = "waiting";
 		if (kind === "screenshot") {
 			const onLoad = () => {
-				if (visible(node)) play(node);
+				if (entranceVisible(node, kind)) play(node);
 			};
 			states.get(node).load = onLoad;
 			states.get(node).error = () => settle(node);
