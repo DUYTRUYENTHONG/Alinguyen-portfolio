@@ -18,8 +18,8 @@ const fixtures = [
 	},
 	{
 		id: "provider",
-		question: "What is the local holdout log loss?",
-		source: "kkbox-results",
+		question: "What did the published assistant baseline evaluation report about service errors?",
+		source: "guide-evaluation",
 		provider: true,
 	},
 ];

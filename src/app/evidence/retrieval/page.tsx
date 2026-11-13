@@ -85,13 +85,7 @@ export default function RetrievalEvidence() {
 						tours and policy routes avoid inference; timeout or quota failures
 						retain a labelled source excerpt.
 					</p>
-					<p>
-						The local strict-schema contract is implemented. A real Groq
-						selection and exact-revision deployment receipt remain separate
-						release gates; the sensitive production key was unavailable locally.
-						No live cache result or independently measured answer-quality score
-						is claimed.
-					</p>
+<p>The strict-schema contract passed local tests. Four real Groq calls were recorded: two requests for an omitted metric abstained without the expected source, while a supported question about published guide failures and its identical repeat selected the correct record. Preview revision <code>04a318e</code> returned the exact reviewed answer and citation for that supported question. The omitted-metric checks remain failed. Cache-read counters were absent; production is unchanged.</p>
 					<pre style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
 						node visitor-api/scripts/recruiter-retrieval.mjs --prepare
 						<br />

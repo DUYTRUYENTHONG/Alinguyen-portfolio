@@ -145,9 +145,10 @@
     "torch": "2.15.0+cpu"
   },
   "independentHoldout": "pending",
-  "providerCallsMeasured": 0,
+  "providerCallsMeasured": 4,
   "providerAcceptancePassed": false,
-  "candidateDeploymentVerified": false,
+  "supportedProviderPathVerified": true,
+  "candidateDeploymentVerified": true,
   "productionRevisionVerified": null,
   "reason": "New authored replay is reproducible; original historical replay unavailable. No production ranker or provider migration."
 }

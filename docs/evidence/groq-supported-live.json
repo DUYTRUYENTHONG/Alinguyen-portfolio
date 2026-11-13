@@ -1,0 +1,79 @@
+{
+  "deployment": "https://ali-portfolio-visitor-a9slkeund-duytruyenthong-beeps-projects.vercel.app",
+  "revision": "04a318e1e0ab61c6e95a3cf4092296cbfb13f566",
+  "previousProviderCalls": 2,
+  "totalBudget": 4,
+  "attemptedInferenceRequests": 2,
+  "observedProviderCalls": 2,
+  "records": [
+    {
+      "fixture": "supported-first",
+      "question": "What did the published assistant baseline evaluation report about service errors?",
+      "httpStatus": 200,
+      "totalLatencyMs": 3956,
+      "receipt": {
+        "environment": "preview",
+        "revision": "04a318e1e0ab61c6e95a3cf4092296cbfb13f566",
+        "providerAttempted": true,
+        "providerStatus": 200,
+        "returnedModel": "openai/gpt-oss-20b",
+        "selectedIds": [
+          "guide-evaluation"
+        ],
+        "latencyMs": 404,
+        "promptTokens": 777,
+        "cacheHitTokens": null,
+        "completionTokens": 44,
+        "requestHash": "60a41a0c5b745554419a35af0166edb7a7a6b13cb43d70d22d9baf817deaf0fe",
+        "fixedPrefixHash": "aad1038394fc6e550b5072e1a3d3ac4bb574ecc7e0b89ffa7191f491b5210275",
+        "evidencePrefixHash": "7d546f10c806db3f50b01b5fd134158915048e67c4140e3f325f41a4950f0b39",
+        "outputMode": "reviewed-evidence"
+      },
+      "answer": "The published baseline tested 16 requests: 12 returned responses, four had service errors, and nine passed the original heuristics. That’s a small development check, not a factual-accuracy benchmark. Token usage and cost weren’t available; a full post-release live run remains pending. [1]",
+      "citations": [
+        {
+          "sourceId": "guide-evaluation",
+          "label": "Portfolio guide: live baseline evaluation and limitations",
+          "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/#guide-evaluation"
+        }
+      ],
+      "responseMode": "reviewed-evidence",
+      "exactVerification": true
+    },
+    {
+      "fixture": "supported-repeat",
+      "question": "What did the published assistant baseline evaluation report about service errors?",
+      "httpStatus": 200,
+      "totalLatencyMs": 3631,
+      "receipt": {
+        "environment": "preview",
+        "revision": "04a318e1e0ab61c6e95a3cf4092296cbfb13f566",
+        "providerAttempted": true,
+        "providerStatus": 200,
+        "returnedModel": "openai/gpt-oss-20b",
+        "selectedIds": [
+          "guide-evaluation"
+        ],
+        "latencyMs": 467,
+        "promptTokens": 777,
+        "cacheHitTokens": null,
+        "completionTokens": 84,
+        "requestHash": "60a41a0c5b745554419a35af0166edb7a7a6b13cb43d70d22d9baf817deaf0fe",
+        "fixedPrefixHash": "aad1038394fc6e550b5072e1a3d3ac4bb574ecc7e0b89ffa7191f491b5210275",
+        "evidencePrefixHash": "7d546f10c806db3f50b01b5fd134158915048e67c4140e3f325f41a4950f0b39",
+        "outputMode": "reviewed-evidence"
+      },
+      "answer": "The published baseline tested 16 requests: 12 returned responses, four had service errors, and nine passed the original heuristics. That’s a small development check, not a factual-accuracy benchmark. Token usage and cost weren’t available; a full post-release live run remains pending. [1]",
+      "citations": [
+        {
+          "sourceId": "guide-evaluation",
+          "label": "Portfolio guide: live baseline evaluation and limitations",
+          "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/evidence/#guide-evaluation"
+        }
+      ],
+      "responseMode": "reviewed-evidence",
+      "exactVerification": true
+    }
+  ],
+  "scope": "Supported factual report question and repeat. Does not replace the two failed omitted-metric source-selection checks."
+}
