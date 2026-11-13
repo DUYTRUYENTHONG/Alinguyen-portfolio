@@ -48,10 +48,18 @@ export default function RetrievalEvidence() {
 					</p>
 					<p>
 						<strong>Branch candidate:</strong> DeepSeek request construction and
-						fake-transport tests. <strong>Pending:</strong> real DeepSeek
-						measurements, Preview acceptance and exact-revision Production
+						fake-transport tests. <strong>Pending:</strong> successful DeepSeek
+						selection, full Preview acceptance and exact-revision Production
 						receipt. The existing production service has not been replaced by
 						this branch.
+					</p>
+					<p>
+						Observed on 13 November 2026: the first live probe reached DeepSeek
+						and returned HTTP 402 (insufficient balance). It stopped after one
+						call. No selected model, cache usage or answer-quality result is
+						claimed. The Preview API separately returned the deterministic STOS
+						answer with a revision-bound receipt; that does not pass the
+						provider gate.
 					</p>
 				</section>
 				<section id="comparison" className={styles.section}>

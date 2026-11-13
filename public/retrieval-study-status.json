@@ -81,7 +81,22 @@
   "e5": null,
   "rrf": null,
   "independentHoldout": "pending",
-  "providerCallsMeasured": 0,
+  "providerCallsMeasured": 1,
+  "providerStatus": 402,
+  "providerAcceptancePassed": false,
+  "previewDeterministicReceipt": {
+    "environment": "preview",
+    "revision": "c16d9d86dbf00b502db85500c90b4a0b5bd40b4b",
+    "providerAttempted": false,
+    "providerStatus": null,
+    "returnedModel": null,
+    "selectedIds": [],
+    "latencyMs": null,
+    "cacheHitTokens": null,
+    "cacheMissTokens": null,
+    "completionTokens": null,
+    "outputMode": "reviewed-evidence"
+  },
   "productionRevisionVerified": null,
   "reason": "Original bilingual replay labels, pinned E5 configuration and rankings are unavailable; no numerical retrieval results are fabricated."
 }

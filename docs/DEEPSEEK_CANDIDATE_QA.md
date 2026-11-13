@@ -47,3 +47,15 @@ The original retrieval candidate patch and 18-question replay were not found. Cu
 ## Release-gate hardening
 
 The deployment gate now compares the complete visitor-visible provider answer and citation mapping with reviewed evidence. A valid citation plus a limitation keyword cannot pass an altered answer. Three additional synthetic tests reject altered facts, fallback mode, wrong revision and a forged URL. This is a contract check, not independent answer-quality measurement.
+
+## Live Preview setup — 2026-11-13 (supersedes the earlier authorization blocker)
+
+Vercel CLI now authenticates as the owner. `DEEPSEEK_API_KEY` is stored as a Secret for Preview only. With the owner's explicit deletion confirmation, the unintended Production key and Preview DEEPSEEK_API_KEY1 entry were removed. Preview has KV_REST_API_URL, KV_REST_API_TOKEN and a separately generated GUIDE_RATE_SALT. No secret value is included here.
+
+The owner approved at most four probe calls. One live build-time call reached the official DeepSeek endpoint and returned HTTP 402 after 686 ms. The script stopped on that first failure. Three approved calls remain unused. DeepSeek documents 402 as insufficient balance: https://api-docs.deepseek.com/quick_start/error_codes/. No returned model, selected IDs, token usage, positive cache read, cost or answer-quality result was available.
+
+The temporary probe build ran on deployment 44sc7hKkESgWH7HVebjaLnvzy6D9. Its sanitized output is docs/evidence/deepseek-prefix-live.json. It was followed by a normal Preview deployment (6zK2wC5rXzkiM4jBxM9x29H7nAjB) using the regular vercel.json, with no paid probe build command. Do not rerun the temporary probe deployment while balance remains insufficient.
+
+The normal Preview returned a deterministic STOS answer and source ID with environment=preview, providerAttempted=false and revision=c16d9d86dbf00b502db85500c90b4a0b5bd40b4b. The CLI revision environment value and deployment metadata were populated from git rev-parse HEAD after checking that the API files matched committed source. This proves that deterministic route on the specified Preview, not provider selection or production migration. See docs/evidence/deepseek-preview-status.json.
+
+The full two-fixture provider acceptance verifier was deliberately not run after 402; it would make another model call. Production was not promoted or redeployed by this setup. The old API remains the production baseline. Missing original replay/E5 artifacts and independent labels remain unresolved.

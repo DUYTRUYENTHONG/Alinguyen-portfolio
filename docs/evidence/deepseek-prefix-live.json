@@ -1,0 +1,23 @@
+{
+  "mode": "real-provider",
+  "fixedPrefixStable": true,
+  "identicalRepeat": false,
+  "providerCalls": 1,
+  "records": [
+    {
+      "fixture": "first",
+      "requestHash": "49065a8509ce584ee0239f224333970d16d01e481dd8b6e5ffc015d10dd60b3d",
+      "fixedPrefixHash": "05e43465fe4ccd80e30ece025337007ee60909c5373c3bc6581c6e34d04d1475",
+      "evidenceIds": [
+        "kkbox-results",
+        "vn-ai-content-kit",
+        "cv-lora-experiment",
+        "recommendation-signals"
+      ],
+      "providerCalled": true,
+      "providerStatus": 402,
+      "latencyMs": 686
+    }
+  ],
+  "cost": "Not calculated: requires observed usage and dated rates for the returned model."
+}

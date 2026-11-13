@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-11-13",
+  "providerCallsMeasured": 1,
+  "approvedProbeCallLimit": 4,
+  "remainingApprovedProbeCalls": 3,
+  "successfulSelections": 0,
+  "providerStatus": 402,
+  "returnedModel": null,
+  "cacheHitTokens": null,
+  "cacheMissTokens": null,
+  "completionTokens": null,
+  "probeDeployment": "https://vercel.com/duytruyenthong-beeps-projects/ali-portfolio-visitor-api/44sc7hKkESgWH7HVebjaLnvzy6D9",
+  "previewDeployment": "https://vercel.com/duytruyenthong-beeps-projects/ali-portfolio-visitor-api/6zK2wC5rXzkiM4jBxM9x29H7nAjB",
+  "previewApi": "https://ali-portfolio-visitor-6gy2e13pg-duytruyenthong-beeps-projects.vercel.app/api/guide",
+  "deterministicReceipt": {
+    "environment": "preview",
+    "revision": "c16d9d86dbf00b502db85500c90b4a0b5bd40b4b",
+    "providerAttempted": false,
+    "providerStatus": null,
+    "returnedModel": null,
+    "selectedIds": [],
+    "latencyMs": null,
+    "cacheHitTokens": null,
+    "cacheMissTokens": null,
+    "completionTokens": null,
+    "outputMode": "reviewed-evidence"
+  },
+  "deterministicSourceIds": [
+    "stos"
+  ],
+  "providerAcceptancePassed": false,
+  "productionRevisionVerified": null
+}
