@@ -1,17 +1,23 @@
 // Progressive enhancement only: all content is visible without this module.
-const headings =
-	"#work-title, #community-title, #map-title, #notes-title, #contact-title";
+const headings = "#work-title, #community-title, #map-title, #notes-title";
 const media =
 	"#work .project-screenshot, #work .mock-terminal, #work .mock-churn";
-const targets = `${headings}, ${media}`;
+const copy = "#work .work-card h3, #work .project-summary";
+const targets = `${headings}, ${copy}, ${media}`;
 
-export function startHomeMotion() {
-	if (!("IntersectionObserver" in window) || !window.matchMedia) return;
+export function startHomeMotion(home, played = new Set()) {
+	if (!home?.matches("main.portfolio-main")) return;
+	if (
+		typeof window.IntersectionObserver !== "function" ||
+		typeof window.MutationObserver !== "function" ||
+		!window.matchMedia
+	)
+		return;
 	const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
 	const states = new Map();
-	const played = new Set();
 	let scrollY = window.scrollY;
-	let scrollTime = performance.now();
+	let burstStart = performance.now();
+	let burstDistance = 0;
 	let frame = 0;
 	let stopped = false;
 	const visible = (node) => {
@@ -27,6 +33,8 @@ export function startHomeMotion() {
 		if (state.timer) clearTimeout(state.timer);
 		if (state.load)
 			node.querySelector("img")?.removeEventListener("load", state.load);
+		if (state.error)
+			node.querySelector("img")?.removeEventListener("error", state.error);
 		states.delete(node);
 	}
 	function travel(node) {
@@ -67,28 +75,29 @@ export function startHomeMotion() {
 				(entry) => entry.isIntersecting && states.has(entry.target),
 			);
 			entering.forEach((entry, index) => {
-				play(entry.target, Math.min(index * 50, 150));
+				play(entry.target, Math.min(index * 50, 120));
 			});
 		},
 		{ threshold: 0, rootMargin: "-16px 0px -16px 0px" },
 	);
 
 	function register(node) {
-		if (
-			!node.closest("main.portfolio-main") ||
-			states.has(node) ||
-			node.dataset.homeMotion
-		)
+		if (!home.contains(node) || states.has(node) || node.dataset.homeMotion)
 			return;
 		const card = node.closest('[id^="project-"]');
 		const kind = node.matches(headings)
 			? "heading"
-			: node.matches(".project-screenshot")
-				? "screenshot"
-				: node.matches(".mock-terminal")
-					? "terminal"
-					: "timeline";
-		const key = kind === "heading" ? node.id : `${card?.id}:${kind}`;
+			: node.matches(copy)
+				? "copy"
+				: node.matches(".project-screenshot")
+					? "screenshot"
+					: node.matches(".mock-terminal")
+						? "terminal"
+						: "timeline";
+		const key =
+			kind === "heading"
+				? node.id
+				: `${card?.id}:${kind}:${kind === "copy" ? node.tagName : "media"}`;
 		states.set(node, { kind, key, running: false });
 		node.dataset.homeMotionKind = kind;
 		// Hydration, restored scroll and first paint must never conceal visible content.
@@ -100,6 +109,10 @@ export function startHomeMotion() {
 				if (visible(node)) play(node);
 			};
 			states.get(node).load = onLoad;
+			states.get(node).error = () => settle(node);
+			node
+				.querySelector("img")
+				?.addEventListener("error", states.get(node).error);
 			node.querySelector("img")?.addEventListener("load", onLoad);
 		}
 		observer.observe(node);
@@ -125,12 +138,18 @@ export function startHomeMotion() {
 	function onScroll() {
 		const now = performance.now();
 		const delta = Math.abs(window.scrollY - scrollY);
+		if (now - burstStart > 150) {
+			burstStart = now;
+			burstDistance = 0;
+		}
+		burstDistance += delta;
 		const fast =
 			delta > window.innerHeight * 0.7 ||
-			delta / Math.max(16, now - scrollTime) > 2.4;
+			burstDistance > window.innerHeight * 0.7;
 		scrollY = window.scrollY;
-		scrollTime = now;
 		if (fast) settleVisible();
+		for (const [node, state] of states)
+			if (state.running && !visible(node)) settle(node);
 	}
 	function onFocus(event) {
 		settleWithin(event.target.closest(".work-card") ?? event.target);
@@ -140,10 +159,20 @@ export function startHomeMotion() {
 		if (!link) return;
 		const url = new URL(link.href, location.href);
 		if (url.pathname !== location.pathname || !url.hash) return;
-		const destination = document.getElementById(
-			decodeURIComponent(url.hash.slice(1)),
-		);
-		settleWithin(destination);
+		let destination;
+		try {
+			destination = document.getElementById(
+				decodeURIComponent(url.hash.slice(1)),
+			);
+		} catch {
+			return;
+		}
+		if (destination?.id === "work") {
+			settleWithin(document.getElementById("work-title"));
+			const first = destination.querySelector(".work-card");
+			for (const node of first?.querySelectorAll(copy) ?? [])
+				settleWithin(node);
+		} else settleWithin(destination);
 	}
 	function onHash() {
 		settleVisible();
@@ -163,11 +192,16 @@ export function startHomeMotion() {
 	function onPageShow(event) {
 		if (event.persisted) settleVisible();
 	}
-	scan(document);
-	mutations.observe(document.documentElement, {
+	scan(home);
+	mutations.observe(home, {
 		childList: true,
 		subtree: true,
 	});
+	const onVisibility = () => {
+		if (document.hidden)
+			for (const [node, state] of states) if (state.running) settle(node);
+	};
+	document.addEventListener("visibilitychange", onVisibility);
 	document.addEventListener("focusin", onFocus);
 	document.addEventListener("click", onClick);
 	window.addEventListener("scroll", onScroll, { passive: true });
@@ -182,6 +216,7 @@ export function startHomeMotion() {
 		observer.disconnect();
 		mutations.disconnect();
 		if (frame) cancelAnimationFrame(frame);
+		document.removeEventListener("visibilitychange", onVisibility);
 		document.removeEventListener("focusin", onFocus);
 		document.removeEventListener("click", onClick);
 		window.removeEventListener("scroll", onScroll);
