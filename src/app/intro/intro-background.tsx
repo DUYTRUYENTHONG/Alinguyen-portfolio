@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import styles from "./intro.module.css";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -14,18 +11,7 @@ const symbols = [
 ] as const;
 
 export function IntroBackground() {
-  const [paused, setPaused] = useState(false);
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const preference = matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setReduced(preference.matches);
-    sync();
-    preference.addEventListener("change", sync);
-    return () => preference.removeEventListener("change", sync);
-  }, []);
-
-  return <>
-    <div className={styles.background} data-paused={paused || reduced} aria-hidden="true">
+  return <div className={styles.background} aria-hidden="true">
       <img className={styles.backdrop} src={`${basePath}/preview-ai-marketing-bg.png`} alt="" width="1733" height="907" />
       <div className={styles.grid} />
       <div className={styles.network} />
@@ -33,10 +19,5 @@ export function IntroBackground() {
         <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d={symbol.path} /></svg>
         <span>{symbol.label}</span>
       </div>)}
-    </div>
-    <button className={styles.motionControl} type="button" disabled={reduced} onClick={() => setPaused(value => !value)}>
-      <span aria-hidden="true">{paused || reduced ? "▷" : "Ⅱ"}</span>
-      {reduced ? "Motion reduced" : paused ? "Play background motion" : "Pause background motion"}
-    </button>
-  </>;
+    </div>;
 }

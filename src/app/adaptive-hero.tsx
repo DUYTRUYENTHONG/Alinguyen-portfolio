@@ -62,6 +62,6 @@ export function AdaptiveHero() {
     <p className="hero-rotate">I build <RotatingFocus /></p>
     <p className="hero-meta">{message.description} <span>DUYTRUYENTHONG</span></p>
     <div className="hero-actions"><a className="hero-action-primary" href={message.href}>{message.action} <span aria-hidden="true">↗</span></a><a className="hero-action-secondary" href={`${basePath}/cv-applied-ai-engineer.pdf`} download>Download AI CV <span aria-hidden="true">↓</span></a></div>
-    <p className="hero-experience"><span>{identity.experience.digitalMarketing}</span><span>{identity.experience.aiEngineering}</span></p>
+    <p className="hero-experience"><span>{identity.experience.digitalMarketing}</span><span>{identity.experience.aiEngineering}</span><span>Bachelor’s in Computer Science</span><span>Master’s in Applied AI and Data Science · Ongoing</span></p>
   </div>;
 }

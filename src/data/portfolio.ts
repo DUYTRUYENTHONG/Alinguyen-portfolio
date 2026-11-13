@@ -18,8 +18,8 @@ export const identity = {
   brand: "DUYTRUYENTHONG",
   title: "Applied AI and Product Engineer",
   experience: {
-    digitalMarketing: "Paid advertising since 2023",
-    aiEngineering: "AI Engineer · KiteMetric (2025–2026)",
+    digitalMarketing: "5+ years in digital marketing",
+    aiEngineering: "3+ years in applied AI engineering",
   },
   proposition:
     "Applied AI prototypes, developer tools, and live commerce products, built with a background in digital marketing and sales workflows.",
