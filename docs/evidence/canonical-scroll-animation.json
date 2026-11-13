@@ -1,0 +1,18 @@
+{
+  "initial": {
+    "delta": 5696.7294921875,
+    "height": 603,
+    "reducedMotion": false,
+    "width": 615,
+    "workState": "waiting",
+    "workTop": 6439.7294921875
+  },
+  "entry": {
+    "animation": "home-heading-enter",
+    "duration": "0.32s",
+    "opacity": "0.718352",
+    "state": "running",
+    "top": 531.5001831054688,
+    "transform": "matrix(1, 0, 0, 1, 0, 6.43767)"
+  }
+}
