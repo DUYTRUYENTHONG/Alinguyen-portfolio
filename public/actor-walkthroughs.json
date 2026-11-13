@@ -1,0 +1,77 @@
+{
+  "method": "Recorded local production handler with fake admission store and failure transport. Public synthetic questions; zero actual Groq calls.",
+  "rows": [
+    {
+      "audience": "Recruiter",
+      "question": "What did Ali personally contribute to Vibecode?",
+      "why": "The explicit contribution question has reviewed public source. Offer its repository.",
+      "answer": "A public open-source JavaScript and Node.js CLI with agent profiles, templates, plans, and CI checks. Ali maintains the public repository. Version 0.2.0 and successful GitHub Actions checks are reported. Adoption and productivity impact have not been measured. [1]",
+      "citations": [
+        {
+          "sourceId": "vibecode-kit",
+          "label": "Vibecode Product Kit: public developer tooling",
+          "url": "https://github.com/DUYTRUYENTHONG/vibecode-product-kit"
+        }
+      ],
+      "actions": [
+        {
+          "id": "vibecode-repo",
+          "kind": "open_repository",
+          "url": "https://github.com/DUYTRUYENTHONG/vibecode-product-kit",
+          "label": "Open the public repository"
+        }
+      ],
+      "mode": "reviewed-evidence",
+      "simulatedProviderAttempts": 0
+    },
+    {
+      "audience": "Partner",
+      "question": "Bên mình muốn thử STOS. Tính năng AI đã dùng được chưa?",
+      "why": "Explicit product trial intent. Live demo is available; AI suggestions remain planned.",
+      "answer": "STOS giúp người bán độc lập giới thiệu sản phẩm qua trang bán hàng. Website và trang mẫu đang hoạt động. AI gợi ý còn ở kế hoạch, chưa hoạt động; mức độ sử dụng và hiệu quả kinh doanh chưa được xác minh độc lập. [1]",
+      "citations": [
+        {
+          "sourceId": "stos",
+          "label": "STOS Sales Traffic Operating System",
+          "url": "https://stosvn.vercel.app/stos"
+        }
+      ],
+      "actions": [
+        {
+          "id": "stos-demo",
+          "kind": "open_demo",
+          "url": "https://stosvn.vercel.app/stos",
+          "label": "Thử sản phẩm STOS đang hoạt động"
+        }
+      ],
+      "mode": "reviewed-evidence",
+      "simulatedProviderAttempts": 0
+    },
+    {
+      "audience": "Correction",
+      "question": "Earlier you said Ali guaranteed me a job.",
+      "why": "Unsupported premise. Refuse verification, offer no action or contact pitch.",
+      "answer": "That earlier claim wasn't supported. Ali's public portfolio does not establish a job guarantee.",
+      "citations": [],
+      "actions": [],
+      "mode": "abstention",
+      "simulatedProviderAttempts": 0
+    },
+    {
+      "audience": "Outage simulation",
+      "question": "What is the local holdout log loss?",
+      "why": "Fake provider quota exhaustion. Show a labelled approved excerpt; no next-action pitch.",
+      "answer": "The AI response is unavailable. Here is the approved source text:\n\nKKBox is a public AI-assisted churn prototype with snapshot-date features, source-coverage inspection and synthetic future-event leakage checks. Features use events on or before 2017-02-28. Previously quoted performance scores are disputed and omitted. A within-cohort local holdout is not future-cohort validation, a Kaggle leaderboard result, a production model or measured retention impact. No numerical model-performance claim is made here.",
+      "citations": [
+        {
+          "sourceId": "kkbox-results",
+          "label": "KKBox customer churn baseline: verified local results",
+          "url": "https://github.com/DUYTRUYENTHONG/kkbox-customer-churn-prediction/blob/main/docs/RESULTS.md"
+        }
+      ],
+      "actions": [],
+      "mode": "source-excerpt",
+      "simulatedProviderAttempts": 1
+    }
+  ]
+}

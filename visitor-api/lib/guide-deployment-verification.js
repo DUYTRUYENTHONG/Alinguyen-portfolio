@@ -23,7 +23,7 @@ export function verifyGuideReceipt({
 	if (
 		r.providerStatus !== 200 ||
 		typeof r.returnedModel !== "string" ||
-		!/^deepseek[-\w./]*$/.test(r.returnedModel) ||
+		r.returnedModel !== "openai/gpt-oss-20b" ||
 		result.responseMode !== "reviewed-evidence" ||
 		!Array.isArray(r.selectedIds) ||
 		!r.selectedIds.includes(fixture.source)

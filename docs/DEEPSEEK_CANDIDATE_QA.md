@@ -1,3 +1,5 @@
+> Historical candidate. Superseded by the Groq-only recruiter RAG implementation on13 November2026. Do not use these migration instructions as current setup or acceptance.
+
 # DeepSeek candidate verification — 2026-11-13
 
 Goal: make public-evidence selection inspectable, then prove local execution, real-provider selection and exact-revision deployment separately. Preserve the approved homepage, tour and finalized CV.

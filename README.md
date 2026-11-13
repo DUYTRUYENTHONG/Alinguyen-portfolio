@@ -138,3 +138,17 @@ See [the executed implementation prompt and acceptance criteria](docs/NPC_GUIDE_
 `/work/` includes Vietnam Career Agent Kit alongside the five featured builds (six total; two in AI & data). It reuses `communityResource` from `src/data/portfolio.ts` and links directly to the public repository. The homepage still has five featured case studies plus its separate community section. Browser QA checked All/AI & data counts, the GitHub destination, 44px filter targets, and overflow at 320, 390, 768 and 1280px.
 
 The Work directory also includes [VN AI Content Kit](https://github.com/DUYTRUYENTHONG/vn-ai-content-kit): Vietnamese commerce copy, evidence-context retrieval, correction memory and local voice previews. It does not ship a trained model or an answer-generation LLM. See [the November public-project review](docs/PROJECT_REVIEW_2026-11-02.md) for pinned sources and publication limits.
+
+## Recruiter evidence and actor candidate (local, not deployed)
+
+Engineering evidence now links a recorded bilingual retrieval comparison and a synthetic prediction-cutoff demo. Both work in the GitHub Pages export without provider calls. The existing chatbox adds one allowlisted action, respecting used/declined choices and topic changes. Groq remains the sole online inference provider.
+
+- [Implementation and runtime/offline diagrams](docs/ACTOR_RAG_IMPLEMENTATION.md)
+- [Retrieval reproduction and negative enrichment result](visitor-api/evaluation/RETRIEVAL_STUDY.md)
+- [Frozen action training plan and corrected split](visitor-api/evaluation/action-training-plan.md)
+- [Observed action scorecard](public/action-selector-study.json)
+- [QA and release boundaries](docs/RECRUITER_EVIDENCE_QA.md)
+
+The recorded local LoRA run stopped at18/32 updates under its CPU budget. Its train/dev CV paraphrase overlap is disclosed and corrected in the runnable split; that corrected version is not trained. No learned table is promoted. Independent evaluation, real Groq selection and named-revision deployment verification remain separate gates. Do not infer business or conversion impact from authored fixtures.
+
+Reproduce the static experiments using commands in the linked plans. Run npm run test:guide, npm --prefix visitor-api test, npm --prefix analytics test, npm run typecheck, npm run lint and the Pages build with NEXT_PUBLIC_BASE_PATH=/Alinguyen-portfolio and the workflow's public endpoint variables. Model weights/adapters stay outside the frontend; training uses only public synthetic examples.

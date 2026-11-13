@@ -1,0 +1,224 @@
+[
+  {
+    "id": "topic-switch-en",
+    "family": "topic-switch",
+    "split": "test",
+    "language": "en",
+    "current": "Actually, show me how he tested churn.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Tell me about STOS"
+      }
+    ],
+    "sourceIds": [
+      "kkbox-results"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "kkbox-case"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; kkbox-case follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "topic-switch-vi",
+    "family": "topic-switch",
+    "split": "test",
+    "language": "vi",
+    "current": "Thay vào đó, cho tôi xem cách kiểm tra churn.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Tell me about STOS"
+      }
+    ],
+    "sourceIds": [
+      "kkbox-results"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "kkbox-case"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; kkbox-case follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "planned-only-en",
+    "family": "planned-only",
+    "split": "test",
+    "language": "en",
+    "current": "Open the planned AI course as a live product.",
+    "history": [],
+    "sourceIds": [],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "no_action"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "planned-only-vi",
+    "family": "planned-only",
+    "split": "test",
+    "language": "vi",
+    "current": "Mở khóa AI dự kiến như sản phẩm đã hoạt động.",
+    "history": [],
+    "sourceIds": [],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "no_action"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "explicit-decline-en",
+    "family": "explicit-decline",
+    "split": "test",
+    "language": "en",
+    "current": "No demo thanks, just explain.",
+    "history": [],
+    "sourceIds": [
+      "stos"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "no_action"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "explicit-decline-vi",
+    "family": "explicit-decline",
+    "split": "test",
+    "language": "vi",
+    "current": "Không demo nhé, chỉ giải thích thôi.",
+    "history": [],
+    "sourceIds": [
+      "stos"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "no_action"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "service-demo-en",
+    "family": "service-demo",
+    "split": "test",
+    "language": "en",
+    "current": "Can I try the live service website?",
+    "history": [],
+    "sourceIds": [
+      "growth-commerce-os"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "growth-demo"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; growth-demo follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "service-demo-vi",
+    "family": "service-demo",
+    "split": "test",
+    "language": "vi",
+    "current": "Tôi muốn thử website dịch vụ đang hoạt động.",
+    "history": [],
+    "sourceIds": [
+      "growth-commerce-os"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "growth-demo"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; growth-demo follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  }
+]

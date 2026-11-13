@@ -1,3 +1,5 @@
+import actionRegistry from "../../visitor-api/lib/guide-actions.json" with {type:"json"};
+export type GuideAction = {id:string;kind:string;label:string;url:string};
 export type GuideCitation = { sourceId: string; label: string; url: string };
 export type GuideTurn = { role: "user" | "assistant"; text: string; citations?: GuideCitation[] };
 export type AnswerMotion = "nod" | "curious" | "point" | "none";
@@ -30,5 +32,11 @@ export function parseGuideReply(value: unknown) {
   const suggestions = "suggestions" in value && Array.isArray(value.suggestions)
     ? [...new Set(value.suggestions.filter((item): item is string => typeof item === "string" && Boolean(item.trim()) && item.length <= 80))].slice(0, 2) : [];
   const motion: AnswerMotion = "motion" in value && (value.motion === "nod" || value.motion === "curious" || value.motion === "point" || value.motion === "none") ? value.motion : "none";
-  return { answer: value.answer, citations, suggestions, motion };
+  const actions:GuideAction[] = 'actions' in value && Array.isArray(value.actions) ? value.actions.flatMap(item=>{
+    if(!item||typeof item!=='object'||typeof item.id!=='string'||!Object.hasOwn(actionRegistry,item.id))return [];
+    const known=actionRegistry[item.id as keyof typeof actionRegistry];
+    if(item.url!==known.url||item.kind!==known.kind)return [];
+    return [{id:item.id,kind:known.kind,url:known.url,label:item.label===known.vi?known.vi:known.label}];
+  }).slice(0,1):[];
+  return { answer: value.answer, citations, suggestions, motion, actions };
 }

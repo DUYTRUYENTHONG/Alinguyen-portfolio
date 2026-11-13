@@ -1,0 +1,106 @@
+{
+  "mode": "offline-handler-boundary",
+  "fixedPrefixStable": true,
+  "identicalRepeat": true,
+  "providerCalls": 0,
+  "aggregateHitShare": null,
+  "records": [
+    {
+      "fixture": "first",
+      "route": "inference-selection",
+      "model": "openai/gpt-oss-20b",
+      "completionCap": 800,
+      "requestHash": "3b42dc99fcba1a2891ece5c70be2ef6ee8870e71487ca49189308b00a795df47",
+      "fixedPrefixHash": "f2a51efe41688454a1cc72b1befdb4d0fe0de335cb8347b3ec340b40f05bada1",
+      "evidencePrefixHash": "1a75d0bc95cc7c5e20185d35267920a8a1ce425e25ae10574b3e2cb1db1a2893",
+      "evidenceIds": [
+        "cv-lora-experiment",
+        "kkbox-results",
+        "recommendation-signals",
+        "vn-ai-content-kit"
+      ],
+      "providerCalled": false,
+      "providerStatus": null,
+      "returnedModel": null,
+      "selectedIds": [],
+      "outputMode": "offline-construction",
+      "promptTokens": null,
+      "cachedTokens": null,
+      "completionTokens": null,
+      "latencyMs": null
+    },
+    {
+      "fixture": "repeat",
+      "route": "inference-selection",
+      "model": "openai/gpt-oss-20b",
+      "completionCap": 800,
+      "requestHash": "3b42dc99fcba1a2891ece5c70be2ef6ee8870e71487ca49189308b00a795df47",
+      "fixedPrefixHash": "f2a51efe41688454a1cc72b1befdb4d0fe0de335cb8347b3ec340b40f05bada1",
+      "evidencePrefixHash": "1a75d0bc95cc7c5e20185d35267920a8a1ce425e25ae10574b3e2cb1db1a2893",
+      "evidenceIds": [
+        "cv-lora-experiment",
+        "kkbox-results",
+        "recommendation-signals",
+        "vn-ai-content-kit"
+      ],
+      "providerCalled": false,
+      "providerStatus": null,
+      "returnedModel": null,
+      "selectedIds": [],
+      "outputMode": "offline-construction",
+      "promptTokens": null,
+      "cachedTokens": null,
+      "completionTokens": null,
+      "latencyMs": null
+    },
+    {
+      "fixture": "role-change",
+      "route": "inference-selection",
+      "model": "openai/gpt-oss-20b",
+      "completionCap": 800,
+      "requestHash": "6729f7ded78c38018fe073e4aa2e3623da403a0bd3d49081555ec1ff14d0c837",
+      "fixedPrefixHash": "f2a51efe41688454a1cc72b1befdb4d0fe0de335cb8347b3ec340b40f05bada1",
+      "evidencePrefixHash": "1a75d0bc95cc7c5e20185d35267920a8a1ce425e25ae10574b3e2cb1db1a2893",
+      "evidenceIds": [
+        "cv-lora-experiment",
+        "kkbox-results",
+        "recommendation-signals",
+        "vn-ai-content-kit"
+      ],
+      "providerCalled": false,
+      "providerStatus": null,
+      "returnedModel": null,
+      "selectedIds": [],
+      "outputMode": "offline-construction",
+      "promptTokens": null,
+      "cachedTokens": null,
+      "completionTokens": null,
+      "latencyMs": null
+    },
+    {
+      "fixture": "history-change",
+      "route": "inference-selection",
+      "model": "openai/gpt-oss-20b",
+      "completionCap": 800,
+      "requestHash": "b6ddb8761f10ed24702b6c87df2fb391cd3cf61a56143481dbacfdd1997ccaef",
+      "fixedPrefixHash": "f2a51efe41688454a1cc72b1befdb4d0fe0de335cb8347b3ec340b40f05bada1",
+      "evidencePrefixHash": "2be1ea9854816ee2153f73de238c3f17de23ec33c44d2bf96f093eed8038e801",
+      "evidenceIds": [
+        "cv-lora-experiment",
+        "guide-evaluation",
+        "kkbox-results",
+        "vn-ai-content-kit"
+      ],
+      "providerCalled": false,
+      "providerStatus": null,
+      "returnedModel": null,
+      "selectedIds": [],
+      "outputMode": "offline-construction",
+      "promptTokens": null,
+      "cachedTokens": null,
+      "completionTokens": null,
+      "latencyMs": null
+    }
+  ],
+  "cost": "Not measured; existing account plan unchanged."
+}

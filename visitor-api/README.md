@@ -10,17 +10,17 @@ The API is deployed separately because GitHub Pages serves static files and cann
 
 To run locally, use `vercel dev` after `vercel env pull`. The function accepts POST JSON `{ "visitorId": "<UUID>", "role": "Recruiter" }`. `role` may be `null`. Its response contains `total`, `ordinal`, `roleCount`, and `countries`.
 
-## DeepSeek migration candidate — not production-verified
+## Groq evidence selection candidate
 
-The current branch sends model-dependent evidence selection to the official DeepSeek API with server-only `DEEPSEEK_API_KEY`. Keep the existing Redis and GUIDE_RATE_SALT configuration. No Groq free-tier or retention assumption transfers to this provider. Never put a key in NEXT_PUBLIC variables. Deterministic inventory, project, privacy and tour routes remain separate from provider generation.
+Groq is the sole inference provider. Existing production remains unchanged until exact-revision verification; no account plan change is made. The branch replaces the old generated-prose contract with strict citation-only selection for openai/gpt-oss-20b. Fixed rules first, reviewed evidence in ID order second, role/history/question last. The parser validates shape, removes duplicate/out-of-request IDs and permits abstention. Server-reviewed text/URLs remain the factual authority. One POST at most; admission limits remain 20/client/day and 300/global/day. Provider failure retains a labelled source excerpt.
 
-`lib/guide-model.js` uses deepseek-flash, stream:false, thinking disabled, max_tokens:128 and JSON-object output. Only citation IDs are accepted. Server-reviewed text and URLs form the visible answer. Invalid output/provider failures retain the labelled source-excerpt fallback; admission/store failures remain closed.
+Server-only GROQ_API_KEY, GUIDE_RATE_SALT, KV_REST_API_URL and KV_REST_API_TOKEN are required. Never expose keys through NEXT_PUBLIC variables. The 800 completion-token cap with low reasoning is provisional pending a bounded Groq probe: it preserves the previous cap rather than pretending the old DeepSeek 128-token cap is sufficient.
 
-Offline: `node scripts/probe-guide-prefix.mjs`. Live: configure a staging DEEPSEEK_API_KEY and explicitly set DEEPSEEK_PROBE_MAX_CALLS=4, then run `node scripts/probe-guide-prefix.mjs --provider`. The cap authorizes at most four calls, not an unlimited retry loop. Public outputs contain hashes, selected IDs and sanitized counters, never prompts, keys or headers. Zero cache hits is a miss; absent counters are unknown. Costs require observed usage and dated rates.
+Offline: node scripts/probe-guide-prefix.mjs. Live, only with an authorized existing-plan key and confirmed quota: GROQ_PROBE_MAX_CALLS=4 node scripts/probe-guide-prefix.mjs --provider. Stops at first failure, no retries. Four public fixtures: first/repeat/role/history change. Outputs hashes, IDs, model, latency and observed token counters only. Cache share is summed cached tokens / summed prompt tokens; any absent counter keeps aggregate unknown. Zero is measured, not missing.
 
-Verify Preview before production using `node scripts/verify-deployed-guide.mjs HTTPS_URL EXACT_SHA preview`, then repeat with production after authorization. A fallback or deterministic-only smoke cannot establish provider migration. CLI deployments with no server commit SHA fail verification; establish trusted deployment revision metadata rather than accepting a null revision.
+Verify target environment with node scripts/verify-deployed-guide.mjs HTTPS_URL EXACT_SHA preview|production. An old service, deterministic-only answer or fallback cannot establish this candidate's provider gate.
 
-The requested bilingual ranking replay and independent labels are missing; see evaluation/RETRIEVAL_STUDY.md and evaluation/independent-review.md. Production ranking remains unchanged. Historical Groq documentation below is retained as dated baseline evidence, not current candidate setup instructions.
+The static recruiter demonstrations call no provider. Reproduction and authored dataset boundaries: evaluation/recruiter-study-plan.md. Historical DeepSeek artifacts are retained for provenance only and are superseded by this brief.
 
 ## Historical Groq guide configuration — production baseline 8da9f0f
 

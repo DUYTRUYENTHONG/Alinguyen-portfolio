@@ -1,0 +1,12 @@
+{
+  "question": "I don't need a CV, just explain STOS.",
+  "sourceIds": [
+    "stos"
+  ],
+  "expected": "no_action",
+  "before": "master-cv",
+  "after": "no_action",
+  "beforeCodeSha256": "534b8ab551a314a2ab4db7f160a32be32bb962964232887f27e1250ab315cd4b",
+  "afterCodeSha256": "ac8fe4f0038a9711eec758d3180399616b7e8321a1c27f0002914a7b5f653a49",
+  "scope": "Authored adversarial regression. Before replay reconstructs the exact one-line pre-fix function; not held-out training evaluation."
+}

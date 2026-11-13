@@ -28,7 +28,7 @@ function res() {
 }
 async function isolated(run) {
 	const keys = [
-		"DEEPSEEK_API_KEY",
+		"GROQ_API_KEY",
 		"KV_REST_API_URL",
 		"KV_REST_API_TOKEN",
 		"GUIDE_RATE_SALT",
@@ -49,21 +49,21 @@ async function isolated(run) {
 	}
 }
 const redis = () => ({ incr: async () => 1, expire: async () => 1 });
-test("one DeepSeek POST produces a revision-bound sanitized receipt with measured zero cache hits", () =>
+test("one Groq POST produces a revision-bound sanitized receipt with measured zero cache hits", () =>
 	isolated(async () => {
 		let calls = 0;
 		const h = createGuideHandler({
 			makeRedis: redis,
 			modelFetch: async (url, o) => {
 				calls++;
-				assert.equal(url, "https://api.deepseek.com/chat/completions");
+				assert.equal(url, "https://api.groq.com/openai/v1/chat/completions");
 				assert.equal(o.method, "POST");
-				assert.equal(JSON.parse(o.body).max_tokens, 128);
+				assert.equal(JSON.parse(o.body).max_completion_tokens, 800);
 				return {
 					ok: true,
 					status: 200,
 					json: async () => ({
-						model: "deepseek-flash",
+						model: "openai/gpt-oss-20b",
 						choices: [
 							{
 								finish_reason: "stop",
@@ -71,8 +71,8 @@ test("one DeepSeek POST produces a revision-bound sanitized receipt with measure
 							},
 						],
 						usage: {
-							prompt_cache_hit_tokens: 0,
-							prompt_cache_miss_tokens: 123,
+							prompt_tokens_details: {cached_tokens: 0},
+							prompt_tokens: 123,
 							completion_tokens: 12,
 						},
 					}),
@@ -84,7 +84,7 @@ test("one DeepSeek POST produces a revision-bound sanitized receipt with measure
 		assert.equal(calls, 1);
 		assert.equal(r.body.receipt.revision, "a".repeat(40));
 		assert.equal(r.body.receipt.cacheHitTokens, 0);
-		assert.equal(r.body.receipt.returnedModel, "deepseek-flash");
+		assert.equal(r.body.receipt.returnedModel, "openai/gpt-oss-20b");
 		assert.deepEqual(r.body.receipt.selectedIds, ["kkbox-results"]);
 		assert.ok(!JSON.stringify(r.body.receipt).includes("visitorQuestion"));
 	}));

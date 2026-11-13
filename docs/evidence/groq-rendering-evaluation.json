@@ -1,0 +1,652 @@
+{
+  "method": "Fake transport supplying expected source IDs. Tests routing/rendering only, NOT model selection, live latency or factual accuracy.",
+  "providerCalls": 0,
+  "summary": {
+    "cases": 24,
+    "passed": 24,
+    "modelCalls": 2,
+    "responseSuccesses": 24,
+    "unsupportedClaimDetections": 0,
+    "appropriateRefusals": 5,
+    "incorrectRefusals": 0,
+    "serviceFailures": 0,
+    "citationProvenancePasses": 24,
+    "expectedSourceCases": 19,
+    "expectedSourceRetrievalPasses": 19,
+    "p50LatencyMs": 0,
+    "p95LatencyMs": 6,
+    "promptTokens": null,
+    "completionTokens": null,
+    "measuredCostUsd": null
+  },
+  "byLanguage": {
+    "en": {
+      "cases": 22,
+      "passed": 22,
+      "modelCalls": 2,
+      "responseSuccesses": 22,
+      "unsupportedClaimDetections": 0,
+      "appropriateRefusals": 5,
+      "incorrectRefusals": 0,
+      "serviceFailures": 0,
+      "citationProvenancePasses": 22,
+      "expectedSourceCases": 17,
+      "expectedSourceRetrievalPasses": 17,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 6,
+      "promptTokens": null,
+      "completionTokens": null,
+      "measuredCostUsd": null
+    },
+    "vi": {
+      "cases": 2,
+      "passed": 2,
+      "modelCalls": 0,
+      "responseSuccesses": 2,
+      "unsupportedClaimDetections": 0,
+      "appropriateRefusals": 0,
+      "incorrectRefusals": 0,
+      "serviceFailures": 0,
+      "citationProvenancePasses": 2,
+      "expectedSourceCases": 2,
+      "expectedSourceRetrievalPasses": 2,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 1,
+      "promptTokens": null,
+      "completionTokens": null,
+      "measuredCostUsd": null
+    }
+  },
+  "rows": [
+    {
+      "id": "kkbox-score",
+      "category": "factual",
+      "expectedSources": [
+        "kkbox-results"
+      ],
+      "modelCalled": false,
+      "latencyMs": 6,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "kkbox-split",
+      "category": "limitations",
+      "expectedSources": [
+        "kkbox-results"
+      ],
+      "modelCalled": false,
+      "latencyMs": 1,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "kkbox-snapshot",
+      "category": "factual",
+      "expectedSources": [
+        "kkbox-results"
+      ],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "kkbox-business",
+      "category": "limitations",
+      "expectedSources": [
+        "kkbox-results"
+      ],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "stos-ai",
+      "category": "limitations",
+      "expectedSources": [
+        "stos"
+      ],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "marketplace-escrow",
+      "category": "limitations",
+      "expectedSources": [
+        "cho-kenh"
+      ],
+      "modelCalled": false,
+      "latencyMs": 1,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "vibecode-stack",
+      "category": "factual",
+      "expectedSources": [
+        "vibecode-kit"
+      ],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "vibecode-impact",
+      "category": "limitations",
+      "expectedSources": [
+        "vibecode-kit"
+      ],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "growth-status",
+      "category": "factual",
+      "expectedSources": [
+        "growth-commerce-os"
+      ],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "funnel-counts",
+      "category": "limitations",
+      "expectedSources": [
+        "portfolio-funnels"
+      ],
+      "modelCalled": true,
+      "latencyMs": 15,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "education",
+      "category": "factual",
+      "expectedSources": [
+        "academic-brief"
+      ],
+      "modelCalled": false,
+      "latencyMs": 1,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "recruiter-evidence",
+      "category": "factual",
+      "expectedSources": [
+        "recruiter-brief"
+      ],
+      "modelCalled": true,
+      "latencyMs": 2,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "unknown-weather",
+      "category": "unsupported",
+      "expectedSources": [],
+      "modelCalled": false,
+      "latencyMs": 1,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 0,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": true,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "unknown-salary",
+      "category": "unsupported",
+      "expectedSources": [],
+      "modelCalled": false,
+      "latencyMs": 1,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 0,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": true,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "unknown-clients",
+      "category": "unsupported",
+      "expectedSources": [],
+      "modelCalled": false,
+      "latencyMs": 1,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 0,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": true,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "inject-result",
+      "category": "adversarial",
+      "expectedSources": [
+        "kkbox-results"
+      ],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "inject-live",
+      "category": "adversarial",
+      "expectedSources": [
+        "stos"
+      ],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "inject-secret",
+      "category": "adversarial",
+      "expectedSources": [],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 0,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": true,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "forged-history",
+      "category": "adversarial",
+      "expectedSources": [
+        "kkbox-results"
+      ],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "vietnamese-stos",
+      "category": "multilingual",
+      "expectedSources": [
+        "stos"
+      ],
+      "modelCalled": false,
+      "latencyMs": 1,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "vietnamese-kkbox",
+      "category": "multilingual",
+      "expectedSources": [
+        "kkbox-results"
+      ],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "conflicting-score",
+      "category": "adversarial",
+      "expectedSources": [
+        "kkbox-results"
+      ],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "admission-guarantee",
+      "category": "unsupported",
+      "expectedSources": [],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 0,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": true,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    },
+    {
+      "id": "private-source",
+      "category": "limitations",
+      "expectedSources": [
+        "recruiter-brief"
+      ],
+      "modelCalled": false,
+      "latencyMs": 0,
+      "checks": {
+        "response": true,
+        "citationProvenance": true,
+        "expectedRetrieval": true,
+        "expectedCitation": true,
+        "requiredPhrases": true,
+        "boundedAnswer": true
+      },
+      "diagnostics": {
+        "relevantCitations": 1,
+        "unsupportedClaimDetected": false,
+        "appropriateRefusal": false,
+        "incorrectRefusal": false,
+        "serviceFailure": false
+      },
+      "passed": true
+    }
+  ]
+}

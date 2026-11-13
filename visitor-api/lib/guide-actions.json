@@ -1,0 +1,51 @@
+{
+  "kkbox-case": {
+    "kind": "open_case",
+    "source": "kkbox-results",
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/work/kkbox-baseline/",
+    "label": "Inspect the churn case",
+    "vi": "Xem nghiên cứu churn"
+  },
+  "vibecode-repo": {
+    "kind": "open_repository",
+    "source": "vibecode-kit",
+    "url": "https://github.com/DUYTRUYENTHONG/vibecode-product-kit",
+    "label": "Open the public repository",
+    "vi": "Mở mã nguồn công khai"
+  },
+  "stos-demo": {
+    "kind": "open_demo",
+    "source": "stos",
+    "url": "https://stosvn.vercel.app/stos",
+    "label": "Try the live STOS product",
+    "vi": "Thử sản phẩm STOS đang hoạt động"
+  },
+  "cho-kenh-demo": {
+    "kind": "open_demo",
+    "source": "cho-kenh",
+    "url": "https://growth-commerce-os.vercel.app/cho-kenh",
+    "label": "Open the live catalog",
+    "vi": "Mở danh mục đang hoạt động"
+  },
+  "growth-demo": {
+    "kind": "open_demo",
+    "source": "growth-commerce-os",
+    "url": "https://growth-commerce-os.vercel.app/en",
+    "label": "Explore the service website",
+    "vi": "Xem website dịch vụ"
+  },
+  "master-cv": {
+    "kind": "download_cv",
+    "source": null,
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf",
+    "label": "Download the master CV",
+    "vi": "Tải CV chính thức"
+  },
+  "public-contact": {
+    "kind": "open_contact",
+    "source": null,
+    "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/#contact",
+    "label": "Contact Ali",
+    "vi": "Liên hệ Ali"
+  }
+}

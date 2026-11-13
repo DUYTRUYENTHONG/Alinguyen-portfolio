@@ -20,7 +20,7 @@ function request(question = "What is the local holdout log loss?") {
 }
 
 function withTestEnv(run) {
-  const names = ["DEEPSEEK_API_KEY", "KV_REST_API_URL", "KV_REST_API_TOKEN", "GUIDE_RATE_SALT"];
+  const names = ["GROQ_API_KEY", "KV_REST_API_URL", "KV_REST_API_TOKEN", "GUIDE_RATE_SALT"];
   const previous = Object.fromEntries(names.map((name) => [name, process.env[name]]));
   for (const name of names) process.env[name] = `test-${name}`;
   return Promise.resolve().then(run).finally(() => {
@@ -151,9 +151,9 @@ test("guide returns only server-approved citation URLs", () => withTestEnv(async
   assert.equal(res.body.motion, "point");
   assert.deepEqual(res.body.citations.map(({ sourceId }) => sourceId), ["kkbox-results"]);
   assert.match(res.body.citations[0].url, /^https:\/\/github\.com\/DUYTRUYENTHONG\//);
-  assert.equal(modelRequest.model, "deepseek-flash");
-  assert.equal(modelRequest.response_format.type, "json_object");
-  assert.equal(JSON.parse(modelRequest.messages[1].content).serverSelectedRole.guideName, "Ari");
+  assert.equal(modelRequest.model, "openai/gpt-oss-20b");
+  assert.equal(modelRequest.response_format.type, "json_schema");
+  assert.equal(JSON.parse(modelRequest.messages[2].content).serverSelectedRole.guideName, "Ari");
   assert.equal(modelRequest.messages.some(({ content }) => content.includes("192.0.2.1")), false);
   assert.match(modelRequest.messages[1].content, /kkbox-results/);
   assert.equal(JSON.parse(modelRequest.messages[2].content).visitorQuestion, "What is the local holdout log loss?");
@@ -164,7 +164,7 @@ test("the selected character name is supplied by the server role mapping", () =>
   const handler = createGuideHandler({
     makeRedis: () => ({ incr: async () => 1, expire: async () => 1 }),
     modelFetch: async (_url, options) => {
-      systemMessage = JSON.parse(options.body).messages[1].content;
+      systemMessage = JSON.parse(options.body).messages[2].content;
       return { ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({citations: ["kkbox-results"]}) } }] }) };
     },
   });
@@ -184,9 +184,9 @@ test("guide rejects invented-only citations rather than showing an unsupported a
   const res = response();
   await handler(request(), res);
   assert.equal(res.statusCode, 200);
-  assert.equal(res.body.citations[0].sourceId, "kkbox-results");
+  assert.deepEqual(res.body.citations, []);
   assert.equal(res.body.motion, "none");
-  assert.equal(res.body.responseMode, "source-excerpt");
+  assert.equal(res.body.responseMode, "abstention");
   assert.doesNotMatch(res.body.answer, /Invented claim/);
 }));
 

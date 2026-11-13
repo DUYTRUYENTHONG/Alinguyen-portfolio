@@ -316,3 +316,6 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
 /* Role hydration may reorder keyed cards during browser Back restoration.
    Keep native restoration from following a moved card to a different project. */
 #work .work-cards { overflow-anchor: none; }
+
+/* Owner-requested badge capitalization; composition unchanged. */
+.hero-experience span{text-transform:uppercase}

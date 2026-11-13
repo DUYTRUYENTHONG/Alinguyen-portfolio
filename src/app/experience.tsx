@@ -45,6 +45,7 @@ export function PortfolioExperienceProvider({ children }: { children: ReactNode 
       else if (/^https?:\/\/([^/]+\.)?linkedin\.com\//i.test(referrer)) setEntry("recruiter");
     }
     setReady(true);
+    document.dispatchEvent(new Event("portfolio-hydrated"));
   }, []);
   const setSelected = (role: string) => {
     const picker = document.getElementById("visitor");

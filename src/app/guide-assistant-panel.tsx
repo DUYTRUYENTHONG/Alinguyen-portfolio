@@ -6,7 +6,7 @@ import { useGuideDialog } from "./use-guide-dialog";
 import { GuideRequestError, requestGuide } from './guide-request';
 import { conversationScrollTop } from "./guide-conversation-scroll";
 import { PortfolioSignalConsent } from "./portfolio-signals";
-import { guideRequestSection, parseGuideReply, recentGuideTurns, type GuideTurn, type AnswerMotion } from "./guide-reply";
+import { guideRequestSection, parseGuideReply, recentGuideTurns, type GuideTurn, type AnswerMotion, type GuideAction } from "./guide-reply";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const endpoint = process.env.NEXT_PUBLIC_GUIDE_API_URL;
@@ -39,6 +39,8 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
 }) {
   const [turns, setTurns] = useState<GuideTurn[]>([]);
   const [question, setQuestion] = useState("");
+  const [actions,setActions] = useState<GuideAction[]>([]);
+  const [actionState,setActionState] = useState<{used:string[];declined:string[]}>({used:[],declined:[]});
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -147,6 +149,7 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
     if (!trimmed || requestPending.current) return;
     requestPending.current = true;
     setQuestion("");
+    setActions([]);
     setError("");
     const retrying = turns.at(-1)?.role === 'user' && turns.at(-1)?.text === trimmed;
     const prior = recentGuideTurns(retrying ? turns.slice(0,-1) : turns);
@@ -155,9 +158,10 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
     showMotion("thinking");
     try {
       if (!endpoint) throw new Error("Guide API is not configured");
-      const reply = await requestGuide(endpoint, { question: trimmed, context: { page: window.location.pathname, section: guideRequestSection(section), role }, recentTurns: prior, interests: remember ? interests : [] }, parseGuideReply);
+      const reply = await requestGuide(endpoint, { question: trimmed, context: { page: window.location.pathname, section: guideRequestSection(section), role }, recentTurns: prior, interests: remember ? interests : [], actionState }, parseGuideReply);
       setTurns((current) => [...current, { role: "assistant", text: reply.answer, citations: reply.citations }]);
       setSuggestions(reply.suggestions);
+      setActions(reply.actions);
       showMotion(reply.motion, 1600);
     } catch (failure) {
       setError(failure instanceof GuideRequestError && failure.status === 429
@@ -200,7 +204,8 @@ export function GuideAssistantPanel({ open, onClose, icon, name, role, section }
       {error && <p className="guide-assistant-fallback"><a href={`${basePath}/work/`} onClick={onClose}>Work</a> · <a href={`${basePath}/about/`} onClick={onClose}>About</a> · <a href={`${basePath}/#cvs`} onClick={onClose}>CVs</a> · <a href={`${basePath}/#contact`} onClick={onClose}>Contact</a></p>}
       {!busy && suggestions.length > 0 && <div className="guide-assistant-suggestions">{suggestions.map((item) =>
         <button key={item} type="button" onClick={() => void ask(item)}>{item}</button>)}</div>}
-      <PortfolioSignalConsent />
+      {!busy&&actions.length>0&&<nav className="guide-assistant-citations" aria-label="Suggested next step">{actions.map(action=><a key={action.id} href={action.url} target="_blank" rel="noopener noreferrer" download={action.kind==='download_cv'} onClick={()=>{setActionState(state=>({...state,used:[...new Set([...state.used,action.id])].slice(-7)}));setActions([]);}}>{action.label} ↗</a>)}<button className="guide-assistant-forget" type="button" onClick={()=>{setActionState(state=>({...state,declined:[...new Set([...state.declined,...actions.map(a=>a.id)])].slice(-7)}));setActions([]);}}>Dismiss suggestion</button></nav>}
+        <PortfolioSignalConsent />
       <details className="guide-assistant-memory"><summary>Returning visitor preferences</summary>
         <label><input type="checkbox" checked={remember} onChange={(event) => { setRemember(event.target.checked); saveInterests(interests, event.target.checked); }} /> Remember selected interests on this device for 90 days</label>
         {remember && <div className="guide-assistant-interests">{interestOptions.map((item) =>

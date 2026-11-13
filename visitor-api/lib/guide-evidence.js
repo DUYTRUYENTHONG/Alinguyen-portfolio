@@ -23,7 +23,7 @@ export function evidenceReply(sources, question = '') {
   const vi = /[ăâđêôơư]|\b(du an|san pham|tinh nang|ket qua|chua)\b/i.test(normalizeQuestion(question));
   return {
     answer: sources.map((source, index) => {
-      const details = /\b(detail|details|vector|lexical|bm25|fts5|lcel|cutoff|snapshot|split|reproduc\w*|privacy|retention|expiry|technical|limitations|email|contact|date|labels|transactions|tokens|cost)\b/i.test(question);
+      const details = /đóng góp|dong gop|\b(contribut\w*|personally|detail|details|vector|lexical|bm25|fts5|lcel|cutoff|snapshot|split|reproduc\w*|privacy|retention|expiry|technical|limitations|email|contact|date|labels|transactions|tokens|cost)\b/i.test(question);
       const summary = summaries[source.id]?.[vi ? 'vi' : 'en'];
       const text = !details && summary ? summary : vi && source.textVi ? source.textVi : source.text;
       return `${text} [${index + 1}]`;

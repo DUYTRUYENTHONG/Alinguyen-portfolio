@@ -25,7 +25,7 @@ function valid() {
 				environment: "preview",
 				providerAttempted: true,
 				providerStatus: 200,
-				returnedModel: "deepseek-flash",
+				returnedModel: "openai/gpt-oss-20b",
 				selectedIds: ["kkbox-results"],
 			},
 		},

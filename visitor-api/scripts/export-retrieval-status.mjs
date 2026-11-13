@@ -1,42 +1,5 @@
-import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync } from "node:fs";
-import { knowledge } from "../lib/guide-knowledge.js";
-const hash = (x) => createHash("sha256").update(x).digest("hex");
-const observed = JSON.parse(
-	readFileSync(
-		new URL(
-			"../../docs/evidence/deepseek-preview-status.json",
-			import.meta.url,
-		),
-		"utf8",
-	),
-);
-const result = {
-	status: "pending-reproduction",
-	corpusRecords: knowledge.length,
-	corpusSha256: hash(JSON.stringify(knowledge)),
-	sources: knowledge.map(({ id, url }) => ({ id, url })),
-	approvedReplayQuestionsAvailable: false,
-	keyword: null,
-	e5: null,
-	rrf: null,
-	independentHoldout: "pending",
-	providerCallsMeasured: observed.providerCallsMeasured,
-	providerStatus: observed.providerStatus,
-	providerAcceptancePassed: observed.providerAcceptancePassed,
-	previewDeterministicReceipt: observed.deterministicReceipt,
-	productionRevisionVerified: null,
-	reason:
-		"Original bilingual replay labels, pinned E5 configuration and rankings are unavailable; no numerical retrieval results are fabricated.",
-};
-writeFileSync(
-	new URL("../../public/retrieval-study-status.json", import.meta.url),
-	JSON.stringify(result, null, 2) + "\n",
-);
-console.log(
-	JSON.stringify({
-		records: result.corpusRecords,
-		fingerprint: result.corpusSha256,
-		status: result.status,
-	}),
-);
+import{readFileSync,writeFileSync}from'node:fs';
+const study=JSON.parse(readFileSync(new URL('../../public/recruiter-retrieval.json',import.meta.url),'utf8'));
+const live=JSON.parse(readFileSync(new URL('../../docs/evidence/groq-live-status.json',import.meta.url),'utf8'));
+const result={status:'new-authored-development-replay-complete',productionProvider:'Groq',model:'openai/gpt-oss-20b',productionRanker:'keyword unchanged',corpusRecords:study.corpus.length,corpusSha256:study.corpusSha256,sources:study.corpus.map(({id,url})=>({id,url})),originalReplayAvailable:false,summary:study.summary,modelFingerprint:study.model,independentHoldout:'pending',providerCallsMeasured:live.providerCalls,providerAcceptancePassed:live.realSelectionVerified,candidateDeploymentVerified:live.candidateDeploymentVerified,productionRevisionVerified:null,reason:'New authored replay is reproducible; original historical replay unavailable. No production ranker or provider migration.'};
+writeFileSync(new URL('../../public/retrieval-study-status.json',import.meta.url),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({records:result.corpusRecords,status:result.status}));

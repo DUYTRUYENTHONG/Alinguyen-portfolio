@@ -6,7 +6,7 @@
   {"id":"stos-ai","category":"limitations","question":"Are STOS AI suggestions live today?","sources":["stos"],"checks":["planned","not live|not yet|aren't live"]},
   {"id":"marketplace-escrow","category":"limitations","question":"Does Cho Kenh provide automated escrow and checkout?","sources":["cho-kenh"],"checks":["manual","not|no |cannot|can't"]},
   {"id":"vibecode-stack","category":"factual","question":"What languages does the Vibecode CLI use?","sources":["vibecode-kit"],"checks":["JavaScript","Node"]},
-  {"id":"vibecode-impact","category":"limitations","question":"How much productivity improvement has Vibecode measured?","sources":["vibecode-kit"],"checks":["not|no |unmeasured|hasn't"]},
+  {"id":"vibecode-impact","category":"limitations","question":"How much productivity improvement has Vibecode measured?","sources":["vibecode-kit"],"checks":["not|no |unmeasured|hasn't|haven.t been measured"]},
   {"id":"growth-status","category":"factual","question":"What is Growth Commerce OS?","sources":["growth-commerce-os"],"checks":["service|website"]},
   {"id":"funnel-counts","category":"limitations","question":"Are the portfolio funnel counts measured customer results?","sources":["portfolio-funnels"],"checks":["illustrative|example|teaching","not|no "]},
   {"id":"education","category":"factual","question":"Which university and degree does Ali list?","sources":["academic-brief"],"checks":["Vietnamese.German","Computer Science"]},

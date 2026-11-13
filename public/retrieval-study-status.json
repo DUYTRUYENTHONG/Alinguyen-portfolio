@@ -1,7 +1,10 @@
 {
-  "status": "pending-reproduction",
+  "status": "new-authored-development-replay-complete",
+  "productionProvider": "Groq",
+  "model": "openai/gpt-oss-20b",
+  "productionRanker": "keyword unchanged",
   "corpusRecords": 18,
-  "corpusSha256": "ccad1e85f078101857bc899275c053318552db3bda357d175dce23eb235b5faa",
+  "corpusSha256": "23b8923b87ef38b5ecfa762d88d9fc2da3fd521f4afd28ff7e2182cef3c90516",
   "sources": [
     {
       "id": "vn-ai-content-kit",
@@ -76,27 +79,75 @@
       "url": "https://duytruyenthong.github.io/Alinguyen-portfolio/cv-applied-ai-engineer.pdf"
     }
   ],
-  "approvedReplayQuestionsAvailable": false,
-  "keyword": null,
-  "e5": null,
-  "rrf": null,
-  "independentHoldout": "pending",
-  "providerCallsMeasured": 1,
-  "providerStatus": 402,
-  "providerAcceptancePassed": false,
-  "previewDeterministicReceipt": {
-    "environment": "preview",
-    "revision": "c16d9d86dbf00b502db85500c90b4a0b5bd40b4b",
-    "providerAttempted": false,
-    "providerStatus": null,
-    "returnedModel": null,
-    "selectedIds": [],
-    "latencyMs": null,
-    "cacheHitTokens": null,
-    "cacheMissTokens": null,
-    "completionTokens": null,
-    "outputMode": "reviewed-evidence"
+  "originalReplayAvailable": false,
+  "summary": {
+    "en": {
+      "keyword": {
+        "questions": 8,
+        "top1": 1,
+        "top3": 1,
+        "mrr3": 1
+      },
+      "e5": {
+        "questions": 8,
+        "top1": 0.875,
+        "top3": 0.875,
+        "mrr3": 0.875
+      },
+      "enriched": {
+        "questions": 8,
+        "top1": 0.875,
+        "top3": 0.875,
+        "mrr3": 0.875
+      },
+      "rrf": {
+        "questions": 8,
+        "top1": 0.875,
+        "top3": 1,
+        "mrr3": 0.9375
+      }
+    },
+    "vi": {
+      "keyword": {
+        "questions": 8,
+        "top1": 0.5,
+        "top3": 0.5,
+        "mrr3": 0.5
+      },
+      "e5": {
+        "questions": 8,
+        "top1": 0.625,
+        "top3": 0.875,
+        "mrr3": 0.7291666666666666
+      },
+      "enriched": {
+        "questions": 8,
+        "top1": 0.375,
+        "top3": 0.625,
+        "mrr3": 0.47916666666666663
+      },
+      "rrf": {
+        "questions": 8,
+        "top1": 0.625,
+        "top3": 0.875,
+        "mrr3": 0.7291666666666666
+      }
+    }
   },
+  "modelFingerprint": {
+    "name": "intfloat/multilingual-e5-small",
+    "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "pooling": "attention-mask mean; L2 normalized",
+    "similarity": "exact cosine, CPU float32",
+    "maxLength": 512,
+    "queryPrefix": "query: ",
+    "passagePrefix": "passage: ",
+    "torch": "2.15.0+cpu"
+  },
+  "independentHoldout": "pending",
+  "providerCallsMeasured": 0,
+  "providerAcceptancePassed": false,
+  "candidateDeploymentVerified": false,
   "productionRevisionVerified": null,
-  "reason": "Original bilingual replay labels, pinned E5 configuration and rankings are unavailable; no numerical retrieval results are fabricated."
+  "reason": "New authored replay is reproducible; original historical replay unavailable. No production ranker or provider migration."
 }

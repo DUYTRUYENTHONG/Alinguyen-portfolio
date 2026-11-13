@@ -11,22 +11,35 @@ export function scoreReply(item, status, reply, retrieved) {
     requiredPhrases: item.checks.every((pattern) => new RegExp(pattern, "iu").test(answer)),
     boundedAnswer: answer.length <= (reply?.responseMode === 'reviewed-evidence' ? 6000 : 1000),
   };
-  return { checks, passed: Object.values(checks).every(Boolean) };
+  const refused = citations.length === 0 && /can't verify|cannot verify|cannot support/i.test(answer);
+  const unsupportedClaim = /Ali (?:won|wins) (?:the )?(?:Kaggle|KKBox)|guarantee(?:s|d)? (?:you |a )?(?:job|hiring)|STOS AI suggestions are (?:already )?live/i.test(answer);
+  return { checks, diagnostics: {
+    relevantCitations: item.sources.filter(id=>citations.some(c=>c.sourceId===id)).length,
+    unsupportedClaimDetected: unsupportedClaim,
+    appropriateRefusal: item.sources.length===0 && refused,
+    incorrectRefusal: item.sources.length>0 && refused,
+    serviceFailure: status!==200 || reply?.responseMode==='source-excerpt',
+  }, passed: Object.values(checks).every(Boolean) && !unsupportedClaim };
 }
 
 export function summarize(rows) {
   const latency = rows.map((r) => r.latencyMs).sort((a, b) => a - b);
   const percentile = (p) => latency[Math.max(0, Math.ceil(p * latency.length) - 1)] ?? null;
+  const totalTokens = key => rows.length && rows.every(r=>Number.isSafeInteger(r.usage?.[key])) ? rows.reduce((n,r)=>n+r.usage[key],0) : null;
   return {
     cases: rows.length, passed: rows.filter((r) => r.passed).length,
     modelCalls: rows.filter((r) => r.modelCalled).length,
     responseSuccesses: rows.filter((r) => r.checks.response).length,
+    unsupportedClaimDetections: rows.filter(r=>r.diagnostics?.unsupportedClaimDetected).length,
+    appropriateRefusals: rows.filter(r=>r.diagnostics?.appropriateRefusal).length,
+    incorrectRefusals: rows.filter(r=>r.diagnostics?.incorrectRefusal).length,
+    serviceFailures: rows.filter(r=>r.diagnostics?.serviceFailure).length,
     citationProvenancePasses: rows.filter((r) => r.checks.citationProvenance).length,
     expectedSourceCases: rows.filter((r) => r.expectedSources.length).length,
     expectedSourceRetrievalPasses: rows.filter((r) => r.expectedSources.length && r.checks.expectedRetrieval).length,
     p50LatencyMs: percentile(.5), p95LatencyMs: percentile(.95),
-    promptTokens: rows.reduce((n, r) => n + (r.usage?.prompt_tokens ?? 0), 0),
-    completionTokens: rows.reduce((n, r) => n + (r.usage?.completion_tokens ?? 0), 0),
+    promptTokens: totalTokens('prompt_tokens'),
+    completionTokens: totalTokens('completion_tokens'),
     measuredCostUsd: null,
   };
 }

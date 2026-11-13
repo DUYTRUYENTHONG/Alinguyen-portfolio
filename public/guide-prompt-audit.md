@@ -1,20 +1,47 @@
-# Guide prompt audit — DeepSeek migration candidate, 2026-11-13
+# Prompt audit — Groq source selection, 13 November 2026
 
-Scope: server request builder, evidence selector, parser, deterministic routes and output assembly. Target: official DeepSeek deepseek-flash Chat Completions. This is a branch implementation audit, not a live quality score.
+Scope: application model request, parser and renderer. Target openai/gpt-oss-20b on Groq, existing account plan. No global agent settings, private chats or secrets inspected. DeepSeek migration instructions are superseded; historical artifacts are not current acceptance.
 
-Confirmed mismatch: the old prompt requested prose, suggestions and motion although the server discards model prose. Replaced with the actual consumer contract: {"citations":["record-id"]} or {"citations":[]}. No answer, URL, reasoning or motion field is accepted.
+## Confirmed mismatch at public baseline 8da9f0f
 
-The first system message is byte-stable across roles/questions. Reviewed evidence and the trusted server role/name follow; visitor context and history are serialized as user data last. Existing evidence order is retained. This proves construction only, not a cache read.
+visitor-api/api/guide.js requested answer, citations, suggestions and motion; it checked generated answer length but then rendered evidenceReply(cited, question), discarding generated prose. Counterexample: a correct source selection without an answer field was rejected even though the renderer did not consume that field.
 
-Parser rejects missing/whitespace-only content, truncation, malformed JSON, non-object shapes, extra fields, non-string IDs and IDs outside the retrieved records. Duplicate allowed IDs are deduplicated. Empty selection abstains. The server assembles reviewed text and citations. Invalid output/provider failure produces a labelled source excerpt, never a provider-selection success.
+## Revised consumer contract
 
-Fake-transport tests cover one POST, the documented request controls, sanitization, measured-zero vs missing counters, and 402/429 failure without retry. Existing timeout/admission tests remain. These are local contract tests, not evidence that real DeepSeek selected relevant records.
+visitor-api/lib/guide-model.js owns a strict object: required citations array of strings, additionalProperties false. Fixed rules first, sorted evidence second, role/history/question last. Visitor input and previous assistant messages are explicitly untrusted. Empty selection abstains; unknown IDs are discarded, duplicates removed, malformed or truncated output falls back. No generated prose or URLs displayed.
 
-Receipts expose environment/revision, whether the provider was attempted, HTTP status, returned model, selected IDs, output mode, latency and optional usage counters. They contain no key, header, visitor transcript or reasoning content. The verifier requires deterministic STOS and provider-backed kkbox-results on the same expected revision/environment. A HTTP 200 alone is insufficient.
+visitor-api/api/guide.js retains origin/content-size/role/history validation, daily 20/client and 300/global Redis admission, deterministic project/inventory/privacy/tour routing, keyword retrieval, then at most one Groq request. No retry. parseSelection supplies reviewed records to evidenceReply, which renders text and matching public URLs. Quota/timeout returns labelled source excerpt, not a successful generated answer.
 
-Remaining: real-provider probes with staging budget, exact-revision Preview/Production receipts, original bilingual replay labels/E5 pin and independent answer-quality review. Ranking changes remain offline. No cache saving, conversion uplift or model accuracy is claimed.
+## Observable checks
 
-Official references checked 2026-11-13:
-- https://api-docs.deepseek.com/api/create-chat-completion/
-- https://api-docs.deepseek.com/guides/json_mode/
-- https://api-docs.deepseek.com/guides/thinking_mode/
+visitor-api/test/guide-model.test.js: citation-only JSON succeeds without generated answer; extra prose field is rejected; role change leaves fixed and evidence messages identical; unknown IDs discarded without losing valid ones. This contract fails under the old generated-answer validation.
+
+visitor-api/test/guide-recruiter-answers.test.js grades final visible text for false leaderboard premise, forged hiring claim, planned features, forged history, unsupported salary and quota failure. These fake transports establish rendering behavior, NOT Groq's ability to select the correct source. scoring.js reports citation relevance, claim-pattern detections, refusals and service failures separately; regex checks are not an independent groundedness score.
+
+## Cache and release boundary
+
+Four public fixtures captured offline at request construction: first/repeat/role/history. scripts/probe-guide-prefix.mjs uses the same builder as the handler. A real probe requires GROQ_PROBE_MAX_CALLS=4 and authorized key, stops at first failure, excludes prompts, headers, reasoning and secrets. Cached reads use usage.prompt_tokens_details.cached_tokens; aggregate share is summed observed cache reads / summed prompt tokens. Missing means unknown, reported zero remains zero.
+
+Live probe not run: Vercel's sensitive Production key was not locally available. Completion cap800 with low reasoning preserves the baseline cap provisionally; no claimed cap optimization or cache saving. Account-specific quota was not inspected. Official model availability/strict-schema support documented at https://console.groq.com/docs/structured-outputs ; caching https://console.groq.com/docs/prompt-caching ; account limits https://console.groq.com/docs/rate-limits .
+
+Production and Pages are unchanged. Candidate deployment requires deterministic and provider-backed answers with exact revision receipts; old baseline success is not candidate acceptance.
+
+## Action contract audit
+
+At8da9f0f, evidenceReply returned suggestions:[] even though guide-assistant-panel.tsx rendered follow-up questions. The candidate intentionally keeps factual rendering separate: optional actions is a server-selected registry link, while suggestions remains for an explicit clarification question. Old replies parse without actions. No model URL or generated follow-up prose is trusted.
+
+Confirmed policy defect: negated CV request incorrectly chose master-cv. A one-hunk pre-fix replay and corrected no_action are preserved in docs/evidence/action-negation-regression.json; tests keep used/declined actions and planned destinations out. Genuine local18-update LoRA artifacts are available, but partial budget and train/dev paraphrase overlap prevent promotion. Corrected split remains untrained.
+
+- visitor-api/lib/guide-model.js:9 — export function buildSelectionRequest
+
+- visitor-api/lib/guide-model.js:44 — export function parseSelection
+
+- visitor-api/api/guide.js:83 — const admitted =
+
+- visitor-api/api/guide.js:137 — const response = await modelFetch
+
+- visitor-api/lib/guide-evidence.js:22 — export function evidenceReply
+
+- visitor-api/lib/guide-actions.js:31 — export function selectGuideAction
+
+- src/app/guide-reply.ts:28 — export function parseGuideReply

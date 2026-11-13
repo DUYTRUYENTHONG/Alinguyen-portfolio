@@ -1,0 +1,128 @@
+[
+  {
+    "id": "leakage-en",
+    "family": "leakage",
+    "expected": "kkbox-results",
+    "language": "en",
+    "question": "How are events after the prediction date excluded?"
+  },
+  {
+    "id": "leakage-vi",
+    "family": "leakage",
+    "expected": "kkbox-results",
+    "language": "vi",
+    "question": "Dữ liệu tương lai sau ngày dự đoán được loại trừ như thế nào?"
+  },
+  {
+    "id": "failures-en",
+    "family": "failures",
+    "expected": "guide-evaluation",
+    "language": "en",
+    "question": "Where are the published assistant failures and evaluation limits?"
+  },
+  {
+    "id": "failures-vi",
+    "family": "failures",
+    "expected": "guide-evaluation",
+    "language": "vi",
+    "question": "Các lỗi trợ lý đã công bố và giới hạn đánh giá nằm ở đâu?"
+  },
+  {
+    "id": "warehouse-en",
+    "family": "warehouse",
+    "expected": "traffic-analytics",
+    "language": "en",
+    "question": "How does the restricted PostgreSQL traffic import handle replay?"
+  },
+  {
+    "id": "warehouse-vi",
+    "family": "warehouse",
+    "expected": "traffic-analytics",
+    "language": "vi",
+    "question": "Quy trình nhập lưu lượng PostgreSQL hạn chế quyền xử lý chạy lại như thế nào?"
+  },
+  {
+    "id": "privacy-en",
+    "family": "privacy",
+    "expected": "recommendation-signals",
+    "language": "en",
+    "question": "Can I withdraw consent for recommendation signals?"
+  },
+  {
+    "id": "privacy-vi",
+    "family": "privacy",
+    "expected": "recommendation-signals",
+    "language": "vi",
+    "question": "Tôi có thể rút đồng ý thu thập tín hiệu đề xuất không?"
+  },
+  {
+    "id": "career-en",
+    "family": "career",
+    "expected": "career-agent-kit",
+    "language": "en",
+    "question": "Is the free career agent kit a job guarantee?"
+  },
+  {
+    "id": "career-vi",
+    "family": "career",
+    "expected": "career-agent-kit",
+    "language": "vi",
+    "question": "Bộ trợ lý nghề nghiệp miễn phí có đảm bảo việc làm không?"
+  },
+  {
+    "id": "tools-en",
+    "family": "tools",
+    "expected": "vibecode-kit",
+    "language": "en",
+    "question": "What offline developer workflow does Vibecode support?"
+  },
+  {
+    "id": "tools-vi",
+    "family": "tools",
+    "expected": "vibecode-kit",
+    "language": "vi",
+    "question": "Vibecode hỗ trợ quy trình phát triển ngoại tuyến nào?"
+  },
+  {
+    "id": "commerce-en",
+    "family": "commerce",
+    "expected": "stos",
+    "language": "en",
+    "question": "Are STOS AI recommendations already live?"
+  },
+  {
+    "id": "commerce-vi",
+    "family": "commerce",
+    "expected": "stos",
+    "language": "vi",
+    "question": "Đề xuất AI của STOS đã hoạt động chưa?"
+  },
+  {
+    "id": "marketplace-en",
+    "family": "marketplace",
+    "expected": "cho-kenh",
+    "language": "en",
+    "question": "Can I use automated escrow at Chợ Kênh?"
+  },
+  {
+    "id": "marketplace-vi",
+    "family": "marketplace",
+    "expected": "cho-kenh",
+    "language": "vi",
+    "question": "Chợ Kênh có thanh toán ký quỹ tự động không?"
+  },
+  {
+    "id": "weather",
+    "family": "unrelated-weather",
+    "expected": null,
+    "language": "en",
+    "question": "Will it rain tomorrow in Paris?"
+  },
+  {
+    "id": "recipe",
+    "family": "unrelated-recipe",
+    "expected": null,
+    "language": "vi",
+    "question": "Cách nấu phở bò cho sáu người?"
+  }
+]

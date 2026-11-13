@@ -1,0 +1,492 @@
+[
+  {
+    "id": "cv-direct-en",
+    "family": "cv-direct",
+    "split": "train",
+    "language": "en",
+    "current": "Download the CV please.",
+    "history": [],
+    "sourceIds": [],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "master-cv"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; master-cv follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "cv-direct-vi",
+    "family": "cv-direct",
+    "split": "train",
+    "language": "vi",
+    "current": "Cho tôi tải CV.",
+    "history": [],
+    "sourceIds": [],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "master-cv"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; master-cv follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "repo-contribution-en",
+    "family": "repo-contribution",
+    "split": "train",
+    "language": "en",
+    "current": "What did Ali contribute to Vibecode?",
+    "history": [],
+    "sourceIds": [
+      "vibecode-kit"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "vibecode-repo"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; vibecode-repo follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "repo-contribution-vi",
+    "family": "repo-contribution",
+    "split": "train",
+    "language": "vi",
+    "current": "Ali đóng góp gì cho Vibecode?",
+    "history": [],
+    "sourceIds": [
+      "vibecode-kit"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "vibecode-repo"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; vibecode-repo follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "churn-validation-en",
+    "family": "churn-validation",
+    "split": "train",
+    "language": "en",
+    "current": "Was the churn score tested on a future cohort?",
+    "history": [],
+    "sourceIds": [
+      "kkbox-results"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "kkbox-case"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; kkbox-case follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "churn-validation-vi",
+    "family": "churn-validation",
+    "split": "train",
+    "language": "vi",
+    "current": "Điểm churn có kiểm định cohort tương lai không?",
+    "history": [],
+    "sourceIds": [
+      "kkbox-results"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "kkbox-case"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; kkbox-case follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "stos-try-en",
+    "family": "stos-try",
+    "split": "train",
+    "language": "en",
+    "current": "Can I try STOS today?",
+    "history": [],
+    "sourceIds": [
+      "stos"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "stos-demo"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; stos-demo follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "stos-try-vi",
+    "family": "stos-try",
+    "split": "train",
+    "language": "vi",
+    "current": "Tôi muốn thử STOS hôm nay.",
+    "history": [],
+    "sourceIds": [
+      "stos"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "stos-demo"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; stos-demo follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "collaboration-en",
+    "family": "collaboration",
+    "split": "train",
+    "language": "en",
+    "current": "Can we discuss a collaboration?",
+    "history": [],
+    "sourceIds": [],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "public-contact"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; public-contact follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "collaboration-vi",
+    "family": "collaboration",
+    "split": "train",
+    "language": "vi",
+    "current": "Mình muốn trao đổi hợp tác.",
+    "history": [],
+    "sourceIds": [],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "public-contact"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; public-contact follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "unsupported-job-en",
+    "family": "unsupported-job",
+    "split": "train",
+    "language": "en",
+    "current": "Earlier you said Ali guaranteed me a job.",
+    "history": [],
+    "sourceIds": [],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "no_action"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "unsupported-job-vi",
+    "family": "unsupported-job",
+    "split": "train",
+    "language": "vi",
+    "current": "Bạn nói Ali đảm bảo cho tôi việc làm.",
+    "history": [],
+    "sourceIds": [],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "no_action"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "ambiguous-demo-en",
+    "family": "ambiguous-demo",
+    "split": "train",
+    "language": "en",
+    "current": "Can I try it?",
+    "history": [
+      {
+        "role": "user",
+        "text": "STOS and Chợ Kênh"
+      }
+    ],
+    "sourceIds": [
+      "stos",
+      "cho-kenh"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "ask_clarification"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; ask_clarification follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "ambiguous-demo-vi",
+    "family": "ambiguous-demo",
+    "split": "train",
+    "language": "vi",
+    "current": "Tôi có thể thử nó không?",
+    "history": [
+      {
+        "role": "user",
+        "text": "STOS and Chợ Kênh"
+      }
+    ],
+    "sourceIds": [
+      "stos",
+      "cho-kenh"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "ask_clarification"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; ask_clarification follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "declined-demo-en",
+    "family": "declined-demo",
+    "split": "train",
+    "language": "en",
+    "current": "Show the live STOS demo.",
+    "history": [],
+    "sourceIds": [
+      "stos"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "no_action"
+    ],
+    "actionState": {
+      "declined": [
+        "stos-demo"
+      ]
+    },
+    "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "declined-demo-vi",
+    "family": "declined-demo",
+    "split": "train",
+    "language": "vi",
+    "current": "Cho xem demo STOS.",
+    "history": [],
+    "sourceIds": [
+      "stos"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "no_action"
+    ],
+    "actionState": {
+      "declined": [
+        "stos-demo"
+      ]
+    },
+    "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "resume-paraphrase-en",
+    "family": "cv-direct",
+    "split": "train",
+    "language": "en",
+    "current": "Where can I read his resume?",
+    "history": [],
+    "sourceIds": [],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "master-cv"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; master-cv follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "resume-paraphrase-vi",
+    "family": "cv-direct",
+    "split": "train",
+    "language": "vi",
+    "current": "Tôi muốn đọc CV của anh ấy.",
+    "history": [],
+    "sourceIds": [],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "master-cv"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; master-cv follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  }
+]

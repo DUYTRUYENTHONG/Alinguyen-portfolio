@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-11-13T07:44:10.899Z",
+  "provider": "Groq",
+  "model": "openai/gpt-oss-20b",
+  "productionDeployment": "dpl_7EmtXF8szP9EBZUviNL74vWXp69v",
+  "productionChanged": false,
+  "providerCalls": 0,
+  "realSelectionVerified": false,
+  "candidateDeploymentVerified": false,
+  "accountLimitsVerified": false,
+  "reason": "Preview configured; bounded exact-revision live verification pending.",
+  "completionCap": 800,
+  "completionCapStatus": "provisional: preserves baseline budget including reasoning; bounded live probe pending",
+  "previewKeyConfigured": true,
+  "previewKeyMethod": "Added preview target to existing sensitive secret using supported Vercel PATCH; no secret value read, sent or replaced; production target retained."
+}

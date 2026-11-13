@@ -1,3 +1,4 @@
+import { ActorEvidence } from "./actor-evidence";
 import type { Metadata } from "next";
 import demo from "../../../docs/evidence/traffic-analytics-demo.json";
 import evaluation from "../../../docs/evidence/guide-evaluation-live.json";
@@ -25,6 +26,8 @@ export default function EvidencePage() {
         <p>Inspectable code and recorded checks: a restricted hosted warehouse, an AI guide baseline that keeps the failures, and optional project recommendation signals.</p>
         <nav className={styles.links} aria-label="Evidence sections"><Link href="/evidence/retrieval/">Retrieval case study →</Link><a href="#analytics">Traffic analytics ↓</a><a href="#guide-evaluation">AI guide evaluation ↓</a><a href="#recommendations">Recommendation signals ↓</a></nav>
       </header>
+      <section id="recruiter-review" className={styles.section} aria-labelledby="review-title"><h2 id="review-title">Three checks. About a minute.</h2><ol className={styles.flow}><li><span>01 / Inspect an answer</span><strong>Ask the live guide</strong><p>Try “Did Ali win the KKBox competition?” Open its citation and check the limitation. Only an explicit question uses the live service.</p><Link href="/#top">Open portfolio guide →</Link></li><li><span>02 / Inspect a decision</span><strong>Compare bilingual retrieval</strong><p>See the actual ranks, misses and release boundary. Static recorded results, no API quota.</p><Link href="/evidence/retrieval/">Compare English / Vietnamese →</Link></li><li><span>03 / Inspect leakage</span><strong>Move a prediction cutoff</strong><p>Watch synthetic events enter the feature snapshot; future data stays excluded.</p><Link href="/work/kkbox-baseline/#cutoff-title">Try the cutoff →</Link></li></ol><Link href="/cv-applied-ai-engineer.pdf" download>Download master CV ↓</Link></section>
+      <ActorEvidence />
       <section id="analytics" className={styles.section} aria-labelledby="analytics-title">
         <div className={styles.intro}><div><p className="eyebrow">01 / Data engineering</p><h2 id="analytics-title">Traffic into an auditable report.</h2></div><p>Upstash remains the operational store. A batch exporter reads daily aggregates into PostgreSQL tables and SQL reporting views. Browser identifiers and chat conversations stay out of the warehouse.</p></div>
         <ol className={styles.flow}><li><span>Collect</span><strong>Upstash Redis</strong><p>Existing recorded traffic, isolated by project and environment.</p></li><li><span>Validate &amp; load</span><strong>PostgreSQL</strong><p>Transactions, replay protection, corrections and coverage checks.</p></li><li><span>Explain</span><strong>Daily &amp; weekly SQL views</strong><p>Missing data stays unknown. Partial days stay visible.</p></li></ol>

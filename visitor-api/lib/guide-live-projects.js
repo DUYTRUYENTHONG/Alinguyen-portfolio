@@ -4,7 +4,7 @@ const normalize = (text) => text.toLowerCase().normalize('NFD').replace(/[\u0300
 
 export function isLiveProjectInventoryQuestion(question, recentTurns = []) {
   const q = normalize(question);
-  const availability = /\b(live|launched|deployed|online|available now|currently available|dang hoat dong|dang chay|da trien khai|da ra mat)\b/.test(q);
+  const availability = /\b(live|launched|deployed|online|try today|use today|thu hom nay|available now|currently available|dang hoat dong|dang chay|da trien khai|da ra mat)\b/.test(q);
   const inventory = /\b(projects?|products?|sites?|websites?|work|du an|san pham|trang web)\b/.test(q);
   const namedProject = /\b(stos|cho kenh|growth commerce|kkbox|vibecode)\b/.test(q);
   const listing = /\b(which|what|list|all|show|nhung|liet ke|tat ca|nao)\b/.test(q);

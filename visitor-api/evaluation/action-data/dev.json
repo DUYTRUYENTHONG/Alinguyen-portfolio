@@ -1,0 +1,168 @@
+[
+  {
+    "id": "marketplace-try-en",
+    "family": "marketplace-try",
+    "split": "dev",
+    "language": "en",
+    "current": "Show a live catalog demo.",
+    "history": [],
+    "sourceIds": [
+      "cho-kenh"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "cho-kenh-demo"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; cho-kenh-demo follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "marketplace-try-vi",
+    "family": "marketplace-try",
+    "split": "dev",
+    "language": "vi",
+    "current": "Tôi muốn thử demo danh mục.",
+    "history": [],
+    "sourceIds": [
+      "cho-kenh"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "cho-kenh-demo"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; cho-kenh-demo follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "repeat-evidence-en",
+    "family": "repeat-evidence",
+    "split": "dev",
+    "language": "en",
+    "current": "Explain the churn limitation.",
+    "history": [],
+    "sourceIds": [
+      "kkbox-results"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "no_action"
+    ],
+    "actionState": {
+      "used": [
+        "kkbox-case"
+      ]
+    },
+    "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "repeat-evidence-vi",
+    "family": "repeat-evidence",
+    "split": "dev",
+    "language": "vi",
+    "current": "Giải thích giới hạn churn.",
+    "history": [],
+    "sourceIds": [
+      "kkbox-results"
+    ],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "no_action"
+    ],
+    "actionState": {
+      "used": [
+        "kkbox-case"
+      ]
+    },
+    "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "neutral-unrelated-en",
+    "family": "neutral-unrelated",
+    "split": "dev",
+    "language": "en",
+    "current": "What is the weather tomorrow?",
+    "history": [],
+    "sourceIds": [],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "no_action"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  },
+  {
+    "id": "neutral-unrelated-vi",
+    "family": "neutral-unrelated",
+    "split": "dev",
+    "language": "vi",
+    "current": "Ngày mai thời tiết ra sao?",
+    "history": [],
+    "sourceIds": [],
+    "allowedActions": [
+      "no_action",
+      "ask_clarification",
+      "kkbox-case",
+      "vibecode-repo",
+      "stos-demo",
+      "cho-kenh-demo",
+      "growth-demo",
+      "master-cv",
+      "public-contact"
+    ],
+    "acceptable": [
+      "no_action"
+    ],
+    "actionState": {},
+    "explanation": "Authored public/synthetic intent; no_action follows the explicit current request and reviewed destination. Other project links and planned features are wrong actions."
+  }
+]

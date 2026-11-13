@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "../../experience";
 import { PortfolioLink as Link } from "../../portfolio-link";
+import { RetrievalComparison } from "./comparison";
 import styles from "../page.module.css";
-import study from "../../../../public/retrieval-study-status.json";
-const source =
-	"https://github.com/DUYTRUYENTHONG/Alinguyen-portfolio/blob/codex/deepseek-evidence";
 export const metadata: Metadata = {
-	title: "Retrieval and evidence selection — Ali Nguyen",
+	title: "Retrieval decisions — Ali Nguyen",
 	description:
-		"An inspectable DeepSeek migration candidate, offline verification boundary and retrieval release decision.",
+		"Inspect an offline bilingual retrieval experiment, its misses and the decision to keep production ranking unchanged.",
 };
 export default function RetrievalEvidence() {
 	return (
@@ -19,138 +17,99 @@ export default function RetrievalEvidence() {
 			<SiteHeader inner />
 			<main id="retrieval-main" className={`${styles.main} section-shell`}>
 				<header className={styles.hero}>
-					<p className="eyebrow">Applied AI · migration candidate</p>
+					<p className="eyebrow">
+						Applied AI · authored development experiment
+					</p>
 					<h1>
-						From a question
-						<br />
-						to inspectable evidence.
+						A retrieval change.
+						<br />A decision you can inspect.
 					</h1>
 					<p>
-						The guide retrieves approved public records. DeepSeek selects record
-						IDs; the server assembles the visible answer and links. Local code
-						tests, real-provider selection and a deployed revision are three
-						separate claims.
+						Keep the production keyword retriever. This experiment compares a
+						pinned multilingual model with exact cosine search, one Vietnamese
+						passage-enrichment candidate, and reciprocal rank fusion. Small
+						development results do not justify a production promotion.
 					</p>
-					<nav className={styles.links} aria-label="Review path">
-						<a href="#decision">Release decision ↓</a>
-						<a href="#comparison">Retrieval comparison ↓</a>
-						<a href="#boundary">Request boundary ↓</a>
-					</nav>
+					<Link href="/evidence/">← Engineering evidence</Link>
 				</header>
-				<section id="decision" className={styles.section}>
-					<h2>Why keep the keyword retriever?</h2>
+				<section className={styles.section}>
+					<h2>One improvement. A larger regression.</h2>
 					<p>
-						The migration changes evidence selection, not production ranking.
-						The original bilingual replay questions, E5 pin and ranking
-						artifacts are missing. Without reproducible per-question results or
-						independent labels, there is no evidence here to promote vector
-						retrieval or an abstention threshold.
+						In this new Vietnamese development replay, passage enrichment moved
+						leakage evidence from rank 14 to 2, but the published guide-failure
+						report fell from rank 1 to 5. Top-three hits fell from 7/8 to 5/8
+						and first-place hits from 5/8 to 3/8. Keep the candidate offline.
 					</p>
+					<h2>Compare the evidence, in either language.</h2>
 					<p>
-						<strong>Branch candidate:</strong> DeepSeek request construction and
-						fake-transport tests. <strong>Pending:</strong> successful DeepSeek
-						selection, full Preview acceptance and exact-revision Production
-						receipt. The existing production service has not been replaced by
-						this branch.
+						Select a question, inspect its expected source and open the returned
+						evidence. These recorded rankings run entirely in the static export.
+						No model is downloaded in your browser.
 					</p>
-					<p>
-						Observed on 13 November 2026: the first live probe reached DeepSeek
-						and returned HTTP 402 (insufficient balance). It stopped after one
-						call. No selected model, cache usage or answer-quality result is
-						claimed. The Preview API separately returned the deterministic STOS
-						answer with a revision-bound receipt; that does not pass the
-						provider gate.
-					</p>
+					<RetrievalComparison />
 				</section>
-				<section id="comparison" className={styles.section}>
-					<h2>A win matters. So does a regression.</h2>
+				<section className={styles.section}>
+					<h2>What this experiment does not reproduce.</h2>
 					<p>
-						The handoff reports that indexing reviewed Vietnamese text raised
-						top-three hits from 4/8 to 5/8 while first-place hits fell from 3/8
-						to 2/8. It also reports an abstention threshold declining both
-						unrelated questions and 11/16 answerable questions. These are{" "}
-						<strong>
-							unverified handoff figures, not reproduced measurements
-						</strong>
-						. They must not be treated as this branch’s results.
+						The original replay questions, model pin and corpus snapshot were
+						unavailable. This is a new set of eight authored bilingual intent
+						pairs plus two unrelated controls, not an independent benchmark. The
+						historical claims—Vietnamese top-three 4/8 → 5/8, first-place 3/8 →
+						2/8 and a threshold rejecting 11/16 answerable questions—have not
+						been reproduced here.
 					</p>
 					<p>
-						No winning or regressing question is invented here. Source-level
-						comparisons remain pending the original intent pairs and ranked
-						lists. The two unrelated requests belong outside the answerable
-						denominator; rank four does not pass top-three.
-					</p>
-					<ul>
-						<li>Keyword: incumbent implementation preserved.</li>
-						<li>
-							Multilingual E5 with exact cosine: original model revision and
-							replay pending.
-						</li>
-						<li>Reciprocal rank fusion: original replay pending.</li>
-					</ul>
-					<p>
-						Corpus: {study.corpusRecords} public records. Fingerprint:{" "}
-						<code style={{ overflowWrap: "anywhere" }}>
-							{study.corpusSha256}
-						</code>
-						.
+						The future-data leakage and published-guide-failure questions are
+						visible in the selector. Their actual ranks, including regressions
+						or unchanged results, are recorded without forcing the historical
+						outcome. No abstention threshold is promoted. Independent recruiter,
+						academic and product questions remain pending.
 					</p>
 					<div className={styles.links}>
-						<Link href="/retrieval-study-status.json" download>
-							Download source IDs, fingerprint and measurement status ↓
+						<Link href="/recruiter-retrieval.json" download>
+							Download every ranking and fingerprint ↓
 						</Link>
-						<a href={`${source}/visitor-api/evaluation/RETRIEVAL_STUDY.md`}>
-							Reproduction boundary ↗
-						</a>
-						<a href={`${source}/visitor-api/evaluation/independent-review.md`}>
-							Independent review protocol ↗
+						<a
+							href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/recruiter-study-plan.md`}
+						>
+							Frozen development plan ↗
 						</a>
 					</div>
 				</section>
-				<section id="boundary" className={styles.section}>
-					<h2>Inspect the actual request.</h2>
+				<section className={styles.section}>
+					<h2>One model job. Reviewed answers.</h2>
 					<p>
-						A fixed first system message sets the citation-only contract.
-						Reviewed evidence and a server-selected role follow. Visitor
-						context, history and the question are last. The parser rejects
-						unknown IDs, malformed shape and truncated output; an empty
-						selection permits abstention. Model-written prose and URLs are not
-						displayed.
+						Groq selects public record IDs. The server validates the selection
+						and assembles approved text and links. A valid citation alone never
+						establishes that a model-written claim is true. Known projects,
+						tours and policy routes avoid inference; timeout or quota failures
+						retain a labelled source excerpt.
 					</p>
 					<p>
-						The offline four-fixture probe checks byte-level prefix stability
-						and sends zero requests. Live mode requires a staging key and an
-						explicit four-call budget. Positive cache-hit tokens establish a
-						cache read; zero is a miss and missing counters remain unknown. No
-						cost saving is inferred from elapsed time.
+						The local strict-schema contract is implemented. A real Groq
+						selection and exact-revision deployment receipt remain separate
+						release gates; the sensitive production key was unavailable locally.
+						No live cache result or independently measured answer-quality score
+						is claimed.
 					</p>
 					<pre style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
-						node visitor-api/scripts/probe-guide-prefix.mjs
+						node visitor-api/scripts/recruiter-retrieval.mjs --prepare
+						<br />
+						python visitor-api/scripts/embed-recruiter-study.py
+						<br />
+						node visitor-api/scripts/recruiter-retrieval.mjs
 					</pre>
-					<p>
-						The deployment verifier requires environment, exact commit SHA and a
-						real-provider receipt for the holdout question, separately from the
-						deterministic STOS question. An HTTP 200 or labelled fallback
-						excerpt cannot satisfy that gate.
-					</p>
-					<div className={styles.links}>
-						<Link href="/guide-prompt-audit.md" download>
-							Download prompt audit ↓
-						</Link>
-						<a href={`${source}/visitor-api/lib/guide-model.js`}>
-							Inspect request and parser ↗
-						</a>
-						<a href={`${source}/visitor-api/scripts/verify-deployed-guide.mjs`}>
-							Inspect deployment verifier ↗
-						</a>
-					</div>
+					<Link href="/guide-prompt-audit.md" download>
+						Prompt audit and regression evidence ↓
+					</Link>
 				</section>
 				<footer className={styles.footer}>
-					<p>
-						No independent answer-quality score, recruiter response rate or
-						business impact is claimed.
-					</p>
-					<Link href="/evidence/">Back to Engineering evidence →</Link>
+					<Link href="/work/kkbox-baseline/#cutoff-title">
+						Try the prediction cutoff →
+					</Link>
+					<Link href="/cv-applied-ai-engineer.pdf" download>
+						Download master CV ↓
+					</Link>
 				</footer>
 			</main>
 		</>

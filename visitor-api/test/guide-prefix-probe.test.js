@@ -16,8 +16,8 @@ function probe(transport) {
 			encoding: "utf8",
 			env: {
 				...process.env,
-				DEEPSEEK_API_KEY: "synthetic-fixture",
-				DEEPSEEK_PROBE_MAX_CALLS: "4",
+				GROQ_API_KEY: "synthetic-fixture",
+				GROQ_PROBE_MAX_CALLS: "4",
 			},
 		},
 	);
@@ -37,9 +37,11 @@ test("probe retains sanitized timeout receipt without retrying", () => {
 });
 test("probe makes at most four calls and preserves missing usage as unknown", () => {
 	const r = probe(
-		'return {ok:true,status:200,json:async()=>({model:"deepseek-flash",choices:[{message:{content:JSON.stringify({citations:[]})}}]})};',
+		'return {ok:true,status:200,json:async()=>({model:"openai/gpt-oss-20b",choices:[{message:{content:JSON.stringify({citations:[]})}}]})};',
 	);
 	assert.equal(r.providerCalls, 4);
-	assert.equal(r.records[0].prompt_cache_hit_tokens, null);
+	assert.equal(r.records[0].cachedTokens, null);
 	assert.equal(r.identicalRepeat, true);
 });
+
+test('probe aggregate uses token-weighted share and preserves measured zero',()=>{const r=probe('return {ok:true,status:200,json:async()=>({model:"openai/gpt-oss-20b",usage:{prompt_tokens:100,prompt_tokens_details:{cached_tokens:0},completion_tokens:20},choices:[{message:{content:JSON.stringify({citations:[]})}}]})};');assert.equal(r.aggregateHitShare,0);assert.equal(r.records[0].cachedTokens,0);});
