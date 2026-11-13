@@ -115,3 +115,12 @@
 @media (prefers-reduced-motion: reduce) {
   .guide-assistant-panel * { scroll-behavior: auto; animation: none; transition: none; }
 }
+
+/* Native modal lifecycle controls visibility; feedback never delays Close/Escape. */
+.guide-assistant-panel[open] { animation:journey-panel-in var(--journey-panel,220ms) var(--journey-ease,ease-out) both; }
+.guide-assistant-panel[open]::backdrop { animation:journey-backdrop var(--journey-panel,220ms) ease-out both; }
+.guide-assistant-panel .guide-assistant-error { border-left:2px solid #9e2b30; padding:8px 12px; background:#fff; }
+.guide-assistant-panel :is(button,a):active { box-shadow:inset 0 0 0 2px #326bff55; }
+@media (prefers-reduced-motion:reduce) {
+  .guide-assistant-panel[open],.guide-assistant-panel[open]::backdrop { animation:none; transform:none; }
+}

@@ -364,3 +364,96 @@ a:focus-visible,button:focus-visible{outline:3px solid #396fff;outline-offset:4p
   0%, 100% { opacity: 1; transform: none; background: #fff; box-shadow: none; }
   50% { opacity: 1; transform: none; background: #326bff; box-shadow: 0 0 0 4px #326bff26; }
 }
+
+/* Coordinated journey motion. Native/React state remains immediate and authoritative. */
+body { --journey-press:100ms; --journey-select:160ms; --journey-panel:220ms; --journey-enter:320ms; --journey-ease:cubic-bezier(.2,.75,.25,1); }
+.hero-actions a,.desktop-nav a { transition:background-color var(--journey-press),box-shadow var(--journey-press),color var(--journey-press); }
+.hero-actions a:is(:hover,:active),.desktop-nav a:is(:hover,:focus-visible) { transform:none; }
+.hero-actions a>span { display:inline-block; transition:transform var(--journey-press) var(--journey-ease); }
+.hero-actions a:active,.menu-trigger:active,.mobile-menu-close:active,.depth-tabs button:active,.copy-email:active { box-shadow:inset 0 0 0 2px #326bff55; }
+.hero-actions a:focus-visible,.desktop-nav a:focus-visible { outline:3px solid var(--blue); outline-offset:4px; }
+.portrait-caption[data-home-motion="running"] { animation:journey-accent var(--journey-enter) var(--journey-ease) both; }
+.menu-glyph i { transition:transform var(--journey-select) var(--journey-ease),opacity var(--journey-press); }
+.mobile-menu:not([open]) { display:none; }
+.mobile-menu { transition:none; transform:none; }
+.mobile-menu[open] { animation:journey-panel-in var(--journey-panel) var(--journey-ease) both; }
+.mobile-menu[open]::backdrop { animation:journey-backdrop var(--journey-panel) ease-out both; }
+.role-card,.role-card:not(.is-selected):is(:hover,:active) { transform:none; transition:border-color var(--journey-select),box-shadow var(--journey-select); }
+.role-card::after { content:""; position:absolute; top:12px; right:12px; width:12px; height:12px; border:2px solid #8c9db8; border-radius:50%; background:#fff; pointer-events:none; }
+.role-card:has(input:checked)::after { border-color:var(--blue); background:var(--blue); box-shadow:inset 0 0 0 2px #fff; }
+.role-card:has(input:checked) { border-color:var(--blue); }
+.role-card:has(input:checked) .role-icon { animation:journey-role-select var(--journey-select) var(--journey-ease) both; }
+.visitor:has(input:checked) .visitor-result { border-top-color:var(--blue); }
+.visitor:has(input:checked) .visitor-result>span { color:#244bb5; }
+.work-index a,.work-mobile-index a { position:relative; min-height:44px; }
+.work-index a::before,.work-mobile-index a::before { content:""; position:absolute; left:5px; top:24%; height:52%; width:2px; border-radius:2px; background:var(--blue); opacity:0; transform:scaleY(.6); transition:opacity var(--journey-select),transform var(--journey-select) var(--journey-ease); pointer-events:none; }
+.work-index a[aria-current="location"]::before,.work-mobile-index a[aria-current="location"]::before { opacity:1; transform:scaleY(1); }
+.work-index a:focus-visible,.work-mobile-index a:focus-visible { outline:3px solid var(--blue); outline-offset:-3px; }
+#work .work-card:target { animation:journey-edge var(--journey-select) ease-out; }
+#work-title { position:relative; }
+#work-title::after { content:""; position:absolute; bottom:-10px; left:0; width:44px; height:2px; background:var(--blue); transform-origin:left; pointer-events:none; }
+#work-title[data-home-motion] { opacity:1; transform:none; animation:none; }
+#work-title[data-home-motion="running"]::after { animation:journey-divider var(--journey-enter) var(--journey-ease) both; }
+#work :is(.mock-terminal,.mock-churn)[data-home-motion="running"] { animation:journey-art var(--journey-enter) var(--journey-ease) var(--home-delay,40ms) both; }
+#work .project-screenshot[data-home-motion="running"] { animation:journey-accent var(--journey-enter) ease-out var(--home-delay,40ms) both; }
+#work .mock-terminal .mock-terminal-body p { opacity:1; transform:none; animation:none; }
+#work .mock-terminal[data-home-motion="running"] .mock-terminal-body p:first-child,
+#work .work-card:focus-within .mock-terminal-body p:first-child,
+.case-hero .mock-terminal[data-journey-art="running"] .mock-terminal-body p:first-child { animation:journey-terminal var(--journey-enter) ease-out both; }
+:is(#project-kkbox-baseline,.case-hero-kkbox-baseline) .mock-past-events i:last-child { background:var(--blue); box-shadow:0 0 0 3px #326bff20; }
+:is(#project-kkbox-baseline,.case-hero-kkbox-baseline) .mock-future-events i { background:#fff; border-color:#aeb8c8; animation:none; }
+:is(#project-kkbox-baseline,.case-hero-kkbox-baseline) .mock-cutoff { transform:none; animation:none; }
+:is(#project-kkbox-baseline,.case-hero-kkbox-baseline) .mock-churn:is([data-home-motion="running"],[data-journey-art="running"]) .mock-past-events i { animation:journey-past 200ms ease-out both; }
+:is(#project-kkbox-baseline,.case-hero-kkbox-baseline) .mock-churn:is([data-home-motion="running"],[data-journey-art="running"]) .mock-past-events i:nth-child(2) { animation-delay:120ms; }
+:is(#project-kkbox-baseline,.case-hero-kkbox-baseline) .mock-churn:is([data-home-motion="running"],[data-journey-art="running"]) .mock-past-events i:last-child { animation-name:journey-last-past; animation-delay:240ms; }
+.case-hero :is(.mock-browser,.project-screenshot)[data-journey-art="running"] { animation:journey-case-art var(--journey-enter) var(--journey-ease) both; }
+.case-hero .project-screenshot[data-journey-art="running"] { animation-name:journey-case-art; --journey-art-travel:0px; }
+.depth-tabs button { position:relative; min-height:44px; min-width:44px; transition:background-color var(--journey-select); }
+.depth-tabs button[aria-selected="true"]::after { content:""; position:absolute; left:18px; right:18px; bottom:6px; height:2px; background:var(--blue); border-radius:2px; pointer-events:none; }
+.case-page .case-media figure { transition:border-color var(--journey-select); }
+.case-page .case-media a { min-height:44px; }
+.case-page .case-media a:active { box-shadow:inset 0 0 0 3px #326bff55; }
+.case-page .case-media figure:focus-within figcaption { color:#244bb5; }
+.copy-email { min-width:160px; min-height:44px; transition:border-color var(--journey-press),background-color var(--journey-press); }
+.copy-feedback { min-height:1.5em; max-width:560px; margin:10px auto 0; font-size:.9rem; line-height:1.5; }
+.copy-feedback[data-journey-state] { padding:8px 12px; border-left:2px solid var(--blue); color:#244bb5; }
+.copy-feedback[data-journey-state="error"] { color:#9e2b30; border-color:#9e2b30; }
+.contact-email { min-height:44px; line-height:1.6; }
+@media (hover:hover) and (pointer:fine) {
+  .hero-action-primary:hover>span { transform:translateX(2px); }
+  .hero-action-secondary:hover>span { transform:translateY(2px); }
+  .role-card:not(:has(input:checked)):hover .role-icon { transform:translateY(-2px); transition:transform var(--journey-select) var(--journey-ease); }
+  .work-index a:hover .project-emoji,.work-mobile-index a:hover .project-emoji { transform:translateY(-2px); }
+  .case-page .case-media figure:hover { border-color:var(--blue); }
+  .case-page .case-media figure:hover figcaption { color:#244bb5; }
+}
+.work-index .project-emoji,.work-mobile-index .project-emoji,
+.work-index a:is(:hover,.is-active) .project-emoji,.work-mobile-index a:is(:hover,.is-active) .project-emoji,
+.work-card:hover .project-emoji { animation:none; transition:transform var(--journey-press); }
+@keyframes journey-panel-in { from { opacity:.94; transform:translateY(5px); } to { opacity:1; transform:none; } }
+@keyframes journey-backdrop { from { opacity:0; } to { opacity:1; } }
+@keyframes journey-role-select { from { transform:translateY(4px) rotate(-2deg); } to { transform:none; } }
+@keyframes journey-divider { from { opacity:.5; transform:scaleX(.45); } to { opacity:1; transform:scaleX(1); } }
+@keyframes journey-art { from { transform:translateY(6px); } to { transform:none; } }
+@keyframes journey-case-art { from { transform:translateY(var(--journey-art-travel,6px)); box-shadow:0 0 0 2px #326bff33; } to { transform:none; } }
+@keyframes journey-edge { from { outline-color:#173db5; box-shadow:0 0 0 4px #326bff20; } to { outline-color:var(--blue); } }
+@keyframes journey-accent { 50% { box-shadow:inset 0 -2px 0 #326bff88; } }
+@keyframes journey-terminal { 50% { background:#326bff22; box-shadow:inset 2px 0 0 #70c6ff; } }
+@keyframes journey-past { 0%,100% { background:#fff; box-shadow:none; } 50% { background:#326bff; box-shadow:0 0 0 4px #326bff26; } }
+@keyframes journey-last-past { from { background:#fff; box-shadow:none; } to { background:#326bff; box-shadow:0 0 0 3px #326bff20; } }
+@media (prefers-reduced-motion:reduce) {
+  .site-header.is-compact .desktop-nav { transform:none; }
+  .hero-actions a>span,.menu-glyph i,.role-icon,.work-index a::before,.work-mobile-index a::before,.work-index .project-emoji,.work-mobile-index .project-emoji { transition:none; transform:none; }
+  .hero-actions a:hover>span,.role-card:not(:has(input:checked)):hover .role-icon { transform:none; }
+  .work-index a:hover .project-emoji,.work-mobile-index a:hover .project-emoji { transform:none; }
+  .mobile-menu[open],.mobile-menu[open]::backdrop,.portrait-caption[data-home-motion],
+  #work-title[data-home-motion]::after,#work :is(.mock-browser,.project-screenshot)[data-home-motion],
+  #work .work-card:target,#work .work-card .mock-terminal-body p,
+  .case-hero :is(.mock-browser,.project-screenshot)[data-journey-art],
+  :is(#project-kkbox-baseline,.case-hero-kkbox-baseline) .mock-churn .mock-past-events i { animation:none; transform:none; }
+  #work .mock-terminal[data-home-motion="running"] .mock-terminal-body p:first-child,
+  #work .work-card:focus-within .mock-terminal-body p:first-child,
+  .case-hero .mock-terminal[data-journey-art="running"] .mock-terminal-body p:first-child,
+  :is(#project-kkbox-baseline,.case-hero-kkbox-baseline) .mock-churn:is([data-home-motion="running"],[data-journey-art="running"]) .mock-past-events i,
+  :is(#project-kkbox-baseline,.case-hero-kkbox-baseline) .mock-churn:is([data-home-motion="running"],[data-journey-art="running"]) .mock-past-events i:last-child { animation:none; transform:none; }
+}

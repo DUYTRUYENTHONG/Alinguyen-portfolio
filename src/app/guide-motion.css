@@ -215,3 +215,19 @@
 [data-guide-role="Just curious"]{--guide-role-scroll:guide-scroll-curious}
 @keyframes guide-scroll-curious{from{transform:perspective(500px) rotateX(0) rotateY(0) translateY(0)}to{transform:perspective(500px) rotateY(-8deg) rotateZ(2deg)}}
 @media(prefers-reduced-motion:reduce){.guide-stage-journey .guide-character.is-scrolling:not(.is-walking)[data-scroll-direction] img{animation:none}}
+
+/* The role card wrapper owns selection motion; actor art keeps its own tour owner. */
+.role-card[data-guide-role] .role-icon img,
+.role-card[data-guide-role]:not(.is-selected):hover .role-icon img,
+.role-card.is-selected[data-guide-role] .role-icon img { animation:none; transform:none; }
+.guide-assistant-panel:has(.guide-assistant-status) .guide-assistant-avatar { animation:journey-thinking 1s ease-in-out infinite alternate; }
+.guide-assistant-panel .guide-thinking-dots i { animation:journey-busy-dot 800ms ease-in-out infinite alternate; }
+.guide-assistant-panel .guide-thinking-dots i:nth-child(2) { animation-delay:120ms; }
+.guide-assistant-panel .guide-thinking-dots i:nth-child(3) { animation-delay:240ms; }
+@keyframes journey-thinking { to { transform:rotate(2deg); } }
+@keyframes journey-busy-dot { to { opacity:.5; transform:translateY(-2px); } }
+@media (prefers-reduced-motion:reduce) {
+  .role-card:has(input:checked) .role-icon,
+  .guide-assistant-panel:has(.guide-assistant-status) .guide-assistant-avatar,
+  .guide-assistant-panel .guide-thinking-dots i { animation:none; transform:none; }
+}

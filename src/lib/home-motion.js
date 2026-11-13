@@ -3,7 +3,7 @@ const headings = "#work-title, #community-title, #map-title, #notes-title";
 const media =
 	"#work .project-screenshot, #work .mock-terminal, #work .mock-churn";
 const copy = "#work .work-card h3, #work .project-summary";
-const targets = `${headings}, ${copy}, ${media}`;
+const targets = `${headings}, ${copy}, ${media}, #top .portrait-caption`;
 
 export function startHomeMotion(home, played = new Set()) {
 	if (!home?.matches("main.portfolio-main")) return;
@@ -70,7 +70,6 @@ export function startHomeMotion(home, played = new Set()) {
 		if (state.kind === "screenshot") {
 			const distance = travel(node);
 			if (distance === null) return;
-			if (distance < 1) return settle(node);
 		}
 		state.running = true;
 		played.add(state.key);
@@ -86,8 +85,9 @@ export function startHomeMotion(home, played = new Set()) {
 					entry.isIntersecting && states.has(entry.target) &&
 					entranceVisible(entry.target, states.get(entry.target).kind),
 			);
-			entering.forEach((entry, index) => {
-				play(entry.target, Math.min(index * 50, 120));
+			entering.forEach((entry) => {
+				const kind = states.get(entry.target).kind;
+				play(entry.target, ["heading", "copy"].includes(kind) ? 0 : 40);
 			});
 		},
 		{ threshold: [0, 0.3], rootMargin: "-16px 0px -16px 0px" },
@@ -97,7 +97,9 @@ export function startHomeMotion(home, played = new Set()) {
 		if (!home.contains(node) || states.has(node) || node.dataset.homeMotion)
 			return;
 		const card = node.closest('[id^="project-"]');
-		const kind = node.matches(headings)
+		const kind = node.matches(".portrait-caption")
+			? "portrait-accent"
+			: node.matches(headings)
 			? "heading"
 			: node.matches(copy)
 				? "copy"

@@ -1,4 +1,5 @@
 import { startHomeMotion } from "./lib/home-motion";
+import { startJourneyFeedback } from "./lib/journey-feedback";
 
 // The installed Next.js convention runs before hydration. Start effects only
 // after the React provider commits; retain played IDs across client navigation.
@@ -7,8 +8,10 @@ if (typeof window !== "undefined") {
  let hydrated = false;
 	let home = null;
 	let stop = null;
+	let stopFeedback = null;
 	const sync = () => {
   if (!hydrated) return;
+		if (!stopFeedback) stopFeedback = startJourneyFeedback(document);
 		if (home?.isConnected) return;
 		const next = document.querySelector("main.portfolio-main");
 		if (next === home) return;
