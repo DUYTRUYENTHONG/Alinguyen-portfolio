@@ -45,3 +45,9 @@ Confirmed policy defect: negated CV request incorrectly chose master-cv. A one-h
 - visitor-api/lib/guide-actions.js:31 — export function selectGuideAction
 
 - src/app/guide-reply.ts:28 — export function parseGuideReply
+
+## Live counterexample and one-variable revision
+
+Preview35f7a53 deterministic STOS passed. Its first real Groq call for local holdout log loss returnedHTTP200 but no approved selected ID; the visible answer abstained without the relevant limitation citation. This failed the exact-answer/citation gate. The revised fixed instruction explicitly treats reviewed omitted/disputed/unmeasured metrics as evidence for explaining a limitation, without inventing a number. No claim is made about whether the raw selection was empty or only contained discarded IDs.
+
+One of four authorized calls consumed. At most three remain. A complete four-fixture same-prompt cache matrix cannot be reconstructed after this revision; do not report it as completed.

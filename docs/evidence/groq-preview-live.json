@@ -1,0 +1,67 @@
+{
+  "deployment": "https://ali-portfolio-visitor-bkau9m35i-duytruyenthong-beeps-projects.vercel.app",
+  "revision": "35f7a530602f7abd6257b1dc43bf270611d48b90",
+  "environment": "preview",
+  "maxProviderCalls": 4,
+  "attemptedInferenceRequests": 1,
+  "observedProviderCalls": 1,
+  "records": [
+    {
+      "fixture": "deterministic",
+      "httpStatus": 200,
+      "transportExit": 0,
+      "totalLatencyMs": 3505,
+      "receipt": {
+        "environment": "preview",
+        "revision": "35f7a530602f7abd6257b1dc43bf270611d48b90",
+        "providerAttempted": false,
+        "providerStatus": null,
+        "returnedModel": null,
+        "selectedIds": [],
+        "latencyMs": null,
+        "promptTokens": null,
+        "cacheHitTokens": null,
+        "completionTokens": null,
+        "outputMode": "reviewed-evidence"
+      },
+      "answer": "STOS helps independent sellers present their work through sales pages. Its product website and templates are live. AI suggestions are planned, not live, and customer adoption or business impact isn’t independently measured. [1]",
+      "citations": [
+        {
+          "sourceId": "stos",
+          "label": "STOS Sales Traffic Operating System",
+          "url": "https://stosvn.vercel.app/stos"
+        }
+      ],
+      "responseMode": "reviewed-evidence",
+      "basicGate": true,
+      "exactVerification": true
+    },
+    {
+      "fixture": "first",
+      "httpStatus": 200,
+      "transportExit": 0,
+      "totalLatencyMs": 3510,
+      "receipt": {
+        "environment": "preview",
+        "revision": "35f7a530602f7abd6257b1dc43bf270611d48b90",
+        "providerAttempted": true,
+        "providerStatus": 200,
+        "returnedModel": "openai/gpt-oss-20b",
+        "selectedIds": [],
+        "latencyMs": 293,
+        "promptTokens": 815,
+        "cacheHitTokens": null,
+        "completionTokens": 42,
+        "requestHash": "3b42dc99fcba1a2891ece5c70be2ef6ee8870e71487ca49189308b00a795df47",
+        "fixedPrefixHash": "f2a51efe41688454a1cc72b1befdb4d0fe0de335cb8347b3ec340b40f05bada1",
+        "evidencePrefixHash": "1a75d0bc95cc7c5e20185d35267920a8a1ce425e25ae10574b3e2cb1db1a2893",
+        "outputMode": "abstention"
+      },
+      "answer": "I can't verify that from Ali's public portfolio. Please check the linked work or contact Ali directly.",
+      "citations": [],
+      "responseMode": "abstention",
+      "basicGate": false,
+      "exactVerification": false
+    }
+  ]
+}
