@@ -9,6 +9,7 @@ import "@fontsource-variable/inter";
 import "./styles.css";
 import "./guide-assistant.css";
 import "./guide-motion.css";
+import "./casebook.css";
 
 // Preload the existing Latin faces with metric-adjusted fallbacks. Fontsource
 // remains available for the existing Vietnamese and extended character subsets.
