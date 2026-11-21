@@ -1,5 +1,26 @@
 # Portfolio visitor counter
 
+## Production routing and recovery
+
+The Vercel project `ali-portfolio-visitor-api` must use **Root Directory:
+`visitor-api`** for the linked `DUYTRUYENTHONG/Alinguyen-portfolio` repository.
+Deploy Git revisions from the repository root; do not submit the API subfolder
+as an additional root when this project setting is enabled.
+
+On 2026-11-21, the production alias returned 404 for `/api/visit` because a
+repository-root deployment contained no API functions. Redis remained healthy
+with 121 existing visitors. Production was restored by promoting the verified
+`ali-portfolio-visitor-d8hyjbyn2-duytruyenthong-beeps-projects.vercel.app`
+deployment, and the Vercel Git Root Directory was corrected to `visitor-api`.
+No counter keys, visitor identities, UI, or database schema were reset.
+
+Run `npm --prefix visitor-api run smoke:visitor` after an API deployment.
+It verifies the production CORS preflight and method-rejection route contract
+using OPTIONS and GET only, without creating synthetic visitors. The Pages
+release workflow runs this guard alongside the guide checks. This guard catches
+missing functions; it does not substitute for checking a real browser visit,
+reload deduplication and role changes against the backing store.
+
 ## Shared website traffic candidate
 
 The project-isolated `/api/traffic` endpoint reuses this API and Redis database for NỞ. It does not change `/api/visit` or `/api/guide`. See [TRAFFIC_INTEGRATION.md](TRAFFIC_INTEGRATION.md) for registration, consent, configuration, reporting, limits, tests and the reviewed deployment sequence. Deploy the shared API with its new project secret before enabling NỞ's public configuration.

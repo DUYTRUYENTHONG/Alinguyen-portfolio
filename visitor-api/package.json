@@ -7,7 +7,8 @@
     "test": "node --test test/*.test.js",
     "test:redis": "node scripts/test-traffic-redis.mjs",
     "smoke:production": "node scripts/check-production-guide.mjs",
-    "eval:offline": "node scripts/evaluate-offline-release.mjs"
+    "eval:offline": "node scripts/evaluate-offline-release.mjs",
+    "smoke:visitor": "node scripts/check-production-visitor.mjs"
   },
   "dependencies": {
     "@upstash/redis": "^1.35.6"
